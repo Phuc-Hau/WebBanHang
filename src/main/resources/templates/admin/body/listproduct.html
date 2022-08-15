@@ -1,0 +1,71 @@
+
+
+
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title">
+			<span class="page-title-icon bg-gradient-primary text-white me-2">
+				<i class="mdi mdi-cart"></i>
+			</span> Product Tables
+		</h3>
+
+	</div>
+
+	<div class="grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group">
+					<label  for="exampleSelectGender">Group Product</label>
+					
+					
+					<form action="/admin/productlist">
+						<select name="group" onchange="this.form.submit()" class="form-control">
+						<option value="0">ALL</option>
+						<th:block th:each="group:${groupproduct}">
+							<option th:value="${group.id}">[[${group.name}]]</option>
+						</th:block>
+						</select>
+					</form>
+					
+				</div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>IMG</th>
+							<th>Name</th>
+							<th>Amount</th>
+							<th>Price</th>
+							<th>Sale</th>
+							<th>Date</th>
+							<th>Status</th>
+							<th><i class="mdi mdi-border-color"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<th:block th:each="item,state:${adminlistproduct}">
+							<tr>
+								<td>[[${state.index+1}]]</td>
+								<td class="py-1"><img
+									th:src="@{|/file/AnhWebBanHang/${item.imgs.get(0).image}|}"
+									alt="image" /></td>
+								<td>[[${item.name}]]</td>
+								<td>[[${item.amount }]]</td>
+								<td>[[${item.price }]]</td>
+								<td class="text-danger">[[${item.sale }]]<i
+									class="mdi mdi-arrow-down"></i></td>
+								<td>27/10/2022</td>
+
+								<td><a href="/admin/product/edit/${item.id}">Edit</a></td>
+							</tr>
+
+						</th:block>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

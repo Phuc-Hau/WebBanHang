@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/assets/css/passmabaomat.css">
+
+</head>
+<body>
+<span style="color: red">[[${erro}]]</span><br>
+	<div class="_4-u5 _30ny">
+		<form method="post" action="/account/signup/confirm" id="u_0_a_oY" th:object="${user}">
+			<div class="mvl ptm uiInterstitial _9np_ uiInterstitialLarge uiBoxWhite">
+				<div class="uiHeader uiHeaderBottomBorder mhl mts uiHeaderPage interstitialHeader">
+					<div class="clearfix uiHeaderTop">
+						<div>
+							<h2 class="uiHeaderTitle" aria-hidden="true">Đăng Ký</h2>
+						</div>
+						<div style="color: red" class="_52lr fsm fwn fcg">[[${message }]]</div>
+					</div>
+				</div>
+				<div class="phl ptm uiInterstitialContent">
+					<div>
+						<div class="clearfix">
+							<div class="_9okt olo" >
+								<input style="margin-top: 0px; border: none" type="text" class="yu inputtext _55r1 _9oku _9o1w" name="id" placeholder="User Name" th:field="*{username}">
+		
+							</div >
+							<div class="_9okt olo">
+								<input style="margin-top: 0px; border: none" type="text" class="yu inputtext _55r1 _9oku _9o1w" name="fullname" placeholder="Full Name">
+								
+							</div>
+							<div class="_9okt olo">
+								<input style="margin-top: 0px; border: none" type="password" minlength="8" class="yu inputtext _55r1 _9oku _9o1w" name="passwordd" placeholder="Password" th:field="*{password}">
+								
+							</div>
+							<div class="_9okt olo">
+								<input style="margin-top: 0px; border: none" type="text" class="yu inputtext _55r1 _9oku _9o1w" name="email" id="email" aria-describedby="emailHid" placeholder="Email" th:field="*{email}">
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<div class="hu uiInterstitialBar uiBoxGray topborder" style="margin-top: 317px;  margin-bottom: 19px;">
+					<div class="clearfix">
+						<div class="rfloat _ohf" style="margin-left: 304px">
+							<button formaction="/product/index" style=" padding: 0px; width: 100px;" class="_42ft _42fu _9nq1 textPadding29px selected _42g-" type="submit" id="skip_button">Hủy</button>
+							<button th:value="1" class="_42ft _42fu _9nq0 textPadding20px selected _42g-" id="btn_continue" name="btn_continue" type="submit">Đăng ký</button>
+						</div>
+						<div class="_58mu" data-nocookies="1" id="u_4_r_R1"><p class="_58mv">Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a href="" id="terms-link" target="_blank" rel="nofollow">Điều khoản</a>, <a href="" id="privacy-link" target="_blank" rel="nofollow">Chính sách dữ liệu</a> và <a href="" id="cookie-use-link" target="_blank" rel="nofollow">Chính sách cookie</a> của chúng tôi. Bạn có thể nhận được thông báo của chúng tôi qua SMS và hủy nhận bất kỳ lúc nào.</p></div>
+						<div class="pts"></div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+</body>
+</html>
