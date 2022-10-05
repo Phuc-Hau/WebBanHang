@@ -13,7 +13,6 @@ public interface MailerService {
 	 * @throws MessagingException
 	 */
 	void send(MailInfo mailInfo)throws MessagingException;
-
 	/**
 	 * gửi mail theo mục
 	 * @param to email

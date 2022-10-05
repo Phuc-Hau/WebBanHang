@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Service
-public class CookieUntils implements CookieService {
+public class CookieUtils implements CookieService {
     @Autowired
     HttpServletRequest request;
     @Autowired

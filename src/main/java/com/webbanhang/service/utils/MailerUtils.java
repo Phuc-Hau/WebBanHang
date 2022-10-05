@@ -22,7 +22,7 @@ import com.webbanhang.jpa.model.MailInfo;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 @Service
-public class MailerUntils implements MailerService {
+public class MailerUtils implements MailerService {
 
 	@Autowired
 	JavaMailSender sender;
