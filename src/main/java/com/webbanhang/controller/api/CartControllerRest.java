@@ -1,17 +1,13 @@
-package com.webbanhang.controller.rest;
+package com.webbanhang.controller.api;
 
 import com.webbanhang.jpa.dao.*;
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
-import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.model.Users;
-import com.webbanhang.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Timestamp;
 import java.util.List;
 
 @CrossOrigin("*")
