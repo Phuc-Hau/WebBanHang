@@ -2,6 +2,9 @@ package com.webbanhang.controller.user;
 
 import java.util.List;
 
+import com.webbanhang.jpa.service.CutomerService;
+import com.webbanhang.jpa.service.OrderDetailService;
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.webbanhang.jpa.dao.CutomerDao;
-import com.webbanhang.jpa.dao.OrderDetailDao;
-import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.jpa.model.Cutomer;
 import com.webbanhang.jpa.model.EditUserAdmin;
 import com.webbanhang.jpa.model.OrderDetail;
@@ -27,10 +27,10 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/account")
 public class ChangInformatinonController {
 	@Autowired
-	UserDao userDao;
+	UsersService usersService;
 	
 	@Autowired
-	CutomerDao cutomerDao;
+	CutomerService cutomerService;
 	
 	@Autowired
 	ConvenientService convenientUtils;
@@ -39,18 +39,18 @@ public class ChangInformatinonController {
 	SessionService session;
 	
 	@Autowired
-	OrderDetailDao orderDetailDao;
+	OrderDetailService orderDetailService;
 
 	@RequestMapping("/changinformation")
 	public String changInformation(@ModelAttribute("edituser") EditUserAdmin edituser, Model model, HttpServletRequest request) throws InterruptedException {
 		String username = request.getRemoteUser();
 
-		Users user =userDao.findByUsername(username);
+		Users user =usersService.findByUsername(username);
 		if(user !=null) {
-			List<OrderDetail> list = orderDetailDao.findAllUsername(user.getCutomer().getId());
+			List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
 			model.addAttribute("amountcart", list.size());
 		}
-		Cutomer cutomer = cutomerDao.getById(user.getCutomer().getId());
+		Cutomer cutomer = cutomerService.findById(user.getCutomer().getId());
 
 		edituser.setUser(user);
 		edituser.setCutomer(cutomer);
@@ -66,7 +66,7 @@ public class ChangInformatinonController {
 
 
 		String username = request.getRemoteUser();
-		Users useo =userDao.findByUsername(username);
+		Users useo =usersService.findByUsername(username);
 		
 			Users user = edituser.getUser();
 			user.setRole(useo.getRole());
@@ -76,14 +76,14 @@ public class ChangInformatinonController {
 			if(!imgs.getOriginalFilename().equals("")) {
 				user.setImg(imgs.getOriginalFilename());
 			}else {
-				user.setImg(userDao.getById(user.getId()).getImg());
+				user.setImg(usersService.findById(user.getId()).getImg());
 			}
 			
 			user.setCutomer(cutomer);
 		   
 			try {
-				cutomerDao.save(cutomer);
-				userDao.save(user);
+				cutomerService.update(cutomer);
+				usersService.update(user);
 				convenientUtils.saveFile(imgs, "user");
 			} catch (Exception e) { 
 				e.printStackTrace();

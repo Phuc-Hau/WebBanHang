@@ -1,9 +1,11 @@
-package com.webbanhang.controller.api;
+package com.webbanhang.controller.cart.api;
 
-import com.webbanhang.jpa.dao.*;
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.Users;
+import com.webbanhang.jpa.service.OrderDetailService;
+import com.webbanhang.jpa.service.OrderService;
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,26 +15,26 @@ import java.util.List;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/accounts")
-public class CartControllerRest {
+public class CartApi {
 	
 	@Autowired
-	OrderDetailDao orderDetailDao;
+	OrderDetailService orderDetailService;
 	
 	@Autowired
-	OrderDao orderDao; 
+	OrderService orderService;
 
 	@Autowired
-	UserDao userDao;
+	UsersService userService;
 
 
 	@GetMapping("/list")
 	public List<OrderDetail> cart(HttpServletRequest request) {
 
 		String username = request.getRemoteUser();
-		System.out.println(username);
-		Users user =userDao.findByUsername(username);
 
-		List<OrderDetail> list = orderDetailDao.findAllUsername(user.getCutomer().getId());
+		Users user =userService.findByUsername(username);
+
+		List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
 
 		return list;
 	}
@@ -40,13 +42,13 @@ public class CartControllerRest {
 	@GetMapping("/cart/{p}/{id}")
 	public void cart (@PathVariable("p")String p,@PathVariable("id") int id) {
 		try {
-		    OrderDetail orderDetail	= orderDetailDao.getById(id);
+		    OrderDetail orderDetail	= orderDetailService.findById(id);
 		    if(p.equals("plus")) {
 		    	orderDetail.setQuantity(orderDetail.getQuantity()+1);
 		    }else if(p.equals("pre") && orderDetail.getQuantity()>0) {
 		    	orderDetail.setQuantity(orderDetail.getQuantity()-1);
 		    }
-		    orderDetailDao.save(orderDetail);
+		    orderDetailService.create(orderDetail);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,8 +57,8 @@ public class CartControllerRest {
 	
 	@PostMapping("/cart/delete/{id}")
 	public void deleteCart(@PathVariable("id") int id) {
-		OrderDetail orderDetail = orderDetailDao.getById(id);
-		orderDetailDao.delete(orderDetail);
+		OrderDetail orderDetail = orderDetailService.findById(id);
+		orderDetailService.delete(orderDetail);
 	}
 
 	@PostMapping("/cart/newpay")
@@ -64,9 +66,9 @@ public class CartControllerRest {
 
 		String username = request.getRemoteUser();
 
-		int idCutomer = userDao.findByUsernameGetIdCutomer(username);
+		int idCutomer = userService.findByUsernameGetIdCutomer(username);
 
-		List<OrderDetail> list = orderDetailDao.findAllUsername(idCutomer);
+		List<OrderDetail> list = orderDetailService.findAllUsername(idCutomer);
 		double priceSum = 20000;
 		
 		for (OrderDetail orderDetail : list) {
@@ -74,9 +76,9 @@ public class CartControllerRest {
 					*orderDetail.getProduct().getSale())*orderDetail.getQuantity();
 		}
 
-		Order order = orderDao.findIdCutomer(idCutomer);
+		Order order = orderService.findIdCutomer(idCutomer);
 		order.setStatus(true);
 		order.setTotalmoney(priceSum); 
-		orderDao.save(order);
+		orderService.create(order);
 	}
 }

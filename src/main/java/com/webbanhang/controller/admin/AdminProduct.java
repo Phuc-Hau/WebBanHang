@@ -3,6 +3,8 @@ package com.webbanhang.controller.admin;
 import java.util.List;
 
 import com.webbanhang.jpa.model.Product;
+import com.webbanhang.jpa.service.GroupProductService;
+import com.webbanhang.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,28 +13,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.webbanhang.jpa.dao.GroupProductDao;
-import com.webbanhang.jpa.dao.ProductDao;
 import com.webbanhang.jpa.model.GroupProduct;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminProduct {
 	@Autowired
-	ProductDao productDao;
+	ProductService productService;
 
 	@Autowired
-	GroupProductDao groupProductDao;
+	GroupProductService groupProductService;
 
 	@RequestMapping("/productlist")
 	public String adminProductList(Model model) {
-		model.addAttribute("adminlistproduct", productDao.findAll());
+		model.addAttribute("adminlistproduct", productService.findAll());
 		return "admin/AdminProductList";
 	}
 
 	@RequestMapping("/product/edit/{id}")
 	public String adminEditProductList(Model model, @PathVariable("id") int id) {
-		model.addAttribute("product", productDao.getById(id));
+		model.addAttribute("product", productService.findById(id));
 		return "admin/AdminProductEdit";
 	}
 
@@ -44,7 +44,7 @@ public class AdminProduct {
 
 	@ModelAttribute("groupproduct")
 	public List<GroupProduct> getFaculties() {
-		List<GroupProduct> list = groupProductDao.findAll();
+		List<GroupProduct> list = groupProductService.findAll();
 		return list;
 	}
 }

@@ -1,15 +1,12 @@
 package com.webbanhang.controller.cart;
 
 import com.webbanhang.jpa.model.Product;
+import com.webbanhang.jpa.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.webbanhang.jpa.dao.CutomerDao;
-import com.webbanhang.jpa.dao.OrderDao;
-import com.webbanhang.jpa.dao.OrderDetailDao;
-import com.webbanhang.jpa.dao.ProductDao;
-import com.webbanhang.jpa.dao.UserDao;
+
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 
@@ -20,19 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 public class CartController {
 	
 	@Autowired
-	OrderDetailDao orderDetailDao;
+	OrderDetailService orderDetailService;
 	
 	@Autowired
-	OrderDao orderDao; 
+	OrderService orderService;
 
 	@Autowired
-	ProductDao productDao;
+	ProductService productService;
 
 	@Autowired
-	UserDao userDao;
+	UsersService userService;
 
 	@Autowired
-	CutomerDao cutomerDao;
+	CutomerService cutomerService;
 
 	@GetMapping("/cart")
 	public String cart() {
@@ -43,11 +40,11 @@ public class CartController {
 	@PostMapping("/newcart")
 	public String newCart(@RequestParam("quantity") int quantity,@RequestParam("id") int id,HttpServletRequest request) {
 
-		Product product = productDao.getById(id);
+		Product product = productService.findById(id);
 
-		int idCutomer =userDao.findByUsernameGetIdCutomer(request.getRemoteUser());
+		int idCutomer =userService.findByUsernameGetIdCutomer(request.getRemoteUser());
 		
-		Order order = orderDao.findIdCutomer(idCutomer);
+		Order order = orderService.findIdCutomer(idCutomer);
 
 		OrderDetail orderDetail = new OrderDetail();
 
@@ -56,14 +53,14 @@ public class CartController {
 
 		try {
 			if(order != null) {
-				OrderDetail orderDetailTym = orderDetailDao.findIdProduct(product.getId(),idCutomer);
+				OrderDetail orderDetailTym = orderDetailService.findIdProduct(product.getId(),idCutomer);
 
 				if(orderDetailTym == null) {
 					orderDetail.setOrder(order);
-					orderDetailDao.save(orderDetail);
+					orderDetailService.create(orderDetail);
 				}else {
 					orderDetailTym.setQuantity(orderDetailTym.getQuantity()+quantity);
-					orderDetailDao.save(orderDetailTym);
+					orderDetailService.create(orderDetailTym);
 				}
 
 			}else {
@@ -71,12 +68,12 @@ public class CartController {
 
 				order2.setStatus(false);
 				order2.setOrderDetails(null);
-				order2.setCutomer(cutomerDao.getById(idCutomer));
+				order2.setCutomer(cutomerService.findById(idCutomer));
 
-				orderDao.save(order2);
+				orderService.create(order2);
 
 				orderDetail.setOrder(order2);
-				orderDetailDao.save(orderDetail);
+				orderDetailService.create(orderDetail);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

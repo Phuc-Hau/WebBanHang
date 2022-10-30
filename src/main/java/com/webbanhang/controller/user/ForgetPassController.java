@@ -1,6 +1,7 @@
 package com.webbanhang.controller.user;
 
 
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ import javax.mail.MessagingException;
 public class ForgetPassController {
 
 	@Autowired
-	UserDao userDao;
+	UsersService usersService;
 	
 	@Autowired
 	MailerService mailer;
@@ -39,7 +40,7 @@ public class ForgetPassController {
 	@PostMapping("forgetmail")
 	public String capcha(Model model, @RequestParam("email") String email) throws MessagingException {
 
-		user = userDao.findByEmail(email);
+		user = usersService.findByEmail(email);
 
 		if (user == null) {
 			model.addAttribute("message", "Email chưa đăng ký tài khoản");
@@ -72,7 +73,7 @@ public class ForgetPassController {
 	public String updatepassword(@RequestParam("password_new") String password_new) {
 		user.setPassword(password_new);
 		try {
-			userDao.save(user);
+			usersService.update(user);
 			user = null;
 			capChas ="";
 		} catch (Exception e) {

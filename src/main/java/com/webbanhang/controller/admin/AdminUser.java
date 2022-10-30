@@ -1,6 +1,8 @@
 package com.webbanhang.controller.admin;
 
 
+import com.webbanhang.jpa.service.CutomerService;
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.webbanhang.jpa.dao.CutomerDao;
-import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.jpa.model.Cutomer;
 import com.webbanhang.jpa.model.EditUserAdmin;
 import com.webbanhang.jpa.model.Users;
@@ -23,17 +23,17 @@ import com.webbanhang.service.ConvenientService;
 public class AdminUser {
 	
 	@Autowired
-	UserDao userDao;
+	UsersService userService;
 	
 	@Autowired
-	CutomerDao cutomerDao;
+	CutomerService cutomerService;
 	
 	@Autowired
     ConvenientService convenientUtils;
 
 	@RequestMapping("/userlist")
 	public String adminUserList(Model model) {
-		model.addAttribute("adminlistuser", userDao.findAll());
+		model.addAttribute("adminlistuser", userService.findAll());
 		return "admin/AdminUserList";
 	}
 	
@@ -45,8 +45,8 @@ public class AdminUser {
 	@RequestMapping("/user/edit/{id}")
 	public String adminUserEditID(Model model,@PathVariable("id") int id,
 			@ModelAttribute("edituser") EditUserAdmin edituser) {
-		Users user = userDao.getById(id);
-		Cutomer cutomer = cutomerDao.getById(user.getCutomer().getId());
+		Users user = userService.findById(id);
+		Cutomer cutomer = cutomerService.findById(user.getCutomer().getId());
 		edituser.setUser(user);
 		edituser.setCutomer(cutomer);
 		model.addAttribute("edituser", edituser);
@@ -62,13 +62,13 @@ public class AdminUser {
 		if(!imgs.getOriginalFilename().equals("")) {
 			user.setImg(imgs.getOriginalFilename());
 		}else {
-			user.setImg(userDao.getById(user.getId()).getImg());
+			user.setImg(userService.findById(user.getId()).getImg());
 		}
 		
 		user.setCutomer(cutomer);
 		try {
-			cutomerDao.save(cutomer);
-			userDao.save(user);
+			cutomerService.update(cutomer);
+			userService.update(user);
 			convenientUtils.saveFile(imgs, "user");
 		} catch (Exception e) { 
 			e.printStackTrace();

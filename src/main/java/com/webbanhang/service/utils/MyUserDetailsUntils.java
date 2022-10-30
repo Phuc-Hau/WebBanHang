@@ -1,9 +1,10 @@
 package com.webbanhang.service.utils;
 
-import com.webbanhang.jpa.dao.CutomerDao;
 import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.jpa.model.Cutomer;
 import com.webbanhang.jpa.model.Users;
+import com.webbanhang.jpa.service.CutomerService;
+import com.webbanhang.jpa.service.UsersService;
 import com.webbanhang.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,15 +21,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsService {
     @Autowired
-    UserDao userDao;
+    UsersService usersService;
 
     @Autowired
-    CutomerDao cutomerDao;
+    CutomerService cutomerServices;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
-            Users users = userDao.findByUsername(username);
+            Users users = usersService.findByUsername(username);
 
             BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
             return User.withUsername(users.getUsername())
@@ -50,7 +51,7 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
 
         UserDetails userDetails = null;
 
-        Users users = userDao.findByEmailAndTokeID(email,nameID);
+        Users users = usersService.findByEmailAndTokeID(email,nameID);
 
         if(users != null){
             userDetails = User.withUsername(users.getUsername())
@@ -58,12 +59,12 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
                     .authorities(users.getRole()).build();
         }else{
             Cutomer cutomer = new Cutomer();
-            Users user = userDao.findByEmail(email);
+            Users user = usersService.findByEmail(email);
 
             if(user == null) {
 
                 cutomer.setName(fullname);
-                cutomerDao.save(cutomer);
+                cutomerServices.create(cutomer);
 
                 user = new Users();
                 user.setUsername(nameID);
@@ -71,11 +72,11 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
                 user.setCutomer(cutomer);
                 user.setToken(nameID);
 
-                userDao.save(user);
+                usersService.create(user);
 
             }else{
                 user.setToken(nameID);
-                userDao.save(user);
+                usersService.create(user);
             }
 
             userDetails = User.withUsername(user.getUsername())

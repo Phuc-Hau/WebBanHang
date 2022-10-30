@@ -13,7 +13,6 @@ public class CutomerServiceImpl implements CutomerService {
     @Autowired
     CutomerDao cutomerDao;
 
-
     @Override
     public List<Cutomer> findAll() {
         return cutomerDao.findAll();

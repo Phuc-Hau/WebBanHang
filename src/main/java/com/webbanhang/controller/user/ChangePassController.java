@@ -1,5 +1,6 @@
 package com.webbanhang.controller.user;
 
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ public class ChangePassController {
 	@Autowired
 	CookieService cookieService;	
 	@Autowired
-	UserDao userDao;
+	UsersService usersService;
 	
 	@RequestMapping("/changepass")
 	public String changePass() {

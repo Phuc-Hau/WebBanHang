@@ -3,6 +3,8 @@ package com.webbanhang.controller.user;
 
 import javax.mail.MessagingException;
 
+import com.webbanhang.jpa.service.CutomerService;
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,10 +31,10 @@ public class SignUpController extends Thread{
 	ConvenientService convenientUtils;
 
 	@Autowired
-	UserDao userDao;
+	UsersService usersService;
 
 	@Autowired
-	CutomerDao cutomerDao;
+	CutomerService cutomerService;
 	
 	@RequestMapping("/signup")
 	public String showForm(@ModelAttribute("user") Users user) {
@@ -46,7 +48,7 @@ public class SignUpController extends Thread{
 	@PostMapping("/signup/confirm")
 	public String senEmail(Model model, @ModelAttribute("user") Users user,
 						   @RequestParam("fullname") String fullname) throws MessagingException {
-		if (userDao.findByEmail(user.getEmail()) == null) {
+		if (usersService.findByEmail(user.getEmail()) == null) {
 
 			Cutomer cutomer = new Cutomer();
 			cutomer.setName(fullname);
@@ -78,8 +80,8 @@ public class SignUpController extends Thread{
 		
 		if (capcha.equals(capchas)) {
 			try {
-				cutomerDao.save(tymCutomer);
-				userDao.save(tymUser);
+				cutomerService.create(tymCutomer);
+				usersService.create(tymUser);
 			} catch (Exception e) {
 				System.out.println("User da ton tai");
 				return "user/capchasignup";

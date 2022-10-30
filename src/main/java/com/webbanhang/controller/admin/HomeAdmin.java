@@ -7,19 +7,19 @@ import java.util.Date;
 import java.util.List;
 
 import com.webbanhang.jpa.model.MoneyMonth;
+import com.webbanhang.jpa.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.webbanhang.jpa.dao.OrderDao;
 
 @Controller
 @RequestMapping("/admin")
 public class HomeAdmin {
 
     @Autowired
-    OrderDao orderDao;
+    OrderService orderService;
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -31,7 +31,7 @@ public class HomeAdmin {
         simpleDateFormat.applyPattern("YYYY");
         String year = simpleDateFormat.format(new Date());
 
-        List<MoneyMonth> moneyMonth = orderDao.moneyMonthYear(Integer.parseInt(year));
+        List<MoneyMonth> moneyMonth = orderService.moneyMonthYear(Integer.parseInt(year));
         int months[] = new int[12];
 
         for (int i = 0; i < 12; i++) {
@@ -59,13 +59,13 @@ public class HomeAdmin {
 
         int sumPriceMonth =0;
         try {
-            sumPriceMonth = orderDao.sumPriceMonth(Integer.parseInt(month));
+            sumPriceMonth = orderService.sumPriceMonth(Integer.parseInt(month));
         }catch (Exception e){
             sumPriceMonth = 0;
         }
 
-        int sumCount = orderDao.sumCountMonth(Integer.parseInt(month));
-        int sumPriceYear = orderDao.sumPriceYear(Integer.parseInt(year));
+        int sumCount = orderService.sumCountMonth(Integer.parseInt(month));
+        int sumPriceYear = orderService.sumPriceYear(Integer.parseInt(year));
         model.addAttribute("month", month);
         model.addAttribute("year", year);
         model.addAttribute("sumpricemonth", sumPriceMonth);
