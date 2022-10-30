@@ -4,9 +4,11 @@ import com.webbanhang.jpa.dao.ProductDao;
 import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductDao ProductDao;

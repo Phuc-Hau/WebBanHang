@@ -1,14 +1,15 @@
 package com.webbanhang.controller;
 
 
+import com.webbanhang.jpa.service.OrderDetailService;
+import com.webbanhang.jpa.service.ProductService;
+import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webbanhang.jpa.dao.OrderDetailDao;
-import com.webbanhang.jpa.dao.ProductDao;
-import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.service.CookieService;
 import com.webbanhang.service.SessionService;
 
@@ -17,24 +18,22 @@ import com.webbanhang.service.SessionService;
 public class IndexProductController {
 	
 	@Autowired
-	ProductDao productDao;
+	ProductService productService;
 	
 	@Autowired
-	UserDao userDao;
+	UsersService userService;
 	
 	@Autowired
 	SessionService session;
 	
-	@Autowired
-	OrderDetailDao orderDetailDao;
-	
+
 	@Autowired
 	CookieService cookie;
 
 
 	@RequestMapping("/product/index")
 	public String index(Model model) {		
-//		User users = userDao.checkLogin(cookie.getValue("username"), cookie.getValue("password"));
+//		User users = userService.checkLogin(cookie.getValue("username"), cookie.getValue("password"));
 //
 //		if(users != null) {
 //			session.set("user", users);
@@ -45,7 +44,7 @@ public class IndexProductController {
 //			model.addAttribute("amountcart", list.size());
 //		}
 
-		model.addAttribute("product",productDao.findAll());
+		model.addAttribute("product",productService.findAll());
 		
 		return "index";
 	}

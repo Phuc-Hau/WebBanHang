@@ -4,9 +4,11 @@ import com.webbanhang.jpa.dao.HistoryDao;
 import com.webbanhang.jpa.model.History;
 import com.webbanhang.jpa.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class HistoryServiceImpl implements HistoryService {
     @Autowired
     HistoryDao HistoryDao;

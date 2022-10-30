@@ -4,9 +4,11 @@ import com.webbanhang.jpa.dao.ImgDao;
 import com.webbanhang.jpa.model.Img;
 import com.webbanhang.jpa.service.ImgService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ImgServiceImpl implements ImgService {
     @Autowired
     ImgDao ImgDao;
