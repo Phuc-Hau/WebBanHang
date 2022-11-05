@@ -1,8 +1,6 @@
 package com.webbanhang.controller.admin;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -21,9 +19,10 @@ public class HomeAdmin {
     @Autowired
     OrderService orderService;
 
+
+
     @RequestMapping("/index")
     public String index(Model model) {
-
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         simpleDateFormat.applyPattern("MM");
@@ -45,32 +44,17 @@ public class HomeAdmin {
             }
         }
 
-        String data = "var datamonth= "+Arrays.toString(months);
-        String dir = "src/main/resources/static/js/datamonth.js";
-
-        try {
-            FileWriter fileWriter = new FileWriter(dir);
-            fileWriter.write(data);
-            fileWriter.flush();
-            fileWriter.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        int sumPriceMonth =0;
-        try {
-            sumPriceMonth = orderService.sumPriceMonth(Integer.parseInt(month));
-        }catch (Exception e){
-            sumPriceMonth = 0;
-        }
-
-        int sumCount = orderService.sumCountMonth(Integer.parseInt(month));
-        int sumPriceYear = orderService.sumPriceYear(Integer.parseInt(year));
-        model.addAttribute("month", month);
-        model.addAttribute("year", year);
-        model.addAttribute("sumpricemonth", sumPriceMonth);
-        model.addAttribute("sumcount", sumCount);
-        model.addAttribute("sumpriceyear", sumPriceYear);
+//        String data = "var datamonth= "+Arrays.toString(months);
+//        String dir = "src/main/resources/static/js/datamonth.js";
+//
+//        try {
+//            FileWriter fileWriter = new FileWriter(dir);
+//            fileWriter.write(data);
+//            fileWriter.flush();
+//            fileWriter.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         return "admin/AdminIndex";
     }

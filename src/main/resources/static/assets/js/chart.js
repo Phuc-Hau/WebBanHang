@@ -1,11 +1,20 @@
+var url = 'http://localhost:8080/admin/api/char' ;
+
+var a = [];
+
+fetch(url).then(function (response) {
+  return response.json();
+}).then(function (response) {
+  var m = response.charMonth;
+  var y = response.charNam;
+
 $(function () {
-  
   'use strict';
   var data = {
     labels: ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"],
     datasets: [{
       label: 'VND',
-      data: datamonth,
+      data: u,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -39,7 +48,7 @@ $(function () {
       fill: false
     }]
   };
-  
+
   var dataDark = {
     labels: ["2013", "2014", "2014", "2015", "2016", "2018"],
     datasets: [{
@@ -587,3 +596,5 @@ $(function () {
     });
   }
 });
+
+})
