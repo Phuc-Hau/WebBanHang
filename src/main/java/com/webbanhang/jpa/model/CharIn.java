@@ -2,7 +2,7 @@ package com.webbanhang.jpa.model;
 
 public class CharIn {
     private int charMonth[];
-    private String charNam;
+    private int charNam;
 
     public int[] getCharMonth() {
         return charMonth;
@@ -12,11 +12,11 @@ public class CharIn {
         this.charMonth = charMonth;
     }
 
-    public String getCharNam() {
+    public int getCharNam() {
         return charNam;
     }
 
-    public void setCharNam(String charNam) {
+    public void setCharNam(int charNam) {
         this.charNam = charNam;
     }
 }
