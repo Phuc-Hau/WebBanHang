@@ -48,13 +48,13 @@
 									</td>
 									<td th:switch="${item.status}">
 
-											<span th:case="true">
-												<div class="form-check form-check-success">
-													<label class="form-check-label"> <input
-														type="radio" class="form-check-input" id="ExampleRadio2"
-														checked=""> <i class="input-helper"></i></label>
-												</div>
-											</span>
+										<span th:case="true">
+											<div class="form-check form-check-success">
+												<label class="form-check-label"> <input
+													type="radio" class="form-check-input" id="ExampleRadio2"
+													checked=""> <i class="input-helper"></i></label>
+											</div>
+										</span>
 										<span th:case="false">
 												<div class="form-check form-check-danger">
 													<label class="form-check-label"> <input
@@ -62,7 +62,7 @@
 														checked=""> <i class="input-helper"></i></label>
 												</div>
 										</span>
-										</td>
+									</td>
 
 									<td><a th:href="@{'/admin/user/edit/'+${item.id}}">Edit</a>
 								</tr>

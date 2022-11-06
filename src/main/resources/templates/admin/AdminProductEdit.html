@@ -3,17 +3,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Chỉnh sửa sản phẩm</title>
 </head>
 
 <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
 
 <link rel="stylesheet" href="/assets/css/style.css">
-<link rel="shortcut icon" href="/assets/images/favicon.ico" />
-<link rel="stylesheet" href="/css/buttonUpload.css">
+<link rel="shortcut icon" href="/assets/images/favicon.png" />
+<link rel="stylesheet" href="/assets/css/buttonUpload.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<body>
+<body ng-app="app" ng-controller="ctradminproduct">
 	<div class="container-scroller">
 
 		<!-- partial -->
@@ -48,10 +49,9 @@
 	<script src="/assets/js/misc.js"></script>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="/js/quanhuyen.js"></script>
 
-	<script src="/js/procvince.js"></script>
 	<script src="/js/uploatfile.js"></script>
 
+	<script src="/js/angular/AdminProduct.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.webbanhang.service;
 
 import java.io.File;
 
+import com.webbanhang.jpa.model.Fluctuation;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ConvenientService {
@@ -25,5 +26,13 @@ public interface ConvenientService {
 	 * @return null
 	 */
 	File saveFile(MultipartFile file, String path);
+
+	/**
+	 * Tính tỉ lệ
+	 * @param last truyền giá trị trước
+	 * @param next truyền giá trị sau
+	 * @return Fluctuation
+	 */
+	Fluctuation fluctuation(float last, float next);
 	
 }

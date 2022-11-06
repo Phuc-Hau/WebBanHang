@@ -36,4 +36,10 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 			+" where o.status =1 and Year(o.date)= ?1 "
 			+ "GROUP BY MONTH(o.date) ")
 	List<MoneyMonth> moneyMonthYear(int year);
+
+//	@Query("SELECT new MoneyMonth( MONTH(o.date) , count(o.date)) "
+//			+ "FROM  Order o "
+//			+" where o.status =1 and Year(o.date)= ?1 "
+//			+ "GROUP BY MONTH(o.date) ")
+//	List<MoneyMonth> countMonthYear(int year);
 }
