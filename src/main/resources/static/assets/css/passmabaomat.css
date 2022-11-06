@@ -359,3 +359,22 @@ a{
     background-color: #42b72a;;
 
 }
+.btn-light{
+    border-color: #216fdb!important;
+    width: 200px!important;
+
+}
+.mess{
+    margin-left: 43% !important;
+}
+.logauth{
+    margin-left: 55px;
+}
+.logauthbtn{
+    display: flex;
+    align-items: flex-end;
+    
+}
+a{
+    margin: 5px;
+}

@@ -16,14 +16,13 @@
 				<form class="form-sample" method="post"
 					modelAttribute="product" enctype="multipart/form-data">
 
-					<input path="id" ng-model="items.id" type="hidden" />
-
+					<input path="id" type="hidden" />
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Name</label>
 								<div class="col-sm-9">
-									<input ng-model="items.name" type="text" class="form-control" />
+									<input path="name" type="text" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -31,7 +30,27 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Price</label>
 								<div class="col-sm-9">
-									<input  ng-model="items.price" type="text" class="form-control" />
+									<input path="price" type="text" class="form-control" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label">Amount</label>
+								<div class="col-sm-9">
+									<input path="amount" type="text" class="form-control" />
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label">Sale</label>
+								<div class="col-sm-9">
+									<input path="sale" min="0" type="number"
+										class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -42,37 +61,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Date</label>
 								<div class="col-sm-9">
-									<input   type="text" class="form-control" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Sale</label>
-								<div class="col-sm-9">
-									<div class="input-group">
-										<input ng-model="items.sale*100" min="0" step="5" max="100" type="number" class="form-control" >
-										<div class="input-group-append">
-											<span class="input-group-text bg-gradient-primary text-white" style="height: 49px">%</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Group Product</label>
-								<div class="col-sm-9">
-									<select name="groups" class="form-control">
-										<th:each var="group" items="${groupproduct}">
-											<option value="${group.id}"></option>
-										</th:each>
-									</select>
+									<input path="date" type="text" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -81,33 +70,38 @@
 								<label class="col-sm-3 col-form-label">Status</label>
 								<div class="col-sm-4">
 									<div class="form-check">
-										<label class="form-check-label">
-											<input type="radio"  checked="checked" class="form-check-input"
-												   name="membershipRadios" id="membershipRadios1"
-												   th:value="true" /> Hoạt Động
+										<label class="form-check-label"> <input type="radiobutton"
+												path="status" checked="checked" class="form-check-input"
+												name="membershipRadios" id="membershipRadios1" value="true" />
+											Hoạt Động
 										</label>
 									</div>
 								</div>
 
 								<div class="col-sm-5">
 									<div class="form-check">
-										<label class="form-check-label">
-											<input type="radio"  class="form-check-input"
-												   name="membershipRadios" id="membershipRadios2"
-												   th:value="false" /> Tắc hoạt động
+										<label class="form-check-label"> <input type="radiobutton"
+												path="status" class="form-check-input"
+												name="membershipRadios" id="membershipRadios2" value="false" />
+											Tắc hoạt động
 										</label>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-
-						<div class="form-group">
-
-							<label >Detail</label>
-							<textarea ng-model="items.detail"  class="form-control" ></textarea>
+					<div class="row">
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label">Group Product</label>
+							<div class="col-sm-9">
+								<select name="groups" class="form-control">
+									<th:each var="group" items="${groupproduct}">
+										<option value="${group.id}">${group.name}</option>
+									</th:each>
+								</select>
+							</div>
 						</div>
+
 					</div>
 
 
