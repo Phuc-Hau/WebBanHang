@@ -1,5 +1,6 @@
 package com.webbanhang.jpa.service;
 
+import com.webbanhang.jpa.model.CountMonth;
 import com.webbanhang.jpa.model.MoneyMonth;
 import com.webbanhang.jpa.model.Order;
 import org.springframework.data.jpa.repository.Query;
@@ -23,6 +24,6 @@ public interface OrderService {
     int sumPriceYear(int year);
     int sumCountMonth(int month);
     List<MoneyMonth> moneyMonthYear(int year);
-//    List<MoneyMonth> countMonthYear(int year);
+    List<CountMonth> countMonthYear(int year);
 
 }

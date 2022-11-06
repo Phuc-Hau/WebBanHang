@@ -1,6 +1,7 @@
 package com.webbanhang.jpa.service.impl;
 
 import com.webbanhang.jpa.dao.OrderDao;
+import com.webbanhang.jpa.model.CountMonth;
 import com.webbanhang.jpa.model.MoneyMonth;
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.service.OrderService;
@@ -70,8 +71,8 @@ public class OrderServiceImpl implements OrderService {
         return OrderDao.moneyMonthYear(year);
     }
 
-//    @Override
-//    public List<MoneyMonth> countMonthYear(int year) {
-//        return OrderDao.countMonthYear(year);
-//    }
+    @Override
+    public List<CountMonth> countMonthYear(int year) {
+        return OrderDao.countMonthYear(year);
+    }
 }
