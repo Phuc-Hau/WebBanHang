@@ -22,7 +22,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Name</label>
 								<div class="col-sm-9">
-									<input path="name" type="text" class="form-control" />
+									<input ng-model="items.name" type="text" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -30,7 +30,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Price</label>
 								<div class="col-sm-9">
-									<input path="price" type="text" class="form-control" />
+									<input ng-model="items.price" type="text" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Amount</label>
 								<div class="col-sm-9">
-									<input path="amount" type="text" class="form-control" />
+									<input ng-model="items.amount" type="text" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Sale</label>
 								<div class="col-sm-9">
-									<input path="sale" min="0" type="number"
+									<input ng-model="items.sale" min="0" type="number"
 										class="form-control" />
 								</div>
 							</div>
@@ -61,7 +61,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">Date</label>
 								<div class="col-sm-9">
-									<input path="date" type="text" class="form-control" />
+									<input ng-modal="items.date" type="date" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -70,20 +70,20 @@
 								<label class="col-sm-3 col-form-label">Status</label>
 								<div class="col-sm-4">
 									<div class="form-check">
-										<label class="form-check-label"> <input type="radiobutton"
-												path="status" checked="checked" class="form-check-input"
+										<label class="form-check-label"> <input type="radio"
+												ng-modal="items.status" checked="checked" class="form-check-input"
 												name="membershipRadios" id="membershipRadios1" value="true" />
-											Hoạt Động
+											Còn hàng
 										</label>
 									</div>
 								</div>
 
 								<div class="col-sm-5">
 									<div class="form-check">
-										<label class="form-check-label"> <input type="radiobutton"
-												path="status" class="form-check-input"
+										<label class="form-check-label"> <input type="radio"
+												ng-modal="items.status" class="form-check-input"
 												name="membershipRadios" id="membershipRadios2" value="false" />
-											Tắc hoạt động
+											Không còn hàng
 										</label>
 									</div>
 								</div>
@@ -95,8 +95,8 @@
 							<label class="col-sm-3 col-form-label">Group Product</label>
 							<div class="col-sm-9">
 								<select name="groups" class="form-control">
-									<th:each var="group" items="${groupproduct}">
-										<option value="${group.id}">${group.name}</option>
+									<th:each th:each="group:${groupProduct}">
+										<option th:value="${group.id}">[[${group.name}]]</option>
 									</th:each>
 								</select>
 							</div>

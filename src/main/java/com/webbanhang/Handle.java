@@ -36,7 +36,7 @@ public class Handle implements HandlerInterceptor {
         }
         sessionService.set("users",users);
 
-        request.setAttribute("grouProduct",groupProductService.findAll());
+        request.setAttribute("groupProduct",groupProductService.findAll());
 
     }
 }
