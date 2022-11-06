@@ -37,9 +37,9 @@ public class HomeAdminApi {
         simpleDateFormat.applyPattern("YYYY");
         String year = simpleDateFormat.format(new Date());
 
+        int months[] = new int[12];
         List<MoneyMonth> moneyMonth = orderService.moneyMonthYear(Integer.parseInt(year));
 
-        int months[] = new int[12];
 //        for (int i = 0; i < 12; i++) {
 //            for (int j = 0; j < moneyMonth.size(); j++) {
 //                if (moneyMonth.get(j).getMonth() == i+1) {
@@ -53,15 +53,21 @@ public class HomeAdminApi {
         for (int i = 0; i < moneyMonth.size(); i++) {
             months[moneyMonth.get(i).getMonth()-1] = (int) moneyMonth.get(i).getMoney();
         }
-//
+
+        int countMonths[] = new int[12];
 //        List<MoneyMonth> countMonth = orderService.countMonthYear(Integer.parseInt(year));
-//        int countMonths[] = new int[12];
+//        for (int i = 0; i < countMonth.size(); i++) {
+//            months[countMonth.get(i).getMonth()-1] = (int) countMonth.get(i).getMoney();
+//        }
+
+        int moneyYear[] =new int[]{18000,20000,16000};
+        int orderStatus[] =new int[]{18,200,10,3};
 
         CharIn charin =new CharIn();
         charin.setCharMonth(months);
-        charin.setCountMonth(null);
-        charin.setCharyear(new int[]{18000,20000,16000});
-
+        charin.setCountMonth(countMonths);
+        charin.setCharYear(moneyYear);
+        charin.setOrderStatus(orderStatus);
         return  charin;
     }
 
