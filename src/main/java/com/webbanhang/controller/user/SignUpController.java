@@ -38,7 +38,7 @@ public class SignUpController extends Thread{
 	
 	@RequestMapping("/signup")
 	public String showForm(@ModelAttribute("user") Users user) {
-		return "user/singup";
+		return "user/signIn_Up";
 	}
 
 	Users tymUser;
@@ -69,7 +69,7 @@ public class SignUpController extends Thread{
 
 		} else {
 			model.addAttribute("message", "Email đã tồn tại!");
-			return "user/singup";
+			return "user/signIn_Up";
 		}
 	}
 
@@ -86,7 +86,7 @@ public class SignUpController extends Thread{
 				System.out.println("User da ton tai");
 				return "user/capchasignup";
 			}
-			return "redirect:/account/signin";
+			return "redirect:/account/signIn_Up";
 		} else {
 			model.addAttribute("message", "Sai mã xác thực không chính xác!");
 			return "user/capchasignup";
