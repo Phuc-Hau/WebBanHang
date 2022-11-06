@@ -71,6 +71,8 @@ public class ChangInformatinonController {
 			Users user = edituser.getUser();
 			user.setRole(useo.getRole());
 			user.setStatus(useo.isStatus());
+			user.setPassword(useo.getPassword());
+
 			Cutomer cutomer = edituser.getCutomer();
 			
 			if(!imgs.getOriginalFilename().equals("")) {

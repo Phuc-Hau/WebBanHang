@@ -31,8 +31,7 @@ public class AdminProduct {
 	}
 
 	@RequestMapping("/product/edit/{id}")
-	public String adminEditProductList(Model model, @PathVariable("id") int id) {
-		model.addAttribute("product", productService.findById(id));
+	public String adminEditProductList() {
 		return "admin/AdminProductEdit";
 	}
 
@@ -42,9 +41,6 @@ public class AdminProduct {
 		return "redirect:/admin/product/edit/"+product.getId();
 	}
 
-	@ModelAttribute("groupproduct")
-	public List<GroupProduct> getFaculties() {
-		List<GroupProduct> list = groupProductService.findAll();
-		return list;
-	}
+
+
 }

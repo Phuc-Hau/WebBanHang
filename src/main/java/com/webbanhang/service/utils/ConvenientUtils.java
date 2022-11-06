@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.webbanhang.jpa.model.Fluctuation;
 import com.webbanhang.service.ConvenientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,33 @@ public class ConvenientUtils implements ConvenientService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public Fluctuation fluctuation(float last, float next){
+		Fluctuation fluctuation = new Fluctuation();
+		fluctuation.setTotal((int) last);
+
+		float inDe;
+
+		if(last-next > 0){
+			inDe = (next/last)*100;
+			fluctuation.setRatio("Increased by");
+		}else if(last-next <0){
+			inDe = (last/next)*100;
+			fluctuation.setRatio("Decreased by");
+		} else{
+			inDe = 50;
+			fluctuation.setRatio("Equal by");
+		}
+
+		if(last==0 || next==0){
+			inDe=100;
+		}
+
+		fluctuation.setInDe((int) inDe);
+
+		return fluctuation;
 	}
 	
 }

@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin home</title>
 </head>
 
 <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -12,9 +12,12 @@
 
 <link rel="stylesheet" href="/assets/css/style.css">
 
-<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+<link rel="shortcut icon" href="/assets/images/favicon.png" />
 
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+<body ng-app="app" ng-controller="ctradminhome">
 	<div class="container-scroller">
 
 		<!-- partial -->
@@ -48,11 +51,10 @@
 
 	<script src="/assets/js/off-canvas.js"></script>
 	<script src="/assets/js/misc.js"></script>
-
+	<script src="/js/angular/AdminHomeAngular.js"></script>
 	<script src="/js/datamonth.js" defer></script>
 	<script src="/assets/js/chart.js" defer></script>
 
-	
-	
+
 </body>
 </html>

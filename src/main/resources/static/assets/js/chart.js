@@ -1,11 +1,22 @@
+var url = 'http://localhost:8080/admin/api/char' ;
+
+var a = [];
+
+fetch(url).then(function (response) {
+  return response.json();
+}).then(function (response) {
+console.log("f",response)
+  var month = response.charMonth;
+  var countMonth = response.charcountMonth;
+  var year = response.charyear;
+
 $(function () {
-  
   'use strict';
   var data = {
     labels: ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"],
     datasets: [{
       label: 'VND',
-      data: datamonth,
+      data: month,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -35,11 +46,106 @@ $(function () {
         'rgba(225, 127, 255,1)'
 
       ],
-      borderWidth: 1,
+      borderWidth: 2,
       fill: false
     }]
   };
+
+  var countMonth = {
+    labels: ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"],
+    datasets: [{
+      label: 'Count',
+      data: countMonth,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(124,46,97,0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'  ,
+        'rgba(201, 38, 196, 0.2)' ,
+        'rgba(55, 189, 74, 0.2)' ,
+        'rgba(20, 51, 212,0.2)',
+        'rgba(20, 212, 168,0.2)',
+        'rgba(96, 20, 212,0.2)',
+        'rgba(225, 127, 255,0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(124,46,97,1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(201, 38, 196, 1)' ,
+        'rgba(55, 189, 74, 1)' ,
+        'rgba(20, 51, 212,1)',
+        'rgba(20, 212, 168,1)',
+        'rgba(96, 20, 212,1)',
+        'rgba(225, 127, 255,1)'
+
+      ],
+      borderWidth: 2,
+      fill: false
+    }]
+  };
+
   
+  var doughnutPieData = {
+    datasets: [{
+      data: year,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      '2020',
+      '2021',
+      '2022',
+    ]
+  };
+  var doughnutPieOptions = {
+    responsive: true,
+    animation: {
+      animateScale: true,
+      animateRotate: true
+    }
+  };
+  var areaData = {
+    labels: ["Chờ xác nhận", "Đang giao", "Đã Giao", "Đã hủy"],
+    datasets: [{
+      label: 'Số Lượng',
+      data: [12, 19, 3, 5],
+      backgroundColor: [
+        'rgba(116,236,238,0.2)',
+        'rgba(223,54,235,0.7)',
+        'rgba(255,0,0,0.7)',
+        'rgba(255,162,0,0.7)',
+      ],
+      borderColor: [
+        'rgb(116,236,238)',
+        'rgb(223,54,235)',
+        'rgb(255,0,0)',
+        'rgb(255,162,0)',
+      ],
+      borderWidth: 3,
+      fill: true, // 3: no fill
+    }]
+  };
+
   var dataDark = {
     labels: ["2013", "2014", "2014", "2015", "2016", "2018"],
     datasets: [{
@@ -65,7 +171,7 @@ $(function () {
       fill: false
     }]
   };
-  
+
   var multiLineData = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [{
@@ -77,27 +183,27 @@ $(function () {
       borderWidth: 2,
       fill: false
     },
-    {
-      label: 'Dataset 2',
-      data: [5, 23, 7, 12, 42, 23],
-      borderColor: [
-        '#ede190'
-      ],
-      borderWidth: 2,
-      fill: false
-    },
-    {
-      label: 'Dataset 3',
-      data: [15, 10, 21, 32, 12, 33],
-      borderColor: [
-        '#f44252'
-      ],
-      borderWidth: 2,
-      fill: false
-    }
+      {
+        label: 'Dataset 2',
+        data: [5, 23, 7, 12, 42, 23],
+        borderColor: [
+          '#ede190'
+        ],
+        borderWidth: 2,
+        fill: false
+      },
+      {
+        label: 'Dataset 3',
+        data: [15, 10, 21, 32, 12, 33],
+        borderColor: [
+          '#f44252'
+        ],
+        borderWidth: 2,
+        fill: false
+      }
     ]
   };
-  
+
   var options = {
     scales: {
       yAxes: [{
@@ -116,7 +222,7 @@ $(function () {
     }
 
   };
-  
+
   var optionsDark = {
     scales: {
       yAxes: [{
@@ -146,67 +252,6 @@ $(function () {
       }
     }
 
-  };
-  
-  var doughnutPieData = {
-    datasets: [{
-      data: [60, 10, 25,5],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(75, 192, 192, 0.5)',
-        'rgba(153, 102, 255, 0.5)',
-        'rgba(255, 159, 64, 0.5)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-    }],
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-      'Pink',
-      'Blue',
-      'Yellow',
-    ]
-  };
-  var doughnutPieOptions = {
-    responsive: true,
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    }
-  };
-  var areaData = {
-    labels: ["2013", "2014", "2015", "2016", "2018"],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1,
-      fill: true, // 3: no fill
-    }]
   };
 
   var areaDataDark = {
@@ -478,6 +523,16 @@ $(function () {
     });
   }
 
+  if ($("#countMonth").length) {
+    var barChartCanvas = $("#countMonth").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart = new Chart(barChartCanvas, {
+      type: 'bar',
+      data: countMonth,
+      options: options
+    });
+  }
+
   if ($("#barChartDark").length) {
     var barChartCanvasDark = $("#barChartDark").get(0).getContext("2d");
     // This will get the first returned node in the jQuery collection.
@@ -587,3 +642,5 @@ $(function () {
     });
   }
 });
+
+})

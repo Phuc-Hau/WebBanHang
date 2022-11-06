@@ -96,7 +96,7 @@
 							<div class="col-sm-9">
 								<select name="groups" class="form-control">
 									<th:each var="group" items="${groupproduct}">
-										<option value="${group.id}">[[${group.name}]]</option>
+										<option value="${group.id}">${group.name}</option>
 									</th:each>
 								</select>
 							</div>
