@@ -68,10 +68,10 @@ public class ConvenientUtils implements ConvenientService {
 		float inDe;
 
 		if(last-next > 0){
-			inDe = (next/last)*100;
+			inDe =100- (next/last)*100;
 			fluctuation.setRatio("Increased by");
 		}else if(last-next <0){
-			inDe = (last/next)*100;
+			inDe =100- (last/next)*100;
 			fluctuation.setRatio("Decreased by");
 		} else{
 			inDe = 50;
