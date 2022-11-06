@@ -1,6 +1,7 @@
 package com.webbanhang.jpa.dao;
 
 
+import com.webbanhang.jpa.model.CountMonth;
 import com.webbanhang.jpa.model.MoneyMonth;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -37,9 +38,9 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 			+ "GROUP BY MONTH(o.date) ")
 	List<MoneyMonth> moneyMonthYear(int year);
 
-//	@Query("SELECT new MoneyMonth( MONTH(o.date) , count(o.date)) "
-//			+ "FROM  Order o "
-//			+" where o.status =1 and Year(o.date)= ?1 "
-//			+ "GROUP BY MONTH(o.date) ")
-//	List<MoneyMonth> countMonthYear(int year);
+	@Query("SELECT new CountMonth( MONTH(o.date) , count(o.date)) "
+			+ "FROM  Order o "
+			+" where o.status =1 and Year(o.date)= ?1 "
+			+ "GROUP BY MONTH(o.date) ")
+	List<CountMonth> countMonthYear(int year);
 }

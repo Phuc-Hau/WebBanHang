@@ -6,12 +6,12 @@ public class CharIn {
     private int charYear[];
     private int orderStatus[];
 
-    public int[] getOrderStatus() {
-        return orderStatus;
+    public int[] getCharMonth() {
+        return charMonth;
     }
 
-    public void setOrderStatus(int[] orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setCharMonth(int[] charMonth) {
+        this.charMonth = charMonth;
     }
 
     public int[] getCountMonth() {
@@ -22,19 +22,19 @@ public class CharIn {
         this.countMonth = countMonth;
     }
 
-    public int[] getCharMonth() {
-        return charMonth;
-    }
-
-    public void setCharMonth(int[] charMonth) {
-        this.charMonth = charMonth;
-    }
-
     public int[] getCharYear() {
         return charYear;
     }
 
     public void setCharYear(int[] charYear) {
         this.charYear = charYear;
+    }
+
+    public int[] getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int[] orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

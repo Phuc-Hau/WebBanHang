@@ -7,7 +7,7 @@ fetch(url).then(function (response) {
 }).then(function (response) {
 console.log("f",response)
   var month = response.charMonth;
-  var countMonth = response.charcountMonth;
+  var countmonth = response.countMonth;
   var year = response.charYear;
   var orderStatus = response.orderStatus;
 
@@ -56,7 +56,7 @@ $(function () {
     labels: ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"],
     datasets: [{
       label: 'Count',
-      data: countMonth,
+      data: countmonth,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -90,7 +90,6 @@ $(function () {
       fill: false
     }]
   };
-
   
   var doughnutPieData = {
     datasets: [{
