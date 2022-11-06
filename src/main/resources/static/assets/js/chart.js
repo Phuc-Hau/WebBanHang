@@ -8,7 +8,8 @@ fetch(url).then(function (response) {
 console.log("f",response)
   var month = response.charMonth;
   var countMonth = response.charcountMonth;
-  var year = response.charyear;
+  var year = response.charYear;
+  var orderStatus = response.orderStatus;
 
 $(function () {
   'use strict';
@@ -128,7 +129,7 @@ $(function () {
     labels: ["Chờ xác nhận", "Đang giao", "Đã Giao", "Đã hủy"],
     datasets: [{
       label: 'Số Lượng',
-      data: [12, 19, 3, 5],
+      data: orderStatus,
       backgroundColor: [
         'rgba(116,236,238,0.2)',
         'rgba(223,54,235,0.7)',

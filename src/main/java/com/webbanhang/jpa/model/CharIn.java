@@ -3,7 +3,16 @@ package com.webbanhang.jpa.model;
 public class CharIn {
     private int charMonth[];
     private int countMonth[];
-    private int charyear[];
+    private int charYear[];
+    private int orderStatus[];
+
+    public int[] getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int[] orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 
     public int[] getCountMonth() {
         return countMonth;
@@ -21,11 +30,11 @@ public class CharIn {
         this.charMonth = charMonth;
     }
 
-    public int[] getCharyear() {
-        return charyear;
+    public int[] getCharYear() {
+        return charYear;
     }
 
-    public void setCharyear(int[] charyear) {
-        this.charyear = charyear;
+    public void setCharYear(int[] charYear) {
+        this.charYear = charYear;
     }
 }
