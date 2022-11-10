@@ -49,7 +49,7 @@ app.controller('forgetpass', function($scope,$http) {
         $http.post($scope.urlpass+password).then(resp => {
             console.log("Success", resp)
             if(resp.data.status){
-                this.http.get('http://localhost:8080/account/signin')
+                window.location='http://localhost:8080/account/signin';
             }else{
                 showErrorToast(resp.data.message);
             }

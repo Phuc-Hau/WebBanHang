@@ -60,17 +60,21 @@ public class ForGhetPassWordApi {
     }
 
     @PostMapping("/password/{password}")
-    public String updatepassword(@PathVariable("password") String password) {
+    public JSONObject updatepassword(@PathVariable("password") String password) {
+        JSONObject obj = new JSONObject();
         user.setPassword(password);
         try {
             usersService.update(user);
             user = null;
             capChas ="";
-            return "forward:/account/signin";
+            obj.put("status",true);
+            obj.put("message", "Cập nhật PassWord Thành công!");
         } catch (Exception e) {
             // TODO: handle exception
+            obj.put("status",false);
+            obj.put("message", "Cập nhật PassWord Thất bại!");
         }
-        return "";
+        return obj;
     }
 
 }
