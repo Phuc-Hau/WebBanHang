@@ -28,20 +28,20 @@ public class SignInController {
 	MyUserDetailsService userDetailsService;
 	
 	@RequestMapping("/signin")
-	public String signin( @ModelAttribute("user") Users user ) {
+	public String signin( @ModelAttribute("user") Users user ,Model model) {
 		return "user/signIn_Up";
 	}
 
 
 	@RequestMapping("logoff")
 	public String s() {
-		return "forward:/account/signIn_Up";
+		return "forward:/account/signin";
 	}
 
 	@RequestMapping("login/error")
 	public String e(Model model){
-		model.addAttribute("message","Sai password hoac username");
-		return "redirect:/account/signIn_Up";
+		model.addAttribute("message",false);
+		return "forward:/account/signin";
 	}
 
 	@RequestMapping("/oauth/signin")

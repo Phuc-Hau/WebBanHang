@@ -112,8 +112,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <div>
               		<div th:unless="${#request.getRemoteUser()}">
-              			 <a class="dropdown-item" href="/account/signup">Đăng ký</a>
-			    		<a class="dropdown-item" href="/account/signin">Đăng nhập</a>
+			    		<a class="dropdown-item" href="/account/signin">Đăng ký/Đăng nhập</a>
 			    		<a class="dropdown-item" href="/account/forgetpass">Quên mật khẩu</a>
               		</div>
               		<div th:if="${#request.getRemoteUser()}">

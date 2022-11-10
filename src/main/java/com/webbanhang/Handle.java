@@ -34,8 +34,12 @@ public class Handle implements HandlerInterceptor {
         if(username != null){
             users = userDao.findByUsername(username);
         }
-        sessionService.set("users",users);
 
+        try {
+            sessionService.set("users",users);
+        } catch (Exception e){
+
+        }
         request.setAttribute("groupProduct",groupProductService.findAll());
 
     }
