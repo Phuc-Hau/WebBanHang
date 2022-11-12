@@ -222,6 +222,8 @@ body {
     margin: 10px auto;
 }
 
+
+
 #sidebar-wrapper {
     background-color: #f7f7f7 !important;
 }
@@ -323,6 +325,8 @@ body {
     padding: 20px 0 10px 0;
     background: #fff;
 }
+
+
 
 .profile-userpic img {
     float: none;
@@ -443,6 +447,11 @@ body {
     background-color: #488978;
     border-radius: 50%;
     display: inline-block;
+}
+
+.tab-content{
+    width: 950px;
+    display: block;
 }
 
 .big-dot i {
@@ -569,7 +578,8 @@ body .vh-100 {
 
 body {
     background-color: #eeeeee;
-    font-family: 'Open Sans', serif
+    font-family: 'Open Sans', serif;
+
 }
 
 .container {
@@ -684,6 +694,14 @@ body {
     padding: 7px
 }
 
+.bg-white {
+    background-color: rgb(255, 255, 255) !important;
+    width: 180px !important;
+}
+.border-end {
+    margin-right: 25px !important;
+}
+
 ul.row,
 ul.row-sm {
     list-style: none;
@@ -734,3 +752,4 @@ p {
     padding: 0rem !important;
     margin: -30px  !important;
 }
+
