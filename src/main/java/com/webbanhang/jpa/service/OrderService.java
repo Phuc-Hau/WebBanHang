@@ -25,4 +25,6 @@ public interface OrderService {
     List<MoneyMonth> moneyMonthYear(int year);
     List<CountMonth> countMonthYear(int year);
 
+    List<Order> findAllIdCutomer(int idCutomer);
+
 }

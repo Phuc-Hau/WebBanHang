@@ -75,4 +75,9 @@ public class OrderServiceImpl implements OrderService {
     public List<CountMonth> countMonthYear(int year) {
         return OrderDao.countMonthYear(year);
     }
+
+    @Override
+    public List<Order> findAllIdCutomer(int idCutomer) {
+        return OrderDao.findAllIdCutomer(idCutomer);
+    }
 }

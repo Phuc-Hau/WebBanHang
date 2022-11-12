@@ -1,6 +1,7 @@
 package com.webbanhang.controller.cart.api;
 
 
+import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.OrderDetailService;
@@ -21,8 +22,7 @@ import java.util.List;
 @RequestMapping("/accounts/api")
 public class OrderStatusApi {
 
-    @Autowired
-    OrderStatusService orderStatusService;
+
 
     @Autowired
     OrderDetailService orderDetailService;
@@ -34,13 +34,13 @@ public class OrderStatusApi {
     UsersService userService;
 
     @GetMapping("/listorderstatus")
-    public List<OrderDetail> cart(HttpServletRequest request) {
+    public List<Order> cart(HttpServletRequest request) {
 
 //        String username = request.getRemoteUser();
 //
 //        Users user =userService.findByUsername(username);
 
-        List<OrderDetail> list = orderDetailService.findAllOrderStatust(1);
+        List<Order> list = orderService.findAllIdCutomer(1);
 
         return list;
     }

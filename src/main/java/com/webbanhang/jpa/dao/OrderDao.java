@@ -14,6 +14,9 @@ import java.util.List;
 @Repository
 public interface OrderDao extends JpaRepository<Order, Integer>{
 
+	@Query("select o from Order o where o.cutomer.id= ?1 ")
+	List<Order> findAllIdCutomer(int idcutomer);
+
 	@Query("select o from Order o where o.status = 0 and o.cutomer.id= ?1 ")
 	Order findIdCutomer(int i);
 	

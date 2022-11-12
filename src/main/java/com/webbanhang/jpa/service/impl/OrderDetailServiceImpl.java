@@ -49,10 +49,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         return OrderDetailDao.findIdProduct(idProduct,idCutomer);
     }
 
-    @Override
-    public List<OrderDetail> findAllOrderStatust(int idCutomer) {
-        return OrderDetailDao.findAllOrderStatust(idCutomer);
-    }
+
 
     @Override
     public boolean existsById(Integer id) {
