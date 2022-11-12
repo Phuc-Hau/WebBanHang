@@ -1,70 +1,86 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-<meta charset="UTF-8">
-<title>Đổi mật khẩu</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script
+			src="https://kit.fontawesome.com/64d58efce2.js"
+			crossorigin="anonymous"
+	></script>
+	<link rel="stylesheet" href="/assets/css/singIn_Up.css" />
+	<link rel="stylesheet" href="/assets/css/alter.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="shortcut icon" href="/assets/images/favicon.png" />
-<link rel="stylesheet" type="text/css" href="/assets/css/passmabaomat.css">
+	<title>Chang PassWord</title>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body>
-	<div class="_4-u5 _30ny">
-		<form class="_9vtf" data-testid="royal_login_form" action="/account/changepassuser" method="post" onsubmit="" id="u_0_k_Ft">
-			
-			<div class="mvl ptm uiInterstitial _9np_ uiInterstitialLarge uiBoxWhite">
-				<div class="uiHeader uiHeaderBottomBorder mhl mts uiHeaderPage interstitialHeader">
-					<div class="clearfix uiHeaderTop">
-						<div>
-							<h2 class="uiHeaderTitle" aria-hidden="true">Đổi mật khẩu</h2>
-						</div>
-					</div>
+<body ng-app="app" ng-controller="changepassword">
+<div id="toast"></div>
+<div class="container">
+	<div class="forms-container">
+		<div class="signin-signup">
+			<form action="#" class="sign-in-form" >
+				<h2 class="title">Change PassWord</h2>
+				<div class="input-field">
+					<i class="fas fa-user"></i>
+					<input  type="text" ng-model="change.username" name="username" placeholder="Username" required />
 				</div>
-				<div class="phl ptm uiInterstitialContent">
-					<div>
-						<div class="clearfix">
-							<div> 
-								<div class="_9okt olo" >
-									<label style="margin-top: 0px; border: none" class="yu inputtext _55r1 _9oku _9o1w" >
-									[[${session.users.username}]]
-									</label>
-								</div >
-								<div class="_9okt olo">
-									<input style="margin-top: 0px; border: none" type="password" minlength="8" class="yu inputtext _55r1 _9oku _9o1w" name="passwordd" placeholder="Password" required>
-									
-								</div>
-								
-							</div>
-							<div> 
-								<div class="_9okt olo" >
-									<input style="margin-top: 0px; border: none" type="password" minlength="8" class="yu inputtext _55r1 _9oku _9o1w" name="NewPassword" placeholder="New Password" required>
-								
-								</div >
-								<div class="_9okt olo">
-									<input style="margin-top: 0px; border: none" type="password" minlength="8" class="yu inputtext _55r1 _9oku _9o1w" name="ConfirmPassword" placeholder="Confirm Password" required>
-									
-									
-								</div>
-								<div  class="_9okt olo"><span style="color: red">${mess}</span><br></div>
-							</div>
-							
-						</div>
-						
-					</div>
+				<div class="input-field">
+					<i class="fas fa-lock"></i>
+					<input type="password" ng-model="change.password" name="password" placeholder="Password" required/>
 				</div>
-				<div class="hu uiInterstitialBar uiBoxGray topborder" style="margin-top: 330px;  margin-bottom: 19px;">
-					<div class="clearfix">
-						<div class="rfloat _ohf" style="margin-left: 122px; margin-top: 10px">
-							<button formaction="/product/index" style=" padding: 0px; width: 100px;" class="_42ft _42fu _9nq1 textPadding29px selected _42g-" type="submit" id="skip_button">Hủy</button>
-							<button value="1" class="_42ft _42fu _9nq0 _9nq023 textPadding20px selected _42g-" id="btn_continue" name="btn_continue" type="submit">Đổi mật khẩu</button>
-						</div>
-						<div class="pts"></div>
-					</div>
+				<div class="input-field">
+					<i class="fas fa-lock"></i>
+					<input type="password" ng-model="change.newpassword" name="newpassword" placeholder="New Password" required />
 				</div>
-			</div>
-			
-		</form>
+				<div class="input-field">
+					<i class="fas fa-lock"></i>
+					<input type="password" ng-model="change.confirmpassword" name="confirmpassword" placeholder="Confirm Password" required/>
+				</div>
+				<button type="button" ng-click="ChangePassWord()" class="btn solid" >Change PassWord</button>
+
+				<p class="social-text">Or Sign in with social platforms</p>
+				<div class="social-media">
+					<a href="#" class="social-icon">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="#" class="social-icon">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a href="/oauth2/authorization/google" class="social-icon">
+						<i class="fab fa-google"></i>
+					</a>
+					<a href="#" class="social-icon">
+						<i class="fab fa-linkedin-in"></i>
+					</a>
+				</div>
+			</form>
+		</div>
 	</div>
-		
+
+	<div class="panels-container">
+		<div class="panel left-panel">
+			<div class="content">
+				<h3>Chang PassWord ?</h3>
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+					ex ratione. Aliquid!
+				</p>
+
+				<a href="/product/index" style="color:white; text-decoration: none">
+					<button class="btn transparent" style="margin-left: 10px;">Cancle</button>
+				</a>
+
+			</div>
+			<img src="/image/log.svg" class="image" alt="" />
+		</div>
+
+	</div>
+</div>
+
+<script src="/js/Alter.js"></script>
+<script src="/js/angular/changpassword.js"></script>
+
 </body>
 </html>
