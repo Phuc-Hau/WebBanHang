@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../static/assets/css/orderstatus.css>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <!------ Include the above in your HEAD tag ---------->
+
+</head>
+
+<body>
+<div class="container d-flex justify-content-center">
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+      <div class="av">
+        <div class="shop-avatar">
+          <img src="../../static/image/tải xuống (2).jpg" alt="">
+
+        </div>
+        <div class="tt1">
+          <div class="tt">dannguyen</div>
+          <a class="hoso" href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa hồ sơ</a>
+        </div>
+      </div>
+
+
+      <div class="list-group list-group-flush cc">
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Siêu sale</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-user"
+                                                                                                 aria-hidden="true"></i>Tài khoản của tôi</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i
+                class="fa fa-list-alt" aria-hidden="true"></i>Đơn mua</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-bell"
+                                                                                                 aria-hidden="true"></i>Thông báo</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-ticket"
+                                                                                                 aria-hidden="true"></i>Kho voucher</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"></a>
+      </div>
+    </div>
+
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+      <!-- <div class="ttcn">
+        <div>Dan nguyen</div>
+        <div><a href="">Tài khoản của tôi</a></div>
+        <div><a href="">Đơn mua</a></div>
+        <div><a href=""></a></div>
+        <div><a href="">Tài khoản của tôi</a></div>
+
+      </div> -->
+      <!-- Top navigation-->
+      <ul class="nav nav-tabs df1" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="#all" role="tab" data-toggle="tab">Tất cả</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#wait_xn" role="tab" data-toggle="tab">Chờ xác nhận</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#wait_lh" role="tab" data-toggle="tab">Chờ lấy hàng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Danggiao" role="tab" data-toggle="tab">Đang giao</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#Dagiao" role="tab" data-toggle="tab">Đã giao</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Dahuy" role="tab" data-toggle="tab">Đã Hủy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#tt/ht" role="tab" data-toggle="tab">Trả tiền/Hoàn tiền</a>
+        </li>
+      </ul>
+
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active show" id="all">
+
+
+          <!-- Actual search box -->
+          <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Tìm kiếm theo tên shop, ID đơn hàng hoặc tên sản phẩm">
+          </div>
+
+          <div class="container-product">
+            <div class="info-product">
+              <div class="status d-flex">
+                <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+                <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
+                <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
+                <span class="ml-auto p-2">giaohang  |</span>
+                <div class="status-product p-2">dagiao</div>
+
+              </div>
+              <div class="product"><img src="../../../" alt="">
+                <span>ten san pham</span>
+                <span>phan loai</span>
+                <span>so luong</span>
+
+                <span class="ghw9hb">₫280.000</span>
+
+              </div>
+              <div class="price0">
+                <div class="price " >
+                  <div class="price1 ">Tổng số tiền :</div>
+                  <div class="price2">₫280.000</div>
+                </div>
+              </div>
+              <div class="payment">
+                <div class="payment1"></div>
+                <div class="payment2">
+                  <button class="stardust-button stardust-button--primary Kz9HeM"> mua lai</button>
+                  <div class="_8vTqu9"></div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">lien he nguoi ban</button>
+                  </div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="info-product">
+              <div class="status d-flex">
+                <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+                <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
+                <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
+                <span class="ml-auto p-2">giaohang  |</span>
+                <div class="status-product p-2">dagiao</div>
+
+              </div>
+              <div class="product"><img src="../../static/image/show2.jpg" alt="">
+                <span>ten san pham</span>
+                <span>phan loai</span>
+                <span>so luong</span>
+
+                <span class="ghw9hb">₫280.000</span>
+
+              </div>
+              <div class="price0">
+                <div class="price " >
+                  <div class="price1 ">Tổng số tiền :</div>
+                  <div class="price2">₫280.000</div>
+                </div>
+              </div>
+              <div class="payment">
+                <div class="payment1"></div>
+                <div class="payment2">
+
+
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--primary Kz9HeM"> mua lai</button>
+                  </div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">lien he nguoi ban</button>
+                  </div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="info-product">
+              <div class="status d-flex">
+                <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+                <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
+                <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
+                <span class="ml-auto p-2">giaohang  |</span>
+                <div class="status-product p-2">dagiao</div>
+
+              </div>
+              <div class="product"><img src="../../static/image/show2.jpg" alt="">
+                <span>ten san pham</span>
+                <span>phan loai</span>
+                <span>so luong</span>
+
+                <span class="ghw9hb">₫280.000</span>
+
+              </div>
+              <div class="price0">
+                <div class="price " >
+                  <div class="price1 ">Tổng số tiền :</div>
+                  <div class="price2">₫280.000</div>
+                </div>
+              </div>
+              <div class="payment">
+                <div class="payment1"></div>
+                <div class="payment2">
+                  <button class="stardust-button stardust-button--primary Kz9HeM"> mua lai</button>
+                  <div class="_8vTqu9"></div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">lien he nguoi ban</button>
+                  </div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="info-product">
+              <div class="status d-flex">
+                <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+                <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
+                <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
+                <span class="ml-auto p-2">giaohang  |</span>
+                <div class="status-product p-2">dagiao</div>
+
+              </div>
+              <div class="product"><img src="../../static/image/show2.jpg" alt="">
+                <span>ten san pham</span>
+                <span>phan loai</span>
+                <span>so luong</span>
+
+                <span class="ghw9hb">₫280.000</span>
+
+              </div>
+              <div class="price0">
+                <div class="price " >
+                  <div class="price1 ">Tổng số tiền :</div>
+                  <div class="price2">₫280.000</div>
+                </div>
+              </div>
+              <div class="payment">
+                <div class="payment1"></div>
+                <div class="payment2">
+                  <button class="stardust-button stardust-button--primary Kz9HeM"> mua lai</button>
+                  <div class="_8vTqu9"></div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">lien he nguoi ban</button>
+                  </div>
+                  <div class="VN6h8+">
+                    <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="wait_xn">bbb</div>
+        <div role="tabpanel" class="tab-pane fade" id="wait_lh">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="Danggiao">
+          <section class="vh-100" style="background-color: #eee;">
+            <div class="container danggiao">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                  <div class="card card-stepper" style="border-radius: 10px;">
+                    <div class="card-body p-4">
+
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-column">
+                          <span class="lead fw-normal">Your order has been delivered</span>
+                          <span class="text-muted small">by DHFL on 21 Jan, 2020</span>
+                        </div>
+                        <div>
+                          <button class="btn btn-outline-primary" type="button">Track order details</button>
+                        </div>
+                      </div>
+                      <hr class="my-4">
+
+                      <div class="d-flex flex-row justify-content-between align-items-center align-content-center">
+                        <span class="dot"></span>
+                        <hr class="flex-fill track-line"><span class="dot"></span>
+                        <hr class="flex-fill track-line"><span class="dot"></span>
+                        <hr class="flex-fill track-line"><span class="dot"></span>
+                        <hr class="flex-fill track-line"><span
+                              class="d-flex justify-content-center align-items-center big-dot dot">
+                            <i class="fa fa-check text-white"></i></span>
+                      </div>
+
+                      <div class="d-flex flex-row justify-content-between align-items-center">
+                        <div class="d-flex flex-column align-items-start"><span>15 Mar</span><span>Order placed</span>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center"><span>15 Mar</span><span>Order
+                              placed</span></div>
+                        <div class="d-flex flex-column justify-content-center align-items-center"><span>15
+                              Mar</span><span>Order Dispatched</span></div>
+                        <div class="d-flex flex-column align-items-center"><span>15 Mar</span><span>Out for
+                              delivery</span></div>
+                        <div class="d-flex flex-column align-items-end"><span>15 Mar</span><span>Delivered</span></div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="Dagiao">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="Dahuy">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="tt/ht">ccc</div>
+      </div>
+    </div>
+    <!-- Page content-->
+
+  </div>
+
+
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+</body>
+
+</html>
