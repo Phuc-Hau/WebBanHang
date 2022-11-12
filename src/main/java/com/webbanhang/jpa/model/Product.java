@@ -33,7 +33,7 @@ public class Product {
     private double price;
 
     @Column(name = "Sale")
-    private double sale;
+    private int sale;
 
     @Column(name = "Status")
     private boolean status;
@@ -105,7 +105,7 @@ public class Product {
         return sale;
     }
 
-    public void setSale(double sale) {
+    public void setSale(int sale) {
         this.sale = sale;
     }
 

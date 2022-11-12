@@ -1,5 +1,18 @@
 
-
+<div id="toast">
+	<div class="toast toast--success" style="animation: 0.3s ease 0s 1 normal none running slideInLeft, 1s linear 8s 1 normal forwards running fadeOut;">
+		<div class="toast__icon">
+			<i class="fas fa-check-circle"></i>
+		</div>
+		<div class="toast__body">
+			<h3 class="toast__title">Thành công!</h3>
+			<p class="toast__msg">Bạn đã đăng ký thành công tài khoản tại F8.</p>
+		</div>
+		<div class="toast__close">
+			<i class="fas fa-times"></i>
+		</div>
+	</div>
+</div>
 <div class="content-wrapper">
 	<div class="page-header">
 		<h3 class="page-title">
@@ -23,7 +36,7 @@
 
 							</div>
 							<div class="avatar-preview" style="right: 180px; top: 50px;">
-								<img width="200px" height="200px" id="imageResult"  th:src="@{|/file/user/*{img}|}">
+								<img width="200px" height="200px" id="imageResult"  >
 								<label style="margin-top: 25px; margin-left: 26px;" for="upload">Ảnh Sản Phẩm</label>
 							</div>
 						</div>
@@ -32,7 +45,6 @@
 					<div class="col-md-9">
 						<form class="form-sample" method="post"
 							  modelAttribute="product" enctype="multipart/form-data">
-
 							<input path="id" type="hidden" />
 							<div class="row">
 								<div class="col-md-6">
@@ -76,9 +88,9 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group row">
-										<label class="col-sm-3 col-form-label">Date</label>
+										<label class="col-sm-3 col-form-label">Ngày Thêm</label>
 										<div class="col-sm-9">
-											<input ng-model="items.date" type="text" class="form-control" />
+											<div class="form-control" >{{items.date}}</div>
 										</div>
 									</div>
 								</div>
@@ -87,9 +99,9 @@
 										<label class="col-sm-3 col-form-label">Status</label>
 										<div class="col-sm-4">
 											<div class="form-check">
-												<label class="form-check-label"> <input type="radio"
-																						ng-value="items.status" ng-checked="items.status==true"  class="form-check-input"
-																						name="membershipRadios" id="membershipRadios1" value="true" />
+												<label class="form-check-label">
+													<input type="radio" ng-model="items.status" ng-checked="items.status==true"  class="form-check-input"
+															name="membershipRadios" id="membershipRadios1" value="true" />
 													Còn hàng
 												</label>
 											</div>
@@ -97,9 +109,9 @@
 
 										<div class="col-sm-5">
 											<div class="form-check">
-												<label class="form-check-label"> <input type="radio"
-																						class="form-check-input" ng-checked="items.status==false"
-																						name="membershipRadios" id="membershipRadios2" value="false" />
+												<label class="form-check-label">
+													<input type="radio" 	ng-model="items.status" 	class="form-check-input" ng-checked="items.status==false"
+															name="membershipRadios" id="membershipRadios2" value="false" />
 													Không còn hàng
 												</label>
 											</div>
@@ -116,21 +128,23 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group row">
-									<label class="col-sm-3 col-form-label">Group Product</label>
-									<div class="col-sm-9">
-										<select ng-value="items.groupProduct.id" name="groups" class="form-control">
+								<div class="form-group">
+									<label >Group Product</label>
+
+										<select  ng-model="items.groupProduct.id" ng-value="items.groupProduct.id" name="groups" class="form-control">
 											<th:each th:each="group:${groupProduct}">
 												<option th:value="${group.id}">[[${group.name}]]</option>
 											</th:each>
 										</select>
-									</div>
+
 								</div>
 
 							</div>
 
+							<button type="button" id="newProduct" ng-click="new(items)" class="btn btn-gradient-info btn-rounded btn-fw">
+								<i class="mdi mdi-file-check btn-icon-prepend"></i>New</button>
 
-							<button type="submit" ng-click="update()"
+							<button type="submit" id="updateProduct"ng-click="update(items)"
 									class="btn btn-gradient-success btn-rounded btn-fw">
 								<i class="mdi mdi-content-save"></i>Update
 							</button>
@@ -139,10 +153,10 @@
 									class="btn btn-gradient-warning btn-rounded btn-fw">
 								<i class="mdi mdi-reload btn-icon-prepend"></i> Reset
 							</button>
-							<button type="submit" formaction="/admin/productlist"
-									class="btn btn-gradient-primary btn-rounded btn-fw">
-								<i class="mdi mdi-exit-to-app"></i> Cancel
-							</button>
+
+								<a href="/admin/productlist" class="btn btn-gradient-primary btn-rounded btn-fw">
+									<i class="mdi mdi-exit-to-app"></i> Cancel
+								</a>
 
 						</form>
 					</div>
