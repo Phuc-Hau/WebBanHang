@@ -1,5 +1,6 @@
 package com.webbanhang.controller.cart;
 
+import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,8 +66,7 @@ public class CartController {
 			}else {
 				Order order2 = new Order();
 
-				order2.setStatus(false);
-				order2.setOrderDetails(null);
+				order2.setStatus(0);
 				order2.setCutomer(cutomerService.findById(idCutomer));
 
 				orderService.create(order2);

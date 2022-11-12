@@ -35,14 +35,25 @@ public class HomeAdminApi {
         int year = Integer.parseInt(simpleDateFormat.format(new Date()));
 
         int months[] = new int[12];
-        List<MoneyMonth> moneyMonth = orderService.moneyMonthYear(year);
+        List<MoneyMonth> moneyMonth = new ArrayList<>();
+        try {
+            moneyMonth = orderService.moneyMonthYear(year);
+        }catch (Exception e){
+
+        }
 
         for (int i = 0; i < moneyMonth.size(); i++) {
             months[moneyMonth.get(i).getMonth()-1] = (int) moneyMonth.get(i).getMoney();
         }
 
         int countMonths[] = new int[12];
-        List<CountMonth> countMonth = orderService.countMonthYear(year);
+        List<CountMonth> countMonth = new ArrayList<>();
+        try {
+            countMonth = orderService.countMonthYear(year);
+        } catch (Exception e){
+
+        }
+
         for (int i = 0; i < countMonth.size(); i++) {
             countMonths[countMonth.get(i).getMonth()-1] = (int) countMonth.get(i).getCountAmount();
         }

@@ -16,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class HomeAdmin {
 
-    @Autowired
-    OrderService orderService;
-
-
 
     @RequestMapping("/index")
     public String index(Model model) {

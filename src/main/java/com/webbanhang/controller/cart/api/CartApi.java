@@ -2,6 +2,7 @@ package com.webbanhang.controller.cart.api;
 
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
+import com.webbanhang.jpa.model.Orderstatus;
 import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.jpa.service.OrderService;
@@ -69,7 +70,7 @@ public class CartApi {
 		int idCutomer = userService.findByUsernameGetIdCutomer(username);
 
 		List<OrderDetail> list = orderDetailService.findAllUsername(idCutomer);
-		double priceSum = 20000;
+		int priceSum = 20000;
 		
 		for (OrderDetail orderDetail : list) {
 			priceSum+= (orderDetail.getProduct().getPrice()-orderDetail.getProduct().getPrice()
@@ -77,7 +78,7 @@ public class CartApi {
 		}
 
 		Order order = orderService.findIdCutomer(idCutomer);
-		order.setStatus(true);
+		order.setStatus(1);
 		order.setTotalmoney(priceSum); 
 		orderService.create(order);
 	}

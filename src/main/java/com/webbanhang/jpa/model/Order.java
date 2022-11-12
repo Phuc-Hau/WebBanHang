@@ -12,80 +12,79 @@ import java.util.List;
 @Entity
 @Table(name="orders")
 public class Order {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Id")
-	private int id;
 
-	@Column(name="Date")
-	private Timestamp date = new Timestamp(System.currentTimeMillis());
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="Id")
+    private int id;
 
-	@Column(name="Status")
-	private boolean status;
+    @Column(name="Date")
+    private Timestamp date = new Timestamp(System.currentTimeMillis());
 
-	@Column(name="Totalmoney")
-	private double totalmoney;
+    @Column(name="Status")
+    private int status;
 
-	//bi-directional many-to-one association to OrderDetail
-	@JsonIgnore
-	@OneToMany(mappedBy="order")
-	private List<OrderDetail> orderDetails;
+    @Column(name="Totalmoney")
+    private double totalmoney;
 
-	//bi-directional many-to-one association to Cutomer
-	@ManyToOne
-	@JoinColumn(name="customer_id")
-	private Cutomer cutomer;
+    //bi-directional many-to-one association to OrderDetail
+    @JsonIgnore
+    @OneToMany(mappedBy="order")
+    private List<OrderDetail> orderDetails;
 
-	public int getId() {
-		return id;
-	}
+    //bi-directional many-to-one association to Cutomer
+    @ManyToOne
+    @JoinColumn(name="customer_id")
+    private Cutomer cutomer;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public Timestamp getDate() {
-		return date;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	private void setDate() {
-		this.date = new Timestamp(System.currentTimeMillis());
-	}
+    public Timestamp getDate() {
+        return date;
+    }
 
-	public boolean isStatus() {
-		return status;
-	}
+    private void setDate() {
+        this.date = new Timestamp(System.currentTimeMillis());
+    }
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+    public int getStatus() {
+        return status;
+    }
 
-	public double getTotalmoney() {
-		return totalmoney;
-	}
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
-	public void setTotalmoney(double totalmoney) {
-		setDate();
-		this.totalmoney = totalmoney;
-	}
+    public double getTotalmoney() {
+        return totalmoney;
+    }
 
-	public List<OrderDetail> getOrderDetails() {
-		return orderDetails;
-	}
+    public void setTotalmoney(double totalmoney) {
+        setDate();
+        this.totalmoney = totalmoney;
+    }
 
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
 
-	public Cutomer getCutomer() {
-		return cutomer;
-	}
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 
-	public void setCutomer(Cutomer cutomer) {
-		this.cutomer = cutomer;
-	}
+    public Cutomer getCutomer() {
+        return cutomer;
+    }
 
-	
+    public void setCutomer(Cutomer cutomer) {
+        this.cutomer = cutomer;
+    }
+
 
 }
