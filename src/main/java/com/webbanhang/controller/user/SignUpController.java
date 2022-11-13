@@ -26,7 +26,7 @@ public class SignUpController extends Thread{
 
 	
 	@RequestMapping("/signup")
-	public String showForm(@ModelAttribute("user") Users user) {
+	public String showForm() {
 		return "user/signIn_Up";
 	}
 
