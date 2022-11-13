@@ -37,7 +37,7 @@ public class ChangePasswordApi {
 		}
 		else {
 			obj.put("status",false);
-            obj.put("message", "Cập nhật Password Thất bại!");
+            obj.put("message", "Sai Password Thất bại!");
 		}
 		
 		return obj;
