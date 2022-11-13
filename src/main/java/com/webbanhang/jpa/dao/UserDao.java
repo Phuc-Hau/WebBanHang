@@ -11,7 +11,7 @@ public interface UserDao extends JpaRepository<Users, Integer>{
     Users findByEmail(String email);
 
 	@Query("SELECT o FROM Users o WHERE o.username = ?1 ")
-    Users findByUsername(String email);
+    Users findByUsername(String username);
 	
 	@Query("SELECT o FROM Users o WHERE o.username = ?1 and o.password = ?2")
     Users checkLogin(String username, String password);

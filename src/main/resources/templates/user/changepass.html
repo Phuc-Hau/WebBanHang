@@ -21,10 +21,10 @@
 	<div class="forms-container">
 		<div class="signin-signup">
 			<form action="#" class="sign-in-form" >
-				<h2 class="title">Change PassWord</h2>
+				<h2 class="title">Change Password</h2>
 				<div class="input-field">
 					<i class="fas fa-user"></i>
-					<input  type="text" ng-model="change.username" name="username" placeholder="Username" required />
+					<div class="ssuser">[[${session.users.username}]]</div>
 				</div>
 				<div class="input-field">
 					<i class="fas fa-lock"></i>
@@ -38,7 +38,7 @@
 					<i class="fas fa-lock"></i>
 					<input type="password" ng-model="change.confirmpassword" name="confirmpassword" placeholder="Confirm Password" required/>
 				</div>
-				<button type="button" ng-click="ChangePassWord()" class="btn solid" >Change PassWord</button>
+				<button type="button" ng-click="ChangePassWord()" class="btn solid" >Change Password</button>
 
 				<p class="social-text">Or Sign in with social platforms</p>
 				<div class="social-media">
@@ -62,7 +62,7 @@
 	<div class="panels-container">
 		<div class="panel left-panel">
 			<div class="content">
-				<h3>Chang PassWord ?</h3>
+				<h3>Chang Password ?</h3>
 				<p>
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
 					ex ratione. Aliquid!

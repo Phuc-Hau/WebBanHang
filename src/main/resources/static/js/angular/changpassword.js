@@ -1,6 +1,6 @@
 var app = angular.module("app", []);
 app.controller('changepassword', function($scope,$http) {
-    $scope.url="/account/api/changepassword/";
+    $scope.url="/account/api/changepassword";
     $scope.change;
     $scope.ChangePassWord = function (){
         if($scope.change.newpassword == $scope.change.confirmpassword){

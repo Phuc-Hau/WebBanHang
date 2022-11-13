@@ -13,7 +13,7 @@ import javax.mail.MessagingException;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/account/api")
-public class ForGhetPassWordApi {
+public class ForgotPasswordApi {
 
     @Autowired
     UsersService usersService;
@@ -68,11 +68,11 @@ public class ForGhetPassWordApi {
             user = null;
             capChas ="";
             obj.put("status",true);
-            obj.put("message", "Cập nhật PassWord Thành công!");
+            obj.put("message", "Cập nhật Password Thành công!");
         } catch (Exception e) {
             // TODO: handle exception
             obj.put("status",false);
-            obj.put("message", "Cập nhật PassWord Thất bại!");
+            obj.put("message", "Cập nhật Password Thất bại!");
         }
         return obj;
     }
