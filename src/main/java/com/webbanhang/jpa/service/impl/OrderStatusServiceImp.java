@@ -20,7 +20,7 @@ public class OrderStatusServiceImp implements OrderStatusService {
         return orderStatusDao.findAll();
     }
 
-    @Override 
+    @Override
     public OrderStatus findById(Integer id) {
         return orderStatusDao.findById(id).get();
     }

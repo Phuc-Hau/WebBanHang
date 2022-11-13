@@ -19,4 +19,5 @@ public class OrderStatus {
     public void setId(Integer id) {
         this.id = id;
     }
+    
 }
