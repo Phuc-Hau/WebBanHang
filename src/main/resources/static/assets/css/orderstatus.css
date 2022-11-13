@@ -489,7 +489,7 @@ body .vh-100 {
     }
 
     .payment {
-        display: grid;
+        display: flex !important;
     }
 
     /* .df2{
@@ -503,6 +503,7 @@ body .vh-100 {
         height: 200px;
         margin: auto;
     }
+
 
     .nav-item {
         display: inline !important;
@@ -551,27 +552,23 @@ body .vh-100 {
         display: none !important;
 
     }
-
     .ttcn {
         display: none;
 
     }
-
     /* .df1{
       display: inline !important;
     } */
 
-    .nav {
-        height: 300x;
-    }
-
-    .payment {
-        display: grid;
-    }
-
-
-
 }
+
+.nav {
+    height: 300px;
+}
+.payment {
+    display: flex !important;
+}
+
 
 /* orderdetail */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
@@ -753,4 +750,7 @@ p {
     margin: -30px  !important;
 }
 
+body .modal-content {
+    flex-direction: column !important;
+}
 
