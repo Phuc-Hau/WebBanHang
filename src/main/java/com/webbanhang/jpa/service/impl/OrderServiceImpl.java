@@ -5,6 +5,7 @@ import com.webbanhang.jpa.model.CountMonth;
 import com.webbanhang.jpa.model.MoneyMonth;
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.service.OrderService;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,4 +76,11 @@ public class OrderServiceImpl implements OrderService {
     public List<CountMonth> countMonthYear(int year) {
         return OrderDao.countMonthYear(year);
     }
+
+    @Override
+    public List<Order> findAllOrderStatus(int idCutomer) {
+        return OrderDao.findAllOrderStatus(idCutomer);
+    }
+
+
 }

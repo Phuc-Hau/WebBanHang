@@ -6,7 +6,6 @@
   
   body {
     height: 100vh;
-    display: flex;
     flex-direction: column;
     font-family: "Helvetica Neue";
     background-color: #f4f4f5;

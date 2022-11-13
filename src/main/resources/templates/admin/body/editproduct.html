@@ -1,5 +1,18 @@
 
-
+<div id="toast">
+	<div class="toast toast--success" style="animation: 0.3s ease 0s 1 normal none running slideInLeft, 1s linear 8s 1 normal forwards running fadeOut;">
+		<div class="toast__icon">
+			<i class="fas fa-check-circle"></i>
+		</div>
+		<div class="toast__body">
+			<h3 class="toast__title">Thành công!</h3>
+			<p class="toast__msg">Bạn đã đăng ký thành công tài khoản tại F8.</p>
+		</div>
+		<div class="toast__close">
+			<i class="fas fa-times"></i>
+		</div>
+	</div>
+</div>
 <div class="content-wrapper">
 	<div class="page-header">
 		<h3 class="page-title">
@@ -12,114 +25,143 @@
 	<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
+				<div class="row">
+					<div class="col-md-3">
 
-				<form class="form-sample" method="post"
-					modelAttribute="product" enctype="multipart/form-data">
+						<div class="avatar-upload">
+							<div class="avatar-edit">
+								<label style="position: absolute; width: 212px; height: 212px; left: -4px; top: 40px; opacity: 0;"
+									   for="upload"></label>
+								<input id="upload" type="file" onchange="readURL(this);" name="imgs" accept=".png, .jpg, .jpeg" />
 
-					<input path="id" type="hidden" />
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Name</label>
-								<div class="col-sm-9">
-									<input ng-model="items.name" type="text" class="form-control" />
-								</div>
+							</div>
+							<div class="avatar-preview" style="right: 180px; top: 50px;">
+								<img width="200px" height="200px" id="imageResult"  >
+								<label style="margin-top: 25px; margin-left: 26px;" for="upload">Ảnh Sản Phẩm</label>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Price</label>
-								<div class="col-sm-9">
-									<input ng-model="items.price" type="text" class="form-control" />
-								</div>
-							</div>
-						</div>
+
 					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Amount</label>
-								<div class="col-sm-9">
-									<div  type="text" class="form-control">{{items.amount}}</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Sale</label>
-								<div class="col-sm-9">
-									<input ng-model="items.sale" min="0" step="5" max="100" type="number"
-										class="form-control" />
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Date</label>
-								<div class="col-sm-9">
-									<input ng-model="items.date" type="text" class="form-control" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Status</label>
-								<div class="col-sm-4">
-									<div class="form-check">
-										<label class="form-check-label"> <input type="radio"
-												ng-value="items.status" ng-checked="items.status==true"  class="form-check-input"
-												name="membershipRadios" id="membershipRadios1" value="true" />
-											Còn hàng
-										</label>
+					<div class="col-md-9">
+						<form class="form-sample" method="post"
+							  modelAttribute="product" enctype="multipart/form-data">
+							<input path="id" type="hidden" />
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Name</label>
+										<div class="col-sm-9">
+											<input ng-model="items.name" type="text" class="form-control" />
+										</div>
 									</div>
 								</div>
-
-								<div class="col-sm-5">
-									<div class="form-check">
-										<label class="form-check-label"> <input type="radio"
-												ng-value="items.status" class="form-check-input" ng-checked="items.status==false"
-												 name="membershipRadios" id="membershipRadios2" value="false" />
-											Không còn hàng
-										</label>
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Price</label>
+										<div class="col-sm-9">
+											<input ng-model="items.price" type="text" class="form-control" />
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Group Product</label>
-							<div class="col-sm-9">
-								<select ng-value="items.groupProduct.id" name="groups" class="form-control">
-									<th:each th:each="group:${groupProduct}">
-										<option th:value="${group.id}">[[${group.name}]]</option>
-									</th:each>
-								</select>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Amount</label>
+										<div class="col-sm-9">
+											<div  type="text" class="form-control">{{items.amount}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Sale</label>
+										<div class="col-sm-9">
+											<input ng-model="items.sale" min="0" step="5" max="100" type="number"
+												   class="form-control" />
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
 
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Ngày Thêm</label>
+										<div class="col-sm-9">
+											<div class="form-control" >{{items.date}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Status</label>
+										<div class="col-sm-4">
+											<div class="form-check">
+												<label class="form-check-label">
+													<input type="radio" ng-model="items.status" ng-checked="items.status==true"  class="form-check-input"
+															name="membershipRadios" id="membershipRadios1" value="true" />
+													Còn hàng
+												</label>
+											</div>
+										</div>
+
+										<div class="col-sm-5">
+											<div class="form-check">
+												<label class="form-check-label">
+													<input type="radio" 	ng-model="items.status" 	class="form-check-input" ng-checked="items.status==false"
+															name="membershipRadios" id="membershipRadios2" value="false" />
+													Không còn hàng
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<div class="form-group">
+
+									<label >Detail</label>
+									<textarea ng-value="items.detail"  class="form-control" ></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group">
+									<label >Group Product</label>
+
+										<select  ng-model="items.groupProduct.id" ng-value="items.groupProduct.id" name="groups" class="form-control">
+											<th:each th:each="group:${groupProduct}">
+												<option th:value="${group.id}">[[${group.name}]]</option>
+											</th:each>
+										</select>
+
+								</div>
+
+							</div>
+
+							<button type="button" id="newProduct" ng-click="new(items)" class="btn btn-gradient-info btn-rounded btn-fw">
+								<i class="mdi mdi-file-check btn-icon-prepend"></i>New</button>
+
+							<button type="submit" id="updateProduct"ng-click="update(items)"
+									class="btn btn-gradient-success btn-rounded btn-fw">
+								<i class="mdi mdi-content-save"></i>Update
+							</button>
+
+							<button type="button" ng-click="reset()"
+									class="btn btn-gradient-warning btn-rounded btn-fw">
+								<i class="mdi mdi-reload btn-icon-prepend"></i> Reset
+							</button>
+
+								<a href="/admin/productlist" class="btn btn-gradient-primary btn-rounded btn-fw">
+									<i class="mdi mdi-exit-to-app"></i> Cancel
+								</a>
+
+						</form>
 					</div>
 
-
-					<button type="submit" formaction="/admin/product/update"
-						class="btn btn-gradient-success btn-rounded btn-fw">
-						<i class="mdi mdi-content-save"></i>Update
-					</button>
-
-					<button type="button" ng-click="reset()"
-						class="btn btn-gradient-warning btn-rounded btn-fw">
-						<i class="mdi mdi-reload btn-icon-prepend"></i> Reset
-					</button>
-					<button type="submit" formaction="/admin/productlist"
-						class="btn btn-gradient-primary btn-rounded btn-fw">
-						<i class="mdi mdi-exit-to-app"></i> Cancel
-					</button>
-
-				</form>
+				</div>
 			</div>
 		</div>
 

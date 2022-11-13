@@ -13303,7 +13303,9 @@ select.form-control {
   font-size: 0.875rem;
   line-height: 1;
   vertical-align: top;
-  margin-bottom: .5rem; }
+  margin-bottom: .5rem;
+  padding-right: 0px
+}
 
 .form-group.has-danger .form-control {
   border-color: #fe7c96; }

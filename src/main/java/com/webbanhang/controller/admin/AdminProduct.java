@@ -35,6 +35,11 @@ public class AdminProduct {
 		return "admin/AdminProductEdit";
 	}
 
+	@RequestMapping("/product/edit")
+	public String adminNewProduct() {
+		return "admin/AdminProductEdit";
+	}
+
 	@RequestMapping("/product/update")
 	public String updateproduct(Model model, @ModelAttribute("product") Product product, @RequestParam("groups") String group) {
 		System.out.println(group);

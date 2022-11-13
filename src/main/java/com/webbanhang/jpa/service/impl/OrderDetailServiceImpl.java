@@ -50,6 +50,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
+    public List<OrderDetail> findAllOrderStatust(int idCutomer, int idOrder) {
+        return OrderDetailDao.findAllOrderStatust(idCutomer, idOrder);
+    }
+
+    @Override
     public boolean existsById(Integer id) {
         return OrderDetailDao.existsById(id);
     }

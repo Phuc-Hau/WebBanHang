@@ -2,7 +2,6 @@ package com.webbanhang.controller.cart.api;
 
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
-import com.webbanhang.jpa.model.Orderstatus;
 import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.jpa.service.OrderService;

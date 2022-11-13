@@ -46,7 +46,7 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
 
         toast.classList.add("toast", `toast--${type}`);
         toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
-
+        toast.style.display='flex';
         toast.innerHTML = `
                       <div class="toast__icon">
                           <i class="${icon}"></i>

@@ -24,74 +24,12 @@ import com.webbanhang.service.MailerService;
 @RequestMapping("/account")
 public class SignUpController extends Thread{
 
-	@Autowired
-	MailerService mail;
-
-	@Autowired
-	ConvenientService convenientUtils;
-
-	@Autowired
-	UsersService usersService;
-
-	@Autowired
-	CutomerService cutomerService;
 	
 	@RequestMapping("/signup")
 	public String showForm(@ModelAttribute("user") Users user) {
 		return "user/signIn_Up";
 	}
 
-	Users tymUser;
-	Cutomer tymCutomer;
-	String capchas = "";
 
-	@PostMapping("/signup/confirm")
-	public String senEmail(Model model, @ModelAttribute("user") Users user,
-						   @RequestParam("fullname") String fullname) throws MessagingException {
-		if (usersService.findByEmail(user.getEmail()) == null) {
-
-			Cutomer cutomer = new Cutomer();
-			cutomer.setName(fullname);
-
-			user.setCutomer(cutomer);
-			tymCutomer = cutomer;
-			tymUser = user;
-
-
-			model.addAttribute("email", convenientUtils.emailToStar(user.getEmail()));
-
-			capchas = convenientUtils.ranDomCapCha();
-
-			mail.sendSignUp(tymUser.getEmail(), capchas);
-
-			model.addAttribute("message", "");
-			return "user/capchasignup";
-
-		} else {
-			model.addAttribute("message", "Email đã tồn tại!");
-			return "user/signIn_Up";
-		}
-	}
-
-
-
-	@PostMapping("/confirm")
-	public String signUp(Model model, @RequestParam("capcha") String capcha) {
-		
-		if (capcha.equals(capchas)) {
-			try {
-				cutomerService.create(tymCutomer);
-				usersService.create(tymUser);
-			} catch (Exception e) {
-				System.out.println("User da ton tai");
-				return "user/capchasignup";
-			}
-			return "redirect:/account/signIn_Up";
-		} else {
-			model.addAttribute("message", "Sai mã xác thực không chính xác!");
-			return "user/capchasignup";
-		}
-
-	}
 
 }
