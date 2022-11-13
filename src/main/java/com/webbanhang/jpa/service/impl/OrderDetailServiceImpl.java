@@ -50,8 +50,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
-    public List<OrderDetail> findAllOrderStatust(int idCutomer) {
-        return OrderDetailDao.findAllOrderStatust(idCutomer);
+    public List<OrderDetail> findAllOrderStatust(int idCutomer, int idOrder) {
+        return OrderDetailDao.findAllOrderStatust(idCutomer, idOrder);
     }
 
     @Override

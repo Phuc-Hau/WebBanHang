@@ -12,7 +12,6 @@ app.controller('ctrlistproduct', function($scope,$http) {
         console.log("fail", error)
     })
 
-
     function list () {
         $scope.url="/admin/api/productlist";
         $http.get($scope.url).then(resp => {

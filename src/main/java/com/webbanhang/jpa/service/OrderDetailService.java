@@ -16,7 +16,7 @@ public interface OrderDetailService {
 
     List<OrderDetail> findAllUsername(int id);
     OrderDetail findIdProduct(int idProduct, int idCutomer);
-    List<OrderDetail> findAllOrderStatust(int idCutomer);
+    List<OrderDetail> findAllOrderStatust(int idCutomer, int idOrder);
 
     boolean existsById(Integer id);
 
