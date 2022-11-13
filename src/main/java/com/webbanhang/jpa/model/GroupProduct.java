@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -26,8 +27,19 @@ public class GroupProduct{
 	@Column(name="Name")
 	private String name;
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@Column(name="Status")
 	private int status;
+	
+	@Column(name="Date")
+	private Date date;
 
 	//bi-directional many-to-one association to Product
 	@JsonIgnore
