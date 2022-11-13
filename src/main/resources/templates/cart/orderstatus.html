@@ -8,6 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/assets/js/orderstatus.js">
+  <link rel="stylesheet" href="/assets/css/sach.css">
   <link rel="stylesheet" href="/assets/css/orderstatus.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -19,7 +20,7 @@
 
 </head>
 
-<body>
+<body ng-app="app" ng-controller="orderstatus">
 
 <!-- header -->
 <div th:replace="~{/partials/header.html}"></div>
@@ -56,23 +57,23 @@
     <!-- Page content wrapper-->
     <div id="page-content-wrapper">
       <!-- Top navigation-->
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
+      <ul class="nav nav__tabs" role="tablist">
+        <li class="nav__item">
           <a class="nav-link active" href="#all" role="tab" data-toggle="tab">Tất cả</a>
         </li>
-        <li class="nav-item">
+        <li class="nav__item">
           <a class="nav-link" href="#wait_xn" role="tab" data-toggle="tab">Chờ xác nhận</a>
         </li>
-        <li class="nav-item">
+        <li class="nav__item">
           <a class="nav-link" href="#wait_lh" role="tab" data-toggle="tab">Chờ lấy hàng</a>
         </li>
-        <li class="nav-item">
+        <li class="nav__item">
           <a class="nav-link" href="#Danggiao" role="tab" data-toggle="tab">Đang giao</a>
         </li>
-        <li class="nav-item">
+        <li class="nav__item">
           <a class="nav-link" href="#Dagiao" role="tab" data-toggle="tab">Đã giao</a>
         </li>
-        <li class="nav-item">
+        <li class="nav__item">
           <a class="nav-link" href="#Dahuy" role="tab" data-toggle="tab">Đã Hủy</a>
         </li>
 

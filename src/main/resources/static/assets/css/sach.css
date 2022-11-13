@@ -14,6 +14,7 @@ header {
     max-width: 1280px;
 }
 
+
 .carousel-indicators li {
     display: inline-block;
     width: 8px;
@@ -590,3 +591,5 @@ body div #dropdown-menu {
 .asale:hover {
 	opacity: 1;
 }
+
+

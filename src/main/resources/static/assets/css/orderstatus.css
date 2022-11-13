@@ -272,23 +272,23 @@ body {
     background-color: transparent;
 }
 
-.nav-tabs {
-    background-color: white;
-    height: 50px;
+.nav__tabs {
+    background-color: white !important;
+    height: 60px !important;
 }
 
-.nav-tabs .nav-item {
-    background-color: white;
-    margin: 2px auto;
-    height: 41px;
+.nav__tabs .nav__item {
+    background-color: white !important;
+    margin: 2px auto !important;
+    height: 41px !important;
 }
 
-.nav-tabs .nav-item:hover {
-    border-bottom: 1px solid #ee4d2d;
+.nav__tabs .nav__item:hover {
+    border-bottom: 1px solid #ee4d2d !important;
 
 }
 
-.nav-item {
+.nav__item {
     color: black !important;
 
 }
@@ -752,4 +752,5 @@ p {
     padding: 0rem !important;
     margin: -30px  !important;
 }
+
 
