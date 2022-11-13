@@ -8,7 +8,6 @@ import com.webbanhang.service.ConvenientService;
 import com.webbanhang.service.MailerService;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
@@ -70,7 +69,7 @@ public class SignUpApi {
         return obj;
     }
 
-    @PostMapping("/signup/new/confirm?code={code}")
+    @PostMapping("/signup/new/confirm/{code}")
     public JSONObject signUp(@PathVariable("code") String code) {
         JSONObject obj = new JSONObject();
         if (code.equals(capchas)) {
