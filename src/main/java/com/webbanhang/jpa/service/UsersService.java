@@ -14,7 +14,7 @@ public interface UsersService {
     Users update(Users entity);
 
     Users findByEmail(String email);
-    Users findByUsername(String email);
+    Users findByUsername(String username);
     Users checkLogin(String username, String password);
     int findByUsernameGetIdCutomer(String idUser);
     Users findByEmailAndTokeID(String email, String tokeID);
