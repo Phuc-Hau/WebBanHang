@@ -22,7 +22,7 @@ public class ProductAdminApi {
     GroupProductService groupProductService;
 
     @RequestMapping("/groupproduct")
-    public List<GroupProduct> adminGroupProductList() {
+    public List<GroupProduct> adminGroupProductSearch() {
         return groupProductService.findAll();
     }
 
@@ -56,10 +56,10 @@ public class ProductAdminApi {
         try {
             productService.create(product);
             obj.put("status",true);
-            obj.put("message", "Cập nhật Sản Phẩm "+product.getName()+" Thành công!");
+            obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thành công!");
         }catch (Exception e){
             obj.put("status",false);
-            obj.put("message", "Cập nhật Sản Phẩm "+product.getName()+" Thành công!");
+            obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thành công!");
         }
         return obj;
     }

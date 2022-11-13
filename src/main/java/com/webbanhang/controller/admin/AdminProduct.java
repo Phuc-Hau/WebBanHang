@@ -31,7 +31,7 @@ public class AdminProduct {
 	}
 
 	@RequestMapping("/product/edit/{id}")
-	public String adminEditProductList() {
+	public String adminEditProduct() {
 		return "admin/AdminProductEdit";
 	}
 
@@ -41,7 +41,7 @@ public class AdminProduct {
 	}
 
 	@RequestMapping("/product/update")
-	public String updateproduct(Model model, @ModelAttribute("product") Product product, @RequestParam("groups") String group) {
+	public String updateProduct(Model model, @ModelAttribute("product") Product product, @RequestParam("groups") String group) {
 		System.out.println(group);
 		return "redirect:/admin/product/edit/"+product.getId();
 	}

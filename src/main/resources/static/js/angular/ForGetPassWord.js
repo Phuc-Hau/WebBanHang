@@ -1,7 +1,7 @@
 
 const container = document.querySelector(".container");
 const formcode = document.getElementById("formcode");
-const formpass = document.getElementById("formpassword");
+const formsignin = document.getElementById("formsignin");
 const pcode = document.getElementById("pcode");
 
 var app = angular.module("app", []);
@@ -32,8 +32,9 @@ app.controller('forgetpass', function($scope,$http) {
         $http.post($scope.urlcode+code).then(resp => {
             console.log("Success", resp)
             if(resp.data.status){
-                formcode.style.display='none';
-                formpass.style.display='';
+                formsignin.style.display='none';
+                container.classList.remove("sign-up-mode");
+                formcode.style.display='';
                 pcode.innerHTML="Change Password"
             }else{
                 showErrorToast(resp.data.message);

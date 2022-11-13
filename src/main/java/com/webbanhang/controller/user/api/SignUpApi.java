@@ -69,7 +69,7 @@ public class SignUpApi {
         return obj;
     }
 
-    @PostMapping("/signup/new/confirm/{code}")
+    @PostMapping("/signup/confirm/{code}")
     public JSONObject signUp(@PathVariable("code") String code) {
         JSONObject obj = new JSONObject();
         if (code.equals(capchas)) {
