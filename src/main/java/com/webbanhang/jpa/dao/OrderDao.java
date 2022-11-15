@@ -52,7 +52,7 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 	List<CountMonth> countMonthYear(int year);
 
 	@Query(value = "CALL Total_Money_In_The_Last_3_Years();", nativeQuery = true)
-	List<TotalMoneyInTheLast3Years> TotalMoneyInTheLast3Years();
+	Object TotalMoneyInTheLast3Years();
 
 
 }

@@ -73,8 +73,7 @@ public class HomeAdminApi {
             orderStatus[listStatusMonth.get(i).getMonth()-1] = (int) listStatusMonth.get(i).getCountAmount();
         }
 
-//        List<TotalMoneyInTheLast3Years> l = orderService.TotalMoneyInTheLast3Years();
-//        System.out.println(l.toArray());
+        Object l = orderService.TotalMoneyInTheLast3Years();
 
         CharIn charin =new CharIn();
         charin.setCharMonth(months);

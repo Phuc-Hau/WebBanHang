@@ -89,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<TotalMoneyInTheLast3Years> TotalMoneyInTheLast3Years() {
+    public Object TotalMoneyInTheLast3Years() {
         return OrderDao.TotalMoneyInTheLast3Years();
     }
 

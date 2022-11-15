@@ -28,7 +28,7 @@ public interface OrderService {
     List<CountMonth> countMonthYear(int year);
     List<CountMonth> findAllOrderStatusMonth(int idMonth);
     List<Order> findAllOrderStatus(int idCutomer);
-    List<TotalMoneyInTheLast3Years> TotalMoneyInTheLast3Years();
+    Object TotalMoneyInTheLast3Years();
 
 
 }

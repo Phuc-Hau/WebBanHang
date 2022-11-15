@@ -1,26 +1,27 @@
 package com.webbanhang.jpa.model;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
-@Entity
+
 @NamedStoredProcedureQuery(
-        name = "getTotalMoneyInTheLast3Years",
-        procedureName = "TotalMoneyInTheLast3Years"
+        name = "get.TotalMoneyInTheLast3Years",
+        procedureName = "TotalMoneyInTheLast3Years",
+        resultClasses = TotalMoneyInTheLast3Years.class
 )
+@Entity
 public class TotalMoneyInTheLast3Years {
-
+    
     @Id
     @Column(name = "Thisyear")
-    private BigDecimal thisyear;
+    private int thisyear;
 
     @Column(name = "Lastyear")
-    private BigDecimal lastyear;
+    private int lastyear;
 
     @Column(name = "Twoyearsago")
-    private BigDecimal twoyearsago;
+    private int twoyearsago;
 
-    public TotalMoneyInTheLast3Years(BigDecimal  thisyear, BigDecimal  lastyear, BigDecimal  twoyearsago) {
+    public TotalMoneyInTheLast3Years(int  thisyear, int  lastyear, int  twoyearsago) {
         this.thisyear = thisyear;
         this.lastyear = lastyear;
         this.twoyearsago = twoyearsago;
@@ -29,27 +30,27 @@ public class TotalMoneyInTheLast3Years {
     public TotalMoneyInTheLast3Years() {
     }
 
-    public BigDecimal  getThisyear() {
+    public int  getThisyear() {
         return thisyear;
     }
 
-    public void setThisyear(BigDecimal  thisyear) {
+    public void setThisyear(int  thisyear) {
         this.thisyear = thisyear;
     }
 
-    public BigDecimal  getLastyear() {
+    public int  getLastyear() {
         return lastyear;
     }
 
-    public void setLastyear(BigDecimal  lastyear) {
+    public void setLastyear(int  lastyear) {
         this.lastyear = lastyear;
     }
 
-    public BigDecimal  getTwoyearsago() {
+    public int  getTwoyearsago() {
         return twoyearsago;
     }
 
-    public void setTwoyearsago(BigDecimal  twoyearsago) {
+    public void setTwoyearsago(int  twoyearsago) {
         this.twoyearsago = twoyearsago;
     }
 }
