@@ -34,6 +34,10 @@ public class HomeAdminApi {
         simpleDateFormat.applyPattern("YYYY");
         int year = Integer.parseInt(simpleDateFormat.format(new Date()));
 
+        simpleDateFormat.applyPattern("MM");
+        int month = Integer.parseInt(simpleDateFormat.format(new Date()));
+
+        // Money Monthly Chart Year
         int months[] = new int[12];
         List<MoneyMonth> moneyMonth = new ArrayList<>();
         try {
@@ -46,6 +50,7 @@ public class HomeAdminApi {
             months[moneyMonth.get(i).getMonth()-1] = (int) moneyMonth.get(i).getMoney();
         }
 
+        // Amount Orders Month Monthly Chart Year
         int countMonths[] = new int[12];
         List<CountMonth> countMonth = new ArrayList<>();
         try {
@@ -58,8 +63,18 @@ public class HomeAdminApi {
             countMonths[countMonth.get(i).getMonth()-1] = (int) countMonth.get(i).getCountAmount();
         }
 
+        // Total Money In The Last 3 Years
         int moneyYear[] =new int[]{18000,20000,16000};
-        int orderStatus[] =new int[]{18,200,10,3};
+
+        // Order Status Month
+        int orderStatus[] =new int[5];
+        List<CountMonth> listStatusMonth =orderService.findAllOrderStatusMonth(month);
+        for (int i = 0; i < listStatusMonth.size(); i++) {
+            orderStatus[listStatusMonth.get(i).getMonth()-1] = (int) listStatusMonth.get(i).getCountAmount();
+        }
+
+//        List<TotalMoneyInTheLast3Years> l = orderService.TotalMoneyInTheLast3Years();
+//        System.out.println(l.toArray());
 
         CharIn charin =new CharIn();
         charin.setCharMonth(months);
@@ -84,18 +99,22 @@ public class HomeAdminApi {
         Statistical statistical  = new Statistical();
 
 //      month
-        int sumPriceMonth =0;
+        int sumPriceMonthDay =0;
         int lastSumPriceMonth=0;
         try {
-            sumPriceMonth = orderService.sumPriceMonth(month);
+            sumPriceMonthDay = orderService.sumPriceMonth(month);
+        }catch (Exception e){
+            sumPriceMonthDay = 0;
+        }
+        try {
             if(month != 1){
                 lastSumPriceMonth = orderService.sumPriceMonth(month-1);
             }
         }catch (Exception e){
-            sumPriceMonth = 0;
+            lastSumPriceMonth =0;
         }
 
-        Fluctuation fMonth = convenientService.fluctuation(sumPriceMonth,lastSumPriceMonth);
+        Fluctuation fMonth = convenientService.fluctuation(sumPriceMonthDay,lastSumPriceMonth);
         fMonth.setPresent(month);
         statistical.setMonth(fMonth);
 

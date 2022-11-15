@@ -3,6 +3,7 @@ package com.webbanhang.jpa.service;
 import com.webbanhang.jpa.model.CountMonth;
 import com.webbanhang.jpa.model.MoneyMonth;
 import com.webbanhang.jpa.model.Order;
+import com.webbanhang.jpa.model.TotalMoneyInTheLast3Years;
 import net.minidev.json.JSONObject;
 
 import java.util.List;
@@ -25,8 +26,9 @@ public interface OrderService {
     int sumCountMonth(int month);
     List<MoneyMonth> moneyMonthYear(int year);
     List<CountMonth> countMonthYear(int year);
+    List<CountMonth> findAllOrderStatusMonth(int idMonth);
     List<Order> findAllOrderStatus(int idCutomer);
-
+    List<TotalMoneyInTheLast3Years> TotalMoneyInTheLast3Years();
 
 
 }

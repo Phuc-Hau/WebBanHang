@@ -5,11 +5,12 @@ var a = [];
 fetch(url).then(function (response) {
   return response.json();
 }).then(function (response) {
-console.log("f",response)
+  console.log("f",response)
   var month = response.charMonth;
   var countmonth = response.countMonth;
   var year = response.charYear;
   var orderStatus = response.orderStatus;
+
 
 $(function () {
   'use strict';
@@ -125,7 +126,7 @@ $(function () {
     }
   };
   var areaData = {
-    labels: ["Chờ xác nhận", "Đang giao", "Đã Giao", "Đã hủy"],
+    labels: ["Chờ xác nhận","Chờ lấy hàng", "Đang giao", "Đã Giao", "Đã hủy"],
     datasets: [{
       label: 'Số Lượng',
       data: orderStatus,

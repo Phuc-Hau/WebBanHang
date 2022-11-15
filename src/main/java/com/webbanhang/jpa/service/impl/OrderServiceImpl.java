@@ -4,6 +4,7 @@ import com.webbanhang.jpa.dao.OrderDao;
 import com.webbanhang.jpa.model.CountMonth;
 import com.webbanhang.jpa.model.MoneyMonth;
 import com.webbanhang.jpa.model.Order;
+import com.webbanhang.jpa.model.TotalMoneyInTheLast3Years;
 import com.webbanhang.jpa.service.OrderService;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,8 +79,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<CountMonth> findAllOrderStatusMonth(int idMonth) {
+        return OrderDao.findAllOrderStatusMonth(idMonth);
+    }
+
+    @Override
     public List<Order> findAllOrderStatus(int idCutomer) {
         return OrderDao.findAllOrderStatus(idCutomer);
+    }
+
+    @Override
+    public List<TotalMoneyInTheLast3Years> TotalMoneyInTheLast3Years() {
+        return OrderDao.TotalMoneyInTheLast3Years();
     }
 
 

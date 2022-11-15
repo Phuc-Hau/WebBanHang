@@ -1,5 +1,7 @@
 package com.webbanhang.jpa.model;
 
+import java.util.List;
+
 public class CharIn {
     private int charMonth[];
     private int countMonth[];
@@ -29,6 +31,7 @@ public class CharIn {
     public void setCharYear(int[] charYear) {
         this.charYear = charYear;
     }
+
 
     public int[] getOrderStatus() {
         return orderStatus;
