@@ -1,7 +1,7 @@
 header {
 
     position: relative;
-    background-color: #ff8507ba;
+    background-color: rgb(126, 179, 239);
     height: 120px;
     margin-bottom: 15px;
 }
@@ -24,32 +24,155 @@ header {
 }
 
 .carousel-indicators .active {
-    width: 25px;
+    width: 9px;
     height: 9px;
     margin: 0px 10px;
     background-color: red;
 }
 
 .ser {
-    position: relative;
-    margin-top: 18px;
-    margin-bottom: 0px;
-    height: 40px;
-    padding: 0 80px 0 24px;
-    border: 0px;
-    outline: none;
-    border-radius: 8px;
-    width: 87%;
-
-}
-
-.search {
+    display: flex;
+    align-items: center;
     position: absolute;
-    right: 91px;
-    top: 20px;
-    padding: 5px 30px;
-    border-radius: 7px;
+    margin-top: 18px;
+    height: 40px;
+    outline: none;
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    
+
 }
+
+.form{
+    width: 70%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+    
+}
+
+.tim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 23px;
+    right: 5px;
+    width: 30px !important;
+    height: 30px !important;
+    
+    border-radius: 30px;
+    background-color: rgb(148, 162, 232);
+}
+.icon-tim{
+
+
+}
+
+.slide1{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    
+    
+   }
+
+.sp1{
+    text-align: center !important;
+}
+
+.xuhuong>span{
+    display: block !important;
+    text-align: center !important;
+}
+.nho{
+    display: none !important;
+}
+
+@media only screen and (max-width: 768px){
+   .cc{
+    display: none;
+   }
+   .gio{
+    position: absolute;
+    top:50px ;
+   }
+   .body{
+    padding: 5px !important;
+   }
+
+   .sp1{
+    display: flex !important;
+    justify-content: center;
+   }
+   .hotsp{
+    display: block !important;
+    width: 40%;
+    margin: auto !important;
+    
+    
+   }
+
+   .foot{
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-top: 15px ;
+   }
+
+ 
+   .hotline{
+    line-height: 1;
+   }
+   .giua{
+    display: flex !important;
+   }
+   .nho{
+    display: inline-block;
+   }
+   .to{
+    display: none;
+   }
+
+   
+   /* .hos{
+    width:30% ;
+}
+.sp{
+    width:30% ;
+} */
+
+}
+
+@media (min-width: 770px) and (max-width: 900px){
+    .cc{
+     display: none;
+    }
+    .gio{
+     position: absolute;
+     top:50px ;
+    }
+    .body{
+     padding: 5px !important;
+    }
+ 
+    .sp1{
+     display: flex !important;
+     justify-content: center;
+    }
+    .hotsp{
+     display: block !important;
+     width: 30%;
+     margin: auto !important;
+     
+     
+    }
+
+   
+ }
 
 a {
     text-decoration: none;
@@ -76,12 +199,15 @@ a:hover {
     position: relative;
     bottom: -11px;
     right: 16px;
-    background-color: #39c8c2ba;
+    background-color: red;
 }
 
 .gio {
     position: absolute;
-    top: 49px;
+    top: 38px;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
 }
 
 .lan {
@@ -161,8 +287,8 @@ a:hover {
 .sachxuhuong {
     color: black;
     font-size: 17px;
-    padding-left: 11px;
-    text-align: left;
+    
+    text-align: center;
     padding-top: 0px !important;
     line-height: 1.4em;
     word-break: break-word;
@@ -590,3 +716,8 @@ body div #dropdown-menu {
 .asale:hover {
 	opacity: 1;
 }
+
+
+	.giua{
+		margin-top: 25px;
+	}	

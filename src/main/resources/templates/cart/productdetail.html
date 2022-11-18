@@ -24,6 +24,51 @@
 <link rel="stylesheet" href="/assets/css/sach.css">
 
 <style>
+
+
+  /* .df2{
+    display: inline !important ;
+    
+  } */
+
+  .df1{
+    display: inline-flexbox !important;
+    width: 100%;
+    height: 200px;
+    margin: auto;
+  }
+  .nav-item{
+    display: inline !important;
+  }
+  .price1{
+    margin: 0px;
+
+  }
+  .payment2{
+    display: block !important;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+  }
+  .payment2>button{
+    margin: auto;
+    text-align: center;
+  }
+
+  .tt,.cc,.tt1,.av{
+    display: none !important;
+  }
+  .ttcn{
+    display: flex;
+    
+  }
+  .ttcn>div{
+    margin: 5px;
+    background-color: #fafbfc;
+  }
+
+  
 .btn-primary {
 	background-color: orangered;
 }
@@ -43,11 +88,44 @@ input[type='number'] {
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
+
+
+
+@media only screen and (max-width: 900px){
+  
+	.carousel-inner{
+		
+		max-width: 450px !important;
+		margin: auto !important;
+	
+
+	
+
+
+}
+
+
+
+
+
+   
+   /* .hos{
+    width:30% ;
+}
+.sp{
+    width:30% ;
+} */
+
+}
+.carousel-item>img{
+
+}
 </style>
 
 
 </head>
 <body>
+	<div>Chi tiết sản phẩm</div>
 	<!-- header -->
 	<div th:replace ="~{/partials/header.html}"></div>
 
