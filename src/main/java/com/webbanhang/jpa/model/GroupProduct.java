@@ -36,7 +36,7 @@ public class GroupProduct{
 	}
 
 	@Column(name="Status")
-	private int status;
+	private int status=1;
 	
 	@Column(name="Date")
 	private Date date;

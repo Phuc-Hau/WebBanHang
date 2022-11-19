@@ -25,7 +25,7 @@
 					<label >Group Product</label>
 
 					<form action="/admin/productlist">
-						<select ng-model="groupof" name="group" class="form-control">
+						<select ng-model="groupof" name="groups" class="form-control">
 							<option value="">ALL</option>
 							<option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
 						</select>
