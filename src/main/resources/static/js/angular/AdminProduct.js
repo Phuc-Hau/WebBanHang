@@ -66,4 +66,6 @@ app.controller('ctradminproduct', function($scope,$http) {
             showErrorToast("Lỗi Hệ thống");
         })
     }
+
+
 });

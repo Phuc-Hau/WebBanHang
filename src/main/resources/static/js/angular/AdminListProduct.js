@@ -13,4 +13,17 @@ app.controller('ctrlistproduct', function($scope,$http) {
         })
     }
     list();
+
+    $scope.groups =[];
+
+    function lists () {
+        $scope.url="/admin/api/groupproductlist";
+        $http.get($scope.url).then(resp => {
+            $scope.groups = resp.data;
+            console.log("s", resp)
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+    lists();
 })

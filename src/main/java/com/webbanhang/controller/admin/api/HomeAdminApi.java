@@ -3,12 +3,16 @@ package com.webbanhang.controller.admin.api;
 import com.webbanhang.jpa.model.*;
 import com.webbanhang.jpa.service.OrderService;
 import com.webbanhang.service.ConvenientService;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.*;
 
 
@@ -59,7 +63,8 @@ public class HomeAdminApi {
             countMonths[countMonth.get(i).getMonth()-1] = (int) countMonth.get(i).getCountAmount();
         }
 
-
+        // Total Money In The Last 3 Years
+        int moneyYear[] =new int[]{18000,20000,16000};
 
         // Order Status Month
         int orderStatus[] =new int[5];
@@ -69,9 +74,6 @@ public class HomeAdminApi {
         }
 
         Object l = orderService.TotalMoneyInTheLast3Years();
-
-// Total Money In The Last 3 Years
-        int moneyYear[] =new int[]{18000,20000,16000};
 
         CharIn charin =new CharIn();
         charin.setCharMonth(months);

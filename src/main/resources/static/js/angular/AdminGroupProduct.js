@@ -33,6 +33,7 @@ app.controller('ctradmingroupproduct', function($scope,$http) {
             list();
         }else{
             $scope.items = {};
+            $scope.items.date=(new Date()).toLocaleDateString('en-GB');
         }
     }
     $scope.update = function (groupProduct) {

@@ -34,6 +34,7 @@ public class GroupProductAdminApi {
             obj.put("status",true);
             obj.put("message", "Cập nhật danh mục sản phẩm "+groupProduct.getName()+" thành công!");
         }catch (Exception e){
+
             obj.put("status",false);
             obj.put("message", "Cập nhật danh mục sản phẩm "+groupProduct.getName()+" thất bại!");
         }
@@ -43,13 +44,23 @@ public class GroupProductAdminApi {
     @PostMapping("/groupproduct/New")
     public JSONObject adminNewGroupProduct(@RequestBody GroupProduct groupProduct) {
         JSONObject obj = new JSONObject();
+
         try {
-            groupProductService.create(groupProduct);
-            obj.put("status",true);
-            obj.put("message", "Thêm danh mục sản phẩm "+groupProduct.getName()+" thành công!");
+            if(groupProduct.getName() != ""){
+                groupProductService.create(groupProduct);
+                obj.put("status",true);
+                obj.put("message", "Thêm danh mục sản phẩm "+groupProduct.getName()+" thành công!");
+            }else{
+                obj.put("message", "Không thể thêm mục sản phẩm không tên!");
+            }
         }catch (Exception e){
             obj.put("status",false);
-            obj.put("message", "Thêm danh mục sản phẩm "+groupProduct.getName()+" thất bại!");
+            String mess =e.getMessage();
+            if(mess.contains("null")){
+                obj.put("message", "Không thể thêm mục sản phẩm "+groupProduct.getName()+" !");
+            }else if(mess.contains("Name_UNIQUE")) {
+                obj.put("message", "danh mục sản phẩm " + groupProduct.getName() + " đã tồn tại!");
+            }
         }
         return obj;
     }
