@@ -236,6 +236,10 @@ body {
     margin-right: 5px;
 }
 
+.fa .fa-check{
+    margin-top: 14px;
+}
+
 .tt {
     max-width: 86px;
     overflow: hidden;
@@ -754,3 +758,12 @@ body .modal-content {
     flex-direction: column !important;
 }
 
+a {
+     color: white !important;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.border-end a{
+    color : black !important;
+}
