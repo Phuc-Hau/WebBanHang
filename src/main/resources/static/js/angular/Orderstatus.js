@@ -8,6 +8,7 @@ app.controller('orderstatus', function($scope,$http) {
     $scope.urlgroup="/accounts/api/listordersDetailltatus/";
     $scope.orderlist =[];
     $scope.orderstatus =[];
+    $scope.status =[];
 
 
 
@@ -17,6 +18,14 @@ app.controller('orderstatus', function($scope,$http) {
     }).catch(error => {
         console.log("fail", error)
     })
+    $scope.urlStatus="/accounts/api/OrderStatus";
+    $http.get($scope.urlStatus).then(resp => {
+        $scope.status = resp.data;
+        console.log("SuccessStatus", resp)
+    }).catch(error => {
+        console.log("fail", error)
+    })
+
 
 
     $scope.orderid = function (id){
@@ -26,6 +35,10 @@ app.controller('orderstatus', function($scope,$http) {
         }).catch(error => {
             console.log("fail", error)
         })
+
+
+        $scope.statusy = document.getElementById("statusy").value;
+        alert(statusy);
     }
 
 

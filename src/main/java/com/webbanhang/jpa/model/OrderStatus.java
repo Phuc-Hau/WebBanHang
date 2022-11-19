@@ -12,6 +12,17 @@ public class OrderStatus {
     @Column(name = "Id", nullable = false)
     private Integer id;
 
+    @Column(name="Status")
+    private String Status;
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
     public Integer getId() {
         return id;
     }
