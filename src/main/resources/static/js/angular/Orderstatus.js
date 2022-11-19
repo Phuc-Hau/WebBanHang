@@ -32,13 +32,19 @@ app.controller('orderstatus', function($scope,$http) {
         $http.get($scope.urlgroup+id).then(resp => {
             $scope.orderstatus = resp.data;
             console.log("Success Group", resp)
+            // active
+
+            var u= $scope.orderstatus[0].order.status;
+            if(u!=5){
+                document.getElementById("step"+u).classList.add('active')
+            }
+
         }).catch(error => {
             console.log("fail", error)
         })
 
 
-        $scope.statusy;
-        alert($scope.statusy);
+
     }
 
 

@@ -95,13 +95,12 @@
 
           <div  class="container-product">
 
-            <div class="info-product">
+            <div ng-repeat="item in orderlist" class="info-product">
               <div class="status d-flex">
-                <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+                <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
                 <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
                 <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-                <span class="ml-auto p-2">giaohang  |</span>
-                <div class="status-product p-2">dagiao</div>
+
 
               </div>
               <div class="product"><img src="../../static/image/show2.jpg" alt="">
@@ -109,13 +108,13 @@
                 <span>phan loai</span>
                 <span>so luong</span>
 
-                <span class="ghw9hb">₫280.000</span>
+                <span class="ghw9hb">{{item.totalmoney}}</span>
 
               </div>
               <div class="price0">
                 <div class="price " >
                   <div class="price1 ">Tổng số tiền :</div>
-                  <div class="price2">₫280.000</div>
+                  <div class="price2">{{item.totalmoney}}</div>
                 </div>
               </div>
               <div class="payment">
@@ -123,15 +122,18 @@
                 <div class="payment2">
                   <!-- The Modal -->
                   <!-- Button to Open the Modal -->
-                  <button type="button"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
+                  <button ng-click="orderid(item.id)" type="button"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
                     chi tiết đơn hang
                   </button>
 
 
-                  <div class="_8vTqu9"></div>
-                  <div class="VN6h8+">
+                  <div class="_8vTqu9">
                     <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
                   </div>
+                  <div class="_8vTqu9">
+                    <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                  </div>
+
                   <div class="VN6h8+">
                     <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                   </div>
@@ -146,11 +148,10 @@
         <div role="tabpanel" class="tab-pane fade" id="wait_xn">
           <div ng-repeat="item in orderlist | filter : {status:1}" class="info-product">
             <div class="status d-flex">
-              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-              <span class="ml-auto p-2">giaohang  |</span>
-              <div class="status-product p-2">dagiao</div>
+
 
             </div>
             <div class="product"><img src="../../static/image/show2.jpg" alt="">
@@ -192,7 +193,7 @@
         <div role="tabpanel" class="tab-pane fade" id="wait_lh">
           <div ng-repeat="item in orderlist | filter : {status:2}" class="info-product">
             <div class="status d-flex">
-              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
               <span class="ml-auto p-2">giaohang  |</span>
@@ -238,11 +239,10 @@
         <div role="tabpanel" class="tab-pane fade" id="Danggiao">
           <div ng-repeat="item in orderlist | filter : {status:3}" class="info-product">
             <div class="status d-flex">
-              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-              <span class="ml-auto p-2">giaohang  |</span>
-              <div class="status-product p-2">dagiao</div>
+
 
             </div>
             <div class="product"><img src="../../static/image/show2.jpg" alt="">
@@ -284,11 +284,10 @@
         <div role="tabpanel" class="tab-pane fade" id="Dagiao">
           <div ng-repeat="item in orderlist | filter : {status:4}" class="info-product">
             <div class="status d-flex">
-              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-              <span class="ml-auto p-2">giaohang  |</span>
-              <div class="status-product p-2">dagiao</div>
+
 
             </div>
             <div class="product"><img src="../../static/image/show2.jpg" alt="">
@@ -313,6 +312,10 @@
                 <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
                   chi tiết đơn hang
                 </button>
+
+                <div class="VN6h8+">
+                  <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                </div>
 
                 <!-- The Modal -->
 
@@ -330,11 +333,10 @@
         <div role="tabpanel" class="tab-pane fade" id="Dahuy">
           <div ng-repeat="item in orderlist | filter : {status:5}" class="info-product">
             <div class="status d-flex">
-              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>tenshop</div>
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-              <span class="ml-auto p-2">giaohang  |</span>
-              <div class="status-product p-2">dagiao</div>
+
 
             </div>
             <div class="product"><img src="../../static/image/show2.jpg" alt="">
@@ -362,10 +364,10 @@
 
                 <!-- The Modal -->
 
-                <div class="_8vTqu9"></div>
                 <div class="VN6h8+">
-
+                  <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                 </div>
+
                 <div class="VN6h8+">
                   <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                 </div>
@@ -406,15 +408,11 @@
                   <div class="col"> <strong>Ngày đặt đơn:</strong> <br>{{orderstatus[0].order.date}} </div>
                   <div class="col"> <strong>Giao bởi:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
                   <div class="col"> <strong>Trạng thái:</strong> <br> {{status[orderstatus[0].order.status].status}}</div>
-                  <input type="hidden" id="statusy" ng-value="orderstatus[0].order.status"  ng-model="statusy">
                   <div class="col"> <strong>Thành tiền:</strong> <br> {{orderstatus[0].order.totalmoney}} </div>
                 </div>
               </article>
               <div class="track">
-
-
-
-                <div id="step1" class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xác nhận</span> </div>
+                <div id="step1" class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xác nhận</span> </div>
                 <div id="step2" class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Chờ lấy hàng</span> </div>
                 <div id="step3" class="step"> <span class="icon"> <i class="fa fa-truck" aria-hidden="true"></i></span> <span class="text"> Đang giao </span> </div>
                 <div id="step4" class="step"> <span class="icon"> <i class="fa fa-check" aria-hidden="true"></i> </span> <span class="text">Đã giao</span> </div>
