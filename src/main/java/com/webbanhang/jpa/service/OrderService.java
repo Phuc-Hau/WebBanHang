@@ -10,14 +10,12 @@ import java.util.List;
 
 public interface OrderService {
 
-
     List<Order> findAll();
     Order findById(Integer id);
     Order create(Order entity);
     Order update(Order entity);
     
     boolean existsById(Integer id);
-
 
     Order findIdCutomer(int id);
     int sumPriceOrder(int idOrder);
@@ -29,6 +27,5 @@ public interface OrderService {
     List<CountMonth> findAllOrderStatusMonth(int idMonth);
     List<Order> findAllOrderStatus(int idCutomer);
     Object TotalMoneyInTheLast3Years();
-
 
 }
