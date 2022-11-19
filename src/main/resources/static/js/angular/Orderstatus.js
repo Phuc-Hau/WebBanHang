@@ -37,8 +37,8 @@ app.controller('orderstatus', function($scope,$http) {
         })
 
 
-        $scope.statusy = document.getElementById("statusy").value;
-        alert(statusy);
+        $scope.statusy;
+        alert($scope.statusy);
     }
 
 
