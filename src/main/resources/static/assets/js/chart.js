@@ -113,9 +113,9 @@ $(function () {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      '2020',
-      '2021',
       '2022',
+      '2021',
+      '2020',
     ]
   };
   var doughnutPieOptions = {

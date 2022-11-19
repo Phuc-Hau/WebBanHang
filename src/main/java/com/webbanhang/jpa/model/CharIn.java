@@ -5,7 +5,7 @@ import java.util.List;
 public class CharIn {
     private int charMonth[];
     private int countMonth[];
-    private int charYear[];
+    private Object charYear;
     private int orderStatus[];
 
     public int[] getCharMonth() {
@@ -24,14 +24,13 @@ public class CharIn {
         this.countMonth = countMonth;
     }
 
-    public int[] getCharYear() {
+    public Object getCharYear() {
         return charYear;
     }
 
-    public void setCharYear(int[] charYear) {
+    public void setCharYear(Object charYear) {
         this.charYear = charYear;
     }
-
 
     public int[] getOrderStatus() {
         return orderStatus;

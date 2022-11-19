@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileWriter;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.*;
@@ -63,8 +64,7 @@ public class HomeAdminApi {
             countMonths[countMonth.get(i).getMonth()-1] = (int) countMonth.get(i).getCountAmount();
         }
 
-        // Total Money In The Last 3 Years
-        int moneyYear[] =new int[]{18000,20000,16000};
+
 
         // Order Status Month
         int orderStatus[] =new int[5];
@@ -73,7 +73,8 @@ public class HomeAdminApi {
             orderStatus[listStatusMonth.get(i).getMonth()-1] = (int) listStatusMonth.get(i).getCountAmount();
         }
 
-        Object l = orderService.TotalMoneyInTheLast3Years();
+        // Total Money In The Last 3 Years
+        Object moneyYear = orderService.TotalMoneyInTheLast3Years();
 
         CharIn charin =new CharIn();
         charin.setCharMonth(months);
