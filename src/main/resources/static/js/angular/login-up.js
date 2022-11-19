@@ -20,12 +20,15 @@ app.controller('signup', function($scope,$http) {
             if(!resp.data.status){
                 showErrorToast(resp.data.message);
             }else{
-                formlogin.style.display="none";
                 container.classList.remove("sign-up-mode");
-                formcode.style.display="";
+                setTimeout ( function () {
+                    showSuccessToast("Chờ nhận Code")
+                    formlogin.style.display="none";
+                    formcode.style.display="";
+                }, 1000);
+
 
             }
-            console.log("Success", resp)
         }).catch(error => {
             console.log("fail", error)
         })
@@ -38,8 +41,10 @@ app.controller('signup', function($scope,$http) {
                 showErrorToast(resp.data.message);
             }else{
                 showSuccessToast(resp.data.message)
-                sleep(2);
-                window.location='http://localhost:8080/account/signin';
+                setTimeout ( function () {
+                    window.location='http://localhost:8080/account/signin';
+                }, 1000);
+
             }
             console.log("Success", resp)
         }).catch(error => {
