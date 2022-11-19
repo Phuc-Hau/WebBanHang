@@ -11,20 +11,20 @@ app.controller('forgetpass', function($scope,$http) {
 
     $scope.next = function() {
         $scope.urlemail="/account/api/email/";
-        if($scope.email.length > 3){
-            $http.get($scope.urlemail+$scope.email).then(resp => {
-                $scope.model = resp.data;
-                console.log("Success", resp)
-                if($scope.model.status){
-                    container.classList.add("sign-up-mode");
-                }else{
-                    showErrorToast($scope.model.message);
-                }
-            }).catch(error => {
-                console.log("fail", error)
-            })
 
-        }
+        $http.get($scope.urlemail+$scope.email).then(resp => {
+            $scope.model = resp.data;
+            console.log("Success", resp)
+            if($scope.model.status){
+                container.classList.add("sign-up-mode");
+                showSuccessToast("Chờ nhận code")
+            }else{
+                showErrorToast($scope.model.message);
+            }
+        }).catch(error => {
+            console.log("fail", error)
+        })
+
     }
 
     $scope.entercode= function (code){
@@ -32,10 +32,13 @@ app.controller('forgetpass', function($scope,$http) {
         $http.post($scope.urlcode+code).then(resp => {
             console.log("Success", resp)
             if(resp.data.status){
-                formsignin.style.display='none';
                 container.classList.remove("sign-up-mode");
-                formcode.style.display='';
-                pcode.innerHTML="Change Password"
+                setTimeout ( function () {
+                    formsignin.style.display='none';
+                    formcode.style.display='';
+                    pcode.innerHTML="Change Password"
+                }, 1000);
+
             }else{
                 showErrorToast(resp.data.message);
             }
