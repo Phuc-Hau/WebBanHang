@@ -7,6 +7,7 @@ var id = ur.slice(ur.indexOf('edit/')+5)
 app.controller('ctradmingroupproduct', function($scope,$http) {
 
     $scope.items ={};
+    $scope.image;
 
     document.getElementById('newGroupProduct').style.display='';
     document.getElementById('updateGroupProduct').style.display='none';
@@ -31,14 +32,17 @@ app.controller('ctradmingroupproduct', function($scope,$http) {
     $scope.reset = function () {
         if(id != '://localhost:8080/admin/groupproduct/edit') {
             list();
+
         }else{
             $scope.items = {};
             $scope.items.date=(new Date()).toLocaleDateString('en-GB');
+            document.getElementById("imageResult").src='/file/user/avata.jpg';
         }
-        document.getElementById("imageResult").src='/file/user/avata.jpg';
+
     }
     $scope.update = function (groupProduct) {
         $scope.urlupdate= '/admin/api/groupproduct/Update';
+        console.log("groupProduct", groupProduct)
         $http.post($scope.urlupdate,groupProduct).then(resp => {
             if(resp.data.status){
                 showSuccessToast(resp.data.message);
@@ -83,7 +87,8 @@ app.controller('ctradmingroupproduct', function($scope,$http) {
             transformRequest: angular.identity,
             headers:{'Content-Type': undefined}
         }).then(resp => {
-            console.log("se", resp)
+            $scope.image = resp.data[0];
+            $scope.items.images =angular.copy($scope.image);
         }).catch(error => {
             console.log("fail", error)
         })
