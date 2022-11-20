@@ -4,6 +4,7 @@ package com.webbanhang.controller.cart.api;
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.OrderStatus;
+import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.jpa.service.OrderService;
 import com.webbanhang.jpa.service.OrderStatusService;
@@ -33,25 +34,38 @@ public class OrderStatusApi {
 
     @GetMapping("/listorderstatus")
     public List<Order> cart(HttpServletRequest request) {
-//        String username = request.getRemoteUser();
-//
-//        Users user =userService.findByUsername(username);
+        String username = request.getRemoteUser();
 
-        List<Order> list = orderService.findAllOrderStatus(1);
+        Users user =userService.findByUsername(username);
+
+        List<Order> list = orderService.findAllOrderStatus(user.getCutomer().getId());
 
         return list;
     }
 
-    @GetMapping("/listordersDetailltatus/{idOrder}")
+    @PostMapping("/listordersDetailStatus/{idOrder}")
     public List<OrderDetail> detail(HttpServletRequest request,@PathVariable("idOrder") int idOrder) {
-//        String username = request.getRemoteUser();
-//
-//        Users user =userService.findByUsername(username);
+        String username = request.getRemoteUser();
 
-        List<OrderDetail> list = orderDetailService.findAllOrderStatust(1,idOrder);
+        Users user =userService.findByUsername(username);
+
+        List<OrderDetail> list = orderDetailService.findAllOrderStatust(user.getCutomer().getId(),idOrder);
 
         return list;
     }
+
+    @PostMapping("/listordersDetail")
+    public List<OrderDetail> listordersDetail(HttpServletRequest request) {
+        String username = request.getRemoteUser();
+
+        Users user =userService.findByUsername(username);
+
+        List<OrderDetail> list = orderDetailService.findAllOrderUsername(user.getCutomer().getId());
+
+        return list;
+    }
+
+
 
     @GetMapping("OrderStatus")
     public List<OrderStatus> status(){

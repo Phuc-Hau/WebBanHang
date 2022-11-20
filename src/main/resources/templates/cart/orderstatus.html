@@ -1,7 +1,8 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 
 <head>
-  <title>Title</title>
+  <title>Đơn mua</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.png" />
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,8 +12,8 @@
 
   <script src="/js/angular/Orderstatus.js"></script>
   <script src="/assets/js/orderstatus.js"></script>
-  <link rel="stylesheet" href="/assets/css/sach.css">
   <link rel="stylesheet" href="/assets/css/orderstatus.css">
+  <link rel="stylesheet" href="/assets/css/sach.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +21,6 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
   <!------ Include the above in your HEAD tag ---------->
-
 </head>
 
 <body ng-app="app" ng-controller="orderstatus">
@@ -42,18 +42,15 @@
           <a class="hoso" href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa hồ sơ</a>
         </div>
       </div>
-
-
       <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Siêu sale</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-user"
+
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/account/changinformation"><i class="fa fa-user"
                                                                                                  aria-hidden="true"></i>Tài khoản của tôi</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i
                 class="fa fa-list-alt" aria-hidden="true"></i>Đơn mua</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-bell"
                                                                                                  aria-hidden="true"></i>Thông báo</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-ticket"
-                                                                                                 aria-hidden="true"></i>Kho voucher</a>
+
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"></a>
       </div>
     </div>
@@ -90,25 +87,26 @@
           <!-- Actual search box -->
           <div class="form-group has-search">
             <span class="fa fa-search form-control-feedback"></span>
-            <input type="text" class="form-control" placeholder="Tìm kiếm theo tên shop, ID đơn hàng hoặc tên sản phẩm">
+            <input ng-model="search" type="text" class="form-control" placeholder="Tìm kiếm theo tên shop, ID đơn hàng hoặc tên sản phẩm">
           </div>
 
           <div  class="container-product">
 
-            <div ng-repeat="item in orderlist" class="info-product">
+            <div ng-repeat="item in orderlist | filter:{id:search} " class="info-product">
               <div class="status d-flex">
                 <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
                 <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
                 <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-
+                <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
               </div>
-              <div class="product"><img src="../../static/image/show2.jpg" alt="">
-                <span>ten san pham</span>
-                <span>phan loai</span>
-                <span>so luong</span>
-
-                <span class="ghw9hb">{{item.totalmoney}}</span>
+              <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+                <ul class="phanloai" style=" margin-left: 20px">
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+                </ul>
+                <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
               </div>
               <div class="price0">
@@ -122,17 +120,25 @@
                 <div class="payment2">
                   <!-- The Modal -->
                   <!-- Button to Open the Modal -->
+
+                  <div class="_8vTqu9">
                   <button ng-click="orderid(item.id)" type="button"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
                     chi tiết đơn hang
                   </button>
+                  </div>
 
+                  <div ng-if="item.status!=3">
 
-                  <div class="_8vTqu9">
+                  <div  ng-if="item.status== 1 || item.status== 2" class="_8vTqu9">
                     <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
                   </div>
-                  <div class="_8vTqu9">
+
+                  <div  ng-if="item.status== 4 || item.status== 5" class="_8vTqu9">
                     <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                   </div>
+
+                  </div>
+
 
                   <div class="VN6h8+">
                     <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
@@ -151,15 +157,16 @@
               <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div class="product"><img src="../../static/image/show2.jpg" alt="">
-              <span>ten san pham</span>
-              <span>phan loai</span>
-              <span>so luong</span>
-
-              <span class="ghw9hb">{{item.totalmoney}}</span>
+            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" style=" margin-left: 20px">
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -177,12 +184,13 @@
                   chi tiết đơn hang
                 </button>
 
+                <div class="_8vTqu9">
+                  <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
+                </div>
+
                 <!-- The Modal -->
 
-                <div class="_8vTqu9"></div>
-                <div class="VN6h8+">
 
-                </div>
                 <div class="VN6h8+">
                   <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                 </div>
@@ -196,16 +204,17 @@
               <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-              <span class="ml-auto p-2">giaohang  |</span>
-              <div class="status-product p-2">dagiao</div>
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div class="product"><img src="../../static/image/show2.jpg" alt="">
-              <span>ten san pham</span>
-              <span>phan loai</span>
-              <span>so luong</span>
 
-              <span class="ghw9hb">{{item.totalmoney}}</span>
+            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" style=" margin-left: 20px">
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -223,12 +232,12 @@
                   chi tiết đơn hang
                 </button>
 
+                <div class="_8vTqu9">
+                  <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
+                </div>
                 <!-- The Modal -->
 
-                <div class="_8vTqu9"></div>
-                <div class="VN6h8+">
 
-                </div>
                 <div class="VN6h8+">
                   <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                 </div>
@@ -242,15 +251,16 @@
               <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div class="product"><img src="../../static/image/show2.jpg" alt="">
-              <span>ten san pham</span>
-              <span>phan loai</span>
-              <span>so luong</span>
-
-              <span class="ghw9hb">{{item.totalmoney}}</span>
+            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" style=" margin-left: 20px">
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -270,10 +280,7 @@
 
                 <!-- The Modal -->
 
-                <div class="_8vTqu9"></div>
-                <div class="VN6h8+">
 
-                </div>
                 <div class="VN6h8+">
                   <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                 </div>
@@ -287,15 +294,16 @@
               <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div class="product"><img src="../../static/image/show2.jpg" alt="">
-              <span>ten san pham</span>
-              <span>phan loai</span>
-              <span>so luong</span>
-
-              <span class="ghw9hb">{{item.totalmoney}}</span>
+            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" style=" margin-left: 20px">
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -309,6 +317,7 @@
               <div class="payment2">
                 <!-- The Modal -->
                 <!-- Button to Open the Modal -->
+
                 <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
                   chi tiết đơn hang
                 </button>
@@ -319,10 +328,7 @@
 
                 <!-- The Modal -->
 
-                <div class="_8vTqu9"></div>
-                <div class="VN6h8+">
 
-                </div>
                 <div class="VN6h8+">
                   <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                 </div>
@@ -336,15 +342,16 @@
               <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
               <button id="button-chat"><i class="fa fa-comment-o" aria-hidden="true"></i>chat</button>
               <button id="button-xem"><i class="fa fa-calendar-o" aria-hidden="true"></i>xemshop</button>
-
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div class="product"><img src="../../static/image/show2.jpg" alt="">
-              <span>ten san pham</span>
-              <span>phan loai</span>
-              <span>so luong</span>
-
-              <span class="ghw9hb">{{item.totalmoney}}</span>
+            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" style=" margin-left: 20px">
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -358,10 +365,11 @@
               <div class="payment2">
                 <!-- The Modal -->
                 <!-- Button to Open the Modal -->
+                <div class="VN6h8+">
                 <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
                   chi tiết đơn hang
                 </button>
-
+                </div>
                 <!-- The Modal -->
 
                 <div class="VN6h8+">
@@ -403,15 +411,16 @@
 
             <div class="card-body">
               <h6>Order ID: {{orderstatus[0].order.id}}</h6>
+              <h6>Tổng đơn: {{getAmount()}}</h6>
               <article class="card">
                 <div class="card-body row">
-                  <div class="col"> <strong>Ngày đặt đơn:</strong> <br>{{orderstatus[0].order.date}} </div>
+                  <div class="col"> <strong>Ngày đặt đơn:</strong> <br>{{orderstatus[0].order.date| date:'dd-MM-yyyy'}} </div>
                   <div class="col"> <strong>Giao bởi:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
                   <div class="col"> <strong>Trạng thái:</strong> <br> {{status[orderstatus[0].order.status].status}}</div>
                   <div class="col"> <strong>Thành tiền:</strong> <br> {{orderstatus[0].order.totalmoney}} </div>
                 </div>
               </article>
-              <div class="track">
+              <div class="track" id="track">
                 <div id="step1" class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xác nhận</span> </div>
                 <div id="step2" class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Chờ lấy hàng</span> </div>
                 <div id="step3" class="step"> <span class="icon"> <i class="fa fa-truck" aria-hidden="true"></i></span> <span class="text"> Đang giao </span> </div>
@@ -423,12 +432,13 @@
                   <figure class="itemside mb-3">
                     <div class="aside"><img src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}" class="img-sm border"></div>
                     <figcaption class="info align-self-center">
-                      <p class="title">{{item.product.name}} <br> Số lượng : {{item.quantity}}</p> <span class="text-muted">Giá : {{item.product.price}} </span>
+                      <p class="title">{{item.product.name}} <br> Loại : {{item.product.groupProduct.name}}<br> Số lượng : {{item.quantity}}</p> <span class="text-muted">Giá : {{item.product.price}} </span>
                     </figcaption>
                   </figure>
                 </li>
 
               </ul>
+              <h3>Tổng số tiền: {{orderstatus[0].order.totalmoney}}</h3>
               <hr>
 
             </div>

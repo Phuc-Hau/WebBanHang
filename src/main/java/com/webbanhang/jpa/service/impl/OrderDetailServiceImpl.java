@@ -55,6 +55,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
+    public List<OrderDetail> findAllOrderUsername(int idCutomer) {
+        return OrderDetailDao.findAllOrderUsername(idCutomer);
+    }
+
+    @Override
     public boolean existsById(Integer id) {
         return OrderDetailDao.existsById(id);
     }
