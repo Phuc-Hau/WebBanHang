@@ -15,10 +15,24 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="row">
+					<div class="col-md-3">
+
+						<div class="avatar-upload">
+							<div class="avatar-edit">
+								<label style="position: absolute; width: 212px; height: 212px; left: -4px; top: 40px; opacity: 0;"
+									   for="upload"></label>
+								<input id="upload" name="imgs files" type="file" accept=".png, .jpg, .jpeg" onchange="readURL(this); angular.element(this).scope().uploadfile(this.files);"  />
+
+							</div>
+							<div class="avatar-preview" style="right: 180px; top: 50px;">
+								<img width="200px" height="200px" id="imageResult" src="/file/user/avata.jpg">
+								<label style="margin-top: 25px; margin-left: 26px;" for="upload">Upload ảnh danh mục</label>
+							</div>
+						</div>
+
+					</div>
 					<div class="col-md-9">
-						<form class="form-sample" method="post"
-							  modelAttribute="product" enctype="multipart/form-data">
-							<input path="id" type="hidden" />
+						<form class="form-sample" >
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group row">
@@ -35,6 +49,17 @@
 										<label class="col-sm-3 col-form-label">Ngày Thêm</label>
 										<div class="col-sm-9">
 											<div class="form-control" >{{items.date}}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Content</label>
+										<div class="col-sm-9">
+											<input ng-model="items.content" type="text" class="form-control" />
 										</div>
 									</div>
 								</div>

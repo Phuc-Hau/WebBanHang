@@ -35,6 +35,7 @@ app.controller('ctradmingroupproduct', function($scope,$http) {
             $scope.items = {};
             $scope.items.date=(new Date()).toLocaleDateString('en-GB');
         }
+        document.getElementById("imageResult").src='/file/user/avata.jpg';
     }
     $scope.update = function (groupProduct) {
         $scope.urlupdate= '/admin/api/groupproduct/Update';
@@ -67,4 +68,25 @@ app.controller('ctradmingroupproduct', function($scope,$http) {
             showErrorToast("Lỗi Hệ thống");
         })
     }
+
+    $scope.uploadfile = function (files) {
+
+        let form = new FormData();
+
+        for(var i = 0; i< files.length; i++){
+            form.append("files",files[i]);
+        }
+
+        let urlfile = 'http://localhost:8080/api/file/Groupproduct';
+
+        $http.post(urlfile,form,{
+            transformRequest: angular.identity,
+            headers:{'Content-Type': undefined}
+        }).then(resp => {
+            console.log("se", resp)
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+
 });
