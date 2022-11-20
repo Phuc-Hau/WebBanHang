@@ -65,7 +65,6 @@ public class HomeAdminApi {
         }
 
 
-
         // Order Status Month
         int orderStatus[] =new int[5];
         List<CountMonth> listStatusMonth =orderService.findAllOrderStatusMonth(month);

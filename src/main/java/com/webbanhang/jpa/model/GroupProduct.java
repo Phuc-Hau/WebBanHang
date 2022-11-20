@@ -34,9 +34,6 @@ public class GroupProduct{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	@Column(name="Status")
-	private int status=1;
 	
 	@Column(name="Date")
 	private Date date;
@@ -76,14 +73,6 @@ public class GroupProduct{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 	public List<Product> getProducts() {
