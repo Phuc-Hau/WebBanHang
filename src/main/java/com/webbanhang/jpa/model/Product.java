@@ -30,10 +30,10 @@ public class Product {
     private String name;
 
     @Column(name = "Price")
-    private double price;
+    private int price;
 
     @Column(name = "Sale")
-    private int sale;
+    private float sale;
 
     @Column(name = "Status")
     private boolean status;
@@ -93,19 +93,19 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public double getSale() {
+    public float getSale() {
         return sale;
     }
 
-    public void setSale(int sale) {
+    public void setSale(float sale) {
         this.sale = sale;
     }
 

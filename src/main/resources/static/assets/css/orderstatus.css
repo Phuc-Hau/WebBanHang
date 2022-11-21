@@ -289,8 +289,12 @@ body {
 }
 
 .nav__tabs .nav__item:hover {
-    border-bottom: 1px solid #ee4d2d !important;
+    color: #ee4d2d !important;
+}
 
+.nav__item .nav-link:hover{
+    color: #ee4d2d !important;
+    opacity: 1 !important;
 }
 
 .nav__item {
@@ -641,6 +645,13 @@ body {
 .track .step.active:before {
     background: #FF5722
 }
+
+.nav__item .nav-link.active {
+    border-bottom: 1px solid #ee4d2d !important;
+    color: #ee4d2d !important;
+}
+
+
 
 .track .step::before {
     height: 7px;

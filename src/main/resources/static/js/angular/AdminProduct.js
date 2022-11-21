@@ -36,6 +36,7 @@ app.controller('ctradminproduct', function($scope,$http) {
         }
     }
     $scope.update = function (product) {
+        console.log("t", product)
         $scope.urlupdate= '/admin/api/product/Update';
         $http.post($scope.urlupdate,product).then(resp => {
             if(resp.data.status){
