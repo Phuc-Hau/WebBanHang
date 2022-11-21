@@ -2,6 +2,7 @@ var app = angular.module("app", []);
 app.controller('ctrlistproduct', function($scope,$http) {
 
     $scope.items =[];
+    $scope.prop="-date";
 
     function list () {
         $scope.url="/admin/api/productlist";
@@ -26,4 +27,9 @@ app.controller('ctrlistproduct', function($scope,$http) {
         })
     }
     lists();
+
+    $scope.sortBy = function(prop){
+        $scope.prop = prop;
+    }
+
 })

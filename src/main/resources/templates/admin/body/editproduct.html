@@ -19,8 +19,7 @@
 
 						<div class="avatar-upload">
 							<div class="avatar-edit">
-								<label style="position: absolute; width: 212px; height: 212px; left: -4px; top: 40px; opacity: 0;"
-									   for="upload"></label>
+								<label style="position: absolute; width: 212px; height: 212px; left: -4px; top: 40px; opacity: 0;" for="upload"></label>
 								<input id="upload" type="file" onchange="readURL(this);" name="imgs" accept=".png, .jpg, .jpeg" />
 
 							</div>
@@ -59,7 +58,8 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">Amount</label>
 										<div class="col-sm-9">
-											<div  type="text" class="form-control">{{items.amount}}</div>
+											<input ng-model="items.amount" min="0" type="number"
+												   class="form-control" />
 										</div>
 									</div>
 								</div>
