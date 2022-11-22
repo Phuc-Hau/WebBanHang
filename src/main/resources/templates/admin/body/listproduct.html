@@ -15,7 +15,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="form-group row">
-					<div class="col-sm-9">
+					<div class="col-sm-7">
 						<label style="margin-top: 10px">Group Product</label>
 						<form action="/admin/productlist">
 							<select ng-model="groupof" name="groups" class="form-control">
@@ -31,6 +31,11 @@
 								<i class="mdi mdi-file-check btn-icon-prepend"></i>New</button>
 						</a>
 					</div>
+					<div class="col-sm-2">
+						<button ng-click="ResetFilter()" type="button" class="btn btn-gradient-warning btn-rounded btn-fw" style="margin-top: 20px;  right: 0px;float: right; margin-bottom: 0px;">
+							<i class="mdi mdi-sync"></i>Reset</button>
+					</div>
+
 				</div>
 				<div style="display: flex">
 					<div >
@@ -40,7 +45,7 @@
 										<input name="membershipRadios" type="radio" class="form-check-input" id="ExampleRadio1"
 											   ng-model="Status" value="" ng-checked="true">
 										<i class="input-helper"></i>
-										Tất cả sản phẩm
+										Tất cả sản phẩm ({{items.length}})
 									</label>
 								</div>
 						</span>
@@ -52,7 +57,7 @@
 										<input name="membershipRadios" type="radio" class="form-check-input" id="ExampleRadio2"
 											   ng-model="Status" value="true" >
 										<i class="input-helper"></i>
-										Hoạt động
+										Hoạt động ({{itemstrue.length}})
 									</label>
 								</div>
 							</span>
@@ -64,10 +69,21 @@
 										<input name="membershipRadios" type="radio" class="form-check-input" id="ExampleRadio4"
 											   ng-model="Status" value="false" >
 										<i class="input-helper"></i>
-										Không hoạt động
+										Không hoạt động ({{itemsfalse.length}})
 									</label>
 								</div>
 							</span>
+					</div>
+
+					<div class="search-field d-none d-md-block " style="width: 50%;margin-left: 30px;border: 1px solid #c5c5c5; border-radius: 4px;">
+						<form class="d-flex align-items-center h-100" action="#">
+							<div class="input-group">
+								<div class="input-group-prepend bg-transparent">
+									<i class="input-group-text border-0 mdi mdi-magnify" style="padding: 1.1rem 0.75rem;background-color: white;"></i>
+								</div>
+								<input ng-model="searchname" type="text" class="form-control bg-transparent border-0" placeholder="Search name product">
+							</div>
+						</form>
 					</div>
 
 				</div>
@@ -87,7 +103,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="item in items |orderBy:prop | filter : {groupProduct: {id: groupof}, status:Status} ">
+						<tr ng-repeat="item in items |orderBy:prop | filter : {groupProduct: {id: groupof}, status:Status,name:searchname} ">
 							<td>{{$index+1}}</td>
 							<td class="py-1">
 								<img src="/file/AnhWebBanHang/{{item.imgs[0].image}}"

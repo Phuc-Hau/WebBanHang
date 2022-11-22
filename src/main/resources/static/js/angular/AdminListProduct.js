@@ -8,7 +8,8 @@ app.controller('ctrlistproduct', function($scope,$http) {
         $scope.url="/admin/api/productlist";
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
-            console.log("s", resp)
+            $scope.itemstrue = $scope.items.filter(s=>s.status==true);
+            $scope.itemsfalse= $scope.items.filter(s=>s.status==false);
         }).catch(error => {
             console.log("fail", error)
         })
@@ -21,7 +22,6 @@ app.controller('ctrlistproduct', function($scope,$http) {
         $scope.url="/admin/api/groupproductlist";
         $http.get($scope.url).then(resp => {
             $scope.groups = resp.data;
-            console.log("s", resp)
         }).catch(error => {
             console.log("fail", error)
         })
@@ -30,6 +30,14 @@ app.controller('ctrlistproduct', function($scope,$http) {
 
     $scope.sortBy = function(prop){
         $scope.prop = prop;
+    }
+
+    $scope.ResetFilter = function (){
+        $scope.Status ="";
+        $scope.searchname ="";
+        $scope.groupof="";
+        list();
+        lists();
     }
 
 })
