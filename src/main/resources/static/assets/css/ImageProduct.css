@@ -1,0 +1,34 @@
+.images Img{
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}
+
+.images{
+    display: flex;
+}
+
+.images label{
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 6px;
+}
+
+.images .dimg{
+    text-align: center;
+    color: red;
+    padding: 2px;
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
+    right: 2px;
+    top: 2px;
+    position: absolute;
+    border: 1px solid red;
+    border-radius: 50%;
+
+}
+
+.images div{
+    display: grid;
+}
