@@ -35,6 +35,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public int getLastId() {
+        return ProductDao.getLastId().get(0);
+    }
+
+    @Override
     public boolean existsById(Integer id) {
         return ProductDao.existsById(id);
     }

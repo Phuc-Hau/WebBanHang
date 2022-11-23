@@ -25,8 +25,11 @@ public class UploatFileApi {
 
     @PostMapping("{folder}")
     public List<String> upload(@PathVariable("folder") String folder, @PathParam("files") MultipartFile[] files){
-
-        return filemanager.save(folder,files);
+        try{
+            return filemanager.save(folder,files);
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @DeleteMapping("{folder}/{file}")

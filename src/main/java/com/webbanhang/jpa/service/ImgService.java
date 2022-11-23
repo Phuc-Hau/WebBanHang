@@ -11,7 +11,7 @@ public interface ImgService {
     Img findById(Integer id);
     Img create(Img entity);
     Img update(Img entity);
-    
+    List<Img> updateAll(List<Img> entity);
     boolean existsById(Integer id);
 
 }

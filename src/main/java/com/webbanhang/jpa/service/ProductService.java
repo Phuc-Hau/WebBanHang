@@ -11,7 +11,7 @@ public interface ProductService {
     Product findById(Integer id);
     Product create(Product entity);
     Product update(Product entity);
-    
+    int getLastId();
     boolean existsById(Integer id);
 
 }

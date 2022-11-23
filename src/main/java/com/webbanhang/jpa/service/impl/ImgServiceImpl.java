@@ -35,6 +35,11 @@ public class ImgServiceImpl implements ImgService {
     }
 
     @Override
+    public List<Img> updateAll(List<Img> entity){
+        return ImgDao.saveAll(entity);
+    }
+
+    @Override
     public boolean existsById(Integer id) {
         return ImgDao.existsById(id);
     }

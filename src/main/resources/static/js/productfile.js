@@ -13,6 +13,7 @@ function readURL(input) {
             $('#imageResult').attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
+        forms.delete("files"+(ids));
         forms.append("files"+(ids),input.files[0]);
     }
 }
@@ -20,7 +21,7 @@ function readURL(input) {
 function removed(){
     document.getElementById('imageResult').src='/file/user/avata.jpg';
     document.getElementById('imageResult'+ids).src='/assets/images/plus.png';
-    forms.delete("files"+(ids-1));
+    forms.delete("files"+(ids));
 }
 
 function load(input,i) {

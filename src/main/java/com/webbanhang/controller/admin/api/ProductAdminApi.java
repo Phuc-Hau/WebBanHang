@@ -23,8 +23,7 @@ public class ProductAdminApi {
     @Autowired
     GroupProductService groupProductService;
 
-    @Autowired
-    ImgService imgService;
+
 
     @RequestMapping("/groupproduct")
     public List<GroupProduct> adminGroupProductSearch() {
@@ -62,9 +61,12 @@ public class ProductAdminApi {
             productService.create(product);
             obj.put("status",true);
             obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thành công!");
+            Thread.sleep(1000);
+            obj.put("id", productService.getLastId());
         }catch (Exception e){
+            e.printStackTrace();
             obj.put("status",false);
-            obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thành công!");
+            obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thất bại!");
         }
         return obj;
     }
