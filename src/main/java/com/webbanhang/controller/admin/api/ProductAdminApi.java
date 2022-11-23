@@ -1,8 +1,10 @@
 package com.webbanhang.controller.admin.api;
 
 import com.webbanhang.jpa.model.GroupProduct;
+import com.webbanhang.jpa.model.Img;
 import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.service.GroupProductService;
+import com.webbanhang.jpa.service.ImgService;
 import com.webbanhang.jpa.service.ProductService;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class ProductAdminApi {
 
     @Autowired
     GroupProductService groupProductService;
+
+    @Autowired
+    ImgService imgService;
 
     @RequestMapping("/groupproduct")
     public List<GroupProduct> adminGroupProductSearch() {

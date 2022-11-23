@@ -2,10 +2,12 @@
     width: 60px;
     height: 60px;
     margin-left: 15px;
+    border: 1px solid black;
 }
 
 .images{
     display: flex;
+    margin-top: 20px;
 }
 
 .images label{

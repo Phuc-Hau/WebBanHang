@@ -18,39 +18,63 @@
 				<div class="row">
 					<div class="col-md-3">
 
-						<div class="avatar-upload" style="height: 332px;">
+						<div class="avatar-upload" style="height: 250px;">
+							<div style="text-align: center"><label style="margin-left: 26px;">Ảnh Sản Phẩm</label></div>
 							<div class="avatar-edit">
-								<label style="position: absolute; width: 212px; height: 212px; left: 24px; top: 40px; opacity: 0;" for="upload"></label>
+								<label id="upf" style="position: absolute; width: 212px; height: 212px; left: 24px; top: 16px; opacity: 0;" for="upload"></label>
 								<input id="upload" type="file" onchange="readURL(this);" name="imgs" accept=".png, .jpg, .jpeg" />
 							</div>
-							<div class="avatar-preview" style="right: 180px; top: 50px;">
-								<img width="200px" height="200px" id="imageResult"  >
-								<a class="dimg" id="dimg" onclick="removed()">X</a>
-								<label style="margin-top: 25px; margin-left: 26px;" for="upload">Ảnh Sản Phẩm</label>
+							<div class="avatar-preview" style="right: 180px; top: 10px;">
+								<img width="200px" height="200px" id="imageResult" src='/file/user/avata.jpg' >
 							</div>
+						</div>
+						<div style="margin-bottom: 10px;  text-align: center;">
+							<button class="dimg btn btn-gradient-danger btn-rounded btn-fw" id="dimg" onclick="removed()">
+								<i class="mdi mdi-delete-forever"></i>
+								Xoá Ảnh
+								<span id="ids"><span>
+							</button>
 						</div>
 						<div class="images">
 							<div>
-								<img onclick="load(this,1)" src="/assets/images/images/plus.png" id="imageResult1">
+								<img ng-if="items.imgs[0] != undefined" onclick="load(this,0)" src="/file/AnhWebBanHang/{{items.imgs[0].image}}" id="imageResult0">
+								<img ng-if="items.imgs[0] == undefined" onclick="load(this,0)" src="/assets/images/plus.png" id="imageResult0">
 								<label>Ảnh 1</label>
 							</div>
 							<div>
-								<img onclick="load(this,2)" src="/assets/images/images/plus.png" id="imageResult2">
+								<img ng-if="items.imgs[1] != undefined" onclick="load(this,1)" src="/file/AnhWebBanHang/{{items.imgs[1].image}}" id="imageResult1">
+								<img ng-if="items.imgs[1] == undefined" onclick="load(this,1)" src="/assets/images/plus.png" id="imageResult1">
 								<label>Ảnh 2</label>
 							</div>
 							<div>
-								<img onclick="load(this,3)" src="/assets/images/images/plus.png" id="imageResult3">
+								<img ng-if="items.imgs[2] != undefined" onclick="load(this,2)" src="/file/AnhWebBanHang/{{items.imgs[2].image}}" id="imageResult2">
+								<img ng-if="items.imgs[2] == undefined" onclick="load(this,2)" src="/assets/images/plus.png" id="imageResult2">
 								<label>Ảnh 3</label>
 							</div>
-
-
+						</div>
+						<div class="images" >
+							<div>
+								<img ng-if="items.imgs[3] != undefined" onclick="load(this,3)" src="/file/AnhWebBanHang/{{items.imgs[3].image}}" id="imageResult3">
+								<img ng-if="items.imgs[3] == undefined" onclick="load(this,3)" src="/assets/images/plus.png" id="imageResult3">
+								<label>Ảnh 4</label>
+							</div>
+							<div>
+								<img ng-if="items.imgs[4] != undefined" onclick="load(this,4)" src="/file/AnhWebBanHang/{{items.imgs[4].image}}" id="imageResult4">
+								<img ng-if="items.imgs[4] == undefined" onclick="load(this,4)" src="/assets/images/plus.png" id="imageResult4">
+								<label>Ảnh 5</label>
+							</div>
+							<div>
+								<img ng-if="items.imgs[5] != undefined" onclick="load(this,5)" src="/file/AnhWebBanHang/{{items.imgs[5].image}}" id="imageResult5">
+								<img ng-if="items.imgs[5] == undefined" onclick="load(this,5)" src="/assets/images/plus.png" id="imageResult5">
+								<label>Ảnh 6</label>
+							</div>
 						</div>
 
 					</div>
 					<div class="col-md-9">
 						<form class="form-sample" method="post"
 							  modelAttribute="product" enctype="multipart/form-data">
-							<input path="id" type="hidden" />
+
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group row">
