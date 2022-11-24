@@ -33,7 +33,3 @@ function load(input,i) {
     }
     document.getElementById('ids').innerHTML=ids+1;
 }
-
-
-
-

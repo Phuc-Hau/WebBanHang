@@ -43,7 +43,7 @@ app.controller('ctradminproduct', function($scope,$http) {
     $scope.update = function (product) {
 
         $scope.urlupdate= '/admin/api/product/Update';
-        uploadfile($scope.items.id);
+
         console.log("pro", product);
 
         $http.post($scope.urlupdate,product).then(resp => {
@@ -57,6 +57,7 @@ app.controller('ctradminproduct', function($scope,$http) {
             console.log("fail", error)
             showErrorToast("Lỗi Hệ thống");
         })
+        uploadfile($scope.items.id);
 
     }
 
@@ -86,7 +87,7 @@ app.controller('ctradminproduct', function($scope,$http) {
             form.append("files", forms.get("files" + i));
         }
         console.log("file", form.getAll("files"));
-        let urlfile = 'http://localhost:8080/api/file/AnhWebBanHangddddddd';
+        let urlfile = 'http://localhost:8080/api/file/AnhWebBanHang';
 
         $http.post(urlfile, form, {
             transformRequest: angular.identity,
@@ -98,7 +99,7 @@ app.controller('ctradminproduct', function($scope,$http) {
             console.log("imgs", $scope.images)
 
             let yy = 0;
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 7; i++) {
                 if (forms.get("files" + i) != null) {
                     try {
                         $scope.items.imgs[i].image = $scope.image[yy];
@@ -139,14 +140,9 @@ app.controller('ctradminproduct', function($scope,$http) {
 
     }
 
-    $scope.Removed = function (){
+    $scope.Removed = function () {
         removed();
-        try{
-            $scope.items.imgs[ids] = undefined;
-        }catch (e) {
-            
-        }
-
+        $scope.items.imgs[ids]=undefined;
     }
 
 });

@@ -8,6 +8,7 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -24,22 +25,19 @@ public class ImgAdminApi {
     public JSONObject adminUpdateProduct(@RequestBody List<Img> img,@PathVariable("id") int id) {
         JSONObject obj = new JSONObject();
         Product product = new Product();
+        product.setId(id);
+        List<Img> updateImg = new ArrayList<>();
         try {
-            product = productService.findById(id);
             for (int i = 0; i < img.size(); i++) {
                 if(img.get(i) != null){
                     img.get(i).setProduct(product);
+                    updateImg.add(img.get(i));
                 }
             }
-            for (int i = 0; i < img.size(); i++) {
-                if(img.get(i) == null){
-                    img.remove(img.get(i));
-                }
-            }
-
-            imgService.updateAll(img);
+            imgService.updateAll(updateImg);
             obj.put("status",true);
         }catch (Exception e){
+            e.printStackTrace();
             obj.put("status",false);
             obj.put("message", "Thêm ảnh sản phẩm thất bại!");
         }
