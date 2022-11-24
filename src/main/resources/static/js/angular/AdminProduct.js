@@ -12,11 +12,14 @@ app.controller('ctradminproduct', function($scope,$http) {
     document.getElementById('newProduct').style.display='';
     document.getElementById('updateProduct').style.display='none';
 
-    function list () {
+    $scope.list=function() {
         $scope.url="/admin/api/product/edit/"+id;
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
-            console.log("es", resp);
+            console.log("product", resp);
+            for (let i = $scope.items.imgs.length; i < 6; i++) {
+                document.getElementById('imageResult'+i).src='/assets/images/plus.png';
+            }
         }).catch(error => {
             console.log("fail", error)
         })
@@ -25,7 +28,7 @@ app.controller('ctradminproduct', function($scope,$http) {
     if(id != '://localhost:8080/admin/product/edit'){
         document.getElementById('newProduct').style.display='none';
         document.getElementById('updateProduct').style.display='';
-        list();
+        $scope.list();
     }else{
         $scope.items.date=(new Date()).toLocaleDateString('en-GB');
         $scope.items.status = true;
@@ -33,12 +36,15 @@ app.controller('ctradminproduct', function($scope,$http) {
 
     $scope.reset = function () {
         if(id != '://localhost:8080/admin/product/edit') {
-            list();
+            $scope.items.imgs=undefined;
+            $scope.list();
         }else{
             $scope.items = {};
             $scope.items.date=(new Date()).toLocaleDateString('en-GB');
             $scope.items.status = true;
         }
+
+
     }
     $scope.update = function (product) {
 
@@ -58,6 +64,9 @@ app.controller('ctradminproduct', function($scope,$http) {
             showErrorToast("Lỗi Hệ thống");
         })
         uploadfile($scope.items.id);
+        setTimeout ( function () {
+            $scope.reset();
+        }, 500);
 
     }
 

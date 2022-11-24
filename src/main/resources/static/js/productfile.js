@@ -13,7 +13,6 @@ function readURL(input) {
             $('#imageResult').attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
-        forms.delete("files"+(ids));
         forms.append("files"+(ids),input.files[0]);
     }
 }
