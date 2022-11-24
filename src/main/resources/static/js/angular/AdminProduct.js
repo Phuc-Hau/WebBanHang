@@ -80,26 +80,6 @@ app.controller('ctradminproduct', function($scope,$http) {
 
     }
 
-    $scope.updateImg = function (id) {
-
-        $scope.urlupdateImg= '/admin/api/img/Update/'+id;
-
-        console.log("img", $scope.items.imgs);
-
-        $http.post($scope.urlupdateImg,$scope.items.imgs).then(resp => {
-            if(resp.data.status){
-                showSuccessToast(resp.data.message);
-            }else{
-                showErrorToast(resp.data.message);
-            }
-            console.log("Success", resp)
-        }).catch(error => {
-            console.log("fail", error)
-            showErrorToast("Lỗi Hệ thống");
-        })
-
-    }
-
     function uploadfile(id) {
         let form = new FormData();
         for (let i = 0; i < 6; i++) {
@@ -139,5 +119,34 @@ app.controller('ctradminproduct', function($scope,$http) {
 
     }
 
+    $scope.updateImg = function (id) {
+
+        $scope.urlupdateImg= '/admin/api/img/Update/'+id;
+
+        console.log("img", $scope.items.imgs);
+
+        $http.post($scope.urlupdateImg,$scope.items.imgs).then(resp => {
+            if(resp.data.status){
+                forms = new FormData();
+            }else{
+                showErrorToast(resp.data.message);
+            }
+            console.log("Success", resp)
+        }).catch(error => {
+            console.log("fail", error)
+            showErrorToast("Lỗi Hệ thống");
+        })
+
+    }
+
+    $scope.Removed = function (){
+        removed();
+        try{
+            $scope.items.imgs[ids] = undefined;
+        }catch (e) {
+            
+        }
+
+    }
 
 });
