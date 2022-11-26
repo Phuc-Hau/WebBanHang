@@ -1,6 +1,7 @@
 package com.webbanhang.jpa.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "evaluate", indexes = {
         @Index(name = "idorder_idx", columnList = "Orders_id"),
@@ -26,6 +27,17 @@ public class Evaluate {
 
     @Column(name = "Foot_Quality")
     private String footQuality;
+
+    @Column(name = "Date")
+    private Date date = new Date();
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public String getFootQuality() {
         return footQuality;
