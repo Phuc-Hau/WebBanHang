@@ -49,7 +49,7 @@ public class ProductAdminApi {
             obj.put("message", "Cập nhật Sản Phẩm "+product.getName()+" Thành công!");
         }catch (Exception e){
             obj.put("status",false);
-            obj.put("message", "Cập nhật Sản Phẩm "+product.getName()+" Thành công!");
+            obj.put("message", "Cập nhật Sản Phẩm "+product.getName()+" Thất bại!");
         }
         return obj;
     }
