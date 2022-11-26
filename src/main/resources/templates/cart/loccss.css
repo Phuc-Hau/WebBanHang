@@ -1,0 +1,73 @@
+.loc{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 80%;
+    margin: auto;
+
+}
+
+.loc .chung{
+
+    display: flex;
+}
+.chung div{
+    color: rgb(105, 107, 109);
+
+}
+.loc-sap-xep{
+    width: 50%;
+    margin-top: 10px;
+}
+.loc-gia{
+    width: 50%;
+    margin-top: 10px;
+}
+.loc-loai{
+    width: 100%;
+    margin-top: 10px;
+}
+.loc-tt{
+    margin-left: 20px;
+    font-weight: 700;
+    color: black !important;
+}
+.loai{
+    display: flex;
+
+}
+.loai div{
+    display: flex;
+    margin: 0px 15px;
+}
+h6{
+    margin: 0px;
+}
+.loai{
+    display: none;
+}
+.loc-loai:hover .loai{
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+}
+input{
+    margin-right: 20px;
+}
+
+.loc-all{
+    width: 100%;
+    background-color: rgb(244, 244, 244);
+    border-top:2px solid rgb(123, 116, 227);
+    border-bottom:2px solid rgb(123, 116, 227);
+
+
+    border-radius: 3px;
+
+    margin: auto;
+    padding-bottom: 15px;
+
+}
+
+
