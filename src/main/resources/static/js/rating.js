@@ -1,24 +1,3 @@
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-
-// Get the <span> element that closes the modal
-
-// When the user clicks the button, open the modal
-
-
-// When the user clicks on <span> (x), close the modal
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-var star=0;
 $(document).ready(function(){
 
     /* 1. Visualizing things on Hover - See next part for action on click */
@@ -57,11 +36,22 @@ $(document).ready(function(){
 
         // JUST RESPONSE (Not needed)
         var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-
-        star = ratingValue;
+        var msg = "";
+        if (ratingValue > 1) {
+            msg = "Thanks! You rated this " + ratingValue + " stars.";
+        }
+        else {
+            msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+        }
+        responseMessage(msg);
 
     });
+
 
 });
 
 
+function responseMessage(msg) {
+    $('.success-box').fadeIn(200);
+    $('.success-box div.text-message').html("<span>" + msg + "</span>");
+}

@@ -10,6 +10,7 @@ app.controller('orderstatus', function($scope,$http) {
     $scope.orderstatus =[];
     $scope.orderdetail =[];
     $scope.status =[];
+    $scope.urlsubmit= "/api/evalute/new";
     // var name = sessionStorage.getItem("users");
     // console.log("name", name)
     $http.get($scope.urllist).then(resp => {
@@ -79,6 +80,46 @@ app.controller('orderstatus', function($scope,$http) {
         })
 
     }
+
+    $scope.productbyid = function (id){
+        $scope.productitem = $scope.orderdetail.filter(e => e.product.id == id)[0];
+        console.log("pop", $scope.productitem );
+        document.getElementById('myModal1').style.display='none';
+    }
+
+    $scope.add = function (){
+        document.getElementById('myModal1').style.display='block';
+        setTimeout(function () {
+            document.getElementById('boody').classList.add('modal-open');
+        }, 500);
+
+    }
+
+    $scope.evalute = {};
+
+    $scope.submit = function (productitem){
+
+        $scope.evalute.product = productitem.product;
+        $scope.evalute.orders = productitem.order;
+        $scope.evalute.footQuality = star;
+        $http.post($scope.urlsubmit, $scope.evalute ).then(resp => {
+
+
+            console.log("Success submit", resp)
+            if(resp.data.status){
+                showSuccessToast(resp.data.message);
+            }else{
+                showErrorToast(resp.data.message);
+            }
+
+
+        }).catch(error => {
+            console.log("fail", error)
+        })
+        $scope.add();
+
+    }
+
 
 
 

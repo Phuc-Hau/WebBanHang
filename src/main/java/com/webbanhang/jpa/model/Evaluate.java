@@ -26,7 +26,7 @@ public class Evaluate {
     private String comment;
 
     @Column(name = "Foot_Quality")
-    private String footQuality;
+    private int footQuality;
 
     @Column(name = "Date")
     private Date date = new Date();
@@ -39,11 +39,11 @@ public class Evaluate {
         this.date = date;
     }
 
-    public String getFootQuality() {
+    public int getFootQuality() {
         return footQuality;
     }
 
-    public void setFootQuality(String footQuality) {
+    public void setFootQuality(int footQuality) {
         this.footQuality = footQuality;
     }
 

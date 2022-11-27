@@ -8,26 +8,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='https://codepen.io/depy/pen/LaXVEK.css'><link rel="stylesheet" href="./ratingcss.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <script src='https://codepen.io/depy/pen/LaXVEK.js'></script>
+  <link rel="stylesheet" href="/assets/css/alter.css">
+
 
   <script src="/js/angular/Orderstatus.js"></script>
-  <script src="/js/orderstatus.js"></script>
+
   <link rel="stylesheet" href="/assets/css/orderstatus.css">
   <link rel="stylesheet" href="/assets/css/sach.css">
+  <link rel="stylesheet" href="./ratingcss.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-  <!------ Include the above in your HEAD tag ---------->
+
+
+  <script src="/js/Alter.js"></script>
 </head>
 
-<body ng-app="app" ng-controller="orderstatus">
+<body ng-app="app" ng-controller="orderstatus" class="boody" id="boody">
+
 
 <!-- header -->
 <div th:replace="~{/partials/header.html}"></div>
-
+<div id="toast"></div>
 <div class="container d-flex justify-content-center">
+
   <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
     <div class="border-end bg-white" id="sidebar-wrapper">
@@ -37,7 +48,7 @@
         </div>
         <div>
           <div class="tt">[[${session.users.username}]]</div>
-          <a class="hoso" href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa hồ sơ</a>
+          <a class="hoso" href="/account/changinformation"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa hồ sơ</a>
         </div>
       </div>
       <div class="list-group list-group-flush">
@@ -134,7 +145,11 @@
                   <div  ng-if="item.status== 4 || item.status== 5" class="_8vTqu9">
                     <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                   </div>
-
+                  </div>
+                  <div ng-click="orderid(item.id)" ng-if="item.status== 4" class="_8vTqu9-" style="margin-left: 10px">
+                    <button class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal2">
+                      Đánh giá
+                    </button>
                   </div>
 
 
@@ -324,8 +339,12 @@
                   <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                 </div>
 
+                <div ng-click="orderid(item.id)" ng-if="item.status== 4" class="_8vTqu9-" style="margin-left: 10px">
+                  <button class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal2">
+                    Đánh giá
+                  </button>
+                </div>
                 <!-- The Modal -->
-
 
                 <div class="VN6h8+">
                   <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
@@ -387,8 +406,6 @@
 
   </div>
 
-
-
 </div>
 
 <!-- The Modal -->
@@ -425,11 +442,16 @@
               </div>
               <hr>
               <ul class="row">
-                <li ng-repeat="item in orderstatus" class="col-md-4" >
+                <li ng-repeat="item in orderstatus" class="col-md-6" >
                   <figure class="itemside mb-3">
                     <div class="aside"><img src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}" class="img-sm border"></div>
                     <figcaption class="info align-self-center">
                       <p class="title">{{item.product.name}} <br> Loại : {{item.product.groupProduct.name}}<br> Số lượng : {{item.quantity}}</p> <span class="text-muted">Giá : {{item.product.price}} </span>
+                      <div class="_8vTqu9-" style="margin-left: 10px">
+                        <button ng-if="item.order.status == 4" ng-click="productbyid(item.product.id)" class="stardust-button stardust-button--primary Kz9HeMn" data-toggle="modal" data-target="#myModal2">
+                          Đánh giá
+                        </button>
+                      </div>
                     </figcaption>
                   </figure>
                 </li>
@@ -445,7 +467,80 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+        <button type="button" id="clonemodal1" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 50%; margin-left: 25%">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Đánh giá</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container">
+          <article class="card">
+
+            <div class="card-body">
+
+                <div  class="col-md-8" style="margin: 20px">
+
+                  <figure class="itemside mb-3">
+                    <div class="aside"><img src="/file/AnhWebBanHang/{{productitem.product.imgs[0].image}}" class="img-sm border"></div>
+                    <figcaption class="info align-self-center">
+                      <p class="title">{{productitem.product.name}} <br> Loại : {{productitem.product.groupProduct.name}}<br> Số lượng : {{productitem.quantity}}</p> <span class="text-muted">Giá : {{productitem.product.price}} </span>
+                    </figcaption>
+                  </figure>
+
+                </div>
+
+
+              <div class='rating-stars text-center'>
+                <ul id='stars' style="text-align-last: center">
+                  <li class='star' title='Poor' data-value='1'>
+                    <i class='fa fa-star fa-fw'></i>
+                  </li>
+                  <li class='star' title='Fair' data-value='2'>
+                    <i class='fa fa-star fa-fw'></i>
+                  </li>
+                  <li class='star' title='Good' data-value='3'>
+                    <i class='fa fa-star fa-fw'></i>
+                  </li>
+                  <li class='star' title='Excellent' data-value='4'>
+                    <i class='fa fa-star fa-fw'></i>
+                  </li>
+                  <li class='star' title='WOW!!!' data-value='5'>
+                    <i class='fa fa-star fa-fw'></i>
+                  </li>
+                </ul>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Bình luận</label>
+                <textarea ng-model="evalute.comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+
+
+            </div>
+            <button ng-click="submit(productitem)" type="button" class="btn btn-danger" data-dismiss="modal">Xác nhận</button>
+          </article>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button ng-click="add()" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
       </div>
 
     </div>
@@ -455,6 +550,7 @@
 <!-- footer -->
 <div th:replace="/partials/footer.html"></div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
 </script>
@@ -464,6 +560,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
+
+<script src="/js/orderstatus.js"></script>
 </body>
 
 </html>
