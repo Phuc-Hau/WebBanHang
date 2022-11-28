@@ -6,42 +6,93 @@ var id = ur.slice(ur.indexOf('edit/')+5)
 
 app.controller('ctradminproduct', function($scope,$http) {
 
-    $scope.items ={};
-    $scope.images ={};
 
-    document.getElementById('newProduct').style.display='';
-    document.getElementById('updateProduct').style.display='none';
+    $scope.items =[];
+    $scope.prop="-date";
 
-    $scope.list=function() {
-        $scope.url="/admin/api/product/edit/"+id;
+    function list () {
+        $scope.url="/admin/api/productlist";
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
-            console.log("product", resp);
-            for (let i = $scope.items.imgs.length; i < 6; i++) {
-                document.getElementById('imageResult'+i).src='/assets/images/plus.png';
-            }
+            $scope.itemstrue = $scope.items.filter(s=>s.status==true);
+            $scope.itemsfalse= $scope.items.filter(s=>s.status==false);
         }).catch(error => {
             console.log("fail", error)
         })
     }
+    list();
+
+    $scope.groups =[];
+
+    function lists () {
+        $scope.url="/admin/api/groupproductlist";
+        $http.get($scope.url).then(resp => {
+            $scope.groups = resp.data;
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+    lists();
+
+    $scope.sortBy = function(prop){
+        $scope.prop = prop;
+    }
+
+    $scope.ResetFilter = function (){
+        $scope.Status ="";
+        $scope.searchname ="";
+        $scope.groupof="";
+        list();
+        lists();
+    }
+
+
+    $scope.item ={};
+    $scope.images ={};
+
+    try{
+        document.getElementById('newProduct').style.display='';
+        document.getElementById('updateProduct').style.display='none';
+    } catch (e) {
+        
+    }
+
+    $scope.list=function() {
+        if(id != '://localhost:8080/admin/product/edit') {
+            $scope.url = "/admin/api/product/edit/" + id;
+            $http.get($scope.url).then(resp => {
+                $scope.item = resp.data;
+                console.log("product", resp);
+                for (let i = $scope.item.imgs.length; i < 6; i++) {
+                    document.getElementById('imageResult' + i).src = '/assets/images/plus.png';
+                }
+            }).catch(error => {
+                console.log("fail", error)
+            })
+        }
+    }
 
     if(id != '://localhost:8080/admin/product/edit'){
-        document.getElementById('newProduct').style.display='none';
-        document.getElementById('updateProduct').style.display='';
+        try{
+            document.getElementById('newProduct').style.display='none';
+            document.getElementById('updateProduct').style.display='';
+        } catch (e) {
+            
+        }
         $scope.list();
     }else{
-        $scope.items.date=(new Date()).toLocaleDateString('en-GB');
-        $scope.items.status = true;
+        $scope.item.date=(new Date()).toLocaleDateString('en-GB');
+        $scope.item.status = true;
     }
 
     $scope.reset = function () {
         if(id != '://localhost:8080/admin/product/edit') {
-            $scope.items.imgs=undefined;
+            $scope.item.imgs=undefined;
             $scope.list();
         }else{
-            $scope.items = {};
-            $scope.items.date=(new Date()).toLocaleDateString('en-GB');
-            $scope.items.status = true;
+            $scope.item = {};
+            $scope.item.date=(new Date()).toLocaleDateString('en-GB');
+            $scope.item.status = true;
         }
 
 
@@ -63,7 +114,7 @@ app.controller('ctradminproduct', function($scope,$http) {
             console.log("fail", error)
             showErrorToast("Lỗi Hệ thống");
         })
-        uploadfile($scope.items.id);
+        uploadfile($scope.item.id);
         setTimeout ( function () {
             $scope.reset();
         }, 500);
@@ -111,12 +162,12 @@ app.controller('ctradminproduct', function($scope,$http) {
             for (let i = 0; i < 7; i++) {
                 if (forms.get("files" + i) != null) {
                     try {
-                        $scope.items.imgs[i].image = $scope.image[yy];
+                        $scope.item.imgs[i].image = $scope.image[yy];
                     } catch (err) {
                         try {
-                            $scope.items.imgs.push({'image': $scope.image[yy]});
+                            $scope.item.imgs.push({'image': $scope.image[yy]});
                         } catch (err) {
-                            $scope.items.imgs = [{'image': $scope.image[yy]}];
+                            $scope.item.imgs = [{'image': $scope.image[yy]}];
                         }
                     }
                     yy++;
@@ -133,9 +184,9 @@ app.controller('ctradminproduct', function($scope,$http) {
 
         $scope.urlupdateImg= '/admin/api/img/Update/'+id;
 
-        console.log("img", $scope.items.imgs);
+        console.log("img", $scope.item.imgs);
 
-        $http.post($scope.urlupdateImg,$scope.items.imgs).then(resp => {
+        $http.post($scope.urlupdateImg,$scope.item.imgs).then(resp => {
             if(resp.data.status){
                 forms = new FormData();
             }else{
@@ -151,7 +202,7 @@ app.controller('ctradminproduct', function($scope,$http) {
 
     $scope.Removed = function () {
         removed();
-        $scope.items.imgs[ids]=undefined;
+        $scope.item.imgs[ids]=undefined;
     }
 
 });

@@ -9,7 +9,6 @@
 	</div>
 	<div class="row">
 
-
 		<div class="col-lg-12 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
@@ -30,32 +29,28 @@
 						</thead>
 						<tbody>
 
-
-							<th:block th:each ="item,state:${adminlistuser }">
-								<tr>
-									<td>[[${state.index+1}]]</td>
+								<tr ng-repeat="item in items">
+									<td>{{$index+1}}</td>
 									<td class="py-1"><img style="object-fit: cover;"
-
-										th:src="@{|/file/user/${item.img}|}"
+										src="/file/user/{{item.img}}"
 										alt="image" /></td>
-									<td>[[${item.username}]]</td>
-									<td>[[${item.cutomer.name}]]</td>
-									<td>[[${item.cutomer.birthday}]]</td>
-									<td th:switch ="${item.role}">
-										<span th:case="'ROLE_ADMIN'">Admin</span>
-										<span th:case="*">Người dùng</span>
-
+									<td>{{item.username}}</td>
+									<td>{{item.cutomer.name}}</td>
+									<td>{{item.cutomer.birthday}}</td>
+									<td >
+										<span ng-if ="item.role == 'ROLE_ADMIN'">Admin</span>
+										<span ng-if ="item.role != 'ROLE_ADMIN'">Người dùng</span>
 									</td>
-									<td th:switch="${item.status}">
+									<td >
 
-										<span th:case="true">
+										<span ng-if="item.status==true">
 											<div class="form-check form-check-success">
 												<label class="form-check-label"> <input
 													type="radio" class="form-check-input" id="ExampleRadio2"
 													checked=""> <i class="input-helper"></i></label>
 											</div>
 										</span>
-										<span th:case="false">
+										<span ng-if="item.status==false">
 												<div class="form-check form-check-danger">
 													<label class="form-check-label"> <input
 														type="radio" class="form-check-input" id="ExampleRadio4"
@@ -64,11 +59,8 @@
 										</span>
 									</td>
 
-									<td><a th:href="@{'/admin/user/edit/'+${item.id}}">Edit</a>
+									<td><a href="/admin/user/edit/user={{item.id}}">Edit</a>
 								</tr>
-
-
-							</th:block>
 
 						</tbody>
 					</table>
