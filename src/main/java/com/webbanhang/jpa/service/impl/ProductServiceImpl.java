@@ -43,4 +43,9 @@ public class ProductServiceImpl implements ProductService {
     public boolean existsById(Integer id) {
         return ProductDao.existsById(id);
     }
+
+    @Override
+    public List<Product> getProductGroup(int idGroupProduct) {
+        return ProductDao.getProductGroup(idGroupProduct);
+    }
 }

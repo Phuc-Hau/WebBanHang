@@ -14,4 +14,7 @@ public interface ProductService {
     int getLastId();
     boolean existsById(Integer id);
 
+    List<Product> getProductGroup(int idGroupProduct);
+
+
 }

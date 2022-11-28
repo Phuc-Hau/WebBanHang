@@ -67,15 +67,15 @@ a{
 }
 
 .detail{
-       width: 1200px;
-       margin: auto;
-       background: white;
-}
-
-.detail .gr{
-padding: 27px;
-    margin-top: 23px;
+    width: 1200px;
+    height: 600px;
+    margin-top: 50px;
+    /* border: 1px solid red; */
     display: flex;
+    justify-content: center;
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
 }
 .hinh-chinh{
     width: 90%;
@@ -242,8 +242,7 @@ padding: 27px;
 
 .tieu-de-chung{
 
-    margin-left: -6px;
-    margin-top: 30px;
+    margin-left: -25px;
     font-weight: 600;
 }
 .mau-sac{
