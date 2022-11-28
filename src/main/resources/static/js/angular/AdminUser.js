@@ -38,6 +38,10 @@ app.controller('ctradminuser', function($scope,$http) {
         $scope.image = img;
     }
 
+    $scope.reset = function (){
+        user();
+    }
+
     $scope.uploadfile = function (file) {
         var form = new FormData();
         form.append("files",file[0]);

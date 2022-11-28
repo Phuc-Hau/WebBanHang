@@ -173,13 +173,15 @@
 						<i class="mdi mdi-content-save"></i>Update
 					</button>
 
-					<button type="button"
+					<button type="button" ng-click="reset()"
 						class="btn btn-gradient-warning btn-rounded btn-fw">
 						<i class="mdi mdi-reload btn-icon-prepend"></i> Reset
 					</button>
-					<button type="submit" formaction="/admin/userlist"
+					<button type="submit"
 						class="btn btn-gradient-primary btn-rounded btn-fw">
-						<i class="mdi mdi-exit-to-app"></i> Cancel
+						<a href="/admin/userlist" style="color: white;text-decoration: none">
+							<i class="mdi mdi-exit-to-app"></i> Cancel
+						</a>
 					</button>
 
 				</form>
