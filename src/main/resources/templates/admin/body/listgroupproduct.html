@@ -33,15 +33,14 @@
 					</thead>
 					<tbody>
 
-							<tr ng-repeat="item in items">
+							<tr ng-repeat="itemt in items">
 								<td>{{$index+1}}</td>
 								<td class="py-1">
-									<img style="object-fit: cover;" src="/file/Groupproduct/{{item.images}}" alt="image" />
+									<img style="object-fit: cover;" src="/file/Groupproduct/{{itemt.images}}" alt="image" />
 								</td>
-								<td>{{item.name}}</td>
-								<td>{{item.date}}</td>
-								33333333
-								<td><a href="/admin/groupproduct/edit/{{item.id}}">Edit</a></td>
+								<td>{{itemt.name}}</td>
+								<td>{{itemt.date}}</td>
+								<td><a href="/admin/groupproduct/edit/{{itemt.id}}">Edit</a></td>
 							</tr>
 
 					</tbody>

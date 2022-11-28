@@ -32,10 +32,5 @@ public class UploatFileApi {
         }
     }
 
-    @DeleteMapping("{folder}/{file}")
-    public void  delete(@PathVariable("folder") String folder,@PathVariable("file") String file){
-        filemanager.delete(folder,file);
-
-    }
 
  }

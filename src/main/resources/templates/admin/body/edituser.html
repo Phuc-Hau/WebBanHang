@@ -1,5 +1,5 @@
 
-
+<div id="toast"></div>
 <div class="content-wrapper">
 	<div class="page-header">
 		<h3 class="page-title">
@@ -13,22 +13,20 @@
 		<div class="card">
 			<div class="card-body">
 
-				<form class="form-sample" method="post" enctype="multipart/form-data"  th:object="${edituser}">
-					<input th:field="*{iduser}" type="hidden" />
-					<input th:field="*{idcutomer}" type="hidden" />
-					<input th:field="*{username}" type="hidden" />
+				<form class="form-sample" >
+
 					<div class="row">
 						<div class="col-md-3">
 
 							<div class="avatar-upload">
 								<div class="avatar-edit">
 									<label style="position: absolute; width: 212px; height: 212px; left: -4px; top: 40px; opacity: 0;"
-										for="upload"></label> 
-									<input id="upload" type="file" onchange="readURL(this);" name="imgs" accept=".png, .jpg, .jpeg" />
+										for="upload"></label>
+									<input id="upload" name="imgs files" type="file" accept=".png, .jpg, .jpeg" onchange="readURL(this); angular.element(this).scope().uploadfile(this.files);"  />
 
 								</div>
 								<div class="avatar-preview" style="right: 180px; top: 50px;">
-									<img width="200px" height="200px" id="imageResult"  th:src="@{|/file/user/*{img}|}">
+									<img width="200px" height="200px" id="imageResult"  src="/file/user/{{item.img}}">
 									<label style="margin-top: 25px; margin-left: 26px;" for="upload">Upload ảnh đại diện</label>
 								</div>
 							</div>
@@ -41,7 +39,7 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">User Name</label>
 										<div class="col-sm-9">
-											<span class="form-control">[[${edituser.username}]]</span>
+											<span class="form-control">{{item.username}}</span>
 										</div>
 									</div>
 								</div>
@@ -49,7 +47,7 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">Full Name</label>
 										<div class="col-sm-9">
-											<input th:field="*{name}" type="text" class="form-control" />
+											<input ng-model="item.cutomer.name" type="text" class="form-control" />
 										</div>
 									</div>
 								</div>
@@ -59,7 +57,7 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">Gmail</label>
 										<div class="col-sm-9">
-											<input th:field="*{email}" type="email" class="form-control" />
+											<input ng-model="item.email" type="email" class="form-control" />
 										</div>
 									</div>
 								</div>
@@ -68,7 +66,7 @@
 										<label class="col-sm-3 col-form-label">PassWord</label>
 										<div class="col-sm-9">
 
-											<input type="text" th:field="*{password}" minlength="8"
+											<input type="text" ng-model="item.password" minlength="8"
 												class="form-control" />
 										</div>
 									</div>
@@ -79,9 +77,9 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">Gender</label>
 										<div class="col-sm-9">
-											<select th:field="*{sex}" class="form-control">
-												<option th:value="Male">Male</option>
-												<option th:value="Female"> Female</option>
+											<select ng-model="item.cutomer.sex" class="form-control">
+												<option value="Male">Male</option>
+												<option value="Female"> Female</option>
 											</select>
 										</div>
 									</div>
@@ -91,9 +89,9 @@
 										<label class="col-sm-3 col-form-label">Role</label>
 										<div class="col-sm-9">
 
-											<select th:field="*{roles}" class="form-control">
-												<option th:value="ROLE_ADMIN">Admin</option>
-												<option th:value="ROLE_USER">Người dùng</option>
+											<select ng-model="item.role" class="form-control">
+												<option value="ROLE_ADMIN">Admin</option>
+												<option value="ROLE_GUEST">Người dùng</option>
 											</select>
 										</div>
 									</div>
@@ -120,9 +118,8 @@
 										</div>
 									</div>
 								</div>
-								<input class="billing_address_1" id="address_1" name="provinces" type="hidden" th:value="${edituser.provinces }">
-
-								<input class="billing_address_2" id="address_2" name="district" type="hidden" th:value="${edituser.district }">
+								<input class="billing_address_1" id="address_1" name="provinces" type="hidden" value="">
+								<input class="billing_address_2" id="address_2" name="district" type="hidden" value="">
 
 							</div>
 							<div class="row">
@@ -130,7 +127,8 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">Date of Birth</label>
 										<div class="col-sm-9">
-											<input th:field="*{birthday}" type="date" class="form-control" />
+											{{item.cutomer.birthday}}
+											<input ng-model="item.cutomer.birthday" type="date" class="form-control" />
 										</div>
 									</div>
 								</div>
@@ -140,9 +138,9 @@
 										<div class="col-sm-4">
 											<div class="form-check">
 												<label class="form-check-label"> 
-												<input type="radio" th:field="*{status}" checked="checked" class="form-check-input"
+												<input type="radio" ng-model="item.status" ng-checked="item.status==true" class="form-check-input"
 														name="membershipRadios" id="membershipRadios1"
-														th:value="true" /> Hoạt Động
+														value="true" /> Hoạt Động
 												</label>
 											</div>
 										</div>
@@ -150,9 +148,9 @@
 										<div class="col-sm-5">
 											<div class="form-check">
 												<label class="form-check-label"> 
-												<input type="radio" th:field="*{status}" class="form-check-input"
+												<input type="radio" ng-model="item.status" ng-checked="item.status==false" class="form-check-input"
 														name="membershipRadios" id="membershipRadios2"
-														th:value="false" /> Không hoạt động
+														value="false" /> Không hoạt động
 												</label>
 											</div>
 										</div>
@@ -164,26 +162,28 @@
 								<div class="form-group">
 
 									<label >Address</label>
-									<textarea th:field="*{address}"  class="form-control" ></textarea>
+									<textarea ng-model="item.cutomer.address"  class="form-control" ></textarea>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<button type="submit" formaction="/admin/user/update"
+					<button ng-click="update(item)" type="submit" formaction="/admin/user/update"
 						class="btn btn-gradient-success btn-rounded btn-fw">
 						<i class="mdi mdi-content-save"></i>Update
 					</button>
 
-					<button type="button"
+					<button type="button" ng-click="reset()"
 						class="btn btn-gradient-warning btn-rounded btn-fw">
 						<i class="mdi mdi-reload btn-icon-prepend"></i> Reset
 					</button>
-					<button type="submit" formaction="/admin/userlist"
+					<button type="submit"
 						class="btn btn-gradient-primary btn-rounded btn-fw">
-						<i class="mdi mdi-exit-to-app"></i> Cancel
+						<a href="/admin/userlist" style="color: white;text-decoration: none">
+							<i class="mdi mdi-exit-to-app"></i> Cancel
+						</a>
 					</button>
-					
+
 				</form>
 			</div>
 		</div>

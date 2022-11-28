@@ -1,41 +1,63 @@
 
 var app = angular.module("app", []);
 
-var ur= window.location.href;
-var id = ur.slice(ur.indexOf('edit/')+5)
 
 app.controller('ctradmingroupproduct', function($scope,$http) {
 
-    $scope.items ={};
-    $scope.image;
-
-    document.getElementById('newGroupProduct').style.display='';
-    document.getElementById('updateGroupProduct').style.display='none';
-
-    function list () {
-        $scope.url="/admin/api/groupproduct/edit/"+id;
+    $scope.items =[];
+    function lists () {
+        $scope.url="/admin/api/groupproductlist";
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
+            console.log("s", resp)
         }).catch(error => {
             console.log("fail", error)
         })
     }
+    lists();
+
+    $scope.item ={};
+    $scope.image;
+
+    try {
+        document.getElementById('newGroupProduct').style.display = '';
+        document.getElementById('updateGroupProduct').style.display = 'none';
+    }catch (e) {
+
+    }
+    function list () {
+        if(id != "://localhost:8080/admin/productlist") {
+            $scope.url = "/admin/api/groupproduct/edit/" + id;
+            $http.get($scope.url).then(resp => {
+                console.log("item", resp)
+                $scope.item = resp.data;
+            }).catch(error => {
+                console.log("fail", error)
+            })
+        }
+    }
+
+    var ur= window.location.href;
+    var id = ur.slice(ur.indexOf('edit/')+5)
 
     if(id != '://localhost:8080/admin/groupproduct/edit'){
-        document.getElementById('newGroupProduct').style.display='none';
-        document.getElementById('updateGroupProduct').style.display='';
+        try{
+            document.getElementById('newGroupProduct').style.display = 'none';
+            document.getElementById('updateGroupProduct').style.display = '';
+        } catch (e) {
+
+        }
         list();
     }else{
-        $scope.items.date=(new Date()).toLocaleDateString('en-GB');
+        $scope.item.date=(new Date()).toLocaleDateString('en-GB');
     }
 
     $scope.reset = function () {
         if(id != '://localhost:8080/admin/groupproduct/edit') {
             list();
-
         }else{
-            $scope.items = {};
-            $scope.items.date=(new Date()).toLocaleDateString('en-GB');
+            $scope.item = {};
+            $scope.item.date=(new Date()).toLocaleDateString('en-GB');
             document.getElementById("imageResult").src='/file/user/avata.jpg';
         }
 
@@ -88,7 +110,7 @@ app.controller('ctradmingroupproduct', function($scope,$http) {
             headers:{'Content-Type': undefined}
         }).then(resp => {
             $scope.image = resp.data[0];
-            $scope.items.images =angular.copy($scope.image);
+            $scope.item.images =angular.copy($scope.image);
         }).catch(error => {
             console.log("fail", error)
         })

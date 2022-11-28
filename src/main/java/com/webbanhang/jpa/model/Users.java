@@ -30,6 +30,9 @@ public class Users {
 	@Column(name="Token")
 	private String token = null;
 
+	@Column(name="Img")
+	private String img=null;
+
 	public String getToken() {
 		return token;
 	}
@@ -46,7 +49,6 @@ public class Users {
 		this.role = role;
 	}
 
-	private String img;
 	
 	//bi-directional many-to-one association to Cutomer
 	@ManyToOne
