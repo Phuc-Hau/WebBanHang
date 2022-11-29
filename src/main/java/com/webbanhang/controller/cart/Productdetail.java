@@ -18,41 +18,20 @@ import com.webbanhang.service.SessionService;
 
 @Controller
 public class Productdetail {
-	
-	@Autowired
-	ProductService productService;
-	
-	@Autowired
-	SessionService session;
-	
-	@Autowired
-	OrderDetailService orderDetailService;
+
 	
 	@RequestMapping
-	public String d (Model model) {
-
+	public String d () {
 		return "redirect:/product/index";
 	}
 	
 	@GetMapping("/product/sale/{id}")
 	public String doGetFL(@PathVariable("id") int id, Model model) {
-		Users user =session.get("user");
-		if(user !=null) {
-			List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
-			model.addAttribute("amountcart", list.size());
-		}
-		model.addAttribute("chitiet",productService.findById(id));
 		return "cart/productdetail";
 	}
 	
 	@GetMapping("/product/sanpham/{id}")
 	public String doGetXH(@PathVariable("id") int id,  Model model) {
-		Users user =session.get("user");
-		if(user !=null) {
-			List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
-			model.addAttribute("amountcart", list.size());
-		}
-		model.addAttribute("chitiet",productService.findById(id));
 		return "cart/productdetail";
 	}
 }

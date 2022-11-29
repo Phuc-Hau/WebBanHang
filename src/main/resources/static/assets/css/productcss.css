@@ -103,7 +103,7 @@ padding: 27px;
 .hinh{
 
     width: 50%;
-    height: 600px;
+    height: 530px;
     border-right: 1px solid;
 
     /* border: 1px solid blue; */
@@ -165,7 +165,7 @@ padding: 27px;
 }
 
 .mua{
-
+    outline: 0;
     width: 200px;
     height: 40px;
     border-radius: 2px;
@@ -173,8 +173,8 @@ padding: 27px;
     font-size: 20px;
 
     border: none;
-    background-color: rgb(99, 136, 246);
-    color: white;
+    background: rgba(255,87,34,.1);
+    color: black;
 
 }
 

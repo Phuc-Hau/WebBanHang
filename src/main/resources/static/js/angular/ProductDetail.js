@@ -26,9 +26,25 @@ app.controller('ctrlproductdetail', function($scope,$http) {
             }).catch(error => {
                 console.log("fail", error)
             })
-        }
+     }
 
-
-
+     $scope.newCar = function (id){
+         $scope.urlnew='/accounts/newcart';
+         var newcar = {
+             'id':id,
+             'quantity':document.getElementById("quantity").value
+         }
+         $http.post($scope.urlnew,newcar).then(resp => {
+             $scope.groupproduct = resp.data;
+             console.log("p", resp)
+             if($scope.groupproduct.status==true){
+                 showSuccessToast($scope.groupproduct.message)
+             }else{
+                showErrorToast($scope.groupproduct.message)
+             }
+         }).catch(error => {
+             console.log("fail", error)
+         })
+     }
 
 })

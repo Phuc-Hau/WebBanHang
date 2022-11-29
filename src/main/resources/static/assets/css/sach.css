@@ -28,7 +28,8 @@ header {
     width: 9px;
     height: 9px;
     margin: 0px 10px;
-    background-color: red;
+    background-color: red !important;
+    opacity: 1 !important;
 }
 
 .ser {
