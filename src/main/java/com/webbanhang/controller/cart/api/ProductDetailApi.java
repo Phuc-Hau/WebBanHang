@@ -9,16 +9,24 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @CrossOrigin("*")
 @RestController
+@RequestMapping("api")
 public class ProductDetailApi {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/product/api/{id}")
+    @GetMapping("/product/{id}")
     public Product doGetFL (@PathVariable("id") int id) {
         return productService.findById(id);
+    }
+
+    @GetMapping("/product/groupproduct/{id}")
+    public List<Product> getProduct( @PathVariable("id") int id){
+        return productService.getProductGroup(id);
     }
 
 }

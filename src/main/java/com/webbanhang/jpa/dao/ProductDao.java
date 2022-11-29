@@ -10,4 +10,7 @@ import java.util.List;
 public interface ProductDao extends JpaRepository<Product, Integer>{
     @Query("SELECT o.id FROM Product o order by o.id desc" )
     List<Integer> getLastId();
+
+    @Query("Select o from Product o where o.groupProduct.id = ?1 Order By Date Desc")
+    List<Product> getProductGroup(int idGroupProduct);
 }

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Chi tiết sản phẩm</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport"
@@ -27,261 +28,266 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
-<body ng-app="app" ng-controller="ctrlproductdetail">
+<body ng-app="app" ng-controller="ctrlproductdetail" style=" background-color: #f2edf3;">
 <div th:replace ="~{/partials/header.html}"></div>
 
-   <div>
-       <div class="detail">
-           <div class="hinh">
+<div style="background-color: #f2edf3;">
+    <div class="detail">
+        <div class="gr">
+            <div class="hinh">
 
-               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                   <ol class="carousel-indicators">
-                       <li data-target="#carouselExampleIndicators" ng-repeat="img in items.imgs" data-slide-to="{{$index}}" class="{{::($index === 0 ? 'active' : '')}}"></li>
-                   </ol>
-                   <div class="carousel-inner">
-                       <div class="carousel-item {{::($index === 0 ? 'active' : '')}}" ng-repeat="img in items.imgs">
-                           <img class="d-block w-100" src="/file/AnhWebBanHang/{{img.image}}" alt="">
-                       </div>
-                   </div>
-                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                       <span class="sr-only">Previous</span>
-                   </a>
-                   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                       <span class="sr-only">Next</span>
-                   </a>
-               </div>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" ng-repeat="img in items.imgs" data-slide-to="{{$index}}" class="{{::($index === 0 ? 'active' : '')}}"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item {{::($index === 0 ? 'active' : '')}}" ng-repeat="img in items.imgs">
+                            <img class="d-block w-100" src="/file/AnhWebBanHang/{{img.image}}" alt="">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
 
-           </div>
+            </div>
 
-           <div class="thong-tin">
+            <div class="thong-tin">
 
 
-               <div class="thong-tin-div">
-                   <div class="thong-tin-chung">
-                       <div class="ten">
-                           {{items.name}}
-                       </div>
+                <div class="thong-tin-div">
+                    <div class="thong-tin-chung">
+                        <div class="ten">
+                            {{items.name}}
+                        </div>
 
-                       <div class="danh-gia">
-                           <div class="star">
-                               <img src="star.png" alt="">
-                               <img src="star.png" alt="">
-                               <img src="star.png" alt="">
-                               <img src="star.png" alt="">
-                               <img src="star.png" alt="">
-
-                           </div>
-                           <span>|500 đánh giá|</span>
-                           <span>|500 lượt mua|</span>
-                       </div>
+                        <div class="danh-gia" style="margin-left: 55px;">
+                            <span>|500 đánh giá|</span>
+                            <span>|500 lượt mua|</span>
+                        </div>
 
 
 
-                   </div>
-                   <div class="tdsl">
-                       <div class="tieu-de-chung">
-                           Số lượng
-                       </div>
+                    </div>
+                    <div class="tdsl">
+                        <div class="tieu-de-chung">
+                           <strong> Số lượng</strong>
+                        </div>
 
-                       <div class="so-luong1">
-                           {{items.amount}}
-                       </div>
+                        <div class="so-luong1" style="margin-left: 77px;">
+                            {{items.amount}}
+                        </div>
 
-                   </div>
+                    </div>
 
-                   <div class="thong-tin-gia">
-
-
-                       <!-- <div class="gia-cu">
-                           <div class="gia-cu-tt">
-                               Giá cũ
-                           </div>
-                           <div class="gia-cu-gia">
-                               5 000 000
-                           </div>
-                       </div> -->
-
-                       <!-- <div class="mau">
-                           <div class="mau-tt">
-                               Màu
-                           </div>
-                           <div class="gia-moi-gia">
-                              <div></div>
-                           </div>
-                       </div> -->
+                    <div class="thong-tin-gia">
 
 
-                       <div class="gia">
-                           <div class="gia-cu-gia">
-                               {{items.price}}
-                           </div>
-                           <div class="gia-moi-gia">
-                               {{items.price*(1-items.sale)}}
-                           </div>
-                           <div class="giam">
-                               {{items.sale*100}}%
-                           </div>
-                       </div>
-                       <!-- <div class="so-luong-ton">
-                           <div class="so-luong-ton-tt">
-                               Hàng lưu kho
-                           </div>
-                           <div class="so-luong-ton-sl">
-                               50 cái
-                           </div>
-                       </div> -->
+                        <!-- <div class="gia-cu">
+                            <div class="gia-cu-tt">
+                                Giá cũ
+                            </div>
+                            <div class="gia-cu-gia">
+                                5 000 000
+                            </div>
+                        </div> -->
 
-                       <div class="mua-hang">
-                           <div class="ct">
-                               Số lượng
-                               <div>
-                                   <button class="cong ho">-</button>
-                               </div>
-                               <input class="so-luong" type="text" name="" placeholder="" value="1">
-                               <div>
-                                   <button class="tru ho">+</button>
-                               </div>
-                           </div>
-
-                           <div class="btn">
-                               <button class="mua ngay ho"> Mua Ngay</button>
-                               <button class="mua ho"> Thêm Vào Giỏ</button>
-
-                           </div>
-
-                       </div>
+                        <!-- <div class="mau">
+                            <div class="mau-tt">
+                                Màu
+                            </div>
+                            <div class="gia-moi-gia">
+                               <div></div>
+                            </div>
+                        </div> -->
 
 
-                   </div>
-
-               </div>
-
-
-           </div>
-
-
-       </div>
-       <div class="chi-tiet-sp">
-           <div class="tt-danh-gia">
-               CHI TIẾT SẢN PHẨM:
-               <hr>
-               <ul><strong>Bộ Xửng inox 3 đáy ngăn cao VIETCOOK :</strong>
-                   <li>Bộ Xửng inox 3 đáy cao VIETCOOK gồm 1 nồi, 1 ngăn xửng và nắp kính.</li>
-                   <li>Sản phẩm được làm từ inox nhập khẩu, bền đẹp, an toàn cho sức khỏe</li>
-                   <li>Nồi xửng thiết kế dáng cao với 3 đáy dày dặn, sang trọng</li>
-                   <li>Nắp nồi bằng kính chịu lực và chịu nhiệt tốt giúp bạn nhìn được thực phẩm trong quá trình đun nấu</li>
-                   <li>Nắp đậy kín  tăng khả năng giữ nóng và ngăn ngừa bụi bẩn, vi khuẩn xâm nhập hiệu quả.</li>
-                   <li>Quai cầm thiết kế dạng quai đũa đặc chắc chắc thuận tiện cho việc cầm nắm, di chuyển nồi trong quá trình nấu ăn.</li>
-                   <li>Nồi và thân xửng cao giúp bạn nấu, hấp được nhiều thực phẩm hơn</li>
-                   <li>Nồi to, cao có thể dùng để luộc được 2 con gà.</li>
-                   <li>Nồi nấu được trên mọi loại bếp</li>
-                   <li>Sản phẩm có kích thước:  Ø 24, 26, 28, 30 cm</li>
-                   <li>Liên hệ: 0989 003 003</li>
-               </ul>
-           </div>
-       </div>
+                        <div class="gia">
+                            <div class="gia-cu-gia">
+                                {{items.price}}Đ
+                            </div>
+                            <div class="gia-moi-gia">
+                                {{items.price*(1-items.sale) }} Đ
+                            </div>
+                            <div class="giam">
+                                {{items.sale*100}}%
+                            </div>
+                        </div>
 
 
-       <div class="danh-gia-sp">
-           <div class="tt-danh-gia">
-               ĐÁNH GIÁ SẢN PHẨM:
-               <hr>
-           </div>
-           <div class="sao-bl">
-               <div class="sao-bl-ct">
-                   <div class="so-sao thuc">
+                        <div class="mua-hang">
+                            <div class="ct">
+                                Số lượng
+                                <div>
+                                    <button class="cong ho">-</button>
+                                </div>
+                                <input class="so-luong" type="text" name="" placeholder="" value="1">
+                                <div>
+                                    <button class="tru ho">+</button>
+                                </div>
+                            </div>
 
-                       4.5
+                            <div class="btn">
+                                <button class="mua ngay ho"> Mua Ngay</button>
+                                <button class="mua ho"> Thêm Vào Giỏ</button>
 
-                   </div>
+                            </div>
 
-                   <div class="so-sao">
+                        </div>
 
-                       / 5
 
-                   </div>
-                   <div class="star">
-                       <img src="star.png" alt="">
-                   </div>
-               </div>
-           </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="chi-tiet-sp">
+        <div class="tt-danh-gia">
+            CHI TIẾT SẢN PHẨM:
+            <hr>
+         <ul><strong>Bộ Xửng inox 3 đáy ngăn cao VIETCOOK :</strong>
+            <li>Bộ Xửng inox 3 đáy cao VIETCOOK gồm 1 nồi, 1 ngăn xửng và nắp kính.</li>
+            <li>Sản phẩm được làm từ inox nhập khẩu, bền đẹp, an toàn cho sức khỏe</li>
+            <li>Nồi xửng thiết kế dáng cao với 3 đáy dày dặn, sang trọng</li>
+            <li>Nắp nồi bằng kính chịu lực và chịu nhiệt tốt giúp bạn nhìn được thực phẩm trong quá trình đun nấu</li>
+            <li>Nắp đậy kín  tăng khả năng giữ nóng và ngăn ngừa bụi bẩn, vi khuẩn xâm nhập hiệu quả.</li>
+            <li>Quai cầm thiết kế dạng quai đũa đặc chắc chắc thuận tiện cho việc cầm nắm, di chuyển nồi trong quá trình nấu ăn.</li>
+            <li>Nồi và thân xửng cao giúp bạn nấu, hấp được nhiều thực phẩm hơn</li>
+            <li>Nồi to, cao có thể dùng để luộc được 2 con gà.</li>
+            <li>Nồi nấu được trên mọi loại bếp</li>
+            <li>Sản phẩm có kích thước:  Ø 24, 26, 28, 30 cm</li>
+            <li>Liên hệ: 0989 003 003</li>
+         </ul>
+        </div>
+    </div>
+    <div class="danh-gia-sp">
+        <div class="tt-danh-gia">
+            ĐÁNH GIÁ SẢN PHẨM:
+            <hr>
+        </div>
+        <div class="sao-bl">
+            <div class="sao-bl-ct">
+                <div class="so-sao thuc">
+
+                    4.5
+
+                </div>
+
+                <div class="so-sao">
+
+                    / 5
+
+                </div>
+                <div class="star">
+                    <img src="star.png" alt="">
+                </div>
+            </div>
+        </div>
 
 
 
-           <div class="bl-content-chung">
+        <div class="bl-content-chung">
+
+            <div class="bl-content">
+                <div class="chat-bl">
+                    <div class="hinh"><img src="a1.jpg" alt=""></div>
+                    <div class="ten-nbl">nguyen van a</div>
+                    <div class="time">22/12/2022</div>
+                </div>
+                <div class="ccc">
+                    <div class="star-bl">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+
+                        <div class="s-so">5</div>
+
+                    </div>
+                    <div class="bl-ct">san pahm rả tot</div>
+                    <div class="hinh-bl">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bl-content">
+                <div class="chat-bl">
+                    <div class="hinh"><img src="a1.jpg" alt=""></div>
+                    <div class="ten-nbl">nguyen van a</div>
+                    <div class="time">22/12/2022</div>
+                </div>
+                <div class="cc">
+                    <div class="star-bl">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+
+                        <div class="s-so">5</div>
+
+                    </div>
+                    <div class="bl-ct">san pahm rả tot</div>
+                    <div class="hinh-bl">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                        <img src="a1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
 
 
-               <div class="bl-content">
-                   <div class="chat-bl">
-                       <div class="hinh"><img src="a1.jpg" alt=""></div>
-                       <div class="ten-nbl">nguyen van a</div>
-                       <div class="time">22/12/2022</div>
-                   </div>
-                   <div class="ccc">
-                       <div class="star-bl">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-
-                           <div class="s-so">5</div>
-
-                       </div>
-                       <div class="bl-ct">san pahm rả tot</div>
-                       <div class="hinh-bl">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                       </div>
-                   </div>
-               </div>
-
-               <div class="bl-content">
-                   <div class="chat-bl">
-                       <div class="hinh"><img src="a1.jpg" alt=""></div>
-                       <div class="ten-nbl">nguyen van a</div>
-                       <div class="time">22/12/2022</div>
-                   </div>
-                   <div class="cc">
-                       <div class="star-bl">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-                           <img src="star.png" alt="">
-
-                           <div class="s-so">5</div>
-
-                       </div>
-                       <div class="bl-ct">san pahm rả tot</div>
-                       <div class="hinh-bl">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                           <img src="a1.jpg" alt="">
-                       </div>
-                   </div>
-               </div>
+        </div>
 
 
-           </div>
+    </div>
+    <div class="sp-tuong-tu">
+        <div class="tt-danh-gia">
+            SẢN PHẨM TƯƠNG TỰ:
+        <hr>
 
-           <hr>
-       </div>
-       <div class="sp-tuong-tu">
-           <div class="tt-danh-gia">
-               SẢN PHẨM TƯƠNG TỰ:
+			<div class="row">
+                <div class="hotsp col-sm-2"  ng-repeat="item in groupproduct">
+                    <div class="">
+                        <a href="/product/sanpham/{{item.id}}"> <!-- anh -->
+                            <div>
+                                <img style="margin-top: 3px;width: 175px;" src="/file/AnhWebBanHang/{{item.imgs[0].image}}"
+                                     class="col-sm-12" alt="">
+                            </div> <!-- Title -->
+                            <h2>
+                                <a class="sachxuhuong">{{item.name}}</a>
+                            </h2> <!-- Gia -->
+                            <div class="xuhuong">
+            <span style="color: red;">{{item.price}}<span
+                    style="font-size: 16px;">đ</span></span> <span
+                                    style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-               <hr>
-           </div>
-       </div>
-   </div>
+        </div>
+    </div>
+</div>
 
 <div th:replace="/partials/footer.html"></div>
     <script src="/js/angular/ProductDetail.js"></script>
