@@ -80,9 +80,10 @@ app.controller('orderstatus', function($scope,$http) {
         })
 
     }
-
+    $scope.productitem;
     $scope.productbyid = function (id){
         $scope.productitem = $scope.orderdetail.filter(e => e.product.id == id)[0];
+        delete $scope.productitem ['quantity'];
         console.log("pop", $scope.productitem );
         document.getElementById('myModal1').style.display='none';
     }
