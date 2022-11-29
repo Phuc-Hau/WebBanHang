@@ -57,7 +57,7 @@ public class ChangInformatinonController {
 
 		model.addAttribute("edituser",edituser);
 		
-		return "ChangInformation";
+		return "user/ChangInformation";
 	}
 	
 	@PostMapping("/user/update")
