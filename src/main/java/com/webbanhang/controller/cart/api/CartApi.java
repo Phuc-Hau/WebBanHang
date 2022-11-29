@@ -122,9 +122,7 @@ public class CartApi {
 				Order order2 = new Order();
 				order2.setStatus(0);
 				order2.setCutomer(cutomerService.findById(idCutomer));
-
 				orderService.create(order2);
-
 				orderDetail.setOrder(order2);
 				orderDetailService.create(orderDetail);
 			}
