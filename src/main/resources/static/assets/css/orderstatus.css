@@ -120,7 +120,7 @@ body {
     text-transform: capitalize;
     border-radius: 2px;
     outline: 0;
-    margin-left: -10px;
+    margin-left: 90px;
 }
 
 .stardust-button {
@@ -196,12 +196,14 @@ body {
 .price0 {
     padding: 24px 24px 12px;
     background: #fffefb;
+
 }
 
 .price {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 10px;
 }
 
 .price2 {
@@ -828,6 +830,8 @@ a:hover {
 
 .phanloai{
     display: inline-grid;
+    margin-left: 20px;
+    width: 24%;
 }
 
 /*ul.phanloai li{*/

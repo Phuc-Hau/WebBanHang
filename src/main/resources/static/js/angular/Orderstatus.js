@@ -13,12 +13,17 @@ app.controller('orderstatus', function($scope,$http) {
     $scope.urlsubmit= "/api/evalute/new";
     // var name = sessionStorage.getItem("users");
     // console.log("name", name)
-    $http.get($scope.urllist).then(resp => {
-        $scope.orderlist = resp.data;
-        console.log("Success", resp)
-    }).catch(error => {
-        console.log("fail", error)
-    })
+
+
+    $scope.list = function (){
+        $http.get($scope.urllist).then(resp => {
+            $scope.orderlist = resp.data;
+            console.log("Success", resp)
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+    $scope.list();
 
     $scope.urlStatus="/accounts/api/OrderStatus";
     $http.get($scope.urlStatus).then(resp => {
@@ -34,10 +39,7 @@ app.controller('orderstatus', function($scope,$http) {
         $scope.getIdOr = function (id){
             return $scope.orderdetail.map(e => e.order.id).indexOf(id);
         }
-
         console.log("Success Orderdetail", resp)
-
-
     }).catch(error => {
         console.log("fail", error)
     })
@@ -120,6 +122,28 @@ app.controller('orderstatus', function($scope,$http) {
         $scope.add();
 
     }
+
+    $scope.idHuy;
+    $scope.xnHuy = function (id){
+        $scope.idHuy = id;
+    }
+
+    $scope.Huy = function (){
+        $scope.urlHuy = "/accounts/api/OrderHuy/" +     $scope.idHuy;
+        $http.post($scope.urlHuy ).then(resp => {
+            console.log("Success huy", resp)
+            if(resp.data.status){
+                showSuccessToast(resp.data.message);
+                $scope.list();
+            }else{
+                showErrorToast(resp.data.message);
+            }
+        }).catch(error => {
+            console.log("fail", error)
+        })
+
+    }
+
 
 
 
