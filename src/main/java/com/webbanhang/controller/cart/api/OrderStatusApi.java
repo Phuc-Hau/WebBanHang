@@ -70,6 +70,22 @@ public class OrderStatusApi {
         return orderStatusService.findAll();
     }
 
+    @PostMapping("/OrderHuy/{id}")
+    public JSONObject OrderHuy(@PathVariable("id") int id){
+        JSONObject obj = new JSONObject();
+        Order order = orderService.findById(id);
+        order.setStatus(5);
+        try {
+            orderService.update(order);
+            obj.put("status",true);
+            obj.put("message", "Hủy thành công!");
+        }catch (Exception e){
+            obj.put("status",false);
+            obj.put("message", "Hủy thất bại!");
+        }
+        return obj;
+    }
+
 
 
 }

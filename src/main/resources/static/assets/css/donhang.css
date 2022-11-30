@@ -1,0 +1,257 @@
+
+
+.don-hang-all{
+}
+.tieu-de-all{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.don-hang{
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    ;
+}
+
+.thoat{
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    position: absolute;
+    font-weight: 700;
+    right: 0px;
+    line-height: 40px;
+    text-align: center;
+}
+.dh-san-pham{
+    margin: 20px 0px;
+    background: white;
+}
+
+.don-hang-sp{
+
+
+    
+    background-color: rgb(230, 241, 235);
+
+}
+
+.gh{
+    position: absolute;
+
+    left: 20px;
+
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    top: 110px;
+    
+
+
+}
+.fr-dh{
+    font-weight: 700;
+}
+.gh div{
+   
+    width: 200px;
+    height: 70px;
+    background-color: red;
+    margin: 10px;
+}
+.san-pham{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height:70px ;
+    margin: auto;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+
+    margin-bottom: 10px;
+}
+
+.san-pham-hinh{
+
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    
+
+}
+.ma-don{
+    margin-left: 70px;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.san-pham-tt{
+    width: 50%;
+    margin: 5px;
+    padding-left: 20px;
+    /* background-color: red; */
+
+    
+}
+.dropdown-toggle::after {
+    content: none !important;
+}
+.san-pham-tt p{
+    height: 20px;
+    /* background-color: aqua; */
+    line-height: 0px;
+    
+
+    
+    
+}
+
+.san-pham-sl{
+    width: 15%;
+    text-align: center;
+    /* border: 1px rgb(127, 127, 189) solid; */
+}
+
+.san-pham-tien{
+    width: 120px;
+    color: red;
+    text-align: center;
+    margin: 0px 10px;
+}
+.dvgh{
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-weight: 700;
+    padding: 5px;
+    box-shadow: rgb(94, 93, 93) 1px 1px 1px;
+}
+.dh{
+    border: none;
+    color: white;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-weight: 700;
+    background-color: #db2e28;
+    margin: auto;
+    border-radius: 3px;
+    right: 30px;
+    
+}
+
+.tong{
+    text-align: end;
+    padding-right: 100px;
+}
+.dh-thanh-toan{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    background-color: white;
+    margin: auto;
+
+}
+
+.dh-tong-tien{
+    display: flex;
+    width: 30%;
+    position: absolute;
+    right: 20px;
+    /* background-color: red; */
+    top: 90px;
+}
+.dh-tong-tien-tt{
+    width: 45%;
+}
+.dh-tong-tien-st{
+    width: 45%;
+    text-align: center;
+}
+
+.dh-btn{
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.dh-tt{
+
+    height: 70px;
+    padding: 0px 50px;
+    border-bottom:solid 1px rgb(109, 105, 105) ;
+    line-height: 70px;
+    font-weight: 700;
+    margin-top: 40px;
+    background: white;
+
+}
+
+.dh-tong-tien-tt-1{
+    color: rgb(77, 79, 80);
+    font-weight: 600;
+}
+.dh-tong-tien-tong{
+    font-size: 25px;
+    /* background-color: red; */
+    font-weight: 600;
+    color: red;
+}
+.dh-tong-tien-st div{
+    height: 30px;
+    line-height: 30px;
+}
+.dh-tong-tien-tt div{
+    height: 30px;
+    line-height: 30px;
+}
+
+.dh-dia-chi{
+    margin-bottom: 10px;
+    background: white;
+
+}
+.dh-dia-chi-ten{
+    display: flex;
+}
+.dc-ten{
+    font-weight: 700;
+    margin: 5px;
+    margin-left: 120px;
+
+}
+.dc-sdt{
+    margin: 5px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.dh-dia-chi-chi-tiet{
+    margin-left: 50px;
+    padding-bottom: 20px;
+}
+
+.dh-dia-chi-tt{
+    height: 50px;
+    padding: 0px 50px;
+    border-bottom:solid 1px rgb(109, 105, 105) ;
+    border-top:solid 2px rgb(38, 38, 224) ;
+    line-height: 50px;
+    font-weight: 600;
+
+}
+
+.s-gia{
+    color: red;
+}
+.s-ten{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none!important;
+}

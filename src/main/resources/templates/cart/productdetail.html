@@ -27,32 +27,35 @@
     <!--Angular link -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
+    <link rel="stylesheet" href="/assets/css/alter.css" />
+    <script src="/js/Alter.js"></script>
+
 </head>
 <body ng-app="app" ng-controller="ctrlproductdetail" style=" background-color: #f2edf3;">
 <div th:replace ="~{/partials/header.html}"></div>
-
+<div id="toast"></div>
 <div style="background-color: #f2edf3;">
     <div class="detail">
         <div class="gr">
             <div class="hinh">
 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-right: 24px;">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" ng-repeat="img in items.imgs" data-slide-to="{{$index}}" class="{{::($index === 0 ? 'active' : '')}}"></li>
+                        <li style="background: black; opacity: 0.5;" data-target="#carouselExampleIndicators" ng-repeat="img in items.imgs" data-slide-to="{{$index}}" class="{{::($index === 0 ? 'active' : '')}}"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item {{::($index === 0 ? 'active' : '')}}" ng-repeat="img in items.imgs">
                             <img class="d-block w-100" src="/file/AnhWebBanHang/{{img.image}}" alt="">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="opacity: 1!important;">
+                        <i class="fa fa-2x fa-angle-left text-dark" style="background: #cacaca;padding: 12px 4px; border-radius: 13px;"></i>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="opacity: 1!important;">
+                        <i class="fa fa-2x fa-angle-right text-dark" style="background: #cacaca;padding: 12px 4px; border-radius: 13px;"></i>
                     </a>
+
+
                 </div>
 
             </div>
@@ -67,44 +70,20 @@
                         </div>
 
                         <div class="danh-gia" style="margin-left: 55px;">
-                            <span>|500 đánh giá|</span>
-                            <span>|500 lượt mua|</span>
+                            <span>| 500 đánh giá |</span>
+                            <span>| 500 lượt mua |</span>
                         </div>
-
 
 
                     </div>
                     <div class="tdsl">
                         <div class="tieu-de-chung">
-                           <strong> Số lượng</strong>
-                        </div>
-
-                        <div class="so-luong1" style="margin-left: 77px;">
-                            {{items.amount}}
+                           <strong>{{items.amount}} sản phẩm có sẵn</strong>
                         </div>
 
                     </div>
 
                     <div class="thong-tin-gia">
-
-
-                        <!-- <div class="gia-cu">
-                            <div class="gia-cu-tt">
-                                Giá cũ
-                            </div>
-                            <div class="gia-cu-gia">
-                                5 000 000
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="mau">
-                            <div class="mau-tt">
-                                Màu
-                            </div>
-                            <div class="gia-moi-gia">
-                               <div></div>
-                            </div>
-                        </div> -->
 
 
                         <div class="gia">
@@ -120,22 +99,29 @@
                         </div>
 
 
-                        <div class="mua-hang">
-                            <div class="ct">
-                                Số lượng
-                                <div>
-                                    <button class="cong ho">-</button>
+                        <div class="mua-hang" style="    position: absolute; bottom: 0px;">
+                            <div class="d-flex align-items-center mb-4 pt-2" style="padding: 0.375rem 0.75rem">
+                                <div>Số Lượng</div>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <a class="btn px-2" style="height: 39px;margin-top: 5px; border: 1px solid #ced4da;"
+                                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                        <i class="fas fa-minus"></i>
+                                    </a>
+
+                                    <input type="number" name="quantity"  id="quantity" min="1" value="1" max="{{items.amount}}"
+                                           style="width: 70px; height: 40px; text-align: center;" class="form-control form-control-sm" />
+
+                                    <a class="btn  px-2" style="height: 39px;margin-top: 5px; border: 1px solid #ced4da;"
+                                       onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
                                 </div>
-                                <input class="so-luong" type="text" name="" placeholder="" value="1">
-                                <div>
-                                    <button class="tru ho">+</button>
-                                </div>
+
                             </div>
 
                             <div class="btn">
                                 <button class="mua ngay ho"> Mua Ngay</button>
-                                <button class="mua ho"> Thêm Vào Giỏ</button>
-
+                                <button class="mua ho" ng-click="newCar(items.id)"> Thêm Vào Giỏ</button>
                             </div>
 
                         </div>

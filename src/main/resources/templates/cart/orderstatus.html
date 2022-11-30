@@ -10,11 +10,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel='stylesheet' href='https://codepen.io/depy/pen/LaXVEK.css'><link rel="stylesheet" href="./ratingcss.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   <script src='https://codepen.io/depy/pen/LaXVEK.js'></script>
   <link rel="stylesheet" href="/assets/css/alter.css">
@@ -53,13 +52,12 @@
       </div>
       <div class="list-group list-group-flush">
 
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/account/changinformation"><i class="fa fa-user"
-                                                                                                 aria-hidden="true"></i>Tài khoản của tôi</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/account/changinformation">
+          <i class="fa fa-user"     aria-hidden="true"></i>Tài khoản của tôi</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" style="color: #ee4d2d !important;"><i
                 class="fa fa-list-alt" aria-hidden="true"></i>Đơn mua</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa fa-bell"
-                                                                                                 aria-hidden="true"></i>Thông báo</a>
-
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+          <i class="fa fa-bell"   aria-hidden="true"></i>Thông báo</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"></a>
       </div>
     </div>
@@ -109,13 +107,13 @@
                 <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
               </div>
-              <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
-                <ul class="phanloai" style=" margin-left: 20px">
+              <div  class="product"><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+                <ul class="phanloai" >
                 <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
                 </ul>
-                <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+                <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
               </div>
               <div class="price0">
@@ -139,22 +137,12 @@
                   <div ng-if="item.status!=3">
 
                   <div  ng-if="item.status== 1 || item.status== 2" class="_8vTqu9">
-                    <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
+                    <button ng-click="xnHuy(item.id)"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal"  data-target="#myModal3">Hủy</button>
                   </div>
 
                   <div  ng-if="item.status== 4 || item.status== 5" class="_8vTqu9">
                     <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                   </div>
-                  </div>
-                  <div ng-click="orderid(item.id)" ng-if="item.status== 4" class="_8vTqu9-" style="margin-left: 10px">
-                    <button class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal2">
-                      Đánh giá
-                    </button>
-                  </div>
-
-
-                  <div class="VN6h8+">
-                    <button class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
                   </div>
                 </div>
               </div>
@@ -173,13 +161,13 @@
               <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
-              <ul class="phanloai" style=" margin-left: 20px">
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
                 <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -198,14 +186,7 @@
                 </button>
 
                 <div class="_8vTqu9">
-                  <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
-                </div>
-
-                <!-- The Modal -->
-
-
-                <div class="VN6h8+">
-                  <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
+                  <button ng-click="xnHuy(item.id)"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal"  data-target="#myModal3">Hủy</button>
                 </div>
               </div>
             </div>
@@ -221,13 +202,13 @@
 
             </div>
 
-            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
-              <ul class="phanloai" style=" margin-left: 20px">
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
                 <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -246,13 +227,7 @@
                 </button>
 
                 <div class="_8vTqu9">
-                  <button class="stardust-button stardust-button--primary Kz9HeM">Hủy</button>
-                </div>
-                <!-- The Modal -->
-
-
-                <div class="VN6h8+">
-                  <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
+                  <button ng-click="xnHuy(item.id)"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal"  data-target="#myModal3">Hủy</button>
                 </div>
               </div>
             </div>
@@ -267,13 +242,13 @@
               <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
-              <ul class="phanloai" style=" margin-left: 20px">
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
                 <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -290,13 +265,6 @@
                 <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
                   chi tiết đơn hang
                 </button>
-
-                <!-- The Modal -->
-
-
-                <div class="VN6h8+">
-                  <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
-                </div>
               </div>
             </div>
           </div>
@@ -310,13 +278,13 @@
               <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
-              <ul class="phanloai" style=" margin-left: 20px">
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
                 <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -338,21 +306,13 @@
                 <div class="VN6h8+">
                   <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                 </div>
-
-                <div ng-click="orderid(item.id)" ng-if="item.status== 4" class="_8vTqu9-" style="margin-left: 10px">
-                  <button class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal2">
-                    Đánh giá
-                  </button>
                 </div>
                 <!-- The Modal -->
 
-                <div class="VN6h8+">
-                  <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
-                </div>
+
               </div>
             </div>
           </div>
-        </div>
         <div role="tabpanel" class="tab-pane fade" id="Dahuy">
           <div ng-repeat="item in orderlist | filter : {status:5}" class="info-product">
             <div class="status d-flex">
@@ -362,13 +322,13 @@
               <span class="ml-auto p-2">{{status[item.status].status}}</span>
 
             </div>
-            <div  class="product" style="display: flex "><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
-              <ul class="phanloai" style=" margin-left: 20px">
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
                 <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 60%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
 
             </div>
             <div class="price0">
@@ -393,9 +353,7 @@
                   <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                 </div>
 
-                <div class="VN6h8+">
-                  <button  class="stardust-button stardust-button--secondary Kz9HeM">Xem danh gia nguoi mua</button>
-                </div>
+
               </div>
             </div>
           </div>
@@ -435,25 +393,28 @@
                 </div>
               </article>
               <div class="track" id="track">
-                <div id="step1" class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xác nhận</span> </div>
-                <div id="step2" class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Chờ lấy hàng</span> </div>
-                <div id="step3" class="step"> <span class="icon"> <i class="fa fa-truck" aria-hidden="true"></i></span> <span class="text"> Đang giao </span> </div>
-                <div id="step4" class="step"> <span class="icon"> <i class="fa fa-check" aria-hidden="true"></i> </span> <span class="text">Đã giao</span> </div>
+                <div id="step1" class="step"> <span class="icon"> <i class="fa fa-check" style="margin-top: 11px; margin-left: 5px"></i> </span> <span class="text">Chờ xác nhận</span> </div>
+                <div id="step2" class="step"> <span class="icon"> <i class="fa fa-user" style="margin-top: 11px; margin-left: 5px"></i> </span> <span class="text"> Chờ lấy hàng</span> </div>
+                <div id="step3" class="step"> <span class="icon"> <i class="fa fa-truck" style="margin-top: 11px; margin-left: 5px" aria-hidden="true"></i></span> <span class="text"> Đang giao </span> </div>
+                <div id="step4" class="step"> <span class="icon"> <i class="fa fa-check" style="margin-top: 11px; margin-left: 5px" aria-hidden="true"></i> </span> <span class="text">Đã giao</span> </div>
               </div>
               <hr>
               <ul class="row">
                 <li ng-repeat="item in orderstatus" class="col-md-6" >
+                  <a href="/product/sanpham/{{item.product.id}}" style="color: #1bcfb4; text-decoration: none">
                   <figure class="itemside mb-3">
                     <div class="aside"><img src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}" class="img-sm border"></div>
                     <figcaption class="info align-self-center">
                       <p class="title">{{item.product.name}} <br> Loại : {{item.product.groupProduct.name}}<br> Số lượng : {{item.quantity}}</p> <span class="text-muted">Giá : {{item.product.price}} </span>
                       <div class="_8vTqu9-" style="margin-left: 10px">
-                        <button ng-if="item.order.status == 4" ng-click="productbyid(item.product.id)" class="stardust-button stardust-button--primary Kz9HeMn" data-toggle="modal" data-target="#myModal2">
-                          Đánh giá
-                        </button>
+
                       </div>
                     </figcaption>
                   </figure>
+                  </a>
+                  <button ng-if="item.order.status == 4" ng-click="productbyid(item.product.id)" class="stardust-button stardust-button--primary Kz9HeMn" data-toggle="modal" data-target="#myModal2">
+                    Đánh giá
+                  </button>
                 </li>
 
               </ul>
@@ -483,6 +444,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Đánh giá</h4>
+        <button ng-click="add()" type="button" class="btn btn-danger" data-dismiss="modal">X</button>
       </div>
 
       <!-- Modal body -->
@@ -540,7 +502,42 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button ng-click="add()" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal" id="myModal3">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 26%; margin-left: 39%">
+
+      <!-- Modal Header -->
+
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container">
+          <article class="card">
+
+            <div class="card-body" style="padding: 10px; align-self: center; margin-bottom: -20px">
+
+                <figure class="itemside mb-3">
+                  <figcaption class="info align-self-center">
+                    <h5>Bạn chắc chắn hủy đơn?</h5>
+                  </figcaption>
+                </figure>
+            </div>
+
+          </article>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer" style="display: block">
+            <div class="row">
+            <button style="width: 150px; margin-left: 4px" ng-click="Huy()" type="button" class="btn btn-danger" data-dismiss="modal">Xác nhận</button>
+            <button style="width: 150px; margin-left: 15px"  type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
       </div>
 
     </div>

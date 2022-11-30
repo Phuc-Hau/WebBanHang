@@ -25,6 +25,7 @@
   }
   
   .toast {
+    opacity:1 !important;
     display: flex;
     align-items: center;
     background-color: #fff;

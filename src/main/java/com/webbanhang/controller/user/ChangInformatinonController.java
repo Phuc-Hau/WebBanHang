@@ -50,14 +50,8 @@ public class ChangInformatinonController {
 			List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
 			model.addAttribute("amountcart", list.size());
 		}
-		Cutomer cutomer = cutomerService.findById(user.getCutomer().getId());
 
-		edituser.setUser(user);
-		edituser.setCutomer(cutomer);
-
-		model.addAttribute("edituser",edituser);
-		
-		return "user/ChangInformation1";
+		return "user/ChangInformation";
 	}
 	
 	@PostMapping("/user/update")
