@@ -31,6 +31,14 @@ app.controller('ctrcart', function($scope,$http) {
         return  $scope.items.length;
     }
 
+    $scope.getAmount = function(){
+        let amount = 0;
+        for (let index = 0; index < $scope.items.length; index++) {
+            amount += $scope.items[index].quantity;
+        }
+        return amount;
+    }
+
     $scope.pre = function (id) {
         var index = $scope.items.findIndex(element => element.id == id);
         if($scope.items[index].quantity > 1) {
@@ -63,13 +71,26 @@ app.controller('ctrcart', function($scope,$http) {
         });
     }
 
-    $scope.newpay = function (){
+    $scope.newpay = function (items){
+        $scope.cardpay = items.filter(x => x.check ==true);
+        for (let i = 0; i < $scope.cardpay.length ; i++) {
+            delete $scope.cardpay[i] ['check'];
+            delete $scope.cardpay[i] ['id'];
+            delete $scope.cardpay[i].order ['id'];
+        }
 
-        $http.post(url+`/cart/newpay`).then(resp => {
-            $scope.items =[];
-        }).catch(error => {
-            console.log("fail", error)
-        });
+        if($scope.cardpay.length == 0 ){
+            showErrorToast("Chưa chọn sản phẩm");
+        }else{
+            console.log("ee",$scope.cardpay)
+            $http.post(url+`/cart/newpay`,$scope.cardpay).then(resp => {
+                window.location='http://localhost:8080/accounts/xacnhandonhang';
+            }).catch(error => {
+                console.log("fail", error)
+            });
+        }
+
+
 
     }
 

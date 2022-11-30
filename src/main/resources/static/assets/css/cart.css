@@ -1,6 +1,6 @@
 @media ( min-width : 1025px) {
     .h-custom {
-        min-height: 130vh !important;
+        min-height: 105vh !important;
     }
 }
 
@@ -12,12 +12,19 @@
     padding-right: .75em;
 }
 
+.dathang{
+    width: 71%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 80px;
+}
+
 .card-registration .select-arrow {
     top: 13px;
 }
 
 .bg-grey {
-    background-color: #eae8e8;
+    background-color: #c5fff1;
 }
 
 @media ( min-width : 992px) {
