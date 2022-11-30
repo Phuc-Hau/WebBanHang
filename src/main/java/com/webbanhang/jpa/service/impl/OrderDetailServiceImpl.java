@@ -30,6 +30,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
+    public List<OrderDetail> listCreate(List<OrderDetail> orderDetails) {
+        return OrderDetailDao.saveAll(orderDetails);
+    }
+
+    @Override
     public OrderDetail update(OrderDetail entity) {
         return OrderDetailDao.save(entity);
     }
@@ -38,6 +43,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public void delete(OrderDetail entity) {
         OrderDetailDao.delete(entity);
     }
+
 
     @Override
     public List<OrderDetail> findAllUsername(int id) {
