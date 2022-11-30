@@ -32,17 +32,13 @@ public class CartApi {
 	@Autowired
 	CutomerService cutomerService;
 
-
+	List<OrderDetail> orderDetailTym;
 
 	@GetMapping("/list")
 	public List<OrderDetail> cart(HttpServletRequest request) {
-
 		String username = request.getRemoteUser();
-
 		Users user =userService.findByUsername(username);
-
 		List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
-
 		return list;
 	}
 	
@@ -68,26 +64,7 @@ public class CartApi {
 		orderDetailService.delete(orderDetail);
 	}
 
-	@PostMapping("/cart/newpay")
-	public void Pay(HttpServletRequest request) {
 
-		String username = request.getRemoteUser();
-
-		int idCutomer = userService.findByUsernameGetIdCutomer(username);
-
-		List<OrderDetail> list = orderDetailService.findAllUsername(idCutomer);
-		int priceSum = 20000;
-		
-		for (OrderDetail orderDetail : list) {
-			priceSum+= (orderDetail.getProduct().getPrice()-orderDetail.getProduct().getPrice()
-					*orderDetail.getProduct().getSale())*orderDetail.getQuantity();
-		}
-
-		Order order = orderService.findIdCutomer(idCutomer);
-		order.setStatus(1);
-		order.setTotalmoney(priceSum); 
-		orderService.create(order);
-	}
 
 	@PostMapping("/newcart")
 	public JSONObject newCart(@RequestBody JSONObject json, HttpServletRequest request) {
@@ -122,6 +99,7 @@ public class CartApi {
 				Order order2 = new Order();
 				order2.setStatus(0);
 				order2.setCutomer(cutomerService.findById(idCutomer));
+				orderService.create(order2);
 				orderDetail.setOrder(order2);
 				orderDetailService.create(orderDetail);
 			}
@@ -131,7 +109,56 @@ public class CartApi {
 			obj.put("status",false);
 			obj.put("message", "Thêm sản phẩm "+product.getName()+" vào giỏ hàng thất bại!");
 		}
-
 		return obj;
 	}
+
+	@PostMapping("/cart/newpay")
+	public void orderDetailTym(@RequestBody List<OrderDetail> orderDetail) {
+		orderDetailTym= orderDetail;
+	}
+
+	@PostMapping("/order/confirm")
+	public List<OrderDetail> confirm() {
+		return orderDetailTym;
+	}
+
+	@PostMapping("/cart/pay/{pvc}")
+	public JSONObject Pay(@PathVariable("pvc") int pvc,HttpServletRequest request) {
+
+		JSONObject obj = new JSONObject();
+		int idCutomer =userService.findByUsernameGetIdCutomer(request.getRemoteUser());
+		List<OrderDetail> orderDetail =orderDetailTym;
+
+		Order order2 = new Order();
+		order2.setStatus(1);
+		order2.setCutomer(cutomerService.findById(idCutomer));
+
+		try{
+
+			orderService.create(order2);
+			int totalmoney=0;
+			for(int i=0 ; i<orderDetail.size();i++){
+				totalmoney += orderDetail.get(i).getQuantity() * orderDetail.get(i).getProduct().getPrice()*(1-orderDetail.get(i).getProduct().getSale());
+				orderDetail.get(i).setOrder(order2);
+			}
+			if(pvc==1){
+				totalmoney += 20000;
+			}
+			if(pvc==2){
+				totalmoney += 30000;
+			}
+			order2.setTotalmoney(totalmoney);
+
+			orderDetailService.listCreate(orderDetail);
+			orderDetailTym = null;
+			obj.put("status",true);
+			obj.put("message", "Đặt hàng hành công!");
+		} catch (Exception e){
+			obj.put("status",true);
+			obj.put("message", "Đặt hàng thất bại!");
+		}
+		return obj;
+	}
+
+
 }

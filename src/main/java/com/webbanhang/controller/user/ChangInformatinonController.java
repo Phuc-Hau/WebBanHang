@@ -24,7 +24,7 @@ import com.webbanhang.service.ConvenientService;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/account")
+@RequestMapping("/accounts")
 public class ChangInformatinonController {
 	@Autowired
 	UsersService usersService;

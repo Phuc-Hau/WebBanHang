@@ -47,12 +47,12 @@
         </div>
         <div>
           <div class="tt">[[${session.users.username}]]</div>
-          <a class="hoso" href="/account/changinformation"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa hồ sơ</a>
+          <a class="hoso" href="/accounts/changinformation"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa hồ sơ</a>
         </div>
       </div>
       <div class="list-group list-group-flush">
 
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/account/changinformation">
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/accounts/changinformation">
           <i class="fa fa-user"     aria-hidden="true"></i>Tài khoản của tôi</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" style="color: #ee4d2d !important;"><i
                 class="fa fa-list-alt" aria-hidden="true"></i>Đơn mua</a>
@@ -141,7 +141,7 @@
                   </div>
 
                   <div  ng-if="item.status== 4 || item.status== 5" class="_8vTqu9">
-                    <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                    <button ng-click="newCar(orderdetail[getIdOr(item.id)].product.id)" class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                   </div>
                   </div>
                 </div>

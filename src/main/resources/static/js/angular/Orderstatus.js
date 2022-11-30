@@ -110,7 +110,7 @@ app.controller('orderstatus', function($scope,$http) {
 
             console.log("Success submit", resp)
             if(resp.data.status){
-                showSuccessToast(resp.data.message);
+                window.location='/accounts/cart';
             }else{
                 showErrorToast(resp.data.message);
             }
@@ -144,6 +144,25 @@ app.controller('orderstatus', function($scope,$http) {
 
     }
 
+
+    $scope.newCar = function (id){
+        $scope.urlnew='/accounts/newcart';
+        var newcar = {
+            'id':id,
+            'quantity': 1
+        }
+        $http.post($scope.urlnew,newcar).then(resp => {
+            $scope.sr = resp.data;
+            console.log("p", resp)
+            if($scope.sr.status==true){
+                window.location='http://localhost:8080/accounts/cart';
+            }else{
+                showErrorToast($scope.sr.message)
+            }
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
 
 
 
