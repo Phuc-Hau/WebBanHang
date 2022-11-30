@@ -1,6 +1,8 @@
 package com.webbanhang.jpa.service.impl;
 
+import com.webbanhang.jpa.dao.EvaluateDao;
 import com.webbanhang.jpa.dao.ProductDao;
+import com.webbanhang.jpa.model.Evaluate;
 import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductDao ProductDao;
+
+    @Autowired
+    EvaluateDao evaluateDao;
 
 
     @Override
@@ -48,4 +53,10 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProductGroup(int idGroupProduct) {
         return ProductDao.getProductGroup(idGroupProduct);
     }
+
+    @Override
+    public List<Evaluate> listEvaluate(int idProduct) {
+        return evaluateDao.getEvaluateByProduct(idProduct);
+    }
+
 }

@@ -1,8 +1,10 @@
 package com.webbanhang.controller.cart.api;
 
+import com.webbanhang.jpa.model.Evaluate;
 import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.model.Users;
+import com.webbanhang.jpa.service.EvaluateService;
 import com.webbanhang.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
@@ -19,6 +21,9 @@ public class ProductDetailApi {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    EvaluateService evaluateService;
+
     @GetMapping("/product/{id}")
     public Product doGetFL (@PathVariable("id") int id) {
         return productService.findById(id);
@@ -29,4 +34,6 @@ public class ProductDetailApi {
         return productService.getProductGroup(id);
     }
 
+    @GetMapping("/product/listevalute/{id}")
+    public List<Evaluate> getEvaluates(@PathVariable("id") int id){return evaluateService.getEvaluateByProduct(id);}
 }

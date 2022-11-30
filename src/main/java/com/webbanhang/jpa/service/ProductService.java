@@ -1,5 +1,6 @@
 package com.webbanhang.jpa.service;
 
+import com.webbanhang.jpa.model.Evaluate;
 import com.webbanhang.jpa.model.Product;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface ProductService {
     boolean existsById(Integer id);
 
     List<Product> getProductGroup(int idGroupProduct);
+
+    List<Evaluate> listEvaluate(int idProduct);
 
 
 }

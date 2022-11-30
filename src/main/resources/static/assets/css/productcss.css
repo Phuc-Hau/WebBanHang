@@ -526,3 +526,14 @@ input{
     margin: 5px;
     border: 1px solid rgb(250, 250, 252);
 }
+
+.sao{display:flex;
+width:200px}
+.sao1{display:flex;
+width:20px}
+.sao1 div{
+width:20px;
+height:20px;
+}
+.sao1>div>img{
+width:100%;}

@@ -29,6 +29,11 @@
 
     <link rel="stylesheet" href="/assets/css/alter.css" />
     <script src="/js/Alter.js"></script>
+    <style>
+<!--.democlass {-->
+<!--  display: none;-->
+<!--}-->
+</style>
 
 </head>
 <body ng-app="app" ng-controller="ctrlproductdetail" style=" background-color: #f2edf3;">
@@ -156,16 +161,29 @@
          </ul>
         </div>
     </div>
-    <div class="danh-gia-sp">
+    <div class="danh-gia-sp" >
         <div class="tt-danh-gia">
             ĐÁNH GIÁ SẢN PHẨM:
             <hr>
         </div>
-        <div class="sao-bl">
+        <div ng-if="(evalute.lenght)=0">nono</div>
+        <div class="sao-bl" ng-if="">
+            jdkl
+            <div class="sao-bl-ct">
+                dnand
+                <div class="so-sao thuc">
+                    nono
+                </div>
+                </div>
+        </div>
+        <div class="sao-bl"  ng-if="(star)>0">
+<!--            -->
+
             <div class="sao-bl-ct">
                 <div class="so-sao thuc">
 
-                    4.5
+                    {{star}}
+
 
                 </div>
 
@@ -175,7 +193,7 @@
 
                 </div>
                 <div class="star">
-                    <img src="star.png" alt="">
+                    <img src="/image/Star_icon.png" alt="">
                 </div>
             </div>
         </div>
@@ -184,63 +202,25 @@
 
         <div class="bl-content-chung">
 
-            <div class="bl-content">
+            <div class="bl-content" ng-repeat="item in evalute">
                 <div class="chat-bl">
                     <div class="hinh"><img src="a1.jpg" alt=""></div>
-                    <div class="ten-nbl">nguyen van a</div>
-                    <div class="time">22/12/2022</div>
+                    <div class="ten-nbl">{{item.orders.order.cutomer.name}}</div>
+                    <div class="time"  >{{item.date| date:'dd-MM-yyyy'}}</div>
                 </div>
                 <div class="ccc">
-                    <div class="star-bl">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
+                    <div class="sao" ng-init="(_Array = []).length = (item.footQuality) ;">
+                        <div class="sao1" ng-repeat="i in _Array track by $index">
 
-                        <div class="s-so">5</div>
+                            <div><img src="/image/Star_icon.png"></div>
+                        </div>
+
 
                     </div>
-                    <div class="bl-ct">san pahm rả tot</div>
-                    <div class="hinh-bl">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                    </div>
+
+                    <div class="bl-ct">{{item.comment}}</div>
                 </div>
             </div>
-
-            <div class="bl-content">
-                <div class="chat-bl">
-                    <div class="hinh"><img src="a1.jpg" alt=""></div>
-                    <div class="ten-nbl">nguyen van a</div>
-                    <div class="time">22/12/2022</div>
-                </div>
-                <div class="cc">
-                    <div class="star-bl">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-
-                        <div class="s-so">5</div>
-
-                    </div>
-                    <div class="bl-ct">san pahm rả tot</div>
-                    <div class="hinh-bl">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-
-
         </div>
 
 
