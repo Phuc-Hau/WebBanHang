@@ -207,8 +207,7 @@ a:hover {
 .gio {
     position: absolute;
     top: 38px;
-    /* display: flex;
-    justify-content: center; */
+    color: white;
     text-align: center;
 }
 
