@@ -4,7 +4,7 @@ app.controller('ctrluser', function($scope,$http) {
 
     $scope.item={};
     function user () {
-        $scope.url="/account/api/changinformation"
+        $scope.url="/accounts/api/changinformation"
         $http.get($scope.url).then(resp => {
             $scope.item = resp.data;
             procvince($scope.item.cutomer.procvince, $scope.item.cutomer.district);
@@ -29,7 +29,7 @@ app.controller('ctrluser', function($scope,$http) {
     $scope.uploadfile = function (file) {
         var form = new FormData();
         form.append("files",file[0]);
-        let urlfile = 'http://localhost:8080/api/file/user';
+        let urlfile = '/api/file/user';
 
         $http.post(urlfile,form,{
             transformRequest: angular.identity,
@@ -48,7 +48,7 @@ app.controller('ctrluser', function($scope,$http) {
             user.img= $scope.image;
         }
 
-        $scope.urlUpdate ='/admin/api/user/update';
+        $scope.urlUpdate ='/accounts/api/user/update';
         $http.post($scope.urlUpdate,user).then(resp => {
             if(resp.data.status==true){
                 showSuccessToast(resp.data.message);
