@@ -49,7 +49,7 @@ public class IndexProductController {
 		return "index";
 	}
 	
-	@RequestMapping("/product/xuhuongsp")
+	@RequestMapping("/product/all")
 	public String allProduct(Model model) {		
 //		User users = userService.checkLogin(cookie.getValue("username"), cookie.getValue("password"));
 //
