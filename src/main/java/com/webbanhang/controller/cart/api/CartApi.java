@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -32,7 +33,7 @@ public class CartApi {
 	@Autowired
 	CutomerService cutomerService;
 
-	List<OrderDetail> orderDetailTym;
+	List<OrderDetail> orderDetailTym = new ArrayList<>();
 
 	@GetMapping("/list")
 	public List<OrderDetail> cart(HttpServletRequest request) {
@@ -114,8 +115,33 @@ public class CartApi {
 
 	@PostMapping("/cart/newpay")
 	public void orderDetailTym(@RequestBody List<OrderDetail> orderDetail) {
-		orderDetailTym= orderDetail;
+		orderDetailTym = orderDetail;
 	}
+
+	@PostMapping("/cart/buynow")
+	public JSONObject productOrderDetailTym(@RequestBody JSONObject json) {
+
+		JSONObject obj = new JSONObject();
+		int id = Integer.parseInt(String.valueOf(json.get("id")));
+		int quantity = Integer.parseInt(String.valueOf(json.get("quantity")));
+
+		Product product = productService.findById(id);
+
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setProduct(product);
+		orderDetail.setQuantity(quantity);
+
+		orderDetailTym.add(orderDetail);
+		try {
+
+			obj.put("status",true);
+		} catch (Exception e){
+			obj.put("status",false);
+			obj.put("message", "Mua ngay thất bại!");
+		}
+		return obj;
+	}
+
 
 	@PostMapping("/order/confirm")
 	public List<OrderDetail> confirm() {
@@ -154,7 +180,7 @@ public class CartApi {
 			obj.put("status",true);
 			obj.put("message", "Đặt hàng hành công!");
 		} catch (Exception e){
-			obj.put("status",true);
+			obj.put("status",false);
 			obj.put("message", "Đặt hàng thất bại!");
 		}
 		return obj;
