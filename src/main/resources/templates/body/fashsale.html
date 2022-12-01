@@ -9,9 +9,7 @@
 									   alt="flash deal"> <img
 			src="https://frontend.tikicdn.com/_desktop-next/static/img/homnay.svg"
 			alt="flash deal">
-		<div class="ccRlPb" style="position: absolute; right: 10px;">
-			<span>01</span>: <span class="min">32</span>: <span>09</span>
-		</div>
+
 	</div>
 
 	<!-- Sản phẩm Sale -->
@@ -36,9 +34,9 @@
 						<div class="salegia">
               <span
 					  style="color: rgba(0, 0, 0, .13); font-size: 16px; text-decoration: line-through;">[[${item.price}]]đ</span>
-							<span style="color: red;">[[${item.price-item.price*item.sale}]]  <span
+							<span style="color: red;">[[${item.price*(1-item.sale)}]]  <span
 									style="margin-left: -5px; font-size: 16px;">đ</span>
-              </span> <span class="DTL">[[${item.sale*100}]]% </span>
+              </span> <span class="DTL">[[${item.sale*100}]] %</span>
 						</div>
 						<!-- Thanh sale -->
 						<div class="sale-item__lower-wrapper">

@@ -57,7 +57,7 @@ app.controller('signup', function($scope,$http) {
             }else{
                 showSuccessToast(resp.data.message)
                 setTimeout ( function () {
-                    window.location='http://localhost:8080/account/signin';
+                    window.location='/account/signin';
                 }, 1000);
 
             }

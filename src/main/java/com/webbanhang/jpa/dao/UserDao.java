@@ -21,5 +21,8 @@ public interface UserDao extends JpaRepository<Users, Integer>{
 
     @Query("SELECT o FROM Users o WHERE o.email = ?1 and o.token = ?2 ")
     Users findByEmailAndTokeID(String email, String tokeID);
+
+    @Query("SELECT o.img FROM Users o WHERE o.cutomer.id = ?1 ")
+    String imgIdCutomer(int idCutomer);
 	
 }

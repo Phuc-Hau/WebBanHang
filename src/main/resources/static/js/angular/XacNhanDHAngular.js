@@ -20,15 +20,16 @@ app.controller("myCtrl", function($scope,$http) {
         $http.post(hostcart).then( resp =>{
             $scope.items = resp.data;
             sumMoney($scope.items);
-            console.log("h",resp)
-        })
+            if($scope.items.length==0){
+                window.location='/accounts/cart';
+            }
+        }).catch(error => {
+            console.log("fail", error)
+        });
     }
     $scope.loadcart();
 
     $scope.summoney;
-
-
-
 
 
     function sumMoney(item){
@@ -37,6 +38,15 @@ app.controller("myCtrl", function($scope,$http) {
             u += item[i].product.price *(1- item[i].product.sale) * item[i].quantity;
         }
         $scope.summoney = u;
+    }
+
+
+    $scope.HuyDH = function (){
+        $http.post("/accounts/huydh").then( reap =>{
+            window.location='/accounts/cart';
+        }).catch(error => {
+            console.log("fail", error)
+        });
     }
 
     $scope.dv=1;
@@ -52,11 +62,22 @@ app.controller("myCtrl", function($scope,$http) {
 
     $scope.DatHang = function (items){
         var url ='/accounts/cart/pay/'+$scope.dv;
-        $http.post(url).then(resp => {
-
-        }).catch(error => {
-            console.log("fail", error)
-        });
+        if($scope.pvc==20000 || $scope==30000){
+            $http.post(url).then(resp => {
+                if(resp.data.status==true){
+                    showSuccessToast(resp.data.message)
+                    setTimeout ( function () {
+                        window.location='/accounts/cart';
+                    }, 500);
+                }else{
+                    showErrorToast(resp.data.message)
+                }
+            }).catch(error => {
+                console.log("fail", error)
+            });
+        }else{
+            showErrorToast("Chưa chọn phương thức giao hàng")
+        }
     }
 
 

@@ -14,6 +14,10 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="/js/angular/XacNhanDHAngular.js"></script>
+
+
+    <link rel="stylesheet" href="/assets/css/alter.css" />
+    <script src="/js/Alter.js"></script>
 </head>
 <body style="background-color: #f7f7f7;">
         
@@ -82,10 +86,10 @@
                     </div>
         
                 </div>
-                
-        
+
                 <div class="dh-btn">
-                    <input class="dh" type="submit" ng-click="DatHang(items)" value="Đặt Hàng">
+                    <button class="dh" type="submit" ng-click="DatHang(items)" >Đặt Hàng</button>
+                    <button class="dh" ng-click="HuyDH()" style="background-color: rgb(255, 132, 0); color: black;" >Hủy</button>
                 </div>
         
               </div>

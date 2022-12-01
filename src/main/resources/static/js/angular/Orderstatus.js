@@ -107,10 +107,9 @@ app.controller('orderstatus', function($scope,$http) {
         $scope.evalute.footQuality = star;
         $http.post($scope.urlsubmit, $scope.evalute ).then(resp => {
 
-
             console.log("Success submit", resp)
             if(resp.data.status){
-                window.location='/accounts/cart';
+                showSuccessToast(resp.data.message);
             }else{
                 showErrorToast(resp.data.message);
             }
@@ -155,7 +154,7 @@ app.controller('orderstatus', function($scope,$http) {
             $scope.sr = resp.data;
             console.log("p", resp)
             if($scope.sr.status==true){
-                window.location='http://localhost:8080/accounts/cart';
+                window.location='/accounts/cart';
             }else{
                 showErrorToast($scope.sr.message)
             }
