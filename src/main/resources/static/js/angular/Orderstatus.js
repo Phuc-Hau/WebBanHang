@@ -109,7 +109,7 @@ app.controller('orderstatus', function($scope,$http) {
 
             console.log("Success submit", resp)
             if(resp.data.status){
-                window.location='/accounts/cart';
+                showSuccessToast(resp.data.message);
             }else{
                 showErrorToast(resp.data.message);
             }
@@ -154,7 +154,7 @@ app.controller('orderstatus', function($scope,$http) {
             $scope.sr = resp.data;
             console.log("p", resp)
             if($scope.sr.status==true){
-                showSuccessToast($scope.sr.message)
+                window.location='/accounts/cart';
             }else{
                 showErrorToast($scope.sr.message)
             }
