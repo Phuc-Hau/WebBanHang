@@ -42,48 +42,8 @@ public class ChangInformatinonController {
 	OrderDetailService orderDetailService;
 
 	@RequestMapping("/changinformation")
-	public String changInformation(@ModelAttribute("edituser") EditUserAdmin edituser, Model model, HttpServletRequest request) throws InterruptedException {
-		String username = request.getRemoteUser();
-
-		Users user =usersService.findByUsername(username);
-		if(user !=null) {
-			List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
-			model.addAttribute("amountcart", list.size());
-		}
-
+	public String changInformation() throws InterruptedException {
 		return "user/ChangInformation";
 	}
-	
-	@PostMapping("/user/update")
-	public String changInformation(Model model, @RequestParam("imgs") MultipartFile imgs,
-			@ModelAttribute("edituser") EditUserAdmin edituser, HttpServletRequest request) {
 
-
-		String username = request.getRemoteUser();
-		Users useo =usersService.findByUsername(username);
-		
-			Users user = edituser.getUser();
-			user.setRole(useo.getRole());
-			user.setStatus(useo.isStatus());
-			user.setPassword(useo.getPassword());
-
-			Cutomer cutomer = edituser.getCutomer();
-			
-			if(!imgs.getOriginalFilename().equals("")) {
-				user.setImg(imgs.getOriginalFilename());
-			}else {
-				user.setImg(usersService.findById(user.getId()).getImg());
-			}
-			
-			user.setCutomer(cutomer);
-		   
-			try {
-				cutomerService.update(cutomer);
-				usersService.update(user);
-				convenientUtils.saveFile(imgs, "user");
-			} catch (Exception e) { 
-				e.printStackTrace();
-			}
-			return"redirect:/account/changinformation";
-	}
 }
