@@ -148,6 +148,11 @@ public class CartApi {
 		return orderDetailTym;
 	}
 
+	@PostMapping("/huydh")
+	public void huy(){
+		orderDetailTym = null;
+	}
+
 	@PostMapping("/cart/pay/{pvc}")
 	public JSONObject Pay(@PathVariable("pvc") int pvc,HttpServletRequest request) {
 

@@ -20,7 +20,9 @@ app.controller("myCtrl", function($scope,$http) {
         $http.post(hostcart).then( resp =>{
             $scope.items = resp.data;
             sumMoney($scope.items);
-            console.log("h",resp)
+            if($scope.items.length==0){
+                window.location='/accounts/cart';
+            }
         }).catch(error => {
             console.log("fail", error)
         });
@@ -30,13 +32,21 @@ app.controller("myCtrl", function($scope,$http) {
     $scope.summoney;
 
 
-
     function sumMoney(item){
         let u=0;
         for (let i = 0; i < item.length; i++) {
             u += item[i].product.price *(1- item[i].product.sale) * item[i].quantity;
         }
         $scope.summoney = u;
+    }
+
+
+    $scope.HuyDH = function (){
+        $http.post("/accounts/huydh").then( reap =>{
+            window.location='/accounts/cart';
+        }).catch(error => {
+            console.log("fail", error)
+        });
     }
 
     $scope.dv=1;
