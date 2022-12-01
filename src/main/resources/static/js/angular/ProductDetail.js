@@ -109,7 +109,24 @@ app.controller('ctrlproductdetail', function($scope,$http) {
        document.body.insertBefore(newDiv, currentDiv);
      }
 
+     $scope.star = function(z){
+         for (let j = 0; j < z.length; j++) {
 
+             var tym = '#stars'+j+' li';
+             var stars = $(tym).parent().children('li.star');
+
+             for (let i = 0; i < stars.length; i++) {
+                 $(stars[i]).removeClass('selected');
+             }
+
+             var onStar = z.footQuality;
+             for (let i = 0; i < onStar; i++) {
+                 $(stars[i]).addClass('selected');
+             }
+
+         }
+
+     }
 
 
 })
