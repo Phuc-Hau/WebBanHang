@@ -1,0 +1,786 @@
+/***
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+body {
+    background-color: #f7f7f7 !important;
+}
+
+.name {
+    margin: 12px;
+    margin-left: 30px;
+}
+
+#button-chat {
+    height: 30px;
+    width: 59px;
+    margin: 10px;
+    font-size: small;
+    background-color: #ee4d2d;
+    color: white;
+    border: none;
+}
+
+#button-xem {
+    height: 30px;
+    width: 86px;
+    margin: 10px;
+    font-size: small;
+    margin-left: 0%;
+    border: none;
+}
+
+.container-product {
+    padding: none;
+
+}
+
+.payment {
+    padding: 12px 24px 24px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    background: #fffefb;
+    background-color: white;
+}
+
+.payment1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*min-width: 300px;*/
+    max-width: 400px;
+    flex-grow: 1;
+    word-wrap: break-word;
+    text-align: left;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, .54);
+}
+
+.payment2 {
+    display: flex;
+    overflow: hidden;
+}
+
+.stardust-button--primary {
+    background-color: #ee4d2d;
+    border-color: #cd3011;
+    color: #fff;
+}
+
+._8vTqu9 {
+    display: flex;
+    overflow: hidden;
+}
+
+._8vTqu9,
+.VN6h8\+ {
+    margin: 0 0 0 10px;
+    align-items: center;
+    text-overflow: ellipsis;
+}
+
+._8vTqu9,
+.NIZAp8,
+.VN6h8\+ {
+    display: flex;
+    overflow: hidden;
+}
+
+._8vTqu9,
+.NIZAp8,
+.VN6h8\+ {
+    display: flex;
+    overflow: hidden;
+}
+
+.Kz9HeM {
+    min-width: 150px;
+    min-height: 40px;
+    padding: 8px 20px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.Kz9HeMn {
+    min-width: 150px;
+    min-height: 40px;
+    padding: 8px 20px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    border-radius: 2px;
+    outline: 0;
+    margin-left: 90px;
+}
+
+.stardust-button {
+    font-family: -apple-system, Helvetica Neue, Helvetica, Roboto, Droid Sans, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .26);
+    background-color: #fff;
+    color: rgba(0, 0, 0, .87);
+    padding: 8px 10px;
+}
+
+.stardust-button--primary {
+    background-color: #ee4d2d;
+    border-color: #cd3011;
+    color: #fff;
+}
+
+.Kz9HeM:not(.stardust-button--primary) {
+    color: #555;
+    border: 1px solid rgba(0, 0, 0, .09);
+}
+
+.Kz9HeM {
+    min-width: 150px;
+    min-height: 40px;
+    padding: 8px 20px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.price {
+    width: auto;
+    height: 70px;
+    background-color: white;
+    border-top: 1px solid rgb(227, 202, 202);
+}
+
+.product {
+    width: auto;
+    height: 100px;
+    background-color: white;
+}
+
+.status {
+    width: auto;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    border-bottom: 1px solid rgb(180, 162, 162);
+}
+
+.ghw9hb {
+    text-align: right;
+    margin-left: 49%;
+}
+
+.\+QRFJX {
+    text-align: right;
+}
+
+.status>span {
+    text-align: right;
+
+}
+
+
+.price0 {
+    padding-top: 20px;
+    background-color: white;
+
+}
+
+.price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price2 {
+    color: #ee4d2d;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.price1 {
+    margin: 0 10px 0 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.product img {
+    width: 80px;
+    height: 80px;
+    margin: 11px;
+    margin-left: 30px;
+}
+
+.product span {
+    display: inline;
+}
+
+.info-product {
+    width: auto;
+    height: auto;
+    background-color: #5b9bd1;
+    margin: 10px auto;
+    margin-bottom: 40px;
+}
+
+
+
+#sidebar-wrapper {
+    background-color: #f7f7f7 !important;
+}
+
+.list-group-item-light {
+    background-color: #f7f7f7 !important;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+.fa .fa-check{
+    margin-top: 14px;
+}
+
+.tt {
+    max-width: 86px;
+    overflow: hidden;
+}
+
+.shop-avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin: 3px 11px;
+
+}
+
+.form-group span {
+    position: absolute;
+    margin: 11.5px;
+}
+
+.form-group {
+    margin-top: 15px;
+}
+
+.form-group .form-control {
+    padding: 0.375rem 2.45rem;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.hoso {
+    color: #a2aebb;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav__tabs {
+    background-color: white !important;
+    height: 60px !important;
+}
+
+.nav__tabs .nav__item {
+    background-color: white !important;
+    margin: 2px auto !important;
+    height: 41px !important;
+}
+
+.nav__tabs .nav__item:hover {
+    color: #ee4d2d !important;
+}
+
+.nav__item .nav-link:hover{
+    color: #ee4d2d !important;
+    opacity: 1 !important;
+}
+
+.nav__item {
+    color: black !important;
+
+}
+
+.border-end {
+    margin-right: 40px;
+
+}
+
+.av {
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+}
+
+.list-group a {
+    border: none;
+}
+
+/* Container */
+
+
+
+
+@media (min-width: 300px)and (max-width: 900px) {
+
+    .nav {
+        height: 300px;
+    }
+
+    .payment {
+        display: flex !important;
+    }
+
+    /* .df2{
+      display: inline !important ;
+
+    } */
+
+    .df1 {
+        display: inline-flexbox !important;
+        width: 100%;
+        height: 200px;
+        margin: auto;
+    }
+
+
+    .nav-item {
+        display: inline !important;
+    }
+
+    .price1 {
+        margin: 0px;
+
+    }
+
+    .payment2 {
+        display: block !important;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .payment2>button {
+        margin: auto;
+        text-align: center;
+    }
+
+    .tt,
+    .cc,
+    .tt1,
+    .av {
+        display: none !important;
+    }
+
+    .ttcn {
+        display: flex;
+
+    }
+
+    .ttcn>div {
+        margin: 5px;
+        background-color: #fafbfc;
+    }
+
+
+}
+
+@media (min-width: 900px)and (max-width: 1500px) {
+    .df2 {
+        display: none !important;
+
+    }
+    .ttcn {
+        display: none;
+
+    }
+    /* .df1{
+      display: inline !important;
+    } */
+
+}
+
+
+.payment {
+    display: flex !important;
+}
+
+
+
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.10rem
+}
+
+.card-header:first-child {
+    border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+.track {
+    position: relative;
+    background-color: #ddd;
+    height: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 50px
+}
+
+.track .step {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 25%;
+    margin-top: -18px;
+    text-align: center;
+    position: relative
+}
+
+.track .step.active:before {
+    background: #FF5722
+}
+
+.nav__item .nav-link.active {
+    border-bottom: 1px solid #ee4d2d !important;
+    color: #ee4d2d !important;
+}
+
+
+
+.track .step::before {
+    height: 7px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 18px
+}
+
+.track .step.active .icon {
+    background: #ee5435;
+    color: #fff
+}
+
+.track .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 100%;
+    background: #ddd
+}
+
+.track .step.active .text {
+    font-weight: 400;
+    color: #000
+}
+
+.track .text {
+    display: block;
+    margin-top: 7px
+}
+
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
+}
+
+.itemside .aside {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0
+}
+
+.img-sm {
+    width: 80px;
+    height: 80px;
+    padding: 7px
+}
+
+.bg-white {
+    background-color: rgb(255, 255, 255) !important;
+    width: 180px !important;
+}
+.border-end {
+    margin-right: 25px !important;
+}
+
+ul.row,
+ul.row-sm {
+    list-style: none;
+    padding: 0
+}
+
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px
+}
+
+.itemside .title {
+    display: block;
+    margin-bottom: 5px;
+    color: #212529
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+.btn-warning {
+    color: #ffffff;
+    background-color: #ee5435;
+    border-color: #ee5435;
+    border-radius: 1px
+}
+
+.btn-warning:hover {
+    color: #ffffff;
+    background-color: #ff2b00;
+    border-color: #ff2b00;
+    border-radius: 1px
+}
+
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 1250px !important;
+        margin: 1.75rem auto;
+    }
+}
+
+.modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0rem !important;
+    margin: -30px  !important;
+}
+
+body .modal-content {
+    flex-direction: column !important;
+}
+
+
+
+.border-end a{
+    color : black !important;
+}
+
+.dropdown-item {
+
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529 !important;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-toggle::after {
+
+    content: none !important;
+
+}
+
+a:hover {
+    text-decoration: none !important;
+
+}
+
+.ml-auto, .mx-auto {
+    font-size: large !important;
+    color: red !important;
+    margin-top: 5px !important;
+    margin-right: 40px !important;
+}
+
+.phanloai{
+    display: inline-grid;
+    margin-left: 20px;
+    width: 24%;
+}
+
+/*ul.phanloai li{*/
+/*    margin-top: 10px !important;*/
+/*}*/
+
+
+
+
+
+* {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.clearfix {
+    clear:both;
+}
+
+.text-center {text-align:center;}
+
+a {
+    color: tomato;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2196f3;
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #F5F5F5;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+
+
+.new-react-version {
+    padding: 20px 20px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.new-react-version .react-svg-logo {
+    text-align: center;
+    max-width: 60px;
+    margin: 20px auto;
+    margin-top: 0;
+}
+
+
+
+
+
+.success-box {
+    margin:50px 0;
+    padding:10px 10px;
+    border:1px solid #eee;
+    background:#f9f9f9;
+}
+
+.success-box img {
+    margin-right:10px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+.success-box > div {
+    vertical-align:top;
+    display:inline-block;
+    color:#888;
+}
+
+
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+    list-style-type:none;
+    padding:0;
+
+    -moz-user-select:none;
+    -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+    display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+    font-size:2.5em; /* Change the size of the stars */
+    color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+    color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+    color:#FF912C;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+     background-color: #aca9a9 !important;
+    opacity: 0.25 !important;
+}
