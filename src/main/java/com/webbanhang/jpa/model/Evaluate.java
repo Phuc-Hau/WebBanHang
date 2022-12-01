@@ -3,10 +3,7 @@ package com.webbanhang.jpa.model;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "evaluate", indexes = {
-        @Index(name = "idorder_idx", columnList = "Orders_id"),
-        @Index(name = "idProduct_idx", columnList = "Product_id")
-})
+@Table(name = "evaluate")
 @Entity
 public class Evaluate {
     @Id
@@ -14,13 +11,13 @@ public class Evaluate {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "Product_id")
-    private Product product;
 
-    @ManyToOne
+    @JoinColumn(name = "Product_id")
+    private int product_id;
+
+
     @JoinColumn(name = "Orders_id")
-    private OrderDetail orders;
+    private int orders_id;
 
     @Column(name = "Comment", length = 45)
     private String comment;
@@ -55,27 +52,27 @@ public class Evaluate {
         this.comment = comment;
     }
 
-    public OrderDetail getOrders() {
-        return orders;
-    }
-
-    public void setOrders(OrderDetail orders) {
-        this.orders = orders;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+
+    public int getOrders_id() {
+        return orders_id;
+    }
+
+    public void setOrders_id(int orders_id) {
+        this.orders_id = orders_id;
     }
 }

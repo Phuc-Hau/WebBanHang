@@ -15,9 +15,6 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductDao ProductDao;
 
-    @Autowired
-    EvaluateDao evaluateDao;
-
 
     @Override
     public List<Product> findAll() {
@@ -54,9 +51,5 @@ public class ProductServiceImpl implements ProductService {
         return ProductDao.getProductGroup(idGroupProduct);
     }
 
-    @Override
-    public List<Evaluate> listEvaluate(int idProduct) {
-        return evaluateDao.getEvaluateByProduct(idProduct);
-    }
 
 }

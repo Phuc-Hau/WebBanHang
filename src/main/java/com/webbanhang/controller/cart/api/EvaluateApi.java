@@ -31,6 +31,7 @@ public class EvaluateApi {
             obj.put("status",true);
             obj.put("message", "Đánh giá Thành công!");
         }catch (Exception e){
+            e.printStackTrace();
             obj.put("status",false);
             obj.put("message", "Đánh giá thất bại!");
         }

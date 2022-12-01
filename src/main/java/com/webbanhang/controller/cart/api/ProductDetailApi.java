@@ -21,9 +21,6 @@ public class ProductDetailApi {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    EvaluateService evaluateService;
-
     @GetMapping("/product/{id}")
     public Product doGetFL (@PathVariable("id") int id) {
         return productService.findById(id);
@@ -34,6 +31,4 @@ public class ProductDetailApi {
         return productService.getProductGroup(id);
     }
 
-    @GetMapping("/product/listevalute/{id}")
-    public List<Evaluate> getEvaluates(@PathVariable("id") int id){return evaluateService.getEvaluateByProduct(id);}
 }

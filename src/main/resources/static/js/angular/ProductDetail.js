@@ -31,17 +31,10 @@ app.controller('ctrlproductdetail', function($scope,$http) {
 
      $scope.evalute ;
      function listevalute () {
-             $scope.url="/api/product/listevalute/"+id;
+             $scope.url="/api/evalute/getEvaluteProduct/"+id;
              $http.get($scope.url).then(resp => {
                  $scope.evalute = resp.data;
 
-                 for (let i = 0; i < $scope.evalute.length; i++) {
-                     $http.post('/avata/user/'+$scope.evalute[i].orders.order.cutomer.id).then(resp => {
-                         $scope.evalute[i].avata = resp.data.img;
-                     }).catch(error => {
-                         console.log("fail", error)
-                     })
-                 }
 
                  console.log("ss", resp);
                  stars($scope.evalute);

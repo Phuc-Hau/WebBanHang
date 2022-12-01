@@ -17,7 +17,5 @@ public interface ProductService {
 
     List<Product> getProductGroup(int idGroupProduct);
 
-    List<Evaluate> listEvaluate(int idProduct);
-
 
 }
