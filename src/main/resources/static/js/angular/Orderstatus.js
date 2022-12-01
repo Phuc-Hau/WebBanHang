@@ -107,7 +107,6 @@ app.controller('orderstatus', function($scope,$http) {
         $scope.evalute.footQuality = star;
         $http.post($scope.urlsubmit, $scope.evalute ).then(resp => {
 
-
             console.log("Success submit", resp)
             if(resp.data.status){
                 window.location='/accounts/cart';
@@ -155,7 +154,7 @@ app.controller('orderstatus', function($scope,$http) {
             $scope.sr = resp.data;
             console.log("p", resp)
             if($scope.sr.status==true){
-                window.location='http://localhost:8080/accounts/cart';
+                showSuccessToast($scope.sr.message)
             }else{
                 showErrorToast($scope.sr.message)
             }
