@@ -63,4 +63,9 @@ public class UsersServiceImpl implements UsersService {
     public boolean existsById(Integer id) {
         return UsersDao.existsById(id);
     }
+
+    @Override
+    public String imgIdCutomer(int idCutomer){
+        return UsersDao.imgIdCutomer(idCutomer);
+    }
 }

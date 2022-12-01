@@ -68,7 +68,7 @@ app.controller("myCtrl", function($scope,$http) {
                     showSuccessToast(resp.data.message)
                     setTimeout ( function () {
                         window.location='/accounts/cart';
-                    }, 100);
+                    }, 500);
                 }else{
                     showErrorToast(resp.data.message)
                 }

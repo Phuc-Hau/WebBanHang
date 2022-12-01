@@ -177,12 +177,32 @@
         <div class="sao-bl"  ng-if="(star)>0">
             <div class="sao-bl-ct">
                 <div class="so-sao thuc">
-                    {{star}} <span>trên 5</span>
+                    {{star| number:1}} <span style="font-size: 23px;">trên 5</span>
+                </div>
 
+                <div class="rating-container rating-md rating-animate">
+                    <div class="rating-starss">
+                        <span class="empty-stars">
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                        </span>
+                        <span id="filled-stars" class="filled-stars">
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
+                        </span>
+                    </div>
                 </div>
-                <div class="star">
-                    <img src="/image/Star_icon.png" alt="">
-                </div>
+
+                <script>
+                    document.getElementById('filled-stars').style.width=starr/5*100+'%'
+                </script>
+
             </div>
         </div>
 
@@ -192,7 +212,7 @@
 
             <div class="bl-content" ng-repeat="item in evalute">
                 <div class="chat-bl">
-                    <div class="hinh"><img src="a1.jpg" alt=""></div>
+                    <div class="hinh"><img width="50px" height="50px" src="/file/user/{{item.avata}}" alt=""></div>
                     <div class="ten-nbl">{{item.orders.order.cutomer.name}}</div>
                     <div class="time"  >{{item.date| date:'dd-MM-yyyy'}}</div>
                 </div>

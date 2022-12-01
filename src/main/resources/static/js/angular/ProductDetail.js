@@ -1,6 +1,7 @@
 var app = angular.module("app", []);
 var ur= window.location.href;
 var id = ur.slice(ur.indexOf('sanpham/')+8)
+var starr;
 app.controller('ctrlproductdetail', function($scope,$http) {
 
     $scope.items =[];
@@ -33,6 +34,15 @@ app.controller('ctrlproductdetail', function($scope,$http) {
              $scope.url="/api/product/listevalute/"+id;
              $http.get($scope.url).then(resp => {
                  $scope.evalute = resp.data;
+
+                 for (let i = 0; i < $scope.evalute.length; i++) {
+                     $http.post('/avata/user/'+$scope.evalute[i].orders.order.cutomer.id).then(resp => {
+                         $scope.evalute[i].avata = resp.data.img;
+                     }).catch(error => {
+                         console.log("fail", error)
+                     })
+                 }
+
                  console.log("ss", resp);
                  stars($scope.evalute);
 
@@ -45,7 +55,6 @@ app.controller('ctrlproductdetail', function($scope,$http) {
     $scope.star;
     $scope.ssao=7;
 
-
      function stars(evalute) {
         var y=0;
         for(let i = 0; i< evalute.length; i++){
@@ -53,8 +62,9 @@ app.controller('ctrlproductdetail', function($scope,$http) {
         }
 
         $scope.star= y/evalute.length;
-
+        starr = $scope.star;
      }
+
 
      $scope.newCar = function (item,index){
          var newcar = {
@@ -109,24 +119,6 @@ app.controller('ctrlproductdetail', function($scope,$http) {
        document.body.insertBefore(newDiv, currentDiv);
      }
 
-     $scope.star = function(z){
-         for (let j = 0; j < z.length; j++) {
-
-             var tym = '#stars'+j+' li';
-             var stars = $(tym).parent().children('li.star');
-
-             for (let i = 0; i < stars.length; i++) {
-                 $(stars[i]).removeClass('selected');
-             }
-
-             var onStar = z.footQuality;
-             for (let i = 0; i < onStar; i++) {
-                 $(stars[i]).addClass('selected');
-             }
-
-         }
-
-     }
 
 
 })
