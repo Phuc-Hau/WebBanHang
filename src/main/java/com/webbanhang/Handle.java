@@ -3,8 +3,10 @@ package com.webbanhang;
 
 import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.jpa.model.GroupProduct;
+import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.GroupProductService;
+import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +26,9 @@ public class Handle implements HandlerInterceptor {
     SessionService sessionService;
 
     @Autowired
+    OrderDetailService orderDetailService;
+
+    @Autowired
     GroupProductService groupProductService;
 
     @Override
@@ -41,6 +46,13 @@ public class Handle implements HandlerInterceptor {
 
         }
         request.setAttribute("groupProduct",groupProductService.findAll());
+
+
+        Users user =userDao.findByUsername(username);
+        if(user !=null) {
+            List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
+            request.setAttribute("amountcart", list.size());
+        }
 
     }
 }

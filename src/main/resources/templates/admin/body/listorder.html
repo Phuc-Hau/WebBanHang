@@ -1,0 +1,251 @@
+
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title">
+			<span class="page-title-icon bg-gradient-primary text-white me-2">
+				<i class="mdi mdi-account-card-details"></i>
+			</span> Order Tables
+		</h3>
+	</div>
+	<div class="row">
+
+		<div class="col-lg-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<div id="page-content-wrapper">
+      <!-- Top navigation-->
+      <ul class="nav nav__tabs" role="tablist">
+        <li class="nav__item">
+          <a class="nav-link active" href="#wait_xn" role="tab" data-toggle="tab">Chờ xác nhận</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav-link" href="#wait_lh" role="tab" data-toggle="tab">Chờ lấy hàng</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav-link" href="#Danggiao" role="tab" data-toggle="tab">Đang giao</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav-link" href="#Dagiao" role="tab" data-toggle="tab">Đã giao</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav-link" href="#Dahuy" role="tab" data-toggle="tab">Đã Hủy</a>
+        </li>
+
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active show" id="wait_xn">
+          <div ng-repeat="item in orderlist | filter : {status:1}" class="info-product">
+            <div class="status d-flex">
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
+
+            </div>
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+
+            </div>
+            <div class="price0">
+              <div class="price " >
+                <div class="price1 ">Tổng số tiền :</div>
+                <div class="price2">{{item.totalmoney}}</div>
+              </div>
+            </div>
+            <div class="payment">
+              <div class="payment1"></div>
+              <div class="payment2">
+
+                <!-- Button to Open the Modal -->
+                <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
+                  chi tiết đơn hang
+                </button>
+
+                <div class="_8vTqu9">
+                  <button ng-click="xnHuy(item.id)"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal"  data-target="#myModal3">Hủy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="wait_lh">
+          <div ng-repeat="item in orderlist | filter : {status:2}" class="info-product">
+            <div class="status d-flex">
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
+               
+               
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
+
+            </div>
+
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+
+            </div>
+            <div class="price0">
+              <div class="price " >
+                <div class="price1 ">Tổng số tiền :</div>
+                <div class="price2">{{item.totalmoney}}</div>
+              </div>
+            </div>
+            <div class="payment">
+              <div class="payment1"></div>
+              <div class="payment2">
+                <!-- The Modal -->
+                <!-- Button to Open the Modal -->
+                <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
+                  chi tiết đơn hang
+                </button>
+
+                <div class="_8vTqu9">
+                  <button ng-click="xnHuy(item.id)"  class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal"  data-target="#myModal3">Hủy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="Danggiao">
+          <div ng-repeat="item in orderlist | filter : {status:3}" class="info-product">
+            <div class="status d-flex">
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
+               
+               
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
+
+            </div>
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+
+            </div>
+            <div class="price0">
+              <div class="price " >
+                <div class="price1 ">Tổng số tiền :</div>
+                <div class="price2">{{item.totalmoney}}</div>
+              </div>
+            </div>
+            <div class="payment">
+              <div class="payment1"></div>
+              <div class="payment2">
+                <!-- The Modal -->
+                <!-- Button to Open the Modal -->
+                <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
+                  chi tiết đơn hang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="Dagiao">
+          <div ng-repeat="item in orderlist | filter : {status:4}" class="info-product">
+            <div class="status d-flex">
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
+               
+               
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
+
+            </div>
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+
+            </div>
+            <div class="price0">
+              <div class="price " >
+                <div class="price1 ">Tổng số tiền :</div>
+                <div class="price2">{{item.totalmoney}}</div>
+              </div>
+            </div>
+            <div class="payment">
+              <div class="payment1"></div>
+              <div class="payment2">
+                <!-- The Modal -->
+                <!-- Button to Open the Modal -->
+
+                <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
+                  chi tiết đơn hang
+                </button>
+
+                <div class="VN6h8+">
+                  <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                </div>
+                </div>
+                <!-- The Modal -->
+
+
+              </div>
+            </div>
+          </div>
+        <div role="tabpanel" class="tab-pane fade" id="Dahuy">
+          <div ng-repeat="item in orderlist | filter : {status:5}" class="info-product">
+            <div class="status d-flex">
+              <div class="name"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Mã đơn: {{item.id}}</div>
+               
+               
+              <span class="ml-auto p-2">{{status[item.status].status}}</span>
+
+            </div>
+            <div  class="product" ><img src="/file/AnhWebBanHang/{{orderdetail[getIdOr(item.id)].product.imgs[0].image}}" alt="">
+              <ul class="phanloai" >
+                <li>{{orderdetail[getIdOr(item.id)].product.name}} </li>
+                <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
+                <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
+              </ul>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+
+            </div>
+            <div class="price0">
+              <div class="price " >
+                <div class="price1 ">Tổng số tiền :</div>
+                <div class="price2">{{item.totalmoney}}</div>
+              </div>
+            </div>
+            <div class="payment">
+              <div class="payment1"></div>
+              <div class="payment2">
+                <!-- The Modal -->
+                <!-- Button to Open the Modal -->
+                <div class="VN6h8+">
+                <button ng-click="orderid(item.id)" type="button" class="stardust-button stardust-button--primary Kz9HeM" data-toggle="modal" data-target="#myModal1">
+                  chi tiết đơn hang
+                </button>
+                </div>
+                <!-- The Modal -->
+
+                <div class="VN6h8+">
+                  <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+

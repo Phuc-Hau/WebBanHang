@@ -16,6 +16,8 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -29,6 +31,11 @@
 
     <link rel="stylesheet" href="/assets/css/alter.css" />
     <script src="/js/Alter.js"></script>
+    <style>
+<!--.democlass {-->
+<!--  display: none;-->
+<!--}-->
+</style>
 
 </head>
 <body ng-app="app" ng-controller="ctrlproductdetail" style=" background-color: #f2edf3;">
@@ -37,7 +44,7 @@
 <div style="background-color: #f2edf3;">
     <div class="detail">
         <div class="gr">
-            <div class="hinh">
+            <div class="hinh" style="    width: 50%;">
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-right: 24px;">
                     <ol class="carousel-indicators">
@@ -76,12 +83,7 @@
 
 
                     </div>
-                    <div class="tdsl">
-                        <div class="tieu-de-chung">
-                           <strong>{{items.amount}} sản phẩm có sẵn</strong>
-                        </div>
 
-                    </div>
 
                     <div class="thong-tin-gia">
 
@@ -96,6 +98,7 @@
                             <div class="giam">
                                 {{items.sale*100}}%
                             </div>
+
                         </div>
 
 
@@ -116,12 +119,16 @@
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </div>
+                                <div>
+                                    <strong> {{items.amount}} sản phẩm có sẵn</strong>
+                                </div>
+
 
                             </div>
 
                             <div class="btn">
-                                <button class="mua ngay ho"> Mua Ngay</button>
-                                <button class="mua ho" ng-click="newCar(items.id)"> Thêm Vào Giỏ</button>
+                                <button class="mua ngay ho" ng-click="newCar(items,0)"> Mua Ngay</button>
+                                <button class="mua ho" ng-click="newCar(items,1)"> Thêm Vào Giỏ</button>
                             </div>
 
                         </div>
@@ -156,27 +163,50 @@
          </ul>
         </div>
     </div>
-    <div class="danh-gia-sp">
+    <div class="danh-gia-sp" >
         <div class="tt-danh-gia">
             ĐÁNH GIÁ SẢN PHẨM:
             <hr>
         </div>
-        <div class="sao-bl">
+        <div ng-if="(evalute.lenght)=0">nono</div>
+        <div class="sao-bl" ng-if="">
+            jdkl
+            <div class="sao-bl-ct">
+                dnand
+                <div class="so-sao thuc">
+                    nono
+                </div>
+                </div>
+        </div>
+        <div class="sao-bl"  ng-if="(star)>0">
             <div class="sao-bl-ct">
                 <div class="so-sao thuc">
-
-                    4.5
-
+                    {{star| number:1}} <span style="font-size: 23px;">trên 5</span>
                 </div>
 
-                <div class="so-sao">
-
-                    / 5
-
+                <div class="rating-container rating-md rating-animate">
+                    <div class="rating-starss">
+                        <span class="empty-stars">
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                        </span>
+                        <span id="filled-stars" class="filled-stars">
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
+                        </span>
+                    </div>
                 </div>
-                <div class="star">
-                    <img src="star.png" alt="">
-                </div>
+
+                <script>
+                    document.getElementById('filled-stars').style.width=starr/5*100+'%'
+                </script>
+
             </div>
         </div>
 
@@ -184,62 +214,40 @@
 
         <div class="bl-content-chung">
 
-            <div class="bl-content">
+            <div class="bl-content" ng-repeat="item in evalute">
                 <div class="chat-bl">
-                    <div class="hinh"><img src="a1.jpg" alt=""></div>
-                    <div class="ten-nbl">nguyen van a</div>
-                    <div class="time">22/12/2022</div>
+                    <div class="hinh"><img width="50px" height="50px" src="/file/user/{{item.avata}}" alt=""></div>
+                    <div class="ten-nbl">{{item.orders.order.cutomer.name}}</div>
+                    <div class="time"  >{{item.date| date:'dd-MM-yyyy'}}</div>
                 </div>
                 <div class="ccc">
-                    <div class="star-bl">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
+                    <div class='rating-stars' >
 
-                        <div class="s-so">5</div>
+                        <ul id='stars{' >
+                            <li class="star {{::(item.footQuality >= 1 ? 'selected' : '')}}" title='Poor' data-value='1'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class="star  {{::(item.footQuality >= 2 ? 'selected' : '')}}" title='Fair' data-value='2'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class="star  {{::(item.footQuality >= 3 ? 'selected' : '')}}" title='Good' data-value='3'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class="star  {{::(item.footQuality >= 4 ? 'selected' : '')}}" title='Excellent' data-value='4'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class="star  {{::(item.footQuality >= 5 ? 'selected' : '')}}" title='WOW!!!' data-value='5'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                        </ul>
+
 
                     </div>
-                    <div class="bl-ct">san pahm rả tot</div>
-                    <div class="hinh-bl">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                    </div>
+
+                    <div class="bl-ct">{{item.comment}}</div>
                 </div>
+                <hr>
             </div>
-
-            <div class="bl-content">
-                <div class="chat-bl">
-                    <div class="hinh"><img src="a1.jpg" alt=""></div>
-                    <div class="ten-nbl">nguyen van a</div>
-                    <div class="time">22/12/2022</div>
-                </div>
-                <div class="cc">
-                    <div class="star-bl">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-                        <img src="star.png" alt="">
-
-                        <div class="s-so">5</div>
-
-                    </div>
-                    <div class="bl-ct">san pahm rả tot</div>
-                    <div class="hinh-bl">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                        <img src="a1.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-
 
         </div>
 
@@ -277,5 +285,6 @@
 
 <div th:replace="/partials/footer.html"></div>
     <script src="/js/angular/ProductDetail.js"></script>
+
 </body>
 </html>

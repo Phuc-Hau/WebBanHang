@@ -48,6 +48,25 @@ public class IndexProductController {
 		
 		return "index";
 	}
+	
+	@RequestMapping("/product/all")
+	public String allProduct(Model model) {		
+//		User users = userService.checkLogin(cookie.getValue("username"), cookie.getValue("password"));
+//
+//		if(users != null) {
+//			session.set("user", users);
+//		}
+//		User user =session.get("user");
+//		if(user !=null) {
+//			List<OrderDetail> list = orderDetailDao.findAllUsername(user.getCutomer().getId());
+//			model.addAttribute("amountcart", list.size());
+//		}
+
+		model.addAttribute("product",productService.findAll());
+		
+		return "body/xuhuongsp";
+	}
+	
 
 	@RequestMapping("/500")
 	public String er(){

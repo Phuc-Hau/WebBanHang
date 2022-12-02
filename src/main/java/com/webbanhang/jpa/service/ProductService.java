@@ -1,5 +1,6 @@
 package com.webbanhang.jpa.service;
 
+import com.webbanhang.jpa.model.Evaluate;
 import com.webbanhang.jpa.model.Product;
 
 import java.util.List;

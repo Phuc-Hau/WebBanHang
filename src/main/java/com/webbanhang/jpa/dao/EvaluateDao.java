@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EvaluateDao extends JpaRepository<Evaluate, Integer> {
-    @Query("SELECT o FROM Evaluate o where o.product.id= ?1")
+    @Query("SELECT o FROM Evaluate o where o.product_id = ?1")
     List<Evaluate> getEvaluateByProduct(int idProduct);
 }

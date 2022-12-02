@@ -20,9 +20,9 @@ app.controller('ctrcart', function($scope,$http) {
     $scope.getPricesum = function(){
         let amount = 0;
         for (let index = 0; index < $scope.items.length; index++) {
-                amount += $scope.items[index].quantity
-                    *($scope.items[index].product.price
-                    -($scope.items[index].product.sale*$scope.items[index].product.price)) ;
+            if($scope.items[index].check==true) {
+                amount += $scope.items[index].quantity * ($scope.items[index].product.price*(1-$scope.items[index].product.sale));
+            }
         }
         return amount;
     }
@@ -75,8 +75,7 @@ app.controller('ctrcart', function($scope,$http) {
         $scope.cardpay = items.filter(x => x.check ==true);
         for (let i = 0; i < $scope.cardpay.length ; i++) {
             delete $scope.cardpay[i] ['check'];
-            delete $scope.cardpay[i] ['id'];
-            delete $scope.cardpay[i].order ['id'];
+            delete $scope.cardpay[i] ['order'];
         }
 
         if($scope.cardpay.length == 0 ){
@@ -84,13 +83,11 @@ app.controller('ctrcart', function($scope,$http) {
         }else{
             console.log("ee",$scope.cardpay)
             $http.post(url+`/cart/newpay`,$scope.cardpay).then(resp => {
-                window.location='http://localhost:8080/accounts/xacnhandonhang';
+                window.location='/accounts/xacnhandonhang';
             }).catch(error => {
                 console.log("fail", error)
             });
         }
-
-
 
     }
 

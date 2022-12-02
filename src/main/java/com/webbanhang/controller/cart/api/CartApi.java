@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -32,7 +33,7 @@ public class CartApi {
 	@Autowired
 	CutomerService cutomerService;
 
-	List<OrderDetail> orderDetailTym;
+	List<OrderDetail> orderDetailTym = new ArrayList<>();
 
 	@GetMapping("/list")
 	public List<OrderDetail> cart(HttpServletRequest request) {
@@ -113,15 +114,82 @@ public class CartApi {
 	}
 
 	@PostMapping("/cart/newpay")
-	public void Pay(@RequestBody List<OrderDetail> orderDetail) {
-		orderDetailTym= orderDetail;
+	public void orderDetailTym(@RequestBody List<OrderDetail> orderDetail) {
+		orderDetailTym = orderDetail;
 	}
+
+	@PostMapping("/cart/buynow")
+	public JSONObject productOrderDetailTym(@RequestBody JSONObject json) {
+
+		JSONObject obj = new JSONObject();
+		int id = Integer.parseInt(String.valueOf(json.get("id")));
+		int quantity = Integer.parseInt(String.valueOf(json.get("quantity")));
+
+		Product product = productService.findById(id);
+
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setProduct(product);
+		orderDetail.setQuantity(quantity);
+
+		orderDetailTym.add(orderDetail);
+		try {
+
+			obj.put("status",true);
+		} catch (Exception e){
+			obj.put("status",false);
+			obj.put("message", "Mua ngay thất bại!");
+		}
+		return obj;
+	}
+
 
 	@PostMapping("/order/confirm")
 	public List<OrderDetail> confirm() {
 		return orderDetailTym;
 	}
 
+	@PostMapping("/huydh")
+	public void huy(){
+		orderDetailTym = null;
+	}
+
+	@PostMapping("/cart/pay/{pvc}")
+	public JSONObject Pay(@PathVariable("pvc") int pvc,HttpServletRequest request) {
+
+		JSONObject obj = new JSONObject();
+		int idCutomer =userService.findByUsernameGetIdCutomer(request.getRemoteUser());
+		List<OrderDetail> orderDetail =orderDetailTym;
+
+		Order order2 = new Order();
+		order2.setStatus(1);
+		order2.setCutomer(cutomerService.findById(idCutomer));
+
+		try{
+
+			orderService.create(order2);
+			int totalmoney=0;
+			for(int i=0 ; i<orderDetail.size();i++){
+				totalmoney += orderDetail.get(i).getQuantity() * orderDetail.get(i).getProduct().getPrice()*(1-orderDetail.get(i).getProduct().getSale());
+				orderDetail.get(i).setOrder(order2);
+			}
+			if(pvc==1){
+				totalmoney += 20000;
+			}
+			if(pvc==2){
+				totalmoney += 30000;
+			}
+			order2.setTotalmoney(totalmoney);
+
+			orderDetailService.listCreate(orderDetail);
+			orderDetailTym = null;
+			obj.put("status",true);
+			obj.put("message", "Đặt hàng hành công!");
+		} catch (Exception e){
+			obj.put("status",false);
+			obj.put("message", "Đặt hàng thất bại!");
+		}
+		return obj;
+	}
 
 
 }

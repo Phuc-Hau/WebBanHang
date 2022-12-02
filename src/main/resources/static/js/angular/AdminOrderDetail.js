@@ -1,11 +1,11 @@
 var app = angular.module("app", []);
 
-app.controller('orderstatus', function($scope,$http) {
+app.controller('ctrladminorderdetail', function($scope,$http) {
 
     //list
-    $scope.urllist="/accounts/api/listorderstatus";
+    $scope.urllist="/admin/api/listorderstatus";
     //liststatus
-    $scope.urlgroup="/accounts/api/listordersDetailStatus/";
+    $scope.urlgroup="/admin/api/listordersDetailStatus/";
     $scope.orderlist =[];
     $scope.orderstatus =[];
     $scope.orderdetail =[];
@@ -25,7 +25,7 @@ app.controller('orderstatus', function($scope,$http) {
     }
     $scope.list();
 
-    $scope.urlStatus="/accounts/api/OrderStatus";
+    $scope.urlStatus="/admin/api/OrderStatus";
     $http.get($scope.urlStatus).then(resp => {
         $scope.status = resp.data;
         console.log("SuccessStatus", resp)
@@ -33,7 +33,7 @@ app.controller('orderstatus', function($scope,$http) {
         console.log("fail", error)
     })
 
-    $scope.urlOrderdetail = "/accounts/api/listordersDetail";
+    $scope.urlOrderdetail = "/admin/api/listordersDetail";
     $http.post($scope.urlOrderdetail).then(resp => {
         $scope.orderdetail = resp.data;
         $scope.getIdOr = function (id){
@@ -107,9 +107,10 @@ app.controller('orderstatus', function($scope,$http) {
         $scope.evalute.footQuality = star;
         $http.post($scope.urlsubmit, $scope.evalute ).then(resp => {
 
+
             console.log("Success submit", resp)
             if(resp.data.status){
-                showSuccessToast(resp.data.message);
+                window.location='/accounts/cart';
             }else{
                 showErrorToast(resp.data.message);
             }
@@ -128,7 +129,7 @@ app.controller('orderstatus', function($scope,$http) {
     }
 
     $scope.Huy = function (){
-        $scope.urlHuy = "/accounts/api/OrderHuy/" +     $scope.idHuy;
+        $scope.urlHuy = "/admin/api/OrderHuy/" +     $scope.idHuy;
         $http.post($scope.urlHuy ).then(resp => {
             console.log("Success huy", resp)
             if(resp.data.status){
@@ -154,7 +155,7 @@ app.controller('orderstatus', function($scope,$http) {
             $scope.sr = resp.data;
             console.log("p", resp)
             if($scope.sr.status==true){
-                window.location='/accounts/cart';
+                window.location='http://localhost:8080/accounts/cart';
             }else{
                 showErrorToast($scope.sr.message)
             }

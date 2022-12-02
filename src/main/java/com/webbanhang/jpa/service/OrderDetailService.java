@@ -11,6 +11,7 @@ public interface OrderDetailService {
     List<OrderDetail> findAll();
     OrderDetail findById(Integer id);
     OrderDetail create(OrderDetail entity);
+    List<OrderDetail> listCreate(List<OrderDetail> orderDetails);
     OrderDetail update(OrderDetail entity);
     void delete(OrderDetail entity);
 

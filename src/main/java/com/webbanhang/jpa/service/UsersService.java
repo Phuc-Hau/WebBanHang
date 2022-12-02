@@ -20,5 +20,7 @@ public interface UsersService {
     Users findByEmailAndTokeID(String email, String tokeID);
     
     boolean existsById(Integer id);
+    String imgIdCutomer(int idCutomer);
+
 
 }

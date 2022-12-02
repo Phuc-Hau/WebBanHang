@@ -40,15 +40,15 @@
 }
 .star{
     display: flex;
-    width: 80px;
-    height: 50px;
-    margin-top: 4px;
-
+    width: 20px;
+    height: 22px;
+    margin-top: 4px
 }
 .star img{
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
+    margin-top: 4px;
 }
 
 a{
@@ -100,14 +100,7 @@ padding: 27px;
     border: 2px solid rgb(162, 199, 224);
     border-radius: 2px;
 }
-.hinh{
 
-    width: 50%;
-    height: 530px;
-    border-right: 1px solid;
-
-    /* border: 1px solid blue; */
-}
 .thong-tin{
     width: 50%;
 
@@ -388,12 +381,7 @@ span{
     margin: 0px 5px;
 }
 
-.chat-bl .hinh{
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    border: 2px solid rgb(147, 137, 137);
-}
+
 .chat-bl>.hinh img{
     border-radius: 50px;
 }
@@ -452,21 +440,20 @@ input{
     border: none;
     height: 30px;
 }
-.sao-bl{
+.sao-bl {
     width: 90%;
-    height: 50px;
-    background-color: rgb(242, 228, 204);
-
+    background-color: #fffbf8;
+    min-height: 5rem;
+    border: 1px solid #f9ede5;
     margin: auto;
-    border: 1px solid rgb(221, 187, 187);
 }
 .sao-bl-ct{
-    display: flex;
+
     margin-left: 70px;
 
 }
 .so-sao{
-    color: rgb(51, 0, 255);
+    color: #ee4d2d;
     font-weight: 500;
     font-size: 30px;
     line-height: 50px;
@@ -525,4 +512,191 @@ input{
     color: white;
     margin: 5px;
     border: 1px solid rgb(250, 250, 252);
+}
+
+.sao{display:flex;
+width:200px}
+.sao1{display:flex;
+width:20px}
+.sao1 div{
+width:20px;
+height:20px;
+}
+.sao1>div>img{
+width:100%;}
+
+
+
+
+
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+    list-style-type:none;
+    padding:0;
+
+    -moz-user-select:none;
+    -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+    display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+    font-size:1.5em; /* Change the size of the stars */
+    color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+    color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+    color:#FF912C;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #aca9a9 !important;
+    opacity: 0.25 !important;
+}
+
+
+
+
+.rating-container .rating-starss {
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.rating-container .rating-input {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    font-size: 1px;
+    border: none;
+    background: 0 0;
+    padding: 0;
+    margin: 0
+}
+
+
+
+.rating-container .empty-stars {
+    color: #aaa
+}
+
+.rating-container .filled-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: auto;
+    color: #fde16d;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 1px 1px #999
+}
+
+.rating-rtl {
+    float: right
+}
+
+.rating-animate .filled-stars {
+    transition: width .25s ease;
+    -o-transition: width .25s ease;
+    -moz-transition: width .25s ease;
+    -webkit-transition: width .25s ease
+}
+
+.rating-rtl .filled-stars {
+    left: auto;
+    right: 0;
+    -moz-transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0);
+    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0);
+    -o-transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0)
+}
+
+.rating-rtl.is-star .filled-stars {
+    right: .06em
+}
+
+.rating-rtl.is-heart .empty-stars {
+    margin-right: .07em
+}
+
+.rating-lg {
+    font-size: 3.91em
+}
+
+.rating-md {
+    font-size: 1.5em
+}
+
+.rating-sm {
+    font-size: 2.5em
+}
+
+.rating-xs {
+    font-size: 2em
+}
+
+.rating-xl {
+    font-size: 4.89em
+}
+
+.rating-container .clear-rating {
+    color: #aaa;
+    cursor: not-allowed;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 60%;
+    padding-right: 5px
+}
+
+.clear-rating-active {
+    cursor: pointer !important
+}
+
+.clear-rating-active:hover {
+    color: #843534
+}
+
+.rating-container .caption {
+    color: #999;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 60%;
+    margin-top: -.6em;
+    margin-left: 5px;
+    margin-right: 0
+}
+
+.rating-rtl .caption {
+    margin-right: 5px;
+    margin-left: 0
+}
+
+@media print {
+    .rating-container .clear-rating {
+        display: none
+    }
+
 }

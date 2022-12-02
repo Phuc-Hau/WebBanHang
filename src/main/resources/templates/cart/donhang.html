@@ -14,6 +14,10 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="/js/angular/XacNhanDHAngular.js"></script>
+
+
+    <link rel="stylesheet" href="/assets/css/alter.css" />
+    <script src="/js/Alter.js"></script>
 </head>
 <body style="background-color: #f7f7f7;">
         
@@ -34,18 +38,18 @@
 
                <div class="dh-san-pham">
                 <div class="dh-tt">Sản Phẩm</div>
-                <div ng-repeat="a in items" class="dh-san-pham-item" style="   background: white;padding-top: 20px;">
+                <div ng-repeat="item in items" class="dh-san-pham-item" style="   background: white;padding-top: 20px;">
                    <div class="san-pham" style="    background: white;">
                         <div class="san-pham-hinh">
-                            <img ng-src="/file/AnhWebBanHang/{{a.product.imgs[0].image}}" alt="" style="width: 88px; height: 88px">
+                            <img ng-src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}" alt="" style="width: 88px; height: 88px">
                         </div>
                         <div class="san-pham-tt">
-                            <p class="s-ten">{{a.product.name}}</p>
-                            <p class="s-loai">loại :{{a.product.groupProduct.name}}</p>
-                            <p class="s-gia">{{a.product.price * (1-a.product.sale)|number }} đ</p>
+                            <p class="s-ten">{{item.product.name}}</p>
+                            <p class="s-loai">Loại :{{item.product.groupProduct.name}}</p>
+                            <p class="s-gia">{{item.product.price * (1-a.product.sale)|number }} đ</p>
                         </div>
-                        <div class="san-pham-sl">{{a.quantity}}</div>
-                        <div class="san-pham-tien">{{a.product.price * (1-a.product.sale) * a.quantity |number}} đ</div>
+                        <div class="san-pham-sl">{{item.quantity}}</div>
+                        <div class="san-pham-tien">{{item.product.price * (1-item.product.sale) * item.quantity |number}} đ</div>
 
                     </div>
                 </div>
@@ -60,9 +64,9 @@
         
                     <form  class="fr-dh" action="">
                         <label >Đơn Vị Giao Hàng</label>
-                        <select  class="form-control" name="dvgh" id="dvgh">
-                          <option value="20000">Giao Hàng Tiết Kiệm 20 000</option>
-                          <option value="30000">Giao hàng Nhanh 30 000</option>
+                        <select ng-change="dvgh()" ng-model="dv" class="form-control" >
+                          <option value="1">Giao Hàng Tiết Kiệm 20 000</option>
+                          <option value="2">Giao hàng Nhanh 30 000</option>
                         </select>
                       </form>
 
@@ -76,16 +80,16 @@
                         <div class="dh-tong-tien-tt-1">Tổng thanh toán :</div>
                     </div>
                     <div class="dh-tong-tien-st">
-                        <div class="dh-tong-tien-tien">5 000</div>
-                        <div class="dh-tong-tien-van-chuyen">{{DVGH}}</div>
-                        <div class="dh-tong-tien-tong">7 000</div>
+                        <div class="dh-tong-tien-tien">{{summoney|number}} đ</div>
+                        <div id="pvc" class="dh-tong-tien-van-chuyen">{{pvc|number}} đ</div>
+                        <div class="dh-tong-tien-tong">{{summoney+pvc|number}} đ</div>
                     </div>
         
                 </div>
-                
-        
+
                 <div class="dh-btn">
-                    <input class="dh" type="submit" value="Đặt Hàng">
+                    <button class="dh" type="submit" ng-click="DatHang(items)" >Đặt Hàng</button>
+                    <button class="dh" ng-click="HuyDH()" style="background-color: rgb(255, 132, 0); color: black;" >Hủy</button>
                 </div>
         
               </div>
@@ -97,59 +101,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div th:replace ="~{/body/dathang.html}"></div> -->
-
-
-
-
-   
-
-
-    
