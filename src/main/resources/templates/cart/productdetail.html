@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="danh-gia" style="margin-left: 55px;">
-                            <span>| 500 đánh giá |</span>
+                            <span>| {{evalutes.evalute.length}} đánh giá |</span>
                             <span>| 500 lượt mua |</span>
                         </div>
 
@@ -148,19 +148,9 @@
         <div class="tt-danh-gia">
             CHI TIẾT SẢN PHẨM:
             <hr>
-         <ul><strong>Bộ Xửng inox 3 đáy ngăn cao VIETCOOK :</strong>
-            <li>Bộ Xửng inox 3 đáy cao VIETCOOK gồm 1 nồi, 1 ngăn xửng và nắp kính.</li>
-            <li>Sản phẩm được làm từ inox nhập khẩu, bền đẹp, an toàn cho sức khỏe</li>
-            <li>Nồi xửng thiết kế dáng cao với 3 đáy dày dặn, sang trọng</li>
-            <li>Nắp nồi bằng kính chịu lực và chịu nhiệt tốt giúp bạn nhìn được thực phẩm trong quá trình đun nấu</li>
-            <li>Nắp đậy kín  tăng khả năng giữ nóng và ngăn ngừa bụi bẩn, vi khuẩn xâm nhập hiệu quả.</li>
-            <li>Quai cầm thiết kế dạng quai đũa đặc chắc chắc thuận tiện cho việc cầm nắm, di chuyển nồi trong quá trình nấu ăn.</li>
-            <li>Nồi và thân xửng cao giúp bạn nấu, hấp được nhiều thực phẩm hơn</li>
-            <li>Nồi to, cao có thể dùng để luộc được 2 con gà.</li>
-            <li>Nồi nấu được trên mọi loại bếp</li>
-            <li>Sản phẩm có kích thước:  Ø 24, 26, 28, 30 cm</li>
-            <li>Liên hệ: 0989 003 003</li>
-         </ul>
+         <strong>{{items.name}} :</strong>
+            <textarea id="note" ng-model="items.detail"></textarea>
+
         </div>
     </div>
     <div class="danh-gia-sp" >
@@ -168,18 +158,14 @@
             ĐÁNH GIÁ SẢN PHẨM:
             <hr>
         </div>
-        <div ng-if="(evalute.lenght)=0">nono</div>
-        <div class="sao-bl" ng-if="">
-            jdkl
-            <div class="sao-bl-ct">
-                dnand
-                <div class="so-sao thuc">
-                    nono
-                </div>
-                </div>
+
+        <div class="sao-bl"  ng-if="evalutes.evalute.length == 0">
+            <div style="font-size: 47px;line-height: 67px;text-align: center; color: red;">
+                    Chưa có đánh giá nào
+            </div>
         </div>
-        <div class="sao-bl"  ng-if="(star)>0">
-            <div class="sao-bl-ct">
+        <div class="sao-bl row"  ng-if="(star)>0">
+            <div class="col-3" style="margin-left: 17px;">
                 <div class="so-sao thuc">
                     {{star| number:1}} <span style="font-size: 23px;">trên 5</span>
                 </div>
@@ -206,6 +192,8 @@
                 <script>
                     document.getElementById('filled-stars').style.width=starr/5*100+'%'
                 </script>
+            </div>
+            <div  class="col-8">
 
             </div>
         </div>
@@ -214,10 +202,10 @@
 
         <div class="bl-content-chung">
 
-            <div class="bl-content" ng-repeat="item in evalute">
+            <div class="bl-content" ng-repeat="item in evalutes.evalute">
                 <div class="chat-bl">
-                    <div class="hinh"><img width="50px" height="50px" src="/file/user/{{item.avata}}" alt=""></div>
-                    <div class="ten-nbl">{{item.orders.order.cutomer.name}}</div>
+                    <div class="hinh"><img width="50px" height="50px" src="/file/user/{{evalutes.avatar[$index]}}" alt=""></div>
+                    <div class="ten-nbl">{{item.cutomer.name}}</div>
                     <div class="time"  >{{item.date| date:'dd-MM-yyyy'}}</div>
                 </div>
                 <div class="ccc">

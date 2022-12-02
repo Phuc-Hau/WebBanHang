@@ -1,14 +1,8 @@
 package com.webbanhang.controller.cart.api;
 
-import com.webbanhang.jpa.model.Evaluate;
-import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.Product;
-import com.webbanhang.jpa.model.Users;
-import com.webbanhang.jpa.service.EvaluateService;
 import com.webbanhang.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

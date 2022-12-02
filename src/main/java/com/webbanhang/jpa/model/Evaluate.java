@@ -1,6 +1,7 @@
 package com.webbanhang.jpa.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Table(name = "evaluate")
@@ -22,34 +23,30 @@ public class Evaluate {
     @Column(name = "Comment", length = 45)
     private String comment;
 
-    @Column(name = "Foot_Quality")
-    private int footQuality;
-
     @Column(name = "Date")
     private Date date = new Date();
 
-    public Date getDate() {
-        return date;
-    }
+    @ManyToOne
+    @JoinColumn(name = "Cutomer_id")
+    private Cutomer cutomer;
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    @Column(name = "foot_quality")
+    private Integer footQuality;
 
-    public int getFootQuality() {
+    public Integer getFootQuality() {
         return footQuality;
     }
 
-    public void setFootQuality(int footQuality) {
+    public void setFootQuality(Integer footQuality) {
         this.footQuality = footQuality;
     }
 
-    public String getComment() {
-        return comment;
+    public Cutomer getCutomer() {
+        return cutomer;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCutomer(Cutomer cutomer) {
+        this.cutomer = cutomer;
     }
 
     public Integer getId() {
@@ -74,5 +71,21 @@ public class Evaluate {
 
     public void setOrders_id(int orders_id) {
         this.orders_id = orders_id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -29,16 +29,13 @@ app.controller('ctrlproductdetail', function($scope,$http) {
             })
      }
 
-     $scope.evalute ;
+     $scope.evalutes ;
      function listevalute () {
              $scope.url="/api/evalute/getEvaluteProduct/"+id;
              $http.get($scope.url).then(resp => {
-                 $scope.evalute = resp.data;
-
-
-                 console.log("ss", resp);
-                 stars($scope.evalute);
-
+                 $scope.evalutes = resp.data;
+                 console.log("evalutes", resp)
+                 stars($scope.evalutes.evalute);
              }).catch(error => {
                  console.log("fail", error)
              })
@@ -46,7 +43,6 @@ app.controller('ctrlproductdetail', function($scope,$http) {
       listevalute();
 
     $scope.star;
-    $scope.ssao=7;
 
      function stars(evalute) {
         var y=0;

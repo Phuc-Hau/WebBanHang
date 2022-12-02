@@ -1,8 +1,6 @@
 package com.webbanhang.jpa.service.impl;
 
-import com.webbanhang.jpa.dao.EvaluateDao;
 import com.webbanhang.jpa.dao.ProductDao;
-import com.webbanhang.jpa.model.Evaluate;
 import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
