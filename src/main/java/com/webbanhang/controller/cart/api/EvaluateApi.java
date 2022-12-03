@@ -31,8 +31,12 @@ public class EvaluateApi {
         obj.put("evalute",list);
 
         JSONArray array = new JSONArray();
-        for (int i = 0; i < list.size(); i++) {
-            array.add(usersService.imgIdCutomer(list.get(i).getCutomer().getId()));
+        try {
+            for (int i = 0; i < list.size(); i++) {
+                array.add(usersService.imgIdCutomer(list.get(i).getCutomer().getId()));
+            }
+        }catch (Exception e){
+
         }
         obj.put("avatar",array);
         return obj;
