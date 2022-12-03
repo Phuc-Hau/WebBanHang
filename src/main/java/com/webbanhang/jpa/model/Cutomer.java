@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 import java.util.List;
+import java.sql.Date;
 
 
 
@@ -21,7 +22,7 @@ public class Cutomer {
 	private String address;
 
 	@Column(name="Birthday")
-	private String birthday;
+	private Date birthday;
 
 	@Column(name="Name")
 	private String name;
@@ -64,11 +65,11 @@ public class Cutomer {
 		this.address = address;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

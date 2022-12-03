@@ -23,7 +23,7 @@
                     <h4 class="font-weight-normal mb-3">
                         Month {{items.month.present}} Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">{{items.month.total}} VND</h2>
+                    <h2 class="mb-5">{{items.month.total|number}} VND</h2>
                     <h6 class="card-text">{{items.month.ratio}} {{items.month.inDe}}%</h6>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <img src="/assets/images/dashboard/circle.svg"
                          class="card-img-absolute" alt="circle-image"/>
                     <h4 class="font-weight-normal mb-3">
-                        Orders Month {{items.month.present}}<i
+                        Orders Month {{items.month.present | number}}<i
                             class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
                     <h2 class="mb-5">{{items.countpricemonth.total}}</h2>
@@ -50,7 +50,7 @@
                     <h4 class="font-weight-normal mb-3">
                         Year {{items.year.present}} Sales <i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">{{items.year.total}} VND</h2>
+                    <h2 class="mb-5">{{items.year.total|number}} VND</h2>
                     <h6 class="card-text">{{items.year.ratio}} {{items.year.inDe}}%</h6>
                 </div>
             </div>
@@ -113,7 +113,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Order status Month {{items.month.present}} (total :{{items.countpricemonth.total}})</h4>
-					<canvas id="areaChart" style="height:250px"></canvas>
+                    <canvas id="OrderStatus" style="height:230px"></canvas>
 					<div id="traffic-chart-legend"
 						 class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
 				</div>

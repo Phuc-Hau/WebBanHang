@@ -44,6 +44,7 @@ app.controller('ctrluser', function($scope,$http) {
     $scope.update = function (user){
         user.cutomer.procvince = document.getElementById("address_1").value;
         user.cutomer.district = document.getElementById('address_2').value;
+        user.cutomer.birthday = document.getElementById('DateofBirth').value;
         if($scope.image != undefined){
             user.img= $scope.image;
         }

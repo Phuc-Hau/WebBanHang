@@ -13,57 +13,117 @@
 			<div class="card">
 				<div class="card-body">
 					User Table
-					
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>IMG</th>
-								<th>User</th>
-								<th>Full name</th>
-								<th>Birthday</th>
-								<th>Rule</th>
-								<th>Status</th>
-								<th><i class="mdi mdi-border-color"></i></th>
-							</tr>
-						</thead>
-						<tbody>
 
-								<tr ng-repeat="item in items">
-									<td>{{$index+1}}</td>
-									<td class="py-1"><img style="object-fit: cover;"
-										src="/file/user/{{item.img}}"
-										alt="image" /></td>
-									<td>{{item.username}}</td>
-									<td>{{item.cutomer.name}}</td>
-									<td>{{item.cutomer.birthday}}</td>
-									<td >
-										<span ng-if ="item.role == 'ROLE_ADMIN'">Admin</span>
-										<span ng-if ="item.role != 'ROLE_ADMIN'">Người dùng</span>
-									</td>
-									<td >
+					<ul class="nav nav__tabs" role="tablist">
+						<li class="nav__item">
+							<a class="nav-link active" href="#wait_user" role="tab" data-toggle="tab">Người Dùng</a>
+						</li>
+						<li class="nav__item">
+							<a class="nav-link" href="#wait_admin" role="tab" data-toggle="tab">Quản trị viên</a>
+						</li>
+					</ul>
 
-										<span ng-if="item.status==true">
-											<div class="form-check form-check-success">
-												<label class="form-check-label"> <input
-													type="radio" class="form-check-input" id="ExampleRadio2"
-													checked=""> <i class="input-helper"></i></label>
-											</div>
-										</span>
-										<span ng-if="item.status==false">
-												<div class="form-check form-check-danger">
-													<label class="form-check-label"> <input
-														type="radio" class="form-check-input" id="ExampleRadio4"
-														checked=""> <i class="input-helper"></i></label>
-												</div>
-										</span>
-									</td>
+					<div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active show" id="wait_user">
+                            <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>IMG</th>
+                                    <th>User</th>
+                                    <th>Full name</th>
+                                    <th>Birthday</th>
+                                    <th>Rule</th>
+                                    <th>Status</th>
+                                    <th><i class="mdi mdi-border-color"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in items | filter:{role:'ROLE_GUEST'}" >
+                                        <td>{{$index+1}}</td>
+                                        <td class="py-1">
+                                            <img style="object-fit: cover;"src="/file/user/{{item.img}}" alt="image" /></td>
+                                        <td>{{item.username}}</td>
+                                        <td>{{item.cutomer.name}}</td>
+                                        <td>{{item.cutomer.birthday| date:'dd-MM-yyyy'}}</td>
+                                        <td >
+                                            <span ng-if ="item.role == 'ROLE_ADMIN'">Admin</span>
+                                            <span ng-if ="item.role != 'ROLE_ADMIN'">Người dùng</span>
+                                        </td>
+                                        <td >
 
-									<td><a href="/admin/user/edit/user={{item.id}}">Edit</a>
-								</tr>
+                                            <span ng-if="item.status==true">
+                                                <div class="form-check form-check-success">
+                                                    <label class="form-check-label"> <input
+                                                        type="radio" class="form-check-input" id="ExampleRadio2"
+                                                        checked=""> <i class="input-helper"></i></label>
+                                                </div>
+                                            </span>
+                                            <span ng-if="item.status==false">
+                                                    <div class="form-check form-check-danger">
+                                                        <label class="form-check-label"> <input
+                                                            type="radio" class="form-check-input" id="ExampleRadio4"
+                                                            checked=""> <i class="input-helper"></i></label>
+                                                    </div>
+                                            </span>
+                                        </td>
 
-						</tbody>
-					</table>
+                                        <td><a href="/admin/user/edit/user={{item.id}}">Edit</a>
+                                    </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wait_admin">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>IMG</th>
+                                    <th>User</th>
+                                    <th>Full name</th>
+                                    <th>Birthday</th>
+                                    <th>Rule</th>
+                                    <th>Status</th>
+                                    <th><i class="mdi mdi-border-color"></i></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in items | filter:{role:'ROLE_ADMIN'}" >
+                                    <td>{{$index+1}}</td>
+                                    <td class="py-1">
+                                        <img style="object-fit: cover;"src="/file/user/{{item.img}}" alt="image" /></td>
+                                    <td>{{item.username}}</td>
+                                    <td>{{item.cutomer.name}}</td>
+                                    <td>{{item.cutomer.birthday| date:'dd-MM-yyyy'}}</td>
+                                    <td >
+                                        <span ng-if ="item.role == 'ROLE_ADMIN'">Admin</span>
+                                        <span ng-if ="item.role != 'ROLE_ADMIN'">Người dùng</span>
+                                    </td>
+                                    <td >
+
+                                            <span ng-if="item.status==true">
+                                                <div class="form-check form-check-success">
+                                                    <label class="form-check-label"> <input
+                                                            type="radio" class="form-check-input" id="ExampleRadio2"
+                                                            checked=""> <i class="input-helper"></i></label>
+                                                </div>
+                                            </span>
+                                        <span ng-if="item.status==false">
+                                                    <div class="form-check form-check-danger">
+                                                        <label class="form-check-label"> <input
+                                                                type="radio" class="form-check-input" id="ExampleRadio4"
+                                                                checked=""> <i class="input-helper"></i></label>
+                                                    </div>
+                                            </span>
+                                    </td>
+
+                                    <td><a href="/admin/user/edit/user={{item.id}}">Edit</a>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
 				</div>
 			</div>
 		</div>

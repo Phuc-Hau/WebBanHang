@@ -54,7 +54,15 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="number" ng-model="item.code"  placeholder="Code" />
+              <input type="number" onkeypress="return onlyNumberKey(event)" ng-model="item.code"  placeholder="Code" />
+              <script>
+                function onlyNumberKey(evt) {
+                  var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+                  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                    return false;
+                  return true;
+                }
+              </script>
             </div>
             <button type="button" ng-click="entercode(item.code)" class="btn" >Enter Code</button>
             <p class="social-text">Or Sign up with social platforms</p>

@@ -8,7 +8,7 @@ app.controller('ctradminuser', function($scope,$http) {
 
     function user () {
         $scope.urledit="/admin/api/user/edit/user="+id;
-        if($scope.urledit.indexOf('user=:') ==-1) {
+        if(ur.indexOf('=') != -1) {
             $http.get($scope.urledit).then(resp => {
                 $scope.item = resp.data;
 
@@ -60,6 +60,7 @@ app.controller('ctradminuser', function($scope,$http) {
     $scope.update = function (user){
         user.cutomer.procvince = document.getElementById("address_1").value;
         user.cutomer.district = document.getElementById('address_2').value;
+        user.cutomer.birthday = document.getElementById('DateofBirth').value;
         if($scope.image != undefined){
             user.img= $scope.image;
         }

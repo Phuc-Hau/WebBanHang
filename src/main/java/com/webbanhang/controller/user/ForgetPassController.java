@@ -11,7 +11,7 @@ public class ForgetPassController {
 
 	@RequestMapping("/forgetpass")
 	public String searchTK() {
-		return "forgetpass/forgetpassword";
+		return "user/forgetpassword";
 	}
 
 	

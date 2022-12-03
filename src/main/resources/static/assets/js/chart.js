@@ -118,6 +118,36 @@ $(function () {
       '2020',
     ]
   };
+
+  var OrderStatus = {
+    datasets: [{
+      data: orderStatus,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      'Chờ xác nhận',
+      'Chờ lấy hàng',
+      'Đang giao',
+      'Đã giao',
+      'Đã hủy',
+    ]
+  };
+
   var doughnutPieOptions = {
     responsive: true,
     animation: {
@@ -577,6 +607,15 @@ $(function () {
       type: 'line',
       data: multiAreaData,
       options: multiAreaOptions
+    });
+  }
+
+  if ($("#OrderStatus").length) {
+    var doughnutChartCanvas = $("#OrderStatus").get(0).getContext("2d");
+    var doughnutChart = new Chart(doughnutChartCanvas, {
+      type: 'doughnut',
+      data: OrderStatus,
+      options: doughnutPieOptions
     });
   }
 
