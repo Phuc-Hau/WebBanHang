@@ -118,7 +118,7 @@ padding: 27px;
     font-size: 13px;
 }
 .ten{
-    font-size: 25px;
+    font-size: 40px;
     font-weight: 700;
     margin-left: -10px;
 
@@ -196,7 +196,7 @@ padding: 27px;
 }
 
 .gia-cu-gia {
-    font-size: 25px;
+    font-size: 32px;
     font-weight: 400;
     color: rgb(129, 115, 115);
     text-decoration: line-through;
@@ -204,7 +204,7 @@ padding: 27px;
 }
 
 .gia-moi-gia {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 500;
     color: red;
     margin-left: 10px;
@@ -336,7 +336,10 @@ span{
 }
 
 .tt-danh-gia{
-
+        text-align: center;
+        font-size: 30px;
+        color: #cd0909;
+        font-weight: bold;
 }
 
 .star-bl{
@@ -699,6 +702,9 @@ width:100%;}
         display: none
     }
 
+}
+body .modal-dialog {
+    max-width: 80% !important;
 }
 .col-8 button{
     margin-left:6px;

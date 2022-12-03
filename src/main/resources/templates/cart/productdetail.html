@@ -77,8 +77,8 @@
                         </div>
 
                         <div class="danh-gia" style="margin-left: 55px;">
-                            <span>| {{evalutes.evalute.length}} đánh giá |</span>
-                            <span>| 500 lượt mua |</span>
+                            <span style="font-size: 20px;">| {{evalutes.evalute.length}} đánh giá |</span>
+                            <span style="font-size: 20px;">| 500 lượt mua |</span>
                         </div>
 
 
@@ -146,16 +146,18 @@
     </div>
     <div class="chi-tiet-sp">
         <div class="tt-danh-gia">
-            CHI TIẾT SẢN PHẨM:
+            CHI TIẾT SẢN PHẨM
+        </div>
             <hr>
-         <strong>{{items.name}} :</strong>
+        <div style="padding:15px">
+            <strong>{{items.name}} :</strong>
             <textarea id="note" ng-model="items.detail"></textarea>
-
         </div>
     </div>
+
     <div class="danh-gia-sp" >
         <div class="tt-danh-gia">
-            ĐÁNH GIÁ SẢN PHẨM:
+            ĐÁNH GIÁ SẢN PHẨM
             <hr>
         </div>
 
@@ -201,13 +203,16 @@
                 <button  ng-click="startype('4')" type="button" class="btn btn-warning">4<i class='fa fa-star fa-fw'></i></button>
                 <button  ng-click="startype('5')" type="button" class="btn btn-warning">5<i class='fa fa-star fa-fw'></i></button>
             </div>
+
+
+
         </div>
 
 
 
         <div class="bl-content-chung">
 
-            <div class="bl-content" ng-repeat="item in evalutes.evalute | filter:{footQuality:loaisao}">
+            <div class="bl-content" ng-repeat="item in evalutes.evalute  | filter:{footQuality:loaisao} | limitTo : 3">
                 <div class="chat-bl">
                     <div class="hinh"><img width="50px" height="50px" src="/file/user/{{evalutes.avatar[$index]}}" alt=""></div>
                     <div class="ten-nbl">{{item.cutomer.name}}</div>
@@ -240,15 +245,19 @@
                     <div class="bl-ct">{{item.comment}}</div>
                 </div>
                 <hr>
+
             </div>
+               <div ng-if="evalutes.evalute.length > 3">
+                   <a style="margin-left: 42%; margin-bottom: 15px;border-radius: 20px; width: 152px;" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Xem Thêm</a>
+               </div>
 
         </div>
-
-
     </div>
+
+
     <div class="sp-tuong-tu">
         <div class="tt-danh-gia">
-            SẢN PHẨM TƯƠNG TỰ:
+            SẢN PHẨM TƯƠNG TỰ
         <hr>
 
 			<div class="row">
@@ -275,9 +284,121 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+
+                <button type="button" style="
+                font-size: 30px !important;
+                right: 8px;
+                top: 6px;
+                color: red;
+                background: white;
+                width: 89px;
+                position: absolute;
+                border-radius: 20px;
+                border: none;
+"  data-dismiss="modal">Close</button>
+
+                <div class="danh-gia-sp" >
+                    <div class="tt-danh-gia">
+                        ĐÁNH GIÁ SẢN PHẨM
+                        <hr>
+                    </div>
+                    </div>
+                    <div class="sao-bl row" >
+                        <div class="col-3" style="margin-left: 17px;">
+                            <div class="so-sao thuc">
+                                {{star| number:1}} <span style="font-size: 23px;">trên 5</span>
+                            </div>
+
+                            <div class="rating-container rating-md rating-animate">
+                                <div class="rating-starss">
+                        <span class="empty-stars">
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                        </span>
+                                    <span id="filled-stars" class="filled-stars">
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                            <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
+                        </span>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.getElementById('filled-stars').style.width=starr/5*100+'%'
+                            </script>
+                        </div>
+                        <div class="col-8">
+                            <button  ng-click="startype('')" type="button" class="btn btn-warning">Tất cả<i class='fa fa-star fa-fw'></i></button>
+                            <button  ng-click="startype('1')" type="button" class="btn btn-warning">1<i class='fa fa-star fa-fw'></i></button>
+                            <button  ng-click="startype('2')" type="button" class="btn btn-warning">2<i class='fa fa-star fa-fw'></i></button>
+                            <button  ng-click="startype('3')" type="button" class="btn btn-warning">3<i class='fa fa-star fa-fw'></i></button>
+                            <button  ng-click="startype('4')" type="button" class="btn btn-warning">4<i class='fa fa-star fa-fw'></i></button>
+                            <button  ng-click="startype('5')" type="button" class="btn btn-warning">5<i class='fa fa-star fa-fw'></i></button>
+                        </div>
+
+                    </div>
+
+                    <div class="bl-content-chung">
+
+                        <div class="bl-content" ng-repeat="item in evalutes.evalute  | filter:{footQuality:loaisao}">
+                            <div class="chat-bl">
+                                <div class="hinh"><img width="50px" height="50px" src="/file/user/{{evalutes.avatar[$index]}}" alt=""></div>
+                                <div class="ten-nbl">{{item.cutomer.name}}</div>
+                                <div class="time"  >{{item.date| date:'dd-MM-yyyy'}}</div>
+                            </div>
+                            <div class="ccc">
+                                <div class='rating-stars' >
+
+                                    <ul id='stars{' >
+                                        <li class="star {{::(item.footQuality >= 1 ? 'selected' : '')}}" title='Poor' data-value='1'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class="star  {{::(item.footQuality >= 2 ? 'selected' : '')}}" title='Fair' data-value='2'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class="star  {{::(item.footQuality >= 3 ? 'selected' : '')}}" title='Good' data-value='3'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class="star  {{::(item.footQuality >= 4 ? 'selected' : '')}}" title='Excellent' data-value='4'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class="star  {{::(item.footQuality >= 5 ? 'selected' : '')}}" title='WOW!!!' data-value='5'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+
+                                <div class="bl-ct">{{item.comment}}</div>
+                            </div>
+                            <hr>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 <div th:replace="/partials/footer.html"></div>
     <script src="/js/angular/ProductDetail.js"></script>
-
+<script>
+        $('#myModal').on('shown.bs.modal', function () {
+         $('#myInput').trigger('focus')
+})
+    </script>
 </body>
 </html>
