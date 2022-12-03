@@ -20,8 +20,7 @@ public class ProductDetailApi {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    OrderDetailService orderDetailService;
+
 
     @GetMapping("/product/{id}")
     public Product doGetFL (@PathVariable("id") int id) {
@@ -33,9 +32,6 @@ public class ProductDetailApi {
         return productService.getProductGroup(id);
     }
 
-    @GetMapping("userQuantityProduct/{id}")
-    public Object s(@PathVariable("id") int id){
-        return orderDetailService.QuantityProduct(id);
-    }
+
 
 }

@@ -29,6 +29,12 @@ public class OrderStatusApi {
 
     @Autowired
     UsersService userService;
+    
+
+    @GetMapping("userQuantityProduct/{id}")
+    public Object s(@PathVariable("id") int id){
+        return orderDetailService.QuantityProduct(id);
+    }
 
     @GetMapping("/listorderstatus")
     public List<Order> cart(HttpServletRequest request) {
@@ -85,6 +91,8 @@ public class OrderStatusApi {
         }
         return obj;
     }
+
+
 
 
 
