@@ -42,9 +42,10 @@
               <div class="name"><b>Tên khách hàng: {{item.cutomer.name}}</b></div>
               <button class="btn btn-success ml-auto p-2" ng-click="statusUpdate(item.id,2)">{{status[item.status].status}}</button>
             </div>
-            <div  class="product" ng-repeat="p in orderdetail | filter : { order: { id : item.id } }">
+            <div  class="product" ng-repeat="p in orderdetail | filter: { order: { id : item.id } }:true">
             	<img src="/file/AnhWebBanHang/{{p.product.imgs[0].image}}" alt="">
               <ul class="phanloai" >
+                  {{p.order.id}}
                 <li>Sản phẩm: Sản phẩm: {{p.product.name}}  </li>
                 <li>Loại: {{p.product.groupProduct.name}}</li>
                 <li>Số lượng: {{p.quantity}}</li>
