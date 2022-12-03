@@ -53,6 +53,11 @@ app.controller('ctrlproductdetail', function($scope,$http) {
         $scope.star= y/evalute.length;
         starr = $scope.star;
      }
+     /* Sao hiển thị*/
+     $scope.startype= function (x){
+        $scope.loaisao=x;
+     }
+
 
 
      $scope.newCar = function (item,index){

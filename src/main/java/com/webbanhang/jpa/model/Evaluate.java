@@ -12,10 +12,8 @@ public class Evaluate {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-
     @JoinColumn(name = "Product_id")
     private int product_id;
-
 
     @JoinColumn(name = "Orders_id")
     private int orders_id;

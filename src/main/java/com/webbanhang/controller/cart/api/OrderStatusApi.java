@@ -86,6 +86,13 @@ public class OrderStatusApi {
         return obj;
     }
 
+    @GetMapping("userQuantityProduct")
+    public Object s(HttpServletRequest request){
+        String username = request.getRemoteUser();
+
+        Users user =userService.findByUsername(username);
+        return orderDetailService.QuantityProduct(user.getCutomer().getId());
+    }
 
 
 }

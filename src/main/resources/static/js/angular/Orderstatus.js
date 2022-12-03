@@ -102,9 +102,10 @@ app.controller('orderstatus', function($scope,$http) {
 
     $scope.submit = function (productitem){
 
-        $scope.evalute.product = productitem.product;
-        $scope.evalute.orders = productitem.order;
+        $scope.evalute.product_id = productitem.product.id;
+        $scope.evalute.orders_id = productitem.order.id;
         $scope.evalute.footQuality = star;
+        console.log("ds submit", $scope.evalute)
         $http.post($scope.urlsubmit, $scope.evalute ).then(resp => {
 
             console.log("Success submit", resp)

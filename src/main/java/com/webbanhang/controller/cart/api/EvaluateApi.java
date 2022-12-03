@@ -31,13 +31,15 @@ public class EvaluateApi {
         obj.put("evalute",list);
 
         JSONArray array = new JSONArray();
-        try {
-            for (int i = 0; i < list.size(); i++) {
-                array.add(usersService.imgIdCutomer(list.get(i).getCutomer().getId()));
-            }
-        }catch (Exception e){
 
-        }
+            for (int i = 0; i < list.size(); i++) {
+                try {
+                    array.add(usersService.imgIdCutomer(list.get(i).getCutomer().getId()));
+                }catch (Exception e){
+                    array.add("");
+                }
+            }
+
         obj.put("avatar",array);
         return obj;
     }

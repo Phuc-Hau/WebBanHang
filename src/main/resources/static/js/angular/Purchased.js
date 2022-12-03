@@ -2,7 +2,7 @@ var app = angular.module("app", []);
 
 app.controller('crlPurchased', function($scope,$http) {
     $scope.purchasedlist = [];
-    $scope.urllist = "/accounts/api/userQuantityProduct/1";
+    $scope.urllist = "/accounts/api/userQuantityProduct";
 
     $scope.list = function (){
         $http.get($scope.urllist).then(resp => {
