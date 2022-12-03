@@ -17,7 +17,7 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 	@Query("select new CountMonth(o.status, COUNT(o))  from Order o where o.status != 0 and year(o.date)= year(now()) and MONTH(o.date) = ?1 group by o.status")
 	List<CountMonth> findAllOrderStatusMonth(int idcutomer);
 
-	@Query("select o from Order o where o.status != 0 and o.cutomer.id= ?1 ")
+	@Query("select o from Order o where o.status != 0 and o.cutomer.id= ?1 order by o.date desc")
 	List<Order> findAllOrderStatus(int idcutomer);
 
 	@Query("select o from Order o where o.status = 0 and o.cutomer.id= ?1 ")

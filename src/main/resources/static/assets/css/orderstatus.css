@@ -233,7 +233,7 @@ body {
 .info-product {
     width: auto;
     height: auto;
-    background-color: #5b9bd1;
+    background-color: white;
     margin: 10px auto;
     margin-bottom: 40px;
 }
@@ -965,3 +965,7 @@ pre {
      background-color: #aca9a9 !important;
     opacity: 0.25 !important;
 }
+
+/*.purchased:hover{*/
+/*    background-color: #9e9da0;*/
+/*}*/
