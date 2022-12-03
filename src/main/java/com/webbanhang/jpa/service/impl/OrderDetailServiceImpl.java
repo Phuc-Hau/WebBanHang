@@ -69,4 +69,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public boolean existsById(Integer id) {
         return OrderDetailDao.existsById(id);
     }
+
+    @Override
+    public List<Object> QuantityProduct(int idCutomer) {
+        return OrderDetailDao.QuantityProduct(idCutomer);
+    }
 }

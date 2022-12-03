@@ -1,10 +1,15 @@
 package com.webbanhang.controller.cart.api;
 
+import com.webbanhang.jpa.dao.OrderDetailDao;
 import com.webbanhang.jpa.model.Product;
+import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.jpa.service.ProductService;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -15,6 +20,9 @@ public class ProductDetailApi {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    OrderDetailService orderDetailService;
+
     @GetMapping("/product/{id}")
     public Product doGetFL (@PathVariable("id") int id) {
         return productService.findById(id);
@@ -23,6 +31,11 @@ public class ProductDetailApi {
     @GetMapping("/product/groupproduct/{id}")
     public List<Product> getProduct( @PathVariable("id") int id){
         return productService.getProductGroup(id);
+    }
+
+    @GetMapping("userQuantityProduct/{id}")
+    public Object s(@PathVariable("id") int id){
+        return orderDetailService.QuantityProduct(id);
     }
 
 }
