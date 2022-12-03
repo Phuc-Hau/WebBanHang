@@ -157,25 +157,25 @@ body {
     outline: 0;
 }
 
-.price {
-    width: auto;
-    height: 70px;
-    background-color: white;
-    border-top: 1px solid rgb(227, 202, 202);
-}
+
 
 .product {
+	display:flex;
     width: auto;
     height: 100px;
-    background-color: white;
+    margin-bottom:20px;
+    margin-top:22px;
 }
 
 .status {
     width: auto;
     height: 50px;
-    background-color: white;
     display: flex;
     border-bottom: 1px solid rgb(180, 162, 162);
+}
+
+.status button{
+	color: white!important;
 }
 
 .ghw9hb {
@@ -193,49 +193,49 @@ body {
 }
 
 
-.price0 {
-    padding-top: 20px;
-    background-color: white;
-
-}
-
 .price {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    margin-top: 10px;
+    width: auto;
+    height: 50px;
+    border-bottom: 1px solid rgb(227, 202, 202);
+    border-top: 1px solid rgb(227, 202, 202);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    
 }
+
 
 .price2 {
     color: #ee4d2d;
     font-size: 24px;
     line-height: 30px;
+    margin-top:7px;
+    margin-right:30px;
 }
 
 .price1 {
     margin: 0 10px 0 0;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 24px;
+    line-height: 30px;
     color: rgba(0, 0, 0, .8);
+    margin-top:7px;
 }
 
 .product img {
     width: 80px;
     height: 80px;
-    margin: 11px;
     margin-left: 30px;
-}
-
-.product span {
-    display: inline;
 }
 
 .info-product {
     width: auto;
     height: auto;
-    background-color: #5b9bd1;
     margin: 10px auto;
     margin-bottom: 40px;
+    padding-top:10px;
+    border-radius:15px;
+    background-color: #e9efef;
 }
 
 
@@ -641,23 +641,15 @@ a:hover {
 
 .ml-auto, .mx-auto {
     font-size: large !important;
-    color: red !important;
-    margin-top: 5px !important;
     margin-right: 40px !important;
+    margin-bottom: 8px;
+    color:red;
 }
+
 
 .phanloai{
-    display: inline-grid;
     margin-left: 20px;
-    width: 24%;
 }
-
-/*ul.phanloai li{*/
-/*    margin-top: 10px !important;*/
-/*}*/
-
-
-
 
 
 * {

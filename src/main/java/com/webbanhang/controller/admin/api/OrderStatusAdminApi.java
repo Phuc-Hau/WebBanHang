@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.OrderStatus;
+import com.webbanhang.jpa.model.Product;
 import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.jpa.service.OrderService;
 import com.webbanhang.jpa.service.OrderStatusService;
+import com.webbanhang.jpa.service.ProductService;
 import com.webbanhang.jpa.service.UsersService;
 
 import net.minidev.json.JSONObject;
@@ -26,7 +28,7 @@ import net.minidev.json.JSONObject;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/admin/api")
-public class OrderDetailAdminApi {
+public class OrderStatusAdminApi {
 	@Autowired
     OrderStatusService orderStatusService;
 
@@ -37,41 +39,43 @@ public class OrderDetailAdminApi {
     OrderService orderService;
 
     @Autowired
-    UsersService userService;
+    ProductService productService;
 
     @GetMapping("/listorderstatus")
     public List<Order> cart(HttpServletRequest request) {
-        String username = request.getRemoteUser();
 
-        Users user =userService.findByUsername(username);
-
-        List<Order> list = orderService.findAllOrderStatus(user.getCutomer().getId());
+        List<Order> list = orderService.findAll();
 
         return list;
     }
 
-    @PostMapping("/listordersDetailStatus/{idOrder}")
-    public List<OrderDetail> detail(HttpServletRequest request,@PathVariable("idOrder") int idOrder) {
-        String username = request.getRemoteUser();
+   
+    
+    @GetMapping("/listordersDetail")
+    public List<OrderDetail> listordersDetail(HttpServletRequest request ) {
 
-        Users user =userService.findByUsername(username);
-
-        List<OrderDetail> list = orderDetailService.findAllOrderStatust(user.getCutomer().getId(),idOrder);
-
-        return list;
-    }
-
-    @PostMapping("/listordersDetail")
-    public List<OrderDetail> listordersDetail(HttpServletRequest request) {
-        String username = request.getRemoteUser();
-
-        Users user =userService.findByUsername(username);
-
-        List<OrderDetail> list = orderDetailService.findAllOrderUsername(user.getCutomer().getId());
+        List<OrderDetail> list = orderDetailService.findAll();
 
         return list;
     }
+    
+    @PostMapping("/orderstatusChange/{id}/{sta}")
+    public JSONObject updateOrderStatus(HttpServletRequest request , @PathVariable ("id") int id, @PathVariable ("sta") int sta) {
+    	JSONObject obj = new JSONObject();
+    	Order order = orderService.findById(id);
+    	order.setStatus(sta);
+    	try {
+    		orderService.update(order);
+            obj.put("status",true);
+            obj.put("message", "Cập nhật trạng thái thành công!");
+		} catch (Exception e) {
+            obj.put("status",false);
+            obj.put("message", "Cập nhật trạng thái thất bại!");
+		}
 
+        return obj;
+    }
+    
 
 
     @GetMapping("OrderStatus")

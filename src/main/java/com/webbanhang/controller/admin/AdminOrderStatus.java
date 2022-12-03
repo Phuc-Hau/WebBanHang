@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminOrderDetail {
+public class AdminOrderStatus {
 
 	@RequestMapping("/orderlist")
 	public String adminUserList() {
