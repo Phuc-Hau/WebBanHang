@@ -2,6 +2,7 @@ package com.webbanhang.controller.cart.api;
 
 
 import com.webbanhang.jpa.model.Evaluate;
+import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.EvaluateService;
 import com.webbanhang.jpa.service.UsersService;
 import net.minidev.json.JSONArray;
@@ -9,6 +10,7 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -38,7 +40,12 @@ public class EvaluateApi {
 
 
     @PostMapping("new")
-    public JSONObject newEvaluate(@RequestBody Evaluate evaluate){
+    public JSONObject newEvaluate(@RequestBody Evaluate evaluate, HttpServletRequest request){
+        String username = request.getRemoteUser();
+
+        Users user =usersService.findByUsername(username);
+        evaluate.setCutomer(user.getCutomer());
+
         JSONObject obj = new JSONObject();
         try {
             evaluateService.create(evaluate);
