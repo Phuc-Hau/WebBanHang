@@ -43,16 +43,12 @@
 
 
 	<!-- Show Right -->
-<div class="col-sm-3">
-	<div>
-		<img src="/image/sachhow1.jpg"
-			style="object-fit: cover; max-height: 174px; width: 100% !important;"
-			alt="">
-	</div>
-	<div style="margin-top: 5px;">
+<div  class="col-sm-3" style="overflow: auto;height: 332px; background: white">
+		<th:each th:each="group:${groupProduct}">
 
-		<img src="/image/sachhow2.jpg"
-			style="object-fit: cover; max-height: 174px; width: 100% !important;"
-			alt="">
-	</div>
+			<div  style="border: 1px solid white; display: flex"  class="ll" th:value="${group.id}">
+				<img th:src="@{|/file/Groupproduct/${group.images}|}" style="height: 70px" ><span style="margin-top: 15px">
+				[[${group.name}]]</span> </div> <hr>
+		</th:each>
+	
 </div>
