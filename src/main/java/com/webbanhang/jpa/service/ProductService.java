@@ -8,6 +8,8 @@ public interface ProductService {
 
 
     List<Product> findAll();
+
+    List<Product> findAllStatus();
     Product findById(Integer id);
     Product create(Product entity);
     Product update(Product entity);
@@ -15,6 +17,8 @@ public interface ProductService {
     boolean existsById(Integer id);
 
     List<Product> getProductGroup(int idGroupProduct);
+
+    List<Product> fashSale();
 
 
 }

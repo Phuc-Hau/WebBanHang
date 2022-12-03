@@ -14,7 +14,10 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
     List<Product> getProductGroup(int idGroupProduct);
 
 
+    @Query("Select o from Product o where o.status = 1")
+    List<Product> findAllStatus();
 
-
+    @Query("SELECT o FROM Product o where o.sale>0.2  order by o.date desc, o.sale desc")
+    List<Product> fashSale();
 
 }

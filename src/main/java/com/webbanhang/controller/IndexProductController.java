@@ -19,51 +19,20 @@ public class IndexProductController {
 	
 	@Autowired
 	ProductService productService;
-	
-	@Autowired
-	UsersService userService;
-	
-	@Autowired
-	SessionService session;
-	
 
-	@Autowired
-	CookieService cookie;
 
 
 	@RequestMapping("/product/index")
 	public String index(Model model) {		
-//		User users = userService.checkLogin(cookie.getValue("username"), cookie.getValue("password"));
-//
-//		if(users != null) {
-//			session.set("user", users);
-//		}
-//		User user =session.get("user");
-//		if(user !=null) {
-//			List<OrderDetail> list = orderDetailDao.findAllUsername(user.getCutomer().getId());
-//			model.addAttribute("amountcart", list.size());
-//		}
 
-		model.addAttribute("product",productService.findAll());
-		
+		model.addAttribute("product",productService.findAllStatus());
+		model.addAttribute("fashsale",productService.fashSale());
 		return "index";
 	}
 	
 	@RequestMapping("/product/all")
-	public String allProduct(Model model) {		
-//		User users = userService.checkLogin(cookie.getValue("username"), cookie.getValue("password"));
-//
-//		if(users != null) {
-//			session.set("user", users);
-//		}
-//		User user =session.get("user");
-//		if(user !=null) {
-//			List<OrderDetail> list = orderDetailDao.findAllUsername(user.getCutomer().getId());
-//			model.addAttribute("amountcart", list.size());
-//		}
-
-		model.addAttribute("product",productService.findAll());
-		
+	public String allProduct(Model model) {
+		model.addAttribute("product",productService.findAllStatus());
 		return "body/xuhuongsp";
 	}
 	

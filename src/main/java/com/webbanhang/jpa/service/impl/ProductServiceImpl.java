@@ -20,6 +20,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findAllStatus() {
+        return ProductDao.findAllStatus();
+    }
+
+    @Override
     public Product findById(Integer id) {
         return ProductDao.findById(id).get();
     }
@@ -47,6 +52,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProductGroup(int idGroupProduct) {
         return ProductDao.getProductGroup(idGroupProduct);
+    }
+
+    @Override
+    public List<Product> fashSale() {
+        return ProductDao.fashSale();
     }
 
 
