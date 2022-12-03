@@ -61,4 +61,37 @@ app.controller('forgetpass', function($scope,$http) {
             console.log("fail", error)
         })
     }
+
+
+    var s = 59; // Giây
+    var timeout = null; // Timeout
+    function start() {
+        document.getElementById('cho').style.display = '';
+        document.getElementById('setcapcha').style.display = 'none';
+
+        if (s == -1){
+            clearTimeout(timeout);
+            document.getElementById('cho').style.display = 'none';
+            document.getElementById('setcapcha').style.display = '';
+            s = 59;
+            return false;
+        }
+
+        document.getElementById('time').innerText = s.toString();
+        timeout = setTimeout(function(){
+            s--;
+            start();
+        }, 1000);
+    }
+    start();
+
+    $scope.setCapcha = function (){
+        $scope.urlcapcha="/account/api/code/resetcode";
+        $http.post($scope.urlcapcha).then(resp => {
+            start();
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+
 });

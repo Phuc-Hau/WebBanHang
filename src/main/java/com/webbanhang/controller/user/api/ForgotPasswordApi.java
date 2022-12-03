@@ -45,6 +45,14 @@ public class ForgotPasswordApi {
         }
         return obj;
     }
+    @PostMapping("/code/resetcode")
+    public void resetcode() throws MessagingException {
+        capChas = convenientUtils.ranDomCapCha();
+        mailer.sendPassword(user.getEmail(), capChas);
+    }
+
+
+
 
     @PostMapping("/code/{code}")
     public JSONObject code(@PathVariable("code") String code) {

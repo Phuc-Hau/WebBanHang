@@ -32,6 +32,12 @@ public class SignUpApi {
     Cutomer tymCutomer;
     String capchas = "";
 
+    @PostMapping("/signup/resetcode")
+    public void resetcode() throws MessagingException {
+        capchas = convenientUtils.ranDomCapCha();
+        mail.sendPassword(tymUser.getEmail(), capchas);
+    }
+
     @PostMapping("/signup/new")
     public JSONObject checkUser(@RequestBody JSONObject data) throws MessagingException {
 
