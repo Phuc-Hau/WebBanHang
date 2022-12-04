@@ -7,15 +7,16 @@ app.controller("myCtrl", function($scope,$http) {
     $scope.load = function(){
         var url = `${host}`;
         $http.get(url).then( resp =>{
-            $scope.it = resp.data;
+            $scope.user = resp.data;
+
             console.log(resp)
         })
     }
     $scope.load();
 
     let hostcart='/accounts/order/confirm';
-    $scope.items=[];
 
+    $scope.items=[];
     $scope.loadcart = function(){
         $http.post(hostcart).then( resp =>{
             $scope.items = resp.data;
@@ -60,14 +61,48 @@ app.controller("myCtrl", function($scope,$http) {
 
     }
 
-    $scope.DatHang = function (items){
-        var url ='/accounts/cart/pay/'+$scope.dv;
-        if($scope.pvc==20000 || $scope==30000){
-            $http.post(url).then(resp => {
+    $scope.EditAddress = function (use){
+        $scope.editaddress = angular.copy(use);
+        procvince(use.cutomer.procvince, use.cutomer.district);
+    }
+
+    $scope.pay = {};
+
+    $scope.UpdateAddress = function (editaddress){
+        $scope.user.cutomer.name = editaddress.cutomer.name;
+        $scope.user.tel = editaddress.tel;
+        $scope.user.cutomer.procvince = document.getElementById("address_1").value;
+        $scope.user.cutomer.district = document.getElementById("address_2").value;
+        $scope.user.cutomer.address = document.getElementById('addressedit').value;
+
+        $scope.pay.receiver =  editaddress.cutomer.name;
+        $scope.pay.tel = editaddress.tel;
+        $scope.pay.procvince = document.getElementById("address_1").value;
+        $scope.pay.district = document.getElementById("address_2").value;
+        $scope.pay.address = document.getElementById('addressedit').value;
+
+    }
+
+    $scope.DatHang = function (user){
+        var url ='/accounts/cart/pay';
+
+        if($.isEmptyObject($scope.pay)){
+            $scope.pay.receiver =  user.cutomer.name;
+            $scope.pay.tel = user.tel;
+            $scope.pay.procvince = user.cutomer.procvince;
+            $scope.pay.district = user.cutomer.district;
+            $scope.pay.address =user.cutomer.address;
+        }
+
+        $scope.pay.dv = $scope.dv;
+        console.log("p",$scope.pay)
+
+        if($scope.pvc==20000 || $scope.pvc==30000){
+            $http.post(url,$scope.pay).then(resp => {
                 if(resp.data.status==true){
                     showSuccessToast(resp.data.message)
                     setTimeout ( function () {
-                        window.location='/accounts/cart';
+                        window.location='/accounts/orderstatus';
                     }, 500);
                 }else{
                     showErrorToast(resp.data.message)
@@ -82,4 +117,26 @@ app.controller("myCtrl", function($scope,$http) {
 
 
 });
+
+function Edit(i) {
+    if(i==1){
+        document.getElementById("diachi").contentEditable = true;
+    }
+    if(i==0){
+        document.getElementById("nguoinhan").contentEditable = true;
+    }
+}
+
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})
+function onlyNumberKey(evt) {
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+}
+
+
 

@@ -1,7 +1,43 @@
-
-
-.don-hang-all{
+.dctc div{
+    margin-top: 14px;
 }
+
+.ghdc{
+    border-bottom: solid 1px rgb(109, 105, 105);
+    font-weight: 700;
+    text-align: center;
+    font-size: 34px;
+    color: #cc0e0e;
+}
+
+#nguoinhan:focus , #diachi:focus{
+    border: none;
+    outline: 0;
+}
+
+
+.dc{
+    border: none !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0px !important;
+}
+
+.dc:focus{
+    box-shadow: none !important;
+}
+
+#nguoinhan , #diachi{
+    display: flex;
+}
+
+.provinces-district select{
+    margin-top: -7px;
+    padding-top: 3px;
+    padding: 0rem 0.75rem !important;
+    border: none;
+    height: calc(1em + 0.7rem + 0px) !important;
+}
+
 .tieu-de-all{
     text-transform: uppercase;
     font-weight: 600;
@@ -238,7 +274,6 @@
     height: 50px;
     padding: 0px 50px;
     border-bottom:solid 1px rgb(109, 105, 105) ;
-    border-top:solid 2px rgb(38, 38, 224) ;
     line-height: 50px;
     font-weight: 600;
 

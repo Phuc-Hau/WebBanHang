@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.webbanhang.jpa.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.webbanhang.jpa.model.Order;
 import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.OrderStatus;
-import com.webbanhang.jpa.model.Product;
-import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.OrderDetailService;
 import com.webbanhang.jpa.service.OrderService;
 import com.webbanhang.jpa.service.OrderStatusService;
 import com.webbanhang.jpa.service.ProductService;
-import com.webbanhang.jpa.service.UsersService;
 
 import net.minidev.json.JSONObject;
 

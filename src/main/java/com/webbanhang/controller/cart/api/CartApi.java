@@ -153,32 +153,42 @@ public class CartApi {
 		orderDetailTym = null;
 	}
 
-	@PostMapping("/cart/pay/{pvc}")
-	public JSONObject Pay(@PathVariable("pvc") int pvc,HttpServletRequest request) {
+	@PostMapping("/cart/pay")
+	public JSONObject Pay(@RequestBody JSONObject jsonbody,HttpServletRequest request) {
 
 		JSONObject obj = new JSONObject();
+
 		int idCutomer =userService.findByUsernameGetIdCutomer(request.getRemoteUser());
 		List<OrderDetail> orderDetail =orderDetailTym;
 
-		Order order2 = new Order();
-		order2.setStatus(1);
-		order2.setCutomer(cutomerService.findById(idCutomer));
+		Order order = new Order();
+		order.setStatus(1);
+		order.setAddress((String) jsonbody.get("address"));
+		order.setDistrict((String) jsonbody.get("district"));
+		order.setProcvince((String) jsonbody.get("procvince"));
+		order.setReceiver((String) jsonbody.get("receiver"));
+		order.setTel((String) jsonbody.get("tel"));
+
+		order.setCutomer(cutomerService.findById(idCutomer));
+
+		if(jsonbody.get("dv").equals("1")){
+				order.setDeliveryCharges(20000);
+			}
+		if(jsonbody.get("dv").equals("2")){
+			order.setDeliveryCharges(30000);
+		}
 
 		try{
 
-			orderService.create(order2);
+			orderService.create(order);
+
 			int totalmoney=0;
 			for(int i=0 ; i<orderDetail.size();i++){
 				totalmoney += orderDetail.get(i).getQuantity() * orderDetail.get(i).getProduct().getPrice()*(1-orderDetail.get(i).getProduct().getSale());
-				orderDetail.get(i).setOrder(order2);
+				orderDetail.get(i).setOrder(order);
 			}
-			if(pvc==1){
-				totalmoney += 20000;
-			}
-			if(pvc==2){
-				totalmoney += 30000;
-			}
-			order2.setTotalmoney(totalmoney);
+
+			order.setTotalmoney(totalmoney);
 
 			orderDetailService.listCreate(orderDetail);
 			orderDetailTym = null;
