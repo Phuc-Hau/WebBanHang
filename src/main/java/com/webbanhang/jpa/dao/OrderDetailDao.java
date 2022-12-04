@@ -18,7 +18,7 @@ public interface OrderDetailDao extends JpaRepository<OrderDetail, Integer>{
 	@Query("SELECT o FROM OrderDetail o WHERE o.order.cutomer.id = ?1 and o.order.status != 0 and o.order.id= ?2")
 	List<OrderDetail> findAllOrderStatust(int idcutomer, int idOrder);
 
-	@Query("SELECT o FROM OrderDetail o WHERE o.order.cutomer.id = ?1 and o.order.status != 0")
+	@Query("SELECT o FROM OrderDetail o WHERE o.order.cutomer.id = ?1 and o.order.status != 0 Order By o.order.date Desc")
 	List<OrderDetail> findAllOrderUsername(int idCutomer);
 
 
