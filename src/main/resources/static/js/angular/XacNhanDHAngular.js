@@ -70,13 +70,13 @@ app.controller("myCtrl", function($scope,$http) {
 
     $scope.UpdateAddress = function (editaddress){
         $scope.user.cutomer.name = editaddress.cutomer.name;
-        $scope.user.tel = editaddress.tel;
+        $scope.user.cutomer.tel = editaddress.cutomer.tel;
         $scope.user.cutomer.procvince = document.getElementById("address_1").value;
         $scope.user.cutomer.district = document.getElementById("address_2").value;
         $scope.user.cutomer.address = document.getElementById('addressedit').value;
 
         $scope.pay.receiver =  editaddress.cutomer.name;
-        $scope.pay.tel = editaddress.tel;
+        $scope.pay.tel = editaddress.cutomer.tel;
         $scope.pay.procvince = document.getElementById("address_1").value;
         $scope.pay.district = document.getElementById("address_2").value;
         $scope.pay.address = document.getElementById('addressedit').value;
@@ -88,7 +88,7 @@ app.controller("myCtrl", function($scope,$http) {
 
         if($.isEmptyObject($scope.pay)){
             $scope.pay.receiver =  user.cutomer.name;
-            $scope.pay.tel = user.tel;
+            $scope.pay.tel = user.cutomer.tel;
             $scope.pay.procvince = user.cutomer.procvince;
             $scope.pay.district = user.cutomer.district;
             $scope.pay.address =user.cutomer.address;

@@ -18,6 +18,11 @@ app.controller('orderstatus', function($scope,$http) {
     $scope.list = function (){
         $http.get($scope.urllist).then(resp => {
             $scope.orderlist = resp.data;
+            $scope.choxacnhan = $scope.orderlist.filter(s=> s.status ===1 ).length;
+            $scope.cholayhang= $scope.orderlist.filter(s=> s.status ===2 ).length;
+            $scope.danggiao= $scope.orderlist.filter(s=> s.status ===3 ).length;
+            $scope.dagiao= $scope.orderlist.filter(s=> s.status ===4 ).length;
+            $scope.dahuy= $scope.orderlist.filter(s=> s.status ===5 ).length;
             console.log("Success", resp)
         }).catch(error => {
             console.log("fail", error)

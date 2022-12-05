@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-8 dctc">
                         <div id="receiver" >{{user.cutomer.name | uppercase}}</div>
-                        <div id="tel" > {{user.tel | uppercase}}</div>
+                        <div id="tel" > {{user.cutomer.tel | uppercase}}</div>
                         <div id="provinces"> {{user.cutomer.procvince | uppercase}} </div>
                         <div id="district"> {{user.cutomer.district | uppercase}}</div>
                         <div id="address">{{user.cutomer.address}}</div>
@@ -141,7 +141,7 @@
                     </div>
                     <div class="col-7 dctc">
                         <input class="form-control col-6 dc" type="text" ng-model="editaddress.cutomer.name"/>
-                        <input class="form-control col-6 dc" maxlength="10" onkeypress="return onlyNumberKey(event)" type="tel" ng-model="editaddress.tel"/>
+                        <input class="form-control col-6 dc" maxlength="10" onkeypress="return onlyNumberKey(event)" type="tel" ng-model="editaddress.cutomer.tel"/>
                         <select id="provin" class="form-control col-6 dc" name="calc_shipping_provinces" required="" >
                             <option value="">Tỉnh / Thành phố</option>
                         </select>

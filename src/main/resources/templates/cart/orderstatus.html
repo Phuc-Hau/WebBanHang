@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/assets/css/alter.css">
 
 
-  <script src="/js/angular/Orderstatus.js"></script>
+
 
   <link rel="stylesheet" href="/assets/css/orderstatus.css">
   <link rel="stylesheet" href="/assets/css/sach.css">
@@ -66,22 +66,22 @@
       <!-- Top navigation-->
       <ul class="nav nav__tabs" role="tablist">
         <li class="nav__item">
-          <a class="nav-link active" href="#all" role="tab" data-toggle="tab">Tất cả</a>
+          <a class="nav-link active" href="#all" role="tab" data-toggle="tab">Tất cả ({{orderlist.length}})</a>
         </li>
         <li class="nav__item">
-          <a class="nav-link" href="#wait_xn" role="tab" data-toggle="tab">Chờ xác nhận</a>
+          <a class="nav-link" href="#wait_xn" role="tab" data-toggle="tab">Chờ xác nhận ({{choxacnhan}})</a>
         </li>
         <li class="nav__item">
-          <a class="nav-link" href="#wait_lh" role="tab" data-toggle="tab">Chờ lấy hàng</a>
+          <a class="nav-link" href="#wait_lh" role="tab" data-toggle="tab">Chờ lấy hàng ({{cholayhang}})</a>
         </li>
         <li class="nav__item">
-          <a class="nav-link" href="#Danggiao" role="tab" data-toggle="tab">Đang giao</a>
+          <a class="nav-link" href="#Danggiao" role="tab" data-toggle="tab">Đang giao ({{danggiao}})</a>
         </li>
         <li class="nav__item">
-          <a class="nav-link" href="#Dagiao" role="tab" data-toggle="tab">Đã giao</a>
+          <a class="nav-link" href="#Dagiao" role="tab" data-toggle="tab">Đã giao ({{dagiao}})</a>
         </li>
         <li class="nav__item">
-          <a class="nav-link" href="#Dahuy" role="tab" data-toggle="tab">Đã Hủy</a>
+          <a class="nav-link" href="#Dahuy" role="tab" data-toggle="tab">Đã Hủy ({{dahuy}})</a>
         </li>
       </ul>
       <!-- Tab panes -->
@@ -389,6 +389,13 @@
                   <div class="col"> <strong>Trạng thái:</strong> <br> {{status[orderstatus[0].order.status].status}}</div>
                   <div class="col"> <strong>Thành tiền:</strong> <br> {{orderstatus[0].order.totalmoney+orderstatus[0].order.deliveryCharges}} </div>
                 </div>
+                <hr>
+                <div class="card-body row">
+                  <div class="col"> <strong>Người nhận:</strong> <br>{{orderstatus[0].order.receiver| uppercase}} </div>
+                  <div class="col"> <strong>Số điện thoại:</strong> <br>  <i class="fa fa-phone"></i> {{orderstatus[0].order.tel| uppercase}} </div>
+                  <div class="col"> <strong>Tỉnh/TP - Quận/Huyện</strong> <br> {{orderstatus[0].order.procvince| uppercase}} - {{orderstatus[0].order.district| uppercase}}</div>
+                  <div class="col"> <strong>Địa chỉ:</strong> <br> {{orderstatus[0].order.address| uppercase}}</div>
+                </div>
               </article>
               <div class="track" id="track">
                 <div id="step1" class="step"> <span class="icon"> <i class="fa fa-check" style="margin-top: 11px; margin-left: 5px"></i> </span> <span class="text">Chờ xác nhận</span> </div>
@@ -555,6 +562,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 
+<script src="/js/angular/Orderstatus.js"></script>
 <script src="/js/orderstatus.js"></script>
 </body>
 </html>
