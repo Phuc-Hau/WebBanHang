@@ -55,13 +55,13 @@
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="tel" onkeypress="return onlyNumberKey(event)" ng-model="item.code" maxlength="6" placeholder="Code" />
-              <script>
-                function onlyNumberKey(evt) {
-                  var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-                  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-                    return false;
-                  return true;
-                }
+              <script>function onlyNumberKey(evt) {
+                var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+                if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                  return false;
+                return true;
+              }
+
               </script>
               <div id="cho" style="width: 372px; text-align: center; margin-top: 8px;"> Nếu chưa nhận được vui lòng chờ trong <span id="time"></span> để gửi lại</div>
               <div id="setcapcha" style="width: 372px; text-align: center; margin-top: 8px;">Bạn vẫn chưa nhận được mã: <a  ng-click="setCapcha()" style="color: red;text-decoration: none; cursor: pointer;">Gửi lại</a></div>

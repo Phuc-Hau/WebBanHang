@@ -90,10 +90,10 @@
 
                         <div class="gia">
                             <div class="gia-cu-gia">
-                                {{items.price}}Đ
+                                {{items.price | number:0}}Đ
                             </div>
                             <div class="gia-moi-gia">
-                                {{items.price*(1-items.sale) }} Đ
+                                {{items.price*(1-items.sale)| number:0 }} Đ
                             </div>
                             <div class="giam">
                                 {{items.sale*100}}%
@@ -181,7 +181,7 @@
                             <span class="stars"><i class='fa fa-star fa-fw'></i></span>
                             <span class="stars"><i class='fa fa-star fa-fw'></i></span>
                         </span>
-                        <span id="filled-starstt" class="filled-stars">
+                        <span id="filled-stars" class="filled-stars">
                             <span class="stars"><i class='fa fa-star fa-fw'></i></span>
                             <span class="stars"><i class='fa fa-star fa-fw'></i></span>
                             <span class="stars"><i class='fa fa-star fa-fw'></i></span>
@@ -192,7 +192,7 @@
                 </div>
 
                 <script>
-                    document.getElementById('filled-starstt').style.width=starr/5*100+'%'
+                    document.getElementById('filled-stars').style.width=starr/5*100+'%'
                 </script>
             </div>
             <div class="col-8">
@@ -204,11 +204,7 @@
                 <button  ng-click="startype('5')" type="button" class="btn btn-warning">5<i class='fa fa-star fa-fw'></i></button>
             </div>
 
-
-
         </div>
-
-
 
         <div class="bl-content-chung">
 
@@ -221,7 +217,7 @@
                 <div class="ccc">
                     <div class='rating-stars' >
 
-                        <ul id='stars{' >
+                        <ul id='stars' >
                             <li class="star {{::(item.footQuality >= 1 ? 'selected' : '')}}" title='Poor' data-value='1'>
                                 <i class='fa fa-star fa-fw'></i>
                             </li>
@@ -258,8 +254,8 @@
     <div class="sp-tuong-tu">
         <div class="tt-danh-gia">
             SẢN PHẨM TƯƠNG TỰ
+        </div>
         <hr>
-
 			<div class="row">
                 <div class="hotsp col-sm-2"  ng-repeat="item in groupproduct">
                     <div class="">
@@ -272,16 +268,15 @@
                                 <a class="sachxuhuong">{{item.name}}</a>
                             </h2> <!-- Gia -->
                             <div class="xuhuong">
-            <span style="color: red;">{{item.price}}<span
-                    style="font-size: 16px;">đ</span></span> <span
-                                    style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+                            <span style="color: red;">{{item.price}}<span style="font-size: 16px;">đ</span></span>
+                                <span style="text-align: right; font-size: 11px;">đã bán 1k2</span>
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
 
-        </div>
+
     </div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -314,26 +309,24 @@
                             </div>
                             <div class="rating-container rating-md rating-animate">
                                 <div class="rating-starss">
-                        <span class="empty-stars">
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                        </span>
-                                    <span id="filled-stars" class="filled-stars">
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"><i class='fa fa-star fa-fw'></i></span>
-                            <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
-                        </span>
-                                </div>
+                                    <span class="empty-stars">
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                    </span>
+                                     <span id="filled-stars" class="filled-stars">
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
+                                    </span>
                             </div>
+                        </div>
 
-                            <script>
-                                document.getElementById('filled-stars').style.width=starr/5*100+'%'
-                            </script>
+
                         </div>
                         <div class="col-8">
                             <button  ng-click="startype('')" type="button" class="btn btn-warning">Tất cả<i class='fa fa-star fa-fw'></i></button>

@@ -52,7 +52,9 @@ app.controller('ctrlproductdetail', function($scope,$http) {
 
         $scope.star= y/evalute.length;
         starr = $scope.star;
+         document.getElementById('filled-stars').style.width=starr/5*100+'%'
      }
+
      /* Sao hiển thị*/
      $scope.startype= function (x){
         $scope.loaisao=x;
@@ -116,3 +118,4 @@ app.controller('ctrlproductdetail', function($scope,$http) {
 
 
 })
+
