@@ -104,6 +104,16 @@ app.controller("myCtrl", function($scope,$http) {
                     setTimeout ( function () {
                         window.location='/accounts/orderstatus';
                     }, 500);
+                    //
+
+                    $scope.cart;
+                    var json = localStorage.getItem("cart");
+                    $scope.cart = json ? JSON.parse(json) : []
+                    $scope.cart = [];
+                    var json = JSON.stringify(angular.copy($scope.cart));
+                    localStorage.setItem("cart",json);
+
+                    //
                 }else{
                     showErrorToast(resp.data.message)
                 }

@@ -24,6 +24,7 @@
             			<span style="color: red;">[[${item.price}]]<span
 								style="font-size: 16px;">đ</span></span> <span
 								style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+							<button th:attr="ng-click=@{|cart.add(${item.id})|}">them</button>
 						</div>
 					</a>
 				</div>

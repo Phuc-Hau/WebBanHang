@@ -62,44 +62,6 @@ app.controller('ctrlproductdetail', function($scope,$http) {
 
 
 
-     $scope.newCar = function (item,index){
-         var newcar = {
-             'id':item.id,
-             'quantity':document.getElementById("quantity").value
-         }
-         if(index==1){
-             $http.post('/accounts/newcart',newcar).then(resp => {
-                 $scope.groupproduct = resp.data;
-                 console.log("p", resp)
-                 if($scope.groupproduct.status==true){
-                     showSuccessToast($scope.groupproduct.message)
-                 }else{
-                     if(resp.data.indexOf('<!DOCTYPE html>')==0){
-                         showErrorToast("Chưa đăng nhập")
-                         setTimeout ( function () {
-                             window.location='/account/signin';
-                         }, 500);
-                     }else showErrorToast($scope.groupproduct.message)
-                 }
-             }).catch(error => {
-                 console.log("fail", error)
-             })
-         }
-         if(index==0){
-             $scope.cardpay = [{
-                 'product' : item,
-                 'quantity':document.getElementById("quantity").value
-             }]
-
-             $http.post(`/accounts/cart/newpay`,$scope.cardpay).then(resp => {
-                 window.location='/accounts/xacnhandonhang';
-             }).catch(error => {
-                 console.log("fail", error)
-             });
-         }
-     }
-
-
      $scope.cr = function addElement() {
        // create a new div element
        const newDiv = document.createElement("div");
@@ -115,7 +77,50 @@ app.controller('ctrlproductdetail', function($scope,$http) {
        document.body.insertBefore(newDiv, currentDiv);
      }
 
+    $scope.cart={
+        items:[],
+        add(id){
+            this.loadLocal();
+            var item = this.items.find(item=>item.id==id)
+            if(item){
+                if(item.qty+= parseInt(document.getElementById('quantity').value)> item.amount){
+                    item.qty= item.amount;
+                }else{
+                    item.qty += parseInt(document.getElementById('quantity').value);
+                }
+                showSuccessToast("Cập nhật số lượng sản phẩm: "+item.name+" Thành công");
+                this.saveToLocal();
+            }else{
+                $http.get(`/api/product/${id}`).then(resp => {
+                    resp.data.qty =parseInt( document.getElementById('quantity').value);
+                    this.items.push(resp.data);
+                    this.saveToLocal();
+                    showSuccessToast("Thêm sản phẩm: "+resp.data.name+" Thành công")
+                }).catch(error => {
+                    console.log("them that bai", error)
+                })
+            }
+            loatAmout();
+        },
 
+        saveToLocal(){
+            var json = JSON.stringify(angular.copy(this.items));
+            localStorage.setItem("cart",json);
+
+        },
+        loadLocal(){
+            var json = localStorage.getItem("cart");
+            this.items = json ? JSON.parse(json) : [];
+
+        },
+        get count(){
+            return this.items
+                .map(item => item.quantity)
+                .reduce((total,quantity)=> total+=quantity,0);
+        },
+
+
+    }
 
 })
 

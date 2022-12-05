@@ -1,97 +1,107 @@
-var app = angular.module("myApp", []);
+var app = angular.module('shopping', []);
+app.controller('ctr-shopping', function($scope,$http) {
 
-var url=`/accounts`;
-
-app.controller('ctrcart', function($scope,$http) {
-    $scope.items =[];
-
-    $scope.list = function () {
-
-        $http.get(url+`/list`).then(resp => {
-            $scope.items = resp.data;
-            console.log("Success", resp)
-        }).catch(error => {
-            console.log("fail", error)
-        })
-
-    }
-    $scope.list();
-
-    $scope.getPricesum = function(){
-        let amount = 0;
-        for (let index = 0; index < $scope.items.length; index++) {
-            if($scope.items[index].check==true) {
-                amount += $scope.items[index].quantity * ($scope.items[index].product.price*(1-$scope.items[index].product.sale));
+    $scope.cart={
+        items:[],
+        add(id){
+            var item = this.items.find(item=>item.id==id)
+            if(item){
+                item.qty++;
+                this.saveToLocal();
+            }else{
+                $http.get(`/api/product/${id}`).then(resp => {
+                    resp.data.qty = 1;
+                    this.items.push(resp.data);
+                    this.saveToLocal();
+                    console.log("them thanh cong", resp)
+                }).catch(error => {
+                    console.log("them that bai", error)
+                })
             }
-        }
-        return amount;
+        },
+        saveToLocal(){
+            var json = JSON.stringify(angular.copy(this.items));
+            localStorage.setItem("cart",json);
+
+        },
+        loadLocal(){
+            var json = localStorage.getItem("cart");
+            this.items = json ? JSON.parse(json) : [];
+
+        },
+
+        get amount(){
+            return this.items.length
+        },
+
+        get count(){
+            return this.items
+                .map(item => item.qty)
+                .reduce((total,qty)=> total+=parseInt(qty),0);
+        },
+
+        get pricesum(){
+            let amount = 0;
+            for (let index = 0; index < this.items.length; index++) {
+                amount += this.items[index].qty * (this.items[index].price*(1-this.items[index].sale));
+            }
+            return amount;
+        },
+
+        delete(id){
+            var index = this.items.findIndex(element => element.id == id);
+            this.items.splice(index,1);
+            this.saveToLocal();
+            loatAmout();
+        },
+        cong(id){
+            var index = this.items.findIndex(element => element.id == id);
+            if(this.items[index].qty< this.items[index].amount){
+                this.items[index].qty++;
+                this.saveToLocal();
+            }
+            loatAmout();
+        },
+        tru(id){
+            var index = this.items.findIndex(element => element.id == id);
+            if(this.items[index].qty > 1){
+                this.items[index].qty--;
+                this.saveToLocal();
+            }
+            loatAmout();
+        },
+
     }
 
-    $scope.getSize = function(){
-        return  $scope.items.length;
-    }
 
-    $scope.getAmount = function(){
-        let amount = 0;
-        for (let index = 0; index < $scope.items.length; index++) {
-            amount += $scope.items[index].quantity;
-        }
-        return amount;
-    }
-
-    $scope.pre = function (id) {
-        var index = $scope.items.findIndex(element => element.id == id);
-        if($scope.items[index].quantity > 1) {
-            $http.get(url+`/cart/pre/`+id).then(resp => {
-
-                    $scope.items[index].quantity--;
-
-            }).catch(error => {
-                console.log("fail", error)
+    $scope.order={
+        get odd(){
+            return $scope.cart.items.map(item =>{
+                return{
+                    id:item.id,
+                    quantity:item.qty,
+                    product:item
+                }
             })
-        }
-    }
-
-
-    $scope.plus = function (id) {
-        var index = $scope.items.findIndex(element => element.id == id);
-        $http.get(url+`/cart/plus/`+id).then(resp => {
-            $scope.items[index].quantity ++;
-        }).catch(error => {
-            console.log("fail", error)
-        })
-    }
-
-    $scope.delete = function (id){
-        var index = $scope.items.findIndex(element => element.id == id);
-        $http.post(url+`/cart/delete/`+id).then(resp => {
-            $scope.items.splice(index, 1);
-        }).catch(error => {
-            console.log("fail", error)
-        });
-    }
-
-    $scope.newpay = function (items){
-        $scope.cardpay = items.filter(x => x.check ==true);
-        for (let i = 0; i < $scope.cardpay.length ; i++) {
-            delete $scope.cardpay[i] ['check'];
-            delete $scope.cardpay[i] ['order'];
-        }
-
-        if($scope.cardpay.length == 0 ){
-            showErrorToast("Chưa chọn sản phẩm");
-        }else{
-            console.log("ee",$scope.cardpay)
-            $http.post(url+`/cart/newpay`,$scope.cardpay).then(resp => {
-                window.location='/accounts/xacnhandonhang';
+        },
+        dat(){
+            var oder  = angular.copy(this)
+            $http.post(`/accounts/cart/newpay`,oder.odd).then(resp => {
+                if(resp.data.indexOf('<!DOCTYPE html>')==0){
+                    showErrorToast("Chưa đăng nhập")
+                    setTimeout ( function () {
+                        window.location='/account/signin';
+                    }, 500);
+                }else{
+                    window.location='/accounts/xacnhandonhang';
+                }
             }).catch(error => {
-                console.log("fail", error)
+                console.log('co loi')
             });
+
         }
 
     }
 
-
-
-
+    $scope.cart.loadLocal();
 });
