@@ -10,12 +10,15 @@ app.controller('ctradminproduct', function($scope,$http) {
     $scope.items =[];
     $scope.prop="-date";
 
+
     function list () {
         $scope.url="/admin/api/productlist";
         $http.get($scope.url).then(resp => {
+
             $scope.items = resp.data;
             $scope.itemstrue = $scope.items.filter(s=>s.status==true);
             $scope.itemsfalse= $scope.items.filter(s=>s.status==false);
+
         }).catch(error => {
             console.log("fail", error)
         })
@@ -34,14 +37,30 @@ app.controller('ctradminproduct', function($scope,$http) {
     }
     lists();
 
+    $scope.sortBynumber=0;
     $scope.sortBy = function(prop){
-        $scope.prop = prop;
+        $scope.sortBynumber++;
+        if($scope.sortBynumber%2==0){
+            if(prop.indexOf('-') != -1){
+                $scope.prop = prop;
+            }else{
+                $scope.prop = "-"+prop;
+            }
+        }else{
+            if(prop.indexOf('-') != -1){
+                $scope.prop = prop.slice(1);
+            }else{
+                $scope.prop = prop;
+            }
+        }
     }
 
     $scope.ResetFilter = function (){
         $scope.Status ="";
         $scope.searchname ="";
         $scope.groupof="";
+        $scope.sortBynumber=1;
+        $scope.sortBy("date");
         list();
         lists();
     }

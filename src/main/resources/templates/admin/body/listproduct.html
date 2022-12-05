@@ -91,13 +91,23 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th>STT</th>
 							<th>IMG</th>
-							<th><a href="" ng-click="sortBy('name')">Name</a></th>
-							<th><a href="" ng-click="sortBy('-amount')">Amount</a></th>
-							<th><a href="" ng-click="sortBy('-price')">Price</a></th>
-							<th><a href="" ng-click="sortBy('-sale')">Sale</a></th>
-							<th><a href="" ng-click="sortBy('-date')">Date</a></th>
+							<th><a href="" ng-click="sortBy('-name')">Name
+								<span ng-if="prop=='-name'|| prop=='name'"><i ng-if="sortBynumber%2 != 0" class="mdi mdi-arrow-up" style="color: #00efff;"></i><i ng-if="sortBynumber%2 == 0" style="color: red" class="mdi mdi-arrow-down"></i></span>
+							</a></th>
+							<th><a href="" ng-click="sortBy('-amount')">Amount
+								<span ng-if="prop=='-amount'|| prop=='amount'"><i ng-if="sortBynumber%2 != 0" class="mdi mdi-arrow-up" style="color: #00efff;"></i><i ng-if="sortBynumber%2 == 0" style="color: red" class="mdi mdi-arrow-down"></i></span>
+							</a></th>
+							<th><a href="" ng-click="sortBy('-price')">Price
+								<span ng-if="prop=='-price'|| prop=='price'"><i ng-if="sortBynumber%2 != 0" class="mdi mdi-arrow-up" style="color: #00efff;"></i><i ng-if="sortBynumber%2 == 0" style="color: red" class="mdi mdi-arrow-down"></i></span>
+							</a></th>
+							<th><a href="" ng-click="sortBy('-sale')">Sale
+								<span ng-if="prop=='-sale'|| prop=='sale'"><i ng-if="sortBynumber%2 != 0" class="mdi mdi-arrow-up" style="color: #00efff;"></i><i ng-if="sortBynumber%2 == 0" style="color: red" class="mdi mdi-arrow-down"></i></span>
+							</a></th>
+							<th><a href="" ng-click="sortBy('-date')">Date
+								<span ng-if="prop=='-date'|| prop=='date'"><i ng-if="sortBynumber%2 != 0" class="mdi mdi-arrow-up" style="color: #00efff;"></i><i ng-if="sortBynumber%2 == 0" style="color: red" class="mdi mdi-arrow-down"></i></span>
+							</a></th>
 							<th>Status</th>
 							<th><i class="mdi mdi-border-color"></i></th>
 						</tr>
