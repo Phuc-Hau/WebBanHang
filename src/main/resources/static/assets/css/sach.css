@@ -1,7 +1,7 @@
 header {
 
     position: relative;
-    background-color: rgb(126, 179, 239);
+    background-color: #04befe;
     height: 120px;
     margin-bottom: 15px;
 }
@@ -313,6 +313,15 @@ a:hover {
     margin-left: 10px;
     text-align: left;
     font-size: 20px;
+    display: flex;
+    padding-left: 27px;
+}
+.tnu{
+    font-size: 9px;
+    position: relative;
+    bottom: 10px;
+    right: -36px;
+    background-color: red;
 }
 
 .sale-item__lower-wrapper {

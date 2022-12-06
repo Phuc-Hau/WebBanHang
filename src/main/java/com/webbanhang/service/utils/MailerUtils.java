@@ -42,6 +42,7 @@ public class MailerUtils implements MailerService {
 
 		try{
 			Template t = config.getTemplate("email-template.ftl");
+
 			String html = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 
 			helper.setFrom(mail.getFrom());
@@ -100,7 +101,7 @@ public class MailerUtils implements MailerService {
 		queue(new MailInfo(to, subject, body));
 	}
 
-	@Scheduled(fixedDelay = 3000)
+	@Scheduled(fixedDelay = 1000)
 	private void run() {
 		while (!list.isEmpty()) {
 			MailInfo mail = list.remove(0);

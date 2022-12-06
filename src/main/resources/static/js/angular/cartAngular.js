@@ -7,17 +7,19 @@ app.controller('ctr-shopping', function($scope,$http) {
             var item = this.items.find(item=>item.id==id)
             if(item){
                 item.qty++;
+                showSuccessToast("Thêm sản phẩm: "+item.name+" Thành công")
                 this.saveToLocal();
             }else{
                 $http.get(`/api/product/${id}`).then(resp => {
                     resp.data.qty = 1;
                     this.items.push(resp.data);
                     this.saveToLocal();
-                    console.log("them thanh cong", resp)
+                    showSuccessToast("Thêm sản phẩm: "+resp.data.name+" Thành công")
                 }).catch(error => {
-                    console.log("them that bai", error)
+                    showErrorToast("Thêm sản phẩm Thất bại")
                 })
             }
+            loatAmout();
         },
         saveToLocal(){
             var json = JSON.stringify(angular.copy(this.items));

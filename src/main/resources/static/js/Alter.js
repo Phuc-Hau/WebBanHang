@@ -56,7 +56,7 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
                           <p class="toast__msg">${message}</p>
                       </div>
                       <div class="toast__close">
-                          
+                          <button type="button" class="btn btn-danger">X</button>
                       </div>
                   `;
         main.appendChild(toast);
