@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/accounts")
-public class damuaController {
+public class ProductPurchaseController {
     @GetMapping("/purchased")
     public String cart() {
         return "cart/purchased";
