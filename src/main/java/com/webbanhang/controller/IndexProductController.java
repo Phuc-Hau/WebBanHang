@@ -27,6 +27,7 @@ public class IndexProductController {
 
 		model.addAttribute("product",productService.findAllStatus());
 		model.addAttribute("fashsale",productService.fashSale());
+		model.addAttribute("productSY",productService.productSY());
 		return "index";
 	}
 	

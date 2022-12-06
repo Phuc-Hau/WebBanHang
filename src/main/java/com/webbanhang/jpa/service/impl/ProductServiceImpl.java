@@ -59,5 +59,10 @@ public class ProductServiceImpl implements ProductService {
         return ProductDao.fashSale();
     }
 
+    @Override
+    public List<Product> productSY() {
+        return ProductDao.productSY();
+    }
+
 
 }

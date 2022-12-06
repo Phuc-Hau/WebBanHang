@@ -77,7 +77,7 @@
 
                         <div class="danh-gia">
                             <div style="font-size: 20px; color: #767676;display: flex">
-                                <span style="color: #ee4d2d;border-bottom-color: #ee4d2d;">{{star| number:1}}</span>
+                                <span style="color: #ee4d2d; border-bottom: 1px solid #ee4d2d;">{{star| number:1}}</span>
                                 <div class="rating-container rating-md rating-animate" style="font-size: 16px;">
                                     <div class="rating-starss">
                                     <span class="empty-stars">
@@ -108,23 +108,28 @@
 
                     <div class="thong-tin-gia">
 
+                        <div>
+                            <div class="gia">
+                                <div class="gia-cu-gia">
+                                    {{items.price | number:0}}Đ
+                                </div>
+                                <div class="gia-moi-gia">
+                                    {{items.price*(1-items.sale)| number:0 }} <span style="font-size: 29px;margin-left: -11px;">đ</span>
+                                </div>
+                                <div class="giam">
+                                    {{items.sale*100}}% GIẢM
+                                </div>
 
-                        <div class="gia">
-                            <div class="gia-cu-gia">
-                                {{items.price | number:0}}Đ
                             </div>
-                            <div class="gia-moi-gia">
-                                {{items.price*(1-items.sale)| number:0 }} <span style="font-size: 29px;margin-left: -11px;">đ</span>
+                            <div >
+                                <span>Gì cũng rẽ <svg style="width: 15px;height: 15px;border-radius: 50%; border: 1px solid;" enable-background="new 0 0 15 15" viewBox="0 0 15 15" role="img" class="stardust-icon stardust-icon-help"><circle cx="7.5" cy="7.5" fill="none" r="6.5" stroke-miterlimit="10"></circle><path stroke="none" d="m5.3 5.3c.1-.3.3-.6.5-.8s.4-.4.7-.5.6-.2 1-.2c.3 0 .6 0 .9.1s.5.2.7.4.4.4.5.7.2.6.2.9c0 .2 0 .4-.1.6s-.1.3-.2.5c-.1.1-.2.2-.3.3-.1.2-.2.3-.4.4-.1.1-.2.2-.3.3s-.2.2-.3.4c-.1.1-.1.2-.2.4s-.1.3-.1.5v.4h-.9v-.5c0-.3.1-.6.2-.8s.2-.4.3-.5c.2-.2.3-.3.5-.5.1-.1.3-.3.4-.4.1-.2.2-.3.3-.5s.1-.4.1-.7c0-.4-.2-.7-.4-.9s-.5-.3-.9-.3c-.3 0-.5 0-.7.1-.1.1-.3.2-.4.4-.1.1-.2.3-.3.5 0 .2-.1.5-.1.7h-.9c0-.3.1-.7.2-1zm2.8 5.1v1.2h-1.2v-1.2z"></path></svg></span>
+                                <span>Giá tốt so với các sản phẩm khác</span>
                             </div>
-                            <div class="giam">
-                                {{items.sale*100}}% GIẢM
-                            </div>
-
                         </div>
 
 
-                        <div class="mua-hang" style="    position: absolute; bottom: 0px;">
-                            <div class="d-flex align-items-center mb-4 pt-2" style="padding: 0.375rem 0.75rem">
+                        <div class="mua-hang pt-2" >
+                            <div class="d-flex align-items-center pt-2" style="padding: 0.375rem 0.75rem">
                                 <div>Số Lượng</div>
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                     <a class="btn px-2" style="height: 39px;margin-top: 5px; border: 1px solid #ced4da;"
@@ -141,18 +146,26 @@
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </div>
-                                <div>
-                                    <strong> {{items.amount}} sản phẩm có sẵn</strong>
-                                </div>
 
-
+                            </div>
+                            <div style="padding: 0.375rem 0.75rem" class="mb-4">
+                                <strong> {{items.amount}} sản phẩm có sẵn</strong>
                             </div>
 
                             <div class="btn">
                                 <button class="mua ngay ho" ng-click="newCar(items)"> Mua Ngay</button>
-                                <button class="mua ho"  ng-click="cart.add(items,0)"> Thêm Vào Giỏ</button>
+                                <button class="mua ho"  ng-click="cart.add(items,0)">
+                                    <svg color="#ee4d2d" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+                                    </svg>
+                                    Thêm Vào Giỏ</button>
                             </div>
 
+                        </div>
+
+                        <div style="position: absolute; bottom: 0px; width: 34%;">
+                            <hr><br>
+                            Shop Đảm Bảo <span>3 Ngày Hoàn Trả Tiền</span>
                         </div>
                     </div>
                 </div>

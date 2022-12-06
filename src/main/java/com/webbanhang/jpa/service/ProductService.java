@@ -20,5 +20,7 @@ public interface ProductService {
 
     List<Product> fashSale();
 
+    List<Product> productSY();
+
 
 }

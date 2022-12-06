@@ -20,4 +20,8 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
     @Query("SELECT o FROM Product o where o.sale>0.4  order by o.date desc, o.sale desc")
     List<Product> fashSale();
 
+
+    @Query("SELECT o FROM Product o  ORDER BY RAND() ")
+    List<Product> productSY();
+
 }
