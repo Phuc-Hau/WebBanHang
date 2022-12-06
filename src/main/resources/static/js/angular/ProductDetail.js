@@ -12,6 +12,9 @@ app.controller('ctrlproductdetail', function($scope,$http) {
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
             document.querySelector("title").innerText=$scope.items.name;
+            if(resp.data == ""){
+                window.location ='/product/index';
+            }
             console.log("s", resp)
             groupproduct($scope.items.groupProduct.id);
         }).catch(error => {
@@ -67,7 +70,7 @@ app.controller('ctrlproductdetail', function($scope,$http) {
         $scope.loaisao=x;
      }
 
-    $scope.newCar = function (item,index){
+    $scope.newCar = function (item){
         $scope.cardpay = [{
             'product' : item,
             'quantity':document.getElementById("quantity").value

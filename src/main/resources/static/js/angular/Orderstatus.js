@@ -77,7 +77,6 @@ app.controller('orderstatus', function($scope,$http) {
                         t.classList.remove('active');
                     }
                 }
-
             }else{
                 track.style.display="none";
             }
@@ -150,23 +149,22 @@ app.controller('orderstatus', function($scope,$http) {
     }
 
 
-    $scope.newCar = function (id){
-        $scope.urlnew='/accounts/newcart';
-        var newcar = {
-            'id':id,
-            'quantity': 1
+    $scope.newCar = function (item){
+        $scope.cardpay = [{
+            'product' : item,
+            'quantity':1
+        }]
+        if(item.status == 1) {
+            $http.post(`/accounts/cart/newpay`, $scope.cardpay).then(resp => {
+                setTimeout(function () {
+                    window.location = '/accounts/xacnhandonhang';
+                }, 500);
+            }).catch(error => {
+                console.log("fail", error)
+            });
+        }else{
+            showErrorToast("Sản phẩm không tồn tại!");
         }
-        $http.post($scope.urlnew,newcar).then(resp => {
-            $scope.sr = resp.data;
-            console.log("p", resp)
-            if($scope.sr.status==true){
-                window.location='/accounts/cart';
-            }else{
-                showErrorToast($scope.sr.message)
-            }
-        }).catch(error => {
-            console.log("fail", error)
-        })
     }
 
 

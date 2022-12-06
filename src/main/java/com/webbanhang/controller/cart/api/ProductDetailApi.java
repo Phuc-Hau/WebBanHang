@@ -21,10 +21,9 @@ public class ProductDetailApi {
     ProductService productService;
 
 
-
     @GetMapping("/product/{id}")
     public Product doGetFL (@PathVariable("id") int id) {
-        return productService.findById(id);
+        return productService.getProductById(id);
     }
 
     @GetMapping("/product/groupproduct/{id}")

@@ -57,9 +57,12 @@ app.controller('ctr-shopping', function($scope,$http) {
         },
         cong(id){
             var index = this.items.findIndex(element => element.id == id);
-            if(this.items[index].qty< this.items[index].amount){
+            if(this.items[index].qty < this.items[index].amount){
                 this.items[index].qty++;
                 this.saveToLocal();
+            }
+            if(this.items[index].qty == this.items[index].amount){
+                showErrorToast("Khổng thể thêm chỉ còn: "+this.items[index].amount+" sản phẩm!");
             }
             loatAmout();
         },
@@ -108,7 +111,6 @@ app.controller('ctr-shopping', function($scope,$http) {
             }else{
                 showErrorToast("Chưa có sản phẩm để mua");
             }
-
         }
 
     }

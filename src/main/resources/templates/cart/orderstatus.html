@@ -139,7 +139,7 @@
                   </div>
 
                   <div  ng-if=" item.status== 2 || item.status== 4 || item.status== 5" class="_8vTqu9">
-                    <button ng-click="newCar(orderdetail[getIdOr(item.id)].product.id)" class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                    <button ng-click="newCar(orderdetail[getIdOr(item.id)].product)" class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                   </div>
                   </div>
                 </div>
@@ -302,7 +302,7 @@
                 </button>
 
                 <div class="VN6h8+">
-                  <button class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
+                  <button ng-click="newCar(orderdetail[getIdOr(item.id)].product)"  class="stardust-button stardust-button--primary Kz9HeM">Đặt lại</button>
                 </div>
                 </div>
                 <!-- The Modal -->
@@ -410,7 +410,7 @@
                   <figure class="itemside mb-3">
                     <div class="aside"><img src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}" class="img-sm border"></div>
                     <figcaption class="info align-self-center">
-                      <p class="title">{{item.product.name}} <br> Loại : {{item.product.groupProduct.name}}<br> Số lượng : {{item.quantity}}</p> <span class="text-muted">Giá : {{item.product.price}} </span>
+                      <p class="title">{{item.product.name}} <br> Loại : {{item.product.groupProduct.name}}<br> Số lượng : {{item.quantity}}</p> <span class="text-muted">Giá : {{item.product.price*(1-item.product.sale)}} </span>
                       <div class="_8vTqu9-" style="margin-left: 10px">
 
                       </div>

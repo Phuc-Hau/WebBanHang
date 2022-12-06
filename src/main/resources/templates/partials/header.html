@@ -1,6 +1,6 @@
 
 
-<header class="head" style="height: 130px; ">
+<header class="head" style="height: 130px; " xmlns:th="http://www.thymeleaf.org">
 
   <!-- tren cung -->
   <div class="row">
@@ -34,16 +34,15 @@
     <div class="col-sm-5">
 
       <!-- search -->
-      <form class="form" action=""  >
-        <input type="text" class="ser" placeholder="Tìm kiếm sản phẩm mong muốn...">
+      <form class="form" action="/product/search" method="get"  >
+        <input th:value="${KeyWord}" name="KeyWord" type="text" class="ser" placeholder="Tìm kiếm sản phẩm mong muốn...">
 
-        <span  class="tim" data-toggle="modal" data-target="#sear">
+        <button type="submit" class="tim">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon-tim"
                  viewBox="0 0 16 16">
-              <path
-                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
-          </span>
+        </button>
       </form>
 
 

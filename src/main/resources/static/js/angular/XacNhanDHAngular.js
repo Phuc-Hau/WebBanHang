@@ -8,8 +8,6 @@ app.controller("myCtrl", function($scope,$http) {
         var url = `${host}`;
         $http.get(url).then( resp =>{
             $scope.user = resp.data;
-
-            console.log(resp)
         })
     }
     $scope.load();
@@ -22,8 +20,9 @@ app.controller("myCtrl", function($scope,$http) {
             $scope.items = resp.data;
             sumMoney($scope.items);
             if($scope.items.length==0){
-                window.location='/account/cart';
+                window.location='/shopping/cart';
             }
+            console.log("sp",resp);
         }).catch(error => {
             console.log("fail", error)
         });
@@ -44,7 +43,7 @@ app.controller("myCtrl", function($scope,$http) {
 
     $scope.HuyDH = function (){
         $http.post("/accounts/huydh").then( reap =>{
-            window.location='/accounts/cart';
+            window.location='/shopping/cart';
         }).catch(error => {
             console.log("fail", error)
         });
