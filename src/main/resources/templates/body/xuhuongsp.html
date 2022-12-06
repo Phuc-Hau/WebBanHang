@@ -11,6 +11,7 @@
 	<link rel="shortcut icon" href="/assets/images/favicon.png" />
 	<!-- Angularjs -->
 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<!-- Bootstrap 4 -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
@@ -38,11 +39,15 @@
 		  defer>
 	<script src="/js/Slick/slick.min.js" defer></script>
 
+	<link rel="stylesheet" href="/assets/css/alter.css" />
+	<script src="/js/Alter.js"></script>
+
 	<style>
 		.controllxuhuong {
 			display: none;
 		}
 	</style>
+
 
 
 </head>
@@ -53,7 +58,7 @@
 <!-- main -->
 <article>
 	<div style="padding: 0px 148px;">
-		<div class="row">
+		<div class="row" style="background: white;    padding: 11px 0px;">
 			<!-- slideshow-->
 			<div th:replace="~{/partials/slideshow.html}"></div>
 		</div>
@@ -62,12 +67,12 @@
 		<article>
 			<!--Fash Sale  -->
 
-	<div class="row"
-		 style="background: #FCDDEF; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;">
-		<img src="/image/ico_dealhot.png" alt=""> <span
-			style="font-size: 17px; font-weight: bold;">Xu Hướng Mua Sắp</span>
-	</div>
-	<div class="row sp1"
+			<div class="row"
+				 style="background: #FCDDEF; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;margin-top: 20px;">
+				<img src="/image/ico_dealhot.png" alt=""> <span
+					style="font-size: 17px; font-weight: bold;">Xu Hướng Mua Sắp</span>
+			</div>
+			<div class="row sp1"
 		 style="min-height: 50px; background: white;">
 
 		<th:block th:each= "item,ite:${product}">
@@ -82,9 +87,18 @@
 							<a class="sachxuhuong">[[${item.name}]]</a>
 						</h2> <!-- Gia -->
 						<div class="xuhuong">
-            			<span style="color: red;">[[${item.price}]]<span
-								style="font-size: 16px;">đ</span></span> <span
-								style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+							<div style="    display: grid;">
+								<span style="color: red;">[[${#numbers.formatInteger((item.price * (1- item.sale)),0)}]]
+									<span style="font-size: 16px;">đ</span>
+									<a style="margin-left: 10px" href="" th:attr="ng-click=@{|cart.add(${item.id})|}">
+										<span class="badge tnu" >+</span>
+										<svg color="#24b81d" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+											<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+										</svg>
+									</a>
+								</span>
+								<span style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+							</div>
 						</div>
 					</a>
 				</div>
