@@ -29,7 +29,6 @@ app.controller('ctr-shopping', function($scope,$http) {
         loadLocal(){
             var json = localStorage.getItem("cart");
             this.items = json ? JSON.parse(json) : [];
-
         },
 
         get amount(){
@@ -72,6 +71,11 @@ app.controller('ctr-shopping', function($scope,$http) {
             }
             loatAmout();
         },
+        clear(){
+            this.items = [];
+            $scope.cart.saveToLocal();
+            loatAmout();
+        }
 
     }
 
