@@ -67,51 +67,51 @@ public class CartApi {
 
 
 
-	@PostMapping("/newcart")
-	public JSONObject newCart(@RequestBody JSONObject json, HttpServletRequest request) {
-
-		JSONObject obj = new JSONObject();
-		int id = Integer.parseInt(String.valueOf(json.get("id")));
-		int quantity = Integer.parseInt(String.valueOf(json.get("quantity")));
-
-		Product product = productService.findById(id);
-		int idCutomer =userService.findByUsernameGetIdCutomer(request.getRemoteUser());
-
-		Order order = orderService.findIdCutomer(idCutomer);
-
-		OrderDetail orderDetail = new OrderDetail();
-
-		orderDetail.setProduct(product);
-		orderDetail.setQuantity(quantity);
-
-		try {
-			if(order != null) {
-				OrderDetail orderDetailTym = orderDetailService.findIdProduct(product.getId(),idCutomer);
-
-				if(orderDetailTym == null) {
-					orderDetail.setOrder(order);
-					orderDetailService.create(orderDetail);
-				}else {
-					orderDetailTym.setQuantity(orderDetailTym.getQuantity()+quantity);
-					orderDetailService.create(orderDetailTym);
-				}
-
-			}else {
-				Order order2 = new Order();
-				order2.setStatus(0);
-				order2.setCutomer(cutomerService.findById(idCutomer));
-				orderService.create(order2);
-				orderDetail.setOrder(order2);
-				orderDetailService.create(orderDetail);
-			}
-			obj.put("status",true);
-			obj.put("message", "Thêm sản phẩm "+product.getName()+" vào giỏ hàng thành công!");
-		} catch (Exception e) {
-			obj.put("status",false);
-			obj.put("message", "Thêm sản phẩm "+product.getName()+" vào giỏ hàng thất bại!");
-		}
-		return obj;
-	}
+//	@PostMapping("/newcart")
+//	public JSONObject newCart(@RequestBody JSONObject json, HttpServletRequest request) {
+//
+//		JSONObject obj = new JSONObject();
+//		int id = Integer.parseInt(String.valueOf(json.get("id")));
+//		int quantity = Integer.parseInt(String.valueOf(json.get("quantity")));
+//
+//		Product product = productService.findById(id);
+//		int idCutomer =userService.findByUsernameGetIdCutomer(request.getRemoteUser());
+//
+//		Order order = orderService.findIdCutomer(idCutomer);
+//
+//		OrderDetail orderDetail = new OrderDetail();
+//
+//		orderDetail.setProduct(product);
+//		orderDetail.setQuantity(quantity);
+//
+//		try {
+//			if(order != null) {
+//				OrderDetail orderDetailTym = orderDetailService.findIdProduct(product.getId(),idCutomer);
+//
+//				if(orderDetailTym == null) {
+//					orderDetail.setOrder(order);
+//					orderDetailService.create(orderDetail);
+//				}else {
+//					orderDetailTym.setQuantity(orderDetailTym.getQuantity()+quantity);
+//					orderDetailService.create(orderDetailTym);
+//				}
+//
+//			}else {
+//				Order order2 = new Order();
+//				order2.setStatus(0);
+//				order2.setCutomer(cutomerService.findById(idCutomer));
+//				orderService.create(order2);
+//				orderDetail.setOrder(order2);
+//				orderDetailService.create(orderDetail);
+//			}
+//			obj.put("status",true);
+//			obj.put("message", "Thêm sản phẩm "+product.getName()+" vào giỏ hàng thành công!");
+//		} catch (Exception e) {
+//			obj.put("status",false);
+//			obj.put("message", "Thêm sản phẩm "+product.getName()+" vào giỏ hàng thất bại!");
+//		}
+//		return obj;
+//	}
 
 	@PostMapping("/cart/newpay")
 	public void orderDetailTym(@RequestBody List<OrderDetail> orderDetail) {

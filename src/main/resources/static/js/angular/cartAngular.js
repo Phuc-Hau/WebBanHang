@@ -92,18 +92,22 @@ app.controller('ctr-shopping', function($scope,$http) {
         },
         dat(){
             var oder  = angular.copy(this)
-            $http.post(`/accounts/cart/newpay`,oder.odd).then(resp => {
-                if(resp.data.indexOf('<!DOCTYPE html>')==0){
-                    showErrorToast("Chưa đăng nhập")
-                    setTimeout ( function () {
-                        window.location='/account/signin';
-                    }, 500);
-                }else{
-                    window.location='/accounts/xacnhandonhang';
-                }
-            }).catch(error => {
-                console.log('co loi')
-            });
+            if(oder.odd.length!=0) {
+                $http.post(`/accounts/cart/newpay`, oder.odd).then(resp => {
+                    if (resp.data.indexOf('<!DOCTYPE html>') == 0) {
+                        showErrorToast("Chưa đăng nhập")
+                        setTimeout(function () {
+                            window.location = '/account/signin';
+                        }, 500);
+                    } else {
+                        window.location = '/accounts/xacnhandonhang';
+                    }
+                }).catch(error => {
+                    console.log('co loi')
+                });
+            }else{
+                showErrorToast("Chưa có sản phẩm để mua");
+            }
 
         }
 

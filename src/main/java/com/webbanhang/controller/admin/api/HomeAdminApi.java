@@ -128,11 +128,20 @@ public class HomeAdminApi {
 
 
 //      sumPriceYear
-        int sumPriceYear = orderService.sumPriceYear(year);
+        int sumPriceYear =0;
+        try {
+            sumPriceYear = orderService.sumPriceYear(year);
+        }catch (Exception e){
+            sumPriceYear =0;
+        }
+
         int lastsumPriceYear =0;
         try {
             lastsumPriceYear = orderService.sumPriceYear(year-1);
-        } catch (Exception e){}
+        } catch (Exception e){
+            lastsumPriceYear =0;
+        }
+
         Fluctuation fyear= convenientService.fluctuation(sumPriceYear,lastsumPriceYear);
         fyear.setPresent(year);
         statistical.setYear(fyear);

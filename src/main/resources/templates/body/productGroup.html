@@ -2,11 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<style type="text/css">
-		body {
-			overflow-x: hidden;
-		}
-	</style>
+
 	<title>Gian hàng gia dụng</title>
 	<link rel="shortcut icon" href="/assets/images/favicon.png" />
 	<!-- Angularjs -->
@@ -38,16 +34,21 @@
 		  href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
 		  defer>
 	<script src="/js/Slick/slick.min.js" defer></script>
-	<script src="/js/angular/cartAngular.js"></script>
 
 	<link rel="stylesheet" href="/assets/css/alter.css" />
 	<script src="/js/Alter.js"></script>
-
+	<script src="/js/angular/cartAngular.js"></script>
 	<style>
 		.controllxuhuong {
 			display: none;
 		}
+
+	  body {
+		  overflow-x: hidden;
+	  }
+
 	</style>
+
 
 </head>
 <body  style="background-color: #efefef;" ng-app="shopping" ng-controller="ctr-shopping">
@@ -67,14 +68,13 @@
 			<!--Fash Sale  -->
 
 			<div class="row"
-				 style="background: #FCDDEF; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;margin-top: 20px;">
-				<img src="/image/ico_dealhot.png" alt=""> <span
-					style="font-size: 17px; font-weight: bold;">Xu Hướng Mua Sắp</span>
+				 style="background: #ddfcdf;border-bottom: 5px solid #ee4d2d; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;margin-top: 20px;">
+				<span style="font-size: 17px; font-weight: bold;">[[${nameGroup}]] ([[${productGroup.size}]])</span>
 			</div>
 			<div class="row sp1"
 		 style="min-height: 50px; background: white;">
 
-		<th:block th:each= "item,ite:${product}">
+		<th:block th:each= "item,ite:${productGroup}">
 			<div class="hotsp col-sm-2" >
 				<div class="">
 					<a th:href="@{'/product/sanpham/'+${item.id}}"> <!-- anh -->

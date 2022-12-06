@@ -64,5 +64,10 @@ public class ProductServiceImpl implements ProductService {
         return ProductDao.productSY();
     }
 
+    @Override
+    public List<Product> productGroup(int idGroup) {
+        return ProductDao.productGroup(idGroup);
+    }
+
 
 }

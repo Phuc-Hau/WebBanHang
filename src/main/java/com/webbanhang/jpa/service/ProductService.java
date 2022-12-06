@@ -22,5 +22,7 @@ public interface ProductService {
 
     List<Product> productSY();
 
+    List<Product> productGroup(int idGroup);
+
 
 }

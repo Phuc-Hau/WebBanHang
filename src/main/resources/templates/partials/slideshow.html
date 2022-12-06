@@ -47,9 +47,12 @@
 	<div style="    text-align: center;font-size: 20px;">DANH MỤC</div>
 	<div  style="overflow: auto;height: 332px;overflow-x: hidden;" >
 		<th:each th:each="group:${groupProduct}">
-			<div  style="border: 1px solid white; display: flex"  class="ll dmsp" th:value="${group.id}">
-				<img th:src="@{|/file/Groupproduct/${group.images}|}" style="height: 70px" ><span style="margin-top: 15px">
-				[[${group.name}]]</span> </div> <hr>
+			<a th:href="@{|/product/${group.name}/${group.id}|}" style="color: black;">
+				<div  style="border: 1px solid white; display: flex"  class="ll dmsp" th:value="${group.id}">
+					<img th:src="@{|/file/Groupproduct/${group.images}|}" style="height: 70px" ><span style="margin-top: 15px">
+				[[${group.name}]]</span> </div>
+				<hr>
+			</a>
 		</th:each>
 	</div>
 </div>

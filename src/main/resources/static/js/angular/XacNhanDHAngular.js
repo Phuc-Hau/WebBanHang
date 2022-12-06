@@ -22,7 +22,7 @@ app.controller("myCtrl", function($scope,$http) {
             $scope.items = resp.data;
             sumMoney($scope.items);
             if($scope.items.length==0){
-                window.location='/accounts/cart';
+                window.location='/account/cart';
             }
         }).catch(error => {
             console.log("fail", error)

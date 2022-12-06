@@ -7,6 +7,7 @@ import com.webbanhang.jpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webbanhang.jpa.dao.OrderDetailDao;
@@ -36,7 +37,13 @@ public class IndexProductController {
 		model.addAttribute("product",productService.findAllStatus());
 		return "body/xuhuongsp";
 	}
-	
+
+	@RequestMapping("/product/{nameGroup}/{id}")
+	public String productGroup(Model model, @PathVariable("nameGroup") String nameGroup, @PathVariable("id") int id){
+		model.addAttribute("nameGroup",nameGroup);
+		model.addAttribute("productGroup",productService.getProductGroup(id));
+		return "body/productGroup";
+	}
 
 	@RequestMapping("/500")
 	public String er(){

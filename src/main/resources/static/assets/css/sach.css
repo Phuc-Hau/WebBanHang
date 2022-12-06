@@ -1,9 +1,10 @@
 header {
-
-    position: relative;
     background-color: #04befe;
-    height: 120px;
-    margin-bottom: 15px;
+    position: fixed;
+    height: 130px;
+    width: 100%;
+    z-index: 1000;
+    top: 0px
 }
 
 .container,

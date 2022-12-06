@@ -24,4 +24,7 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
     @Query("SELECT o FROM Product o  ORDER BY RAND() ")
     List<Product> productSY();
 
+    @Query("select o from Product o where o.groupProduct.id = ?1")
+    List<Product> productGroup(int idGroup);
+
 }
