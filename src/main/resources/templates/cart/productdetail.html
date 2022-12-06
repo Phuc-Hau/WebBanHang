@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chi tiết sản phẩm</title>
+    <title id="title">Chi tiết sản phẩm</title>
     <link rel="shortcut icon" href="/assets/images/favicon.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -75,11 +75,33 @@
                             {{items.name}}
                         </div>
 
-                        <div class="danh-gia" style="margin-left: 55px;">
-                            <span style="font-size: 20px;">| {{evalutes.evalute.length}} đánh giá |</span>
-                            <span style="font-size: 20px;">| 500 lượt mua |</span>
-                        </div>
+                        <div class="danh-gia">
+                            <div style="font-size: 20px; color: #767676;display: flex">
+                                <span style="color: #ee4d2d;border-bottom-color: #ee4d2d;">{{star| number:1}}</span>
+                                <div class="rating-container rating-md rating-animate" style="font-size: 16px;">
+                                    <div class="rating-starss">
+                                    <span class="empty-stars">
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                    </span>
+                                    <span id="filled-stars1" class="filled-stars" style=" color: #ee4d2d;-webkit-text-stroke: red;">
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                        <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
+                                    </span>
+                                    </div>
+                                </div>
 
+
+                            </div>
+                            <div style="font-size: 20px; color: #767676;">| <span class="tdctsp">{{evalutes.evalute.length}}</span> đánh giá |</div>
+                            <div style="font-size: 20px; color: #767676;"> <span class="tdctsp"> 500</span> Đã bán </div>
+                        </div>
 
                     </div>
 
@@ -92,10 +114,10 @@
                                 {{items.price | number:0}}Đ
                             </div>
                             <div class="gia-moi-gia">
-                                {{items.price*(1-items.sale)| number:0 }} Đ
+                                {{items.price*(1-items.sale)| number:0 }} <span style="font-size: 29px;margin-left: -11px;">đ</span>
                             </div>
                             <div class="giam">
-                                {{items.sale*100}}%
+                                {{items.sale*100}}% GIẢM
                             </div>
 
                         </div>
@@ -132,34 +154,27 @@
                             </div>
 
                         </div>
-
-
                     </div>
-
                 </div>
-
-
             </div>
-
         </div>
-
     </div>
-    <div class="chi-tiet-sp">
+    <div class="chi-tiet-sp thucum">
         <div class="tt-danh-gia">
             CHI TIẾT SẢN PHẨM
         </div>
-            <hr>
+        <hr>
         <div style="padding:15px">
             <strong>{{items.name}} :</strong>
-            <textarea id="note" ng-model="items.detail"></textarea>
+            <textarea disabled id="note" ng-model="items.detail"></textarea>
         </div>
     </div>
 
-    <div class="danh-gia-sp" >
+    <div class="danh-gia-sp thucum" >
         <div class="tt-danh-gia">
             ĐÁNH GIÁ SẢN PHẨM
-            <hr>
         </div>
+        <hr>
 
         <div class="sao-bl"  ng-if="evalutes.evalute.length == 0">
             <div style="font-size: 47px;line-height: 67px;text-align: center; color: red;">
@@ -193,7 +208,9 @@
 
                 <script>
                     document.getElementById('filled-stars').style.width=starr/5*100+'%'
+                    document.getElementById('filled-stars1').style.width=starr/5*100+'%'
                 </script>
+
             </div>
             <div class="col-8">
                 <button  ng-click="startype('')" type="button" class="btn btn-warning">Tất cả<i class='fa fa-star fa-fw'></i></button>
@@ -208,7 +225,7 @@
 
         <div class="bl-content-chung">
 
-            <div class="bl-content" ng-repeat="item in evalutes.evalute  | filter:{footQuality:loaisao} | limitTo : 3">
+            <div class="bl-content" ng-repeat="item in evalutes.evalute  | filter:{footQuality:loaisao} | limitTo : 5">
                 <div class="chat-bl">
                     <div class="hinh"><img width="50px" height="50px" src="/file/user/{{evalutes.avatar[$index]}}" alt=""></div>
                     <div class="ten-nbl">{{item.cutomer.name}}</div>
@@ -243,7 +260,7 @@
                 <hr>
 
             </div>
-               <div ng-if="evalutes.evalute.length > 3">
+               <div ng-if="evalutes.evalute.length > 5">
                    <a style="margin-left: 42%; margin-bottom: 15px;border-radius: 20px; width: 152px;" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Xem Thêm</a>
                </div>
 
@@ -251,7 +268,7 @@
     </div>
 
 
-    <div class="sp-tuong-tu">
+    <div class="sp-tuong-tu thucum">
         <div class="tt-danh-gia">
             SẢN PHẨM TƯƠNG TỰ
         </div>
@@ -269,7 +286,7 @@
                             </h2> <!-- Gia -->
                             <div class="xuhuong">
                                 <div style="    display: grid;">
-								<span style="color: red;">{{item.price * (1- item.sale) }}
+								<span style="color: red;">{{item.price * (1- item.sale) | number:0}}
 								<span style="font-size: 16px;">đ</span></span>
                                     <span style="text-align: right; font-size: 11px;">đã bán 1k2</span>
                                 </div>
@@ -334,7 +351,6 @@
                                     </span>
                             </div>
                         </div>
-
 
                         </div>
                         <div class="col-8">

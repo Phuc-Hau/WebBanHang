@@ -2,6 +2,7 @@ var app = angular.module("app", []);
 var ur= window.location.href;
 var id = ur.slice(ur.indexOf('sanpham/')+8)
 var starr;
+
 app.controller('ctrlproductdetail', function($scope,$http) {
 
     $scope.items =[];
@@ -10,6 +11,7 @@ app.controller('ctrlproductdetail', function($scope,$http) {
         $scope.url="/api/product/"+id;
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
+            document.querySelector("title").innerText=$scope.items.name;
             console.log("s", resp)
             groupproduct($scope.items.groupProduct.id);
         }).catch(error => {
@@ -42,7 +44,7 @@ app.controller('ctrlproductdetail', function($scope,$http) {
          }
       listevalute();
 
-    $scope.star;
+    $scope.star=0;
 
      function stars(evalute) {
         var y=0;
@@ -50,9 +52,14 @@ app.controller('ctrlproductdetail', function($scope,$http) {
             y += evalute[i].footQuality
         }
 
-        $scope.star= y/evalute.length;
+        if(evalute.length != 0){
+            $scope.star = y/evalute.length;
+        }else{
+            $scope.star=0;
+        }
         starr = $scope.star;
-         document.getElementById('filled-stars').style.width=starr/5*100+'%'
+
+        document.getElementById('filled-stars').style.width=starr/5*100+'%'
      }
 
      /* Sao hiển thị*/
@@ -144,4 +151,5 @@ app.controller('ctrlproductdetail', function($scope,$http) {
     }
 
 })
+
 

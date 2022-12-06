@@ -213,15 +213,16 @@ padding: 27px;
 }
 
 .giam{
-    width: 50px;
-    height: 20px;
-    background-color: red;
-    margin-left: 10px;
-    color: white;
-    text-align: center;
-    font-weight: 500;
-    line-height: 17px;
-    margin-top: 4px;
+    margin-left: 15px;
+    font-size: .75rem;
+    color: #fff;
+    text-transform: uppercase;
+    background: #ee4d2d;
+    border-radius: 2px;
+    padding: 2px 4px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap
 }
 .thong-tin-gia{
     margin-top: 20px;
@@ -317,29 +318,31 @@ span{
     width: 1200px;
     margin: auto;
     background: white;
-    margin-top: 45px;
     padding: 1px;
 }
 .chi-tiet-sp{
     width: 1200px;
     margin: auto;
     background: white;
-    margin-top: 45px;
     padding: 1px;
 }
 .sp-tuong-tu{
     width: 1200px;
     margin: auto;
     background: white;
-    margin-top: 45px;
     padding: 1px;
 }
 
+.thucum{
+    margin-top: 15px;
+}
+
 .tt-danh-gia{
-        text-align: center;
-        font-size: 30px;
-        color: #cd0909;
-        font-weight: bold;
+    font-size: 30px;
+    color: #000000;
+    padding-left: 10px;
+    font-weight: bold;
+    background: rgba(0,0,0,.02);
 }
 
 .star-bl{
@@ -392,7 +395,10 @@ span{
 
 textarea{
     width: 100%;
-    height: 70px;
+    display: inline-table;
+    border: none;
+    background: white;
+    margin-top: 13px;
 }
 
 .btn-bl{
@@ -709,4 +715,10 @@ body .modal-dialog {
 .col-8 button{
     margin-left:6px;
     margin-top: 10px;
+}
+
+.tdctsp{
+    color: black;
+    border-bottom: 1px solid #555;
+    margin-left: 10px;
 }
