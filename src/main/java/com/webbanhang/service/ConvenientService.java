@@ -18,15 +18,6 @@ public interface ConvenientService {
 	 * @return trả về số bất kỳ
 	 */
 	String ranDomCapCha();
-
-	/**
-	 * lưu file
-	 * @param file truyền file
-	 * @param path truyền đường dẫn
-	 * @return null
-	 */
-	File saveFile(MultipartFile file, String path);
-
 	/**
 	 * Tính tỉ lệ
 	 * @param last truyền giá trị trước

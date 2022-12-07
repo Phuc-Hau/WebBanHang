@@ -42,7 +42,6 @@ public class MailerUtils implements MailerService {
 
 		try{
 			Template t = config.getTemplate("email-template.ftl");
-
 			String html = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 
 			helper.setFrom(mail.getFrom());
@@ -112,6 +111,7 @@ public class MailerUtils implements MailerService {
 			}
 		}
 	}
+
 
 	@Override
 	public void sendPassword(String email,String capchas) throws MessagingException{

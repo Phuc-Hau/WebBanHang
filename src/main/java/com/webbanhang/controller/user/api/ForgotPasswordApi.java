@@ -76,6 +76,7 @@ public class ForgotPasswordApi {
                 usersService.update(user);
                 user = null;
                 capChas ="";
+                comfirm = false;
                 obj.put("status",true);
                 obj.put("message", "Cập nhật Password Thành công!");
             } catch (Exception e) {
