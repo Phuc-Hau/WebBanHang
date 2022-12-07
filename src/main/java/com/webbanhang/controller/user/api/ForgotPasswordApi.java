@@ -26,6 +26,7 @@ public class ForgotPasswordApi {
 
     Users user;
     String capChas;
+    Boolean comfirm = false;
 
     @RequestMapping("/email/{email}")
     public JSONObject capcha(@PathVariable("email") String email) throws MessagingException {
@@ -45,21 +46,20 @@ public class ForgotPasswordApi {
         }
         return obj;
     }
-    @PostMapping("/code/resetcode")
+    @PostMapping("/email/code/resetcode")
     public void resetcode() throws MessagingException {
         capChas = convenientUtils.ranDomCapCha();
         mailer.sendPassword(user.getEmail(), capChas);
     }
 
 
-
-
-    @PostMapping("/code/{code}")
+    @PostMapping("/email/code/{code}")
     public JSONObject code(@PathVariable("code") String code) {
         JSONObject obj = new JSONObject();
 
         if (capChas.equals(code)) {
             obj.put("status",true);
+            comfirm = true;
         } else {
             obj.put("message", "Sai mã xác thực không chính xác!");
             obj.put("status",false);
@@ -70,17 +70,22 @@ public class ForgotPasswordApi {
     @PostMapping("/password/{password}")
     public JSONObject updatepassword(@PathVariable("password") String password) {
         JSONObject obj = new JSONObject();
-        user.setPassword(password);
-        try {
-            usersService.update(user);
-            user = null;
-            capChas ="";
-            obj.put("status",true);
-            obj.put("message", "Cập nhật Password Thành công!");
-        } catch (Exception e) {
-            // TODO: handle exception
+        if(comfirm == true){
+            user.setPassword(password);
+            try {
+                usersService.update(user);
+                user = null;
+                capChas ="";
+                obj.put("status",true);
+                obj.put("message", "Cập nhật Password Thành công!");
+            } catch (Exception e) {
+                // TODO: handle exception
+                obj.put("status",false);
+                obj.put("message", "Cập nhật Password Thất bại!");
+            }
+        }else{
             obj.put("status",false);
-            obj.put("message", "Cập nhật Password Thất bại!");
+            obj.put("message", "Chưa xác nhận mã vui lòng thử lại!");
         }
         return obj;
     }

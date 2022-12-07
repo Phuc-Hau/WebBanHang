@@ -30,10 +30,6 @@ public class AdminGroupProduct {
 	public String adminNewGroupProduct() {
 		return "admin/AdminGroupProductEdit";
 	}
-	
-	@RequestMapping("/groupproduct/update")
-	public String updateGroupProduct() {
-		return "admin/AdminGroupProductUpdate";
-	}
+
 }
 	

@@ -10,17 +10,12 @@ import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.service.CookieService;
 
 @Controller
-@RequestMapping("/account")
+@RequestMapping("/accounts")
 public class ChangePassController {
 
-	@Autowired
-	CookieService cookieService;	
-	@Autowired
-	UsersService usersService;
 	
 	@RequestMapping("/changepass")
 	public String changePass() {
-		cookieService.add("username", "phuc", 1);
 		return "user/changepass";
 	}
 	

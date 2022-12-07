@@ -26,7 +26,6 @@ public class IndexProductController {
 	ProductService productService;
 
 
-
 	@RequestMapping("/product/index")
 	public String index(Model model) {		
 

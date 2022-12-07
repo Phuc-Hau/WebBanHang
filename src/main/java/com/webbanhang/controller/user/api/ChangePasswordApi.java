@@ -15,7 +15,7 @@ import com.webbanhang.jpa.service.UsersService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/account/api")
+@RequestMapping("/accounts/api")
 
 public class ChangePasswordApi {
 	
