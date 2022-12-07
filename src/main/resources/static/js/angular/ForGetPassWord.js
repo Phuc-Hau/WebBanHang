@@ -50,16 +50,21 @@ app.controller('forgetpass', function($scope,$http) {
 
     $scope.ChangePassword = function (password){
         $scope.urlpass="/account/api/password/";
-        $http.post($scope.urlpass+password).then(resp => {
-            console.log("Success", resp)
-            if(resp.data.status){
-                window.location='/account/signin';
-            }else{
-                showErrorToast(resp.data.message);
-            }
-        }).catch(error => {
-            console.log("fail", error)
-        })
+        if(password.length <8 ){
+            showErrorToast("Mật khẩu từ 8 ký tự");
+
+        }else{
+            $http.post($scope.urlpass+password).then(resp => {
+                console.log("Success", resp)
+                if(resp.data.status){
+                    window.location='/account/signin';
+                }else{
+                    showErrorToast(resp.data.message);
+                }
+            }).catch(error => {
+                console.log("fail", error)
+            })
+        }
     }
 
 
