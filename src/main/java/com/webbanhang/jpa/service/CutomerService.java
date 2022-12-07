@@ -9,6 +9,5 @@ public interface CutomerService {
     Cutomer findById(Integer id);
     Cutomer create(Cutomer entity);
     Cutomer update(Cutomer entity);
-    int getIdFinal();
     boolean existsById(Integer id);
 }

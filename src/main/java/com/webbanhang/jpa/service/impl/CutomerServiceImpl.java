@@ -34,11 +34,6 @@ public class CutomerServiceImpl implements CutomerService {
     }
 
     @Override
-    public int getIdFinal() {
-        return cutomerDao.getIdFinal();
-    }
-
-    @Override
     public boolean existsById(Integer id) {
         return cutomerDao.existsById(id);
     }
