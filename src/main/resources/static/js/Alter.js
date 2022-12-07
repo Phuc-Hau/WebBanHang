@@ -13,7 +13,7 @@ function showErrorToast(message) {
         title: "Thất bại!",
         message: message,
         type: "error",
-        duration: 2000
+        duration: 3000
     });
 }
 

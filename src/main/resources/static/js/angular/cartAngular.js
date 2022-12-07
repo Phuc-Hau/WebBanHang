@@ -4,31 +4,36 @@ app.controller('ctr-shopping', function($scope,$http) {
     $scope.cart={
         items:[],
         add(id){
-            var item = this.items.find(item=>item.id==id)
-            if(item){
-                item.qty++;
-                showSuccessToast("Thêm sản phẩm: "+item.name+" Thành công")
+            var item = this.items.find(item=>item.id==id);
+            if(item != null){
+                if(item.qty<item.amount){
+                    item.qty++;
+                    showSuccessToast("Thêm sản phẩm: "+item.name+" Thành công");
+                }else{
+                    showErrorToast("Hết số lượng sản phẩm: "+item.name+" Để thêm");
+                }
                 this.saveToLocal();
+                loatAmout();
             }else{
                 $http.get(`/api/product/${id}`).then(resp => {
                     resp.data.qty = 1;
                     this.items.push(resp.data);
                     this.saveToLocal();
+                    loatAmout();
                     showSuccessToast("Thêm sản phẩm: "+resp.data.name+" Thành công")
                 }).catch(error => {
                     showErrorToast("Thêm sản phẩm Thất bại")
                 })
             }
-            loatAmout();
         },
         saveToLocal(){
             var json = JSON.stringify(angular.copy(this.items));
             localStorage.setItem("cart",json);
-
         },
         loadLocal(){
+            this.items = [];
             var json = localStorage.getItem("cart");
-            this.items = json ? JSON.parse(json) : [];
+            this.items = json != null ? JSON.parse(json) : [];
         },
 
         get amount(){
@@ -81,7 +86,6 @@ app.controller('ctr-shopping', function($scope,$http) {
         }
 
     }
-
 
     $scope.order={
         get odd(){

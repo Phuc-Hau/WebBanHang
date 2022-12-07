@@ -44,17 +44,6 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         OrderDetailDao.delete(entity);
     }
 
-
-    @Override
-    public List<OrderDetail> findAllUsername(int id) {
-        return OrderDetailDao.findAllUsername(id);
-    }
-
-    @Override
-    public OrderDetail findIdProduct(int idProduct, int idCutomer) {
-        return OrderDetailDao.findIdProduct(idProduct,idCutomer);
-    }
-
     @Override
     public List<OrderDetail> findAllOrderStatust(int idCutomer, int idOrder) {
         return OrderDetailDao.findAllOrderStatust(idCutomer, idOrder);

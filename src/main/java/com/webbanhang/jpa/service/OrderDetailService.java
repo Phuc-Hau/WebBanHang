@@ -15,8 +15,6 @@ public interface OrderDetailService {
     OrderDetail update(OrderDetail entity);
     void delete(OrderDetail entity);
 
-    List<OrderDetail> findAllUsername(int id);
-    OrderDetail findIdProduct(int idProduct, int idCutomer);
     List<OrderDetail> findAllOrderStatust(int idCutomer, int idOrder);
     List<OrderDetail> findAllOrderUsername(int idCutomer);
     boolean existsById(Integer id);

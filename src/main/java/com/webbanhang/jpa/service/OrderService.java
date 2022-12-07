@@ -15,14 +15,13 @@ public interface OrderService {
     
     boolean existsById(Integer id);
 
-    Order findIdCutomer(int id);
     int sumPriceOrder(int idOrder);
     int sumPriceMonth(int month);
     int sumPriceYear(int year);
     int sumCountMonth(int month);
     List<MoneyMonth> moneyMonthYear(int year);
     List<CountMonth> countMonthYear(int year);
-    List<CountMonth> findAllOrderStatusMonth(int idMonth);
+    List<CountMonth> findAllOrderStatusMonth(int month);
     List<Order> findAllOrderStatus(int idCutomer);
     Object TotalMoneyInTheLast3Years();
 

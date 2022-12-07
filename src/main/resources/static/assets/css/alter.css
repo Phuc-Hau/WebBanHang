@@ -111,7 +111,7 @@
   }
   
   .toast__msg {
-    font-size: 12px;
+    font-size: 14px;
     color: #888;
     margin-top: 6px;
     line-height: 1.5;
@@ -140,6 +140,7 @@
 }
 
 .alter {
+  margin-top: 10px;
   display: inline-block;
   font-weight: 400;
   color: #212529;

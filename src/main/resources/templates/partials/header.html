@@ -131,7 +131,7 @@
     var cartz = json ? JSON.parse(json) : [];
     var amount=0;
     for (let i = 0; i < cartz.length; i++) {
-      amount += parseInt(cartz[i].qty);
+        amount += parseInt(cartz[i].qty);
     }
     document.getElementById('amoutcartz').innerText=amount;
   }
