@@ -39,7 +39,7 @@
 
 </head>
 <body  ng-app="app" ng-controller="ctrlproductdetail" style="overflow-x: hidden; background-color: #f2edf3;">
-<div th:replace ="~{/partials/header.html}"></div>
+<div th:replace ="partials/header.html"></div>
 <div id="toast"></div>
 <div style="background-color: #f2edf3;margin-top: 9.4375rem;">
     <div class="detail">
@@ -163,7 +163,7 @@
 
                         </div>
 
-                        <div style="position: absolute; bottom: 0px; width: 34%;">
+                        <div >
                             Shop Đảm Bảo <span>3 Ngày Hoàn Trả Tiền</span>
                         </div>
                     </div>
@@ -422,7 +422,7 @@
 </div>
 
 
-<div th:replace="/partials/footer.html"></div>
+<div th:replace="partials/footer.html"></div>
     <script src="/js/angular/ProductDetail.js"></script>
 <script>
         $('#myModal').on('shown.bs.modal', function () {
