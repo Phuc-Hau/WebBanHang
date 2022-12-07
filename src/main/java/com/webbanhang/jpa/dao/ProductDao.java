@@ -26,7 +26,7 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
     @Query("select o from Product o where o.groupProduct.id = ?1 and o.status = 1")
     List<Product> productGroup(int idGroup);
 
-    @Query("select o from Product o where o.name like ?1 or o.groupProduct.name like ?1 and o.status = 1")
+    @Query("select o from Product o where ( o.name like ?1 or o.groupProduct.name like ?1 ) and o.status = 1")
     List<Product> searchKeyWord(String keyWord);
 
     @Query("select o from Product o where  o.status = 1 and o.id = ?1")

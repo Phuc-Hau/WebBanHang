@@ -50,12 +50,13 @@ public class IndexProductController {
 
 	@RequestMapping("/product/search")
 	public String searchProduct(Model model,@RequestParam("KeyWord") String KeyWord){
-		List<Product> list = productService.searchKeyWord(KeyWord);
-		return "";
+		if(KeyWord == ""){
+			return "redirect:/product/index";
+		}else{
+			List<Product> list = productService.searchKeyWord(KeyWord);
+			model.addAttribute("productSearch",list);
+			return "body/searchProduct";
+		}
 	}
 
-	@RequestMapping("/500")
-	public String er(){
-		return "404";
-	}
 }

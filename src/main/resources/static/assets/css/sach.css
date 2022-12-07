@@ -63,11 +63,11 @@ header {
     position: absolute;
     top: 23px;
     right: 5px;
-    width: 30px !important;
+    width: 50px !important;
     height: 30px !important;
-
     border-radius: 30px;
-    background-color: rgb(148, 162, 232);
+    background-color: #ee4d2d;
+    border: 1px solid;
 }
 .icon-tim{
 
