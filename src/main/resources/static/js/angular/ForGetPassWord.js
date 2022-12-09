@@ -28,7 +28,7 @@ app.controller('forgetpass', function($scope,$http) {
     }
 
     $scope.entercode= function (code){
-        $scope.urlcode="/account/api/code/";
+        $scope.urlcode="/account/api/email/code/";
         $http.post($scope.urlcode+code).then(resp => {
             console.log("Success", resp)
             if(resp.data.status){
@@ -50,16 +50,21 @@ app.controller('forgetpass', function($scope,$http) {
 
     $scope.ChangePassword = function (password){
         $scope.urlpass="/account/api/password/";
-        $http.post($scope.urlpass+password).then(resp => {
-            console.log("Success", resp)
-            if(resp.data.status){
-                window.location='http://localhost:8080/account/signin';
-            }else{
-                showErrorToast(resp.data.message);
-            }
-        }).catch(error => {
-            console.log("fail", error)
-        })
+        if(password.length <8 ){
+            showErrorToast("Mật khẩu từ 8 ký tự");
+
+        }else{
+            $http.post($scope.urlpass+password).then(resp => {
+                console.log("Success", resp)
+                if(resp.data.status){
+                    window.location='/account/signin';
+                }else{
+                    showErrorToast(resp.data.message);
+                }
+            }).catch(error => {
+                console.log("fail", error)
+            })
+        }
     }
 
 
@@ -86,7 +91,7 @@ app.controller('forgetpass', function($scope,$http) {
     start();
 
     $scope.setCapcha = function (){
-        $scope.urlcapcha="/account/api/code/resetcode";
+        $scope.urlcapcha="/account/api/email/code/resetcode";
         $http.post($scope.urlcapcha).then(resp => {
             start();
         }).catch(error => {

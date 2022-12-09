@@ -4,7 +4,7 @@ function showSuccessToast(message) {
         title: "Thành công!",
         message: message,
         type: "success",
-        duration: 3000
+        duration: 2000
     });
 }
 
@@ -56,7 +56,7 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
                           <p class="toast__msg">${message}</p>
                       </div>
                       <div class="toast__close">
-                          
+                          <button type="button" class="alter btn-alter">X</button>
                       </div>
                   `;
         main.appendChild(toast);

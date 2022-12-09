@@ -100,7 +100,7 @@ public class MailerUtils implements MailerService {
 		queue(new MailInfo(to, subject, body));
 	}
 
-	@Scheduled(fixedDelay = 3000)
+	@Scheduled(fixedDelay = 1000)
 	private void run() {
 		while (!list.isEmpty()) {
 			MailInfo mail = list.remove(0);
@@ -111,6 +111,7 @@ public class MailerUtils implements MailerService {
 			}
 		}
 	}
+
 
 	@Override
 	public void sendPassword(String email,String capchas) throws MessagingException{

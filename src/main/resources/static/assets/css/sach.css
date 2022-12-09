@@ -1,9 +1,10 @@
 header {
-
-    position: relative;
-    background-color: rgb(126, 179, 239);
-    height: 120px;
-    margin-bottom: 15px;
+    background-color: #04befe;
+    position: fixed;
+    height: 130px;
+    width: 100%;
+    z-index: 1000;
+    top: 0px
 }
 
 .container,
@@ -62,11 +63,11 @@ header {
     position: absolute;
     top: 23px;
     right: 5px;
-    width: 30px !important;
+    width: 50px !important;
     height: 30px !important;
-
     border-radius: 30px;
-    background-color: rgb(148, 162, 232);
+    background-color: #ee4d2d;
+    border: 1px solid;
 }
 .icon-tim{
 
@@ -313,6 +314,15 @@ a:hover {
     margin-left: 10px;
     text-align: left;
     font-size: 20px;
+    display: flex;
+    padding-left: 5px;
+}
+.tnu{
+    font-size: 9px;
+    position: relative;
+    bottom: 10px;
+    right: -36px;
+    background-color: red;
 }
 
 .sale-item__lower-wrapper {
@@ -716,5 +726,13 @@ body div #dropdown-menu {
 
 .asale:hover {
     opacity: 1;
+}
+
+.dmsp{
+    cursor: pointer;
+}
+.dmsp:hover{
+    transform: scale(1.05);
+    opacity: 0.3;
 }
 

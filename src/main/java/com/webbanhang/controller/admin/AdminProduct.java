@@ -40,12 +40,5 @@ public class AdminProduct {
 		return "admin/AdminProductEdit";
 	}
 
-	@RequestMapping("/product/update")
-	public String updateProduct(Model model, @ModelAttribute("product") Product product, @RequestParam("groups") String group) {
-		System.out.println(group);
-		return "redirect:/admin/product/edit/"+product.getId();
-	}
-
-
 
 }

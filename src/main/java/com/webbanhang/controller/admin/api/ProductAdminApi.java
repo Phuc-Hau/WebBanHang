@@ -24,7 +24,6 @@ public class ProductAdminApi {
     GroupProductService groupProductService;
 
 
-
     @RequestMapping("/groupproduct")
     public List<GroupProduct> adminGroupProductSearch() {
         return groupProductService.findAll();

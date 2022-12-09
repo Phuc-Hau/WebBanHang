@@ -42,25 +42,6 @@ public class ConvenientUtils implements ConvenientService {
 	}
 
 	@Override
-	public File saveFile(MultipartFile file, String path) {
-		if(!file.isEmpty()) {
-			File dir = new File(request.getServletContext().getRealPath("file/"+path));
-			if(!dir.exists()) {
-				dir.mkdirs();
-			}
-			
-			try {
-				File saveFile = new File(dir,file.getOriginalFilename());
-				file.transferTo(saveFile);
-				return saveFile;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
-	@Override
 	public Fluctuation fluctuation(float last, float next){
 		Fluctuation fluctuation = new Fluctuation();
 		fluctuation.setTotal((int) last);

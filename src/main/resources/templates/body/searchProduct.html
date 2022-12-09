@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    body {
+        overflow-x: hidden;
+    }
+    </style>
+    <title>[[${{param.KeyWord}}]] Giá tốt nhất</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+    <!-- Angularjs -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/sach.css">
+
+    <!-- JS -->
+    <script src="/js/app.js"></script>
+
+    <!-- simple slick -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"
+          defer>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+          defer>
+    <script src="/js/Slick/slick.min.js" defer></script>
+    <script src="/js/angular/cartAngular.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/alter.css" />
+    <script src="/js/Alter.js"></script>
+
+
+</head>
+<body  style="background-color: #efefef;" ng-app="shopping" ng-controller="ctr-shopping">
+<div id="toast"></div>
+<!-- header -->
+<div th:replace="partials/header.html"></div>
+<!-- main -->
+<article style="margin-top: 9.4375rem;">
+    <div style="padding: 0px 148px;">
+
+        <article>
+
+            <div class="row"style="background: #e7d195; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;margin-top: 20px;">
+                 <span style="font-size: 17px; font-weight: bold;">Kết quả tìm kiếm cho từ khoá: [[${{param.KeyWord}}]]</span>
+            </div>
+            <div class="row sp1"
+                 style="min-height: 50px; background: white;">
+
+                <th:block th:each= "item,ite:${productSearch}">
+                    <div class="hotsp col-sm-2" >
+                        <div class="">
+                            <a th:href="@{'/product/sanpham/'+${item.id}}"> <!-- anh -->
+                                <div>
+                                    <img style="margin-top: 3px;width: 175px;" th:src="@{'/file/AnhWebBanHang/'+${item.imgs.get(0).image}}"
+                                         class="col-sm-12" alt="">
+                                </div> <!-- Title -->
+                                <h2>
+                                    <a class="sachxuhuong">[[${item.name}]]</a>
+                                </h2> <!-- Gia -->
+                                <div class="xuhuong">
+                                    <div style="    display: grid;">
+								<span style="color: red;">[[${#numbers.formatInteger((item.price * (1- item.sale)),0)}]]
+									<span style="font-size: 16px;">đ</span>
+									<a style="margin-left: 10px" href="" th:attr="ng-click=@{|cart.add(${item.id})|}">
+										<span class="badge tnu" >+</span>
+										<svg color="#24b81d" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+											<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+										</svg>
+									</a>
+								</span>
+                                        <span style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
+
+        </article>
+    </div>
+</article>
+
+<!-- footer -->
+<div th:replace="partials/footer.html"></div>
+
+
+</body>
+
+</html>

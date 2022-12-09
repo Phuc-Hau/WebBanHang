@@ -7,9 +7,4 @@ import com.webbanhang.jpa.model.Cutomer;
 
 public interface CutomerDao extends JpaRepository<Cutomer, Integer>{
 
-	
-	@Query("SELECT MAX(o.id) FROM Cutomer o")
-	int getIdFinal();
-	
-	
 }

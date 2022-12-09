@@ -48,11 +48,5 @@ public class Handle implements HandlerInterceptor {
         request.setAttribute("groupProduct",groupProductService.findAll());
 
 
-        Users user =userDao.findByUsername(username);
-        if(user !=null) {
-            List<OrderDetail> list = orderDetailService.findAllUsername(user.getCutomer().getId());
-            request.setAttribute("amountcart", list.size());
-        }
-
     }
 }

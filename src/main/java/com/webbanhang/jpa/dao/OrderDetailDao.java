@@ -10,7 +10,7 @@ import com.webbanhang.jpa.model.OrderDetail;
 public interface OrderDetailDao extends JpaRepository<OrderDetail, Integer>{
 
 	@Query("SELECT o FROM OrderDetail o WHERE o.order.cutomer.id = ?1 and o.order.status = 0")
-	List<OrderDetail> findAllUsername(int id);
+	List<OrderDetail> findAllUsername(int idcutomer);
 	
 	@Query("SELECT o FROM OrderDetail o WHERE o.product.id = ?1 and o.order.cutomer.id = ?2 and o.order.status = 0")
 	OrderDetail findIdProduct(int idProduct, int idCutomer);

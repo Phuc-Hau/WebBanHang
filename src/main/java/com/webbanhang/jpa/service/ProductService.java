@@ -13,6 +13,8 @@ public interface ProductService {
     Product findById(Integer id);
     Product create(Product entity);
     Product update(Product entity);
+
+    Product getProductById(int idProduct);
     int getLastId();
     boolean existsById(Integer id);
 
@@ -20,5 +22,10 @@ public interface ProductService {
 
     List<Product> fashSale();
 
+    List<Product> productSY();
+
+    List<Product> productGroup(int idGroup);
+
+    List<Product> searchKeyWord(String keyWord);
 
 }

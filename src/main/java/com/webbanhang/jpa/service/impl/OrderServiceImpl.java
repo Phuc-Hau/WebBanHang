@@ -42,11 +42,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findIdCutomer(int id) {
-        return OrderDao.findIdCutomer(id);
-    }
-
-    @Override
     public int sumPriceOrder(int idOrder) {
         return OrderDao.sumPriceOrder(idOrder);
     }
@@ -77,8 +72,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<CountMonth> findAllOrderStatusMonth(int idMonth) {
-        return OrderDao.findAllOrderStatusMonth(idMonth);
+    public List<CountMonth> findAllOrderStatusMonth(int month) {
+        return OrderDao.findAllOrderStatusMonth(month);
     }
 
     @Override

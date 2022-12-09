@@ -1,15 +1,11 @@
 
 
-<header class="head" style="height: 130px; ">
+<header class="head" style="height: 130px; " xmlns:th="http://www.thymeleaf.org">
 
   <!-- tren cung -->
   <div class="row">
     <div class="col-sm-3"></div>
-
-
   </div>
-
-
   <div class="row giua" style="margin-top: 13px;">
 
     <div class="col-sm-3 row" style="top: -20px;">
@@ -34,16 +30,14 @@
     <div class="col-sm-5">
 
       <!-- search -->
-      <form class="form" action=""  >
-        <input type="text" class="ser" placeholder="Tìm kiếm sản phẩm mong muốn...">
-
-        <span  class="tim" data-toggle="modal" data-target="#sear">
+      <form class="form" action="/product/search" method="get"  >
+        <input th:value="${KeyWord}" name="KeyWord" type="text" class="ser" placeholder="Tìm kiếm sản phẩm mong muốn...">
+        <button type="submit" class="tim">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon-tim"
                  viewBox="0 0 16 16">
-              <path
-                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
-          </span>
+        </button>
       </form>
 
 
@@ -83,7 +77,7 @@
                   </div>
                   <a class="dropdown-item" href="/accounts/changinformation">Thông tin cá nhân</a>
                   <a class="dropdown-item" href="/accounts/orderstatus">Đơn mua</a>
-                  <a class="dropdown-item" href="/account/changepass">Đổi mật khẩu</a>
+                  <a class="dropdown-item" href="/accounts/changepass">Đổi mật khẩu</a>
                   <a class="dropdown-item" href="/account/logoff">Đăng xuất</a>
                 </div>
               </div>
@@ -132,10 +126,9 @@
     var cartz = json ? JSON.parse(json) : [];
     var amount=0;
     for (let i = 0; i < cartz.length; i++) {
-      amount += parseInt(cartz[i].qty);
+        amount += parseInt(cartz[i].qty);
     }
     document.getElementById('amoutcartz').innerText=amount;
   }
-
   loatAmout();
 </script>

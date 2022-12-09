@@ -1,15 +1,12 @@
 
 <div style="margin-top: 10px;"
 	 xmlns:th="http://www.thymeleaf.org">
-	<div class="row"
-		 style="background: #FCDDEF; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;">
-		<img src="/image/ico_dealhot.png" alt=""> <span
-			style="font-size: 17px; font-weight: bold;">Xu Hướng Mua Sắm</span>
+	<div class="row" style="background:#c6eef2; padding: 12px; border-bottom: 5px solid #ee4d2d; display: flex;">
+		<span style="font-size: 17px; font-weight: bold;">Gợi ý mua sắm</span>
 	</div>
-	<div class="row sp1"
-		 style="min-height: 50px; background: white;">
+	<div class="row sp1" style="min-height: 50px; background: white;">
 
-		<th:block th:each= "item,ite:${product}" th:unless="${ite.index > 11}">
+		<th:block th:each= "item,ite:${productSY}" th:unless="${ite.index > 17}">
 			<div class="hotsp col-sm-2" >
 				<div class="">
 					<a th:href="@{'/product/sanpham/'+${item.id}}"> <!-- anh -->
@@ -20,6 +17,7 @@
 						<h2>
 							<a class="sachxuhuong">[[${item.name}]]</a>
 						</h2> <!-- Gia -->
+
 						<div class="xuhuong">
 							<div style="    display: grid;">
 								<span style="color: red;">[[${#numbers.formatInteger((item.price * (1- item.sale)),0)}]]
@@ -40,7 +38,6 @@
 				</div>
 			</div>
 		</th:block>
-
 	</div>
 
 	<div class="xemthem">

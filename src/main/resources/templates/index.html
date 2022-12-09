@@ -40,6 +40,9 @@
 		  defer>
 	<script src="/js/Slick/slick.min.js" defer></script>
 
+	<link rel="stylesheet" href="/assets/css/alter.css" />
+	<script src="/js/Alter.js"></script>
+
 	<style>
 		.controllxuhuong {
 			display: none;
@@ -50,30 +53,29 @@
 
 </head>
 <body  style="background-color: #efefef;" ng-app="shopping" ng-controller="ctr-shopping">
-
+<div id="toast"></div>
 <!-- header -->
-<div th:replace="~{/partials/header.html}"></div>
+<div th:replace="partials/header.html"></div>
 <!-- main -->
-<article>
+<article style="margin-top: 9.4375rem;">
 	<div style="padding: 0px 148px;">
-		<div class="row">
+		<div class="row" style="background: white;    padding: 11px 0px;">
 			<!-- slideshow-->
-			<div th:replace="~{/partials/slideshow.html}"></div>
+			<div th:replace="partials/slideshow.html"></div>
 		</div>
 
 		<!-- body -->
 		<article>
 			<!--Fash Sale  -->
-							<div th:replace="~{/body/fashsale.html}"></div>
-							<div th:replace="~{/body/xuhuong.html}"></div>
-
+				<div th:replace="body/fashsale.html"></div>
+				<div th:replace="body/xuhuong.html"></div>
+				<div th:replace="body/goiymuasam.html"></div>
 		</article>
 	</div>
 </article>
 
 <!-- footer -->
-	<div th:replace="/partials/footer.html"></div>
-
+	<div th:replace="partials/footer.html"></div>
 
 <script src="/js/angular/cartAngular.js"></script>
 </body>

@@ -1,15 +1,8 @@
 
 <div style="margin-top: 10px; position: relative;">
-	<div class="row"
-		 style="background: oldlace; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;">
-		<img
-				src="https://frontend.tikicdn.com/_desktop-next/static/img/giasoc.svg"
-				alt="flash deal"> <img width="21"
-									   src="https://frontend.tikicdn.com/_desktop-next/static/img/dealFlashIcon.svg"
-									   alt="flash deal"> <img
-			src="https://frontend.tikicdn.com/_desktop-next/static/img/homnay.svg"
-			alt="flash deal">
-
+	<div class="row"style="background: oldlace; padding: 12px; border-bottom: 1px solid rgb(244, 244, 244); display: flex;">
+		<img src="https://frontend.tikicdn.com/_desktop-next/static/img/giasoc.svg"alt="flash deal">
+		<img width="21" src="https://frontend.tikicdn.com/_desktop-next/static/img/dealFlashIcon.svg" alt="flash deal">
 	</div>
 
 	<!-- Sản phẩm Sale -->
@@ -32,11 +25,10 @@
 
 						<!-- Gia -->
 						<div class="salegia">
-              <span
-					  style="color: rgba(0, 0, 0, .13); font-size: 16px; text-decoration: line-through;">[[${item.price}]]đ</span>
-							<span style="color: red;">[[${item.price*(1-item.sale)} ]]  <span
-									style="margin-left: -5px; font-size: 16px;">đ</span>
-              </span> <span class="DTL">[[${item.sale*100}]] %</span>
+						  <span  style="color: rgba(0, 0, 0, .13); font-size: 16px; text-decoration: line-through;">[[${item.price}]]đ</span>
+										<span style="color: red;" >[[${#numbers.formatInteger((item.price * (1- item.sale)),0)}]]
+												<span style="margin-left: -5px; font-size: 16px;">đ</span>
+						  </span> <span class="DTL">[[${#numbers.formatInteger((item.sale*100),0)}]]%</span>
 						</div>
 						<!-- Thanh sale -->
 						<div class="sale-item__lower-wrapper">

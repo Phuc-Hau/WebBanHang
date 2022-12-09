@@ -88,6 +88,7 @@ form.sign-in-form {
 }
 
 .input-field input {
+  width: 90%;
   background: none;
   outline: none;
   border: none;

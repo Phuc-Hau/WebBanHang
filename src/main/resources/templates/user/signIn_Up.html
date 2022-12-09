@@ -29,7 +29,12 @@
               <i class="fas fa-lock"></i>
               <input type="password" name="password" placeholder="Password" />
             </div>
+            <div style="display: flex">
+              <div><input type="checkbox" checked="checked" name="remember-me" />Remember Me</div>
+              <a style="text-decoration: none;color: #0346fa;margin-left: 50px;" href="/account/forgetpass">Quên mật khẩu?</a>
+            </div>
             <input type="submit" value="Login" class="btn solid" />
+
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -101,6 +106,9 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" name="password" ng-model="user.password"  />
             </div>
+            <div >
+              <a style="text-decoration: none;color: #0346fa;" href="/account/forgetpass">Quên mật khẩu?</a>
+            </div>
             <button type="button" ng-click="newUser(user)" class="btn"/>SIGN UP</button>
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
@@ -132,11 +140,9 @@
             <button class="btn transparent" id="sign-up-btn">
               Sign up
             </button>
-
-              <a href="/product/index" style="color:white; text-decoration: none">
-                <button class="btn transparent" style="margin-left: 10px;">Cancle</button>
-              </a>
-
+            <a href="/product/index" style="color:white; text-decoration: none">
+              <button class="btn transparent" style="margin-left: 10px;">Cancle</button>
+            </a>
           </div>
           <img src="/image/log.svg" class="image" alt="" />
         </div>

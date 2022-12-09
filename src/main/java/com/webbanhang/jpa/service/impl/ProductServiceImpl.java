@@ -40,6 +40,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product getProductById(int idProduct) {
+        return ProductDao.getProductById(idProduct);
+    }
+
+    @Override
     public int getLastId() {
         return ProductDao.getLastId().get(0);
     }
@@ -57,6 +62,21 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> fashSale() {
         return ProductDao.fashSale();
+    }
+
+    @Override
+    public List<Product> productSY() {
+        return ProductDao.productSY();
+    }
+
+    @Override
+    public List<Product> productGroup(int idGroup) {
+        return ProductDao.productGroup(idGroup);
+    }
+
+    @Override
+    public List<Product> searchKeyWord(String keyWord) {
+        return ProductDao.searchKeyWord("%"+keyWord+"%");
     }
 
 
