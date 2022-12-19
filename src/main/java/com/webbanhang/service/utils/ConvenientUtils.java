@@ -13,8 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ConvenientUtils implements ConvenientService {
 
-	@Autowired
-	HttpServletRequest request;
 
 	@Override
 	public String emailToStar(String star) {
