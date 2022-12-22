@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -56,16 +57,22 @@ public class ProductAdminApi {
     @PostMapping("/product/new")
     public JSONObject adminNewProduct(@RequestBody Product product) {
         JSONObject obj = new JSONObject();
-        try {
-            productService.create(product);
-            obj.put("status",true);
-            obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thành công!");
-            Thread.sleep(1000);
-            obj.put("id", productService.getLastId());
-        }catch (Exception e){
-            e.printStackTrace();
+        if(product.getName()!= null && product.getName().replaceAll(" ", "") != ""){
+            try {
+                product.setStatus(true);
+                productService.create(product);
+                obj.put("status",true);
+                obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thành công!");
+                Thread.sleep(1000);
+                obj.put("id", productService.getLastId());
+            }catch (Exception e  ){
+                e.getCause();
+                obj.put("status",false);
+                obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thất bại! chưa chọn Group sản phẩm");
+            }
+        }else{
             obj.put("status",false);
-            obj.put("message", "Thêm Sản Phẩm "+product.getName()+" Thất bại!");
+            obj.put("message", "Thêm Sản Phẩm Thất bại không thể thêm sản phẩm không tên");
         }
         return obj;
     }
