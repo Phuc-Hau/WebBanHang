@@ -8,6 +8,7 @@ app.controller('ctrluser', function($scope,$http) {
         $http.get($scope.url).then(resp => {
             $scope.item = resp.data;
             procvince($scope.item.cutomer.procvince, $scope.item.cutomer.district);
+            $scope.GHN($scope.item.cutomer.procvince, $scope.item.cutomer.district,$scope.item.cutomer.ward);
             console.log("user", resp)
         }).catch(error => {
             console.log("fail", error)
@@ -59,6 +60,65 @@ app.controller('ctrluser', function($scope,$http) {
             console.log("ss", resp)
         }).catch(error => {
             console.log("fail", error)
+        })
+    }
+
+
+    $scope.GHN = function (ProvinceID,DistrictID,WardID){
+
+        $scope.provinceGHN = {};
+        // provinceGHN
+        $http.get(`https://online-gateway.ghn.vn/shiip/public-api/master-data/province`,{
+            headers:{'Content-Type': 'application/json',
+                'Token':'c7dd3752-81b7-11ed-be76-3233f989b8f3'
+            }
+        }).then( resp =>{
+            $scope.provinceGHN = resp.data.data.filter(s=>s.ProvinceName == ProvinceID);
+            $scope.DistrictGHN($scope.provinceGHN[0].ProvinceID, DistrictID,WardID);
+        })
+
+    }
+
+    $scope.DistrictGHN =function (ProvinceID,DistrictID,WardID){
+        // districtGHN
+        $http.post(`https://online-gateway.ghn.vn/shiip/public-api/master-data/district`,
+            {
+                "province_id": ProvinceID
+            },
+            {
+                headers:{'Content-Type': 'application/json',
+                    'Token':'c7dd3752-81b7-11ed-be76-3233f989b8f3'
+                }
+            }
+        ).then( resp =>{
+            $scope.districtGHN = resp.data.data.filter(s=>s.DistrictName == DistrictID);
+            $scope.WardGHN($scope.districtGHN[0].DistrictID,WardID);
+        })
+    }
+
+    $scope.Ward =function (){
+        var procvince = document.getElementById("address_1").value;
+        var district = document.getElementById("address_2").value;
+        $scope.GHN(procvince,district);
+    }
+
+    $scope.WardGHN =function (DistrictID,WardID){
+        // WardGHN
+        $http.post(`https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id`,
+            {
+                "district_id": DistrictID
+            },
+            {
+                headers:{'Content-Type': 'application/json',
+                    'Token':'c7dd3752-81b7-11ed-be76-3233f989b8f3'
+                }
+            }
+        ).then( reap =>{
+            if(WardID != null){
+                $scope.wardGHN = reap.data.data.filter(s=>s.WardName == WardID);
+            }else{
+                $scope.wardGHN = reap.data.data;
+            }
         })
     }
 

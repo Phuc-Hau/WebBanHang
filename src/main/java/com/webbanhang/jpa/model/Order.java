@@ -40,6 +40,9 @@ public class Order {
     @Column(name = "District", length = 45)
     private String district;
 
+    @Column(name = "Ward")
+    private String Ward;
+
     @Column(name = "Receiver", length = 45)
     private String receiver;
 
@@ -52,6 +55,14 @@ public class Order {
     @JsonIgnore
     @OneToMany(mappedBy="order")
     private List<OrderDetail> orderDetails;
+
+    public String getWard() {
+        return Ward;
+    }
+
+    public void setWard(String ward) {
+        Ward = ward;
+    }
 
     public Integer getDeliveryCharges() {
         return deliveryCharges;

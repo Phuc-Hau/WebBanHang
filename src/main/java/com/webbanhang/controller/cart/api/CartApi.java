@@ -91,18 +91,10 @@ public class CartApi {
 		order.setTel((String) jsonbody.get("tel"));
 
 		order.setCutomer(cutomerService.findById(idCutomer));
-
-		if(jsonbody.get("dv").equals("1")){
-				order.setDeliveryCharges(20000);
-			}
-		if(jsonbody.get("dv").equals("2")){
-			order.setDeliveryCharges(30000);
-		}
+		order.setDeliveryCharges((Integer) jsonbody.get("deliveryCharges"));
 
 		try{
-
 			orderService.create(order);
-
 			int totalmoney=0;
 			for(int i=0 ; i<orderDetail.size();i++){
 				totalmoney += orderDetail.get(i).getQuantity() * orderDetail.get(i).getProduct().getPrice()*(1-orderDetail.get(i).getProduct().getSale());
