@@ -11,7 +11,7 @@ function procvince(procvinces,districts){
             stc += '<option value="' + e + '">' + i + '</option>'
             $this.html('<option value="">Tỉnh / Thành phố</option>' + stc)
 
-            if(procvinces != null || procvinces.length>1) {
+            if(procvinces != null && procvinces.length > 1) {
                 $('select[name="calc_shipping_provinces"] option').each(function () {
                     if ($(this).text() == procvinces) {
                         $(this).attr('selected', '')
@@ -30,7 +30,7 @@ function procvince(procvinces,districts){
             })
         })
 
-        if(procvinces != null && procvinces.length>1) {
+        if(procvinces != null && procvinces.length > 1) {
             var t = document.getElementById('provin').value - 1;
             shipping_district(t)
         }
@@ -41,7 +41,7 @@ function procvince(procvinces,districts){
             var str = '', $this = $(this)
             arr[i].forEach(function (el) {
                 str += '<option value="' + el + '">' + el + '</option>'
-                $this.html('<option value="">Tỉnh / Thành phố</option>' + str)
+                $this.html('<option value="">Quận / Huyện</option>' + str)
             })
         })
     }

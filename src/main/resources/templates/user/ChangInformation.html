@@ -103,7 +103,7 @@
                       </div>
                       <div class="avatar-preview" style="right: 180px; top: 50px;">
                         <img width="200px" height="200px" id="imageResult"
-                             src="/file/user/{{item.img}}">
+                             src="/file/user/{{::(item.img === null ? 'pic-1.png' : item.img)}}">
                         <label style="margin-top: 25px; margin-left: 26px;" for="upload">Upload
                           ảnh đại diện</label>
                       </div>
@@ -174,8 +174,24 @@
 
                       </div>
 
+
                       <input class="billing_address_1" id="address_1" name="provinces" type="hidden" value="">
                       <input class="billing_address_2" id="address_2" name="district" type="hidden" value="">
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Phường / Xã</label>
+                          <div class="col-sm-9">
+                            <select ng-click="Ward()" id="wards" ng-model="item.cutomer.ward" ng-value="item.cutomer.ward" class="form-control" name="calc_shipping_Ward" required="" >
+                              <option value="">Phường / Xã</option>
+                              <option ng-repeat="item in wardGHN" value="{{item.WardName}}">{{item.WardName}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                      </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
@@ -233,7 +249,7 @@
                 </button>
                 <button type="submit"
                         class="btn btn-gradient-primary btn-rounded btn-fw">
-                  <a href="/product/index" style="color: white"; text-decoration: none;>
+                  <a href="/product/index" style="color: white,text-decoration: none;"; >
                     <i class="mdi mdi-exit-to-app"></i> Cancel
                   </a>
 

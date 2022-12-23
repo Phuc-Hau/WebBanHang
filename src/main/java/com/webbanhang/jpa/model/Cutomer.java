@@ -36,6 +36,9 @@ public class Cutomer {
 	@Column(name="District")
 	private String district;
 
+	@Column(name = "Ward")
+	private String Ward;
+
 	@Column(name="Gender")
 	private String sex;
 
@@ -48,6 +51,14 @@ public class Cutomer {
 	@JsonIgnore
 	@OneToMany(mappedBy="cutomer")
 	private List<Users> users;
+
+	public String getWard() {
+		return Ward;
+	}
+
+	public void setWard(String ward) {
+		Ward = ward;
+	}
 
 	public int getId() {
 		return id;

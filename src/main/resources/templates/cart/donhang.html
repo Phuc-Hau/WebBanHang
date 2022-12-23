@@ -56,9 +56,11 @@
                         <div><span class="tieu-de-all"> Số điện thoại </span></div>
                         <div><span class="tieu-de-all"> Tỉnh/Thành Phố </span></div>
                         <div><span class="tieu-de-all"> Quận/Huyện </span></div>
+                        <div><span class="tieu-de-all"> Phường/Xã </span></div>
                         <div><span class="tieu-de-all"> Địa chỉ nhà </span></div>
                     </div>
                     <div class="col-1 dctc" style="font-weight: bolder;">
+                        <div>:</div>
                         <div>:</div>
                         <div>:</div>
                         <div>:</div>
@@ -70,6 +72,7 @@
                         <div id="tel" > {{user.cutomer.tel | uppercase}}</div>
                         <div id="provinces"> {{user.cutomer.procvince | uppercase}} </div>
                         <div id="district"> {{user.cutomer.district | uppercase}}</div>
+                        <div id="ward">{{user.cutomer.ward}} </div>
                         <div id="address">{{user.cutomer.address}}</div>
                     </div>
                 </div>
@@ -87,13 +90,11 @@
         
                     <form  class="fr-dh" action="">
                         <label >Đơn Vị Giao Hàng</label>
-                        <select ng-change="dvgh()" ng-model="dv" class="form-control" >
-                          <option value="1">Giao Hàng Tiết Kiệm 20 000</option>
-                          <option value="2">Giao hàng Nhanh 30 000</option>
+                        <select ng-mouseout="CalculateFeeGHN()" id="dv" class="form-control">
+                            <option ng-repeat="item in services" value="{{item.service_id}}">{{item.short_name}}</option>
                         </select>
                       </form>
 
-                   
                 </div>
         
                 <div class="dh-tong-tien">
@@ -130,9 +131,11 @@
                         <div><span class="tieu-de-all"> Số điện thoại </span></div>
                         <div><span class="tieu-de-all"> Tỉnh/Thành Phố </span></div>
                         <div><span class="tieu-de-all"> Quận/Huyện </span></div>
+                        <div><span class="tieu-de-all"> Phường/Xã </span></div>
                         <div><span class="tieu-de-all"> Địa chỉ nhà </span></div>
                     </div>
                     <div class="col-1 dctc" style="font-weight: bolder;">
+                        <div>:</div>
                         <div>:</div>
                         <div>:</div>
                         <div>:</div>
@@ -147,6 +150,10 @@
                         </select>
                         <select class="form-control col-6 dc" name="calc_shipping_district" required="" >
                             <option value="">Quận / Huyện</option>
+                        </select>
+                        <select ng-click="Ward()" id="wards" ng-model="ed.ward" ng-value="e.ward" class="form-control col-6 dc" name="calc_shipping_Ward" required="" >
+                            <option value="">Phường / Xã</option>
+                            <option ng-repeat="item in wardGHN" value="{{item}}">{{item.WardName}}</option>
                         </select>
                         <textarea id="addressedit" class="form-control col-6 dc" type="text" ng-value="editaddress.cutomer.address"/></textarea>
                     </div>

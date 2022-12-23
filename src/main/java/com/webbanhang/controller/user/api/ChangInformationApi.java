@@ -25,11 +25,6 @@ public class ChangInformationApi {
     @Autowired
     CutomerService cutomerService;
 
-
-    @Autowired
-    UsersService userService;
-
-
     @Autowired
     FileManagerService filemanager;
 
@@ -44,10 +39,10 @@ public class ChangInformationApi {
     @PostMapping("/user/update")
     public JSONObject update(@RequestBody Users users) {
         JSONObject obj = new JSONObject();
-        Users u = userService.findById(users.getId());
+        Users u = usersService.findById(users.getId());
         String img = u.getImg();
         try {
-            userService.update(users);
+            usersService.update(users);
             try{
                 if(!users.getImg().equals(img)){
                     filemanager.delete("user",img);
@@ -60,7 +55,6 @@ public class ChangInformationApi {
             obj.put("status",true);
             obj.put("message", "Cập nhật user "+users.getUsername()+" Thành công!");
         } catch (Exception e) {
-            e.printStackTrace();
             obj.put("status",false);
             obj.put("message", "Cập nhật user "+users.getUsername()+" Thất bại!");
         }

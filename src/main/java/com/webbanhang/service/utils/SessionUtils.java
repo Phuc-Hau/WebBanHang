@@ -12,7 +12,6 @@ public class SessionUtils implements SessionService {
     HttpSession session;
 
     @Override
-    @SuppressWarnings("unchecked")
     public <T> T get(String name) {
         return (T) session.getAttribute(name);
     }
