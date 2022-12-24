@@ -21,6 +21,7 @@ public interface OrderDetailService {
 
     List<Object> QuantityProduct(int idCutomer);
     List<OrderDetail> orderDetailPay();
+    List<OrderDetail> orderDetailPay(int idProduct);
     int amountPay(int idProduct);
 
 }

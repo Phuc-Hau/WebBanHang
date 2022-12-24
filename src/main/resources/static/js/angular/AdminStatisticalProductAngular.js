@@ -24,4 +24,14 @@ app.controller('ctradminstatisticalproduct', function($scope,$http) {
     }
     lists();
 
+    $scope.detail = function (id){
+        $http.get(`/admin/api/detailsStatisticalProduct/`+id).then(resp => {
+            $scope.detailsStatisticalProduct = resp.data;
+            document.getElementById('filled-stars').style.width=$scope.detailsStatisticalProduct.star/5*100+'%'
+            console.log("detailsStatisticalProduct", resp.data)
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+
 });

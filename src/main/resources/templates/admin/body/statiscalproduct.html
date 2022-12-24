@@ -1,4 +1,256 @@
+<script src="https://kit.fontawesome.com/54a9f8f1bb.js"
+        crossorigin="anonymous"></script>
 
+<style>
+
+
+    /* Rating Star Widgets Style */
+    .rating-stars ul {
+        list-style-type:none;
+        padding:0;
+
+        -moz-user-select:none;
+        -webkit-user-select:none;
+    }
+    .rating-stars ul > li.star {
+        display:inline-block;
+
+    }
+
+    /* Idle State of the stars */
+    .rating-stars ul > li.star > i.fa {
+        font-size:1.5em; /* Change the size of the stars */
+        color:#ccc; /* Color on idle state */
+    }
+
+    /* Hover state of the stars */
+    .rating-stars ul > li.star.hover > i.fa {
+        color:#FFCC36;
+    }
+
+    /* Selected state of the stars */
+    .rating-stars ul > li.star.selected > i.fa {
+        color:#FF912C;
+    }
+
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        background-color: #aca9a9 !important;
+        opacity: 0.25 !important;
+    }
+
+
+
+
+    .rating-container .rating-starss {
+        position: relative;
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap
+    }
+
+    .rating-container .rating-input {
+        position: absolute;
+        cursor: pointer;
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        font-size: 1px;
+        border: none;
+        background: 0 0;
+        padding: 0;
+        margin: 0
+    }
+
+
+
+    .rating-container .empty-stars {
+        color:#666666
+    }
+
+    .rating-container .filled-stars {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: auto;
+        color: #fde16d;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-text-stroke: 1px #000;
+        text-shadow: 1px 1px #999
+    }
+
+    .rating-rtl {
+        float: right
+    }
+
+    .rating-animate .filled-stars {
+        transition: width .25s ease;
+        -o-transition: width .25s ease;
+        -moz-transition: width .25s ease;
+        -webkit-transition: width .25s ease
+    }
+
+    .rating-rtl .filled-stars {
+        left: auto;
+        right: 0;
+        -moz-transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0);
+        -webkit-transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0);
+        -o-transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0);
+        transform: matrix(-1, 0, 0, 1, 0, 0) translate3d(0, 0, 0)
+    }
+
+    .rating-rtl.is-star .filled-stars {
+        right: .06em
+    }
+
+    .rating-rtl.is-heart .empty-stars {
+        margin-right: .07em
+    }
+
+    .rating-lg {
+        font-size: 3.91em
+    }
+
+    .rating-md {
+        font-size: 1.5em
+    }
+
+    .rating-sm {
+        font-size: 2.5em
+    }
+
+    .rating-xs {
+        font-size: 2em
+    }
+
+    .rating-xl {
+        font-size: 4.89em
+    }
+
+    .rating-container .clear-rating {
+        color: #aaa;
+        cursor: not-allowed;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 60%;
+        padding-right: 5px
+    }
+
+    .clear-rating-active {
+        cursor: pointer !important
+    }
+
+    .clear-rating-active:hover {
+        color: #843534
+    }
+
+    .rating-container .caption {
+        color: #999;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 60%;
+        margin-top: -.6em;
+        margin-left: 5px;
+        margin-right: 0
+    }
+
+    .rating-rtl .caption {
+        margin-right: 5px;
+        margin-left: 0
+    }
+
+    @media print {
+        .rating-container .clear-rating {
+            display: none
+        }
+
+    }
+    body .modal-dialog {
+        max-width: 80% !important;
+    }
+    .col-8 button{
+        margin-left:6px;
+        margin-top: 10px;
+    }
+
+    .nav__tabs {
+        background-color: #00000000 !important;
+        height: auto !important;
+    }
+    .nav__tabs .nav__item {
+         background-color: #00000000 !important;
+         margin: auto !important;
+         height: auto !important;
+    }
+    .mb-5 {
+         margin-bottom: 0 !important;
+    }
+    .carousel-indicators .active {
+        opacity: 1 !important;
+    }
+    .carousel-indicators li {
+        border-top: 0px solid transparent;
+        border-bottom: 0px solid transparent;
+    }
+
+    .carousel-indicators li {
+        border-radius: 10px;
+    }
+    .carousel-indicators li {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        margin: 0px 5px;
+    }
+    .carousel-indicators .active {
+        width: 9px;
+        height: 9px;
+        margin: 0px 10px;
+        background-color: red !important;
+        opacity: 1 !important;
+    }
+    .gia {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        padding: 15px 20px;
+        background: #fafafa;
+    }
+    .gia-cu-gia {
+        font-size: 32px;
+        font-weight: 400;
+        color: rgb(129, 115, 115);
+        text-decoration: line-through;
+    }
+    .gia-moi-gia {
+        font-size: 50px;
+        font-weight: 500;
+        color: red;
+        margin-left: 10px;
+    }
+    .giam {
+        margin-left: 15px;
+        font-size: .75rem;
+        color: #fff;
+        text-transform: uppercase;
+        background: #ee4d2d;
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-weight: 600;
+        line-height: 1;
+        white-space: nowrap;
+    }
+</style>
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
@@ -6,38 +258,205 @@
 				<i class="mdi mdi-cart"></i>
 			</span> Sản phẩm được mua nhiều
         </h3>
-
     </div>
 
     <div class="grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Price</th>
-                        <th>Sell number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    <tr ng-repeat="item in StatisticalProduct | orderBy: '-quantity' ">
-                        <td>{{$index+1}}</td>
-                        <td class="py-1">
-                            <img src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}"
-                                 alt="image" />
-                        </td>
-                        <td>{{item.product.name}}</td>
-                        <td>{{item.product.date}}</td>
-                        <td>{{item.product.price|number}} đ</td>
-                        <td>{{item.quantity}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active show" id="wait_all">
+                        <div class="search-field d-none d-md-block " style="width: 50%;margin-left: 30px;border: 1px solid #c5c5c5; border-radius: 4px;">
+                            <form class="d-flex align-items-center h-100" action="#">
+                                <div class="input-group">
+                                    <div class="input-group-prepend bg-transparent">
+                                        <i class="input-group-text border-0 mdi mdi-magnify" style="padding: 1.1rem 0.75rem;background-color: white;"></i>
+                                    </div>
+                                    <input ng-model="searchname" type="text" class="form-control bg-transparent border-0" placeholder="Search name product">
+                                </div>
+                            </form>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                                <th>Sell number</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr ng-repeat="item in StatisticalProduct | orderBy: '-quantity' | filter : {product:{name:searchname}} ">
+                                <td>{{$index+1}}</td>
+                                <td class="py-1">
+                                    <img src="/file/AnhWebBanHang/{{item.product.imgs[0].image}}"
+                                         alt="image" />
+                                </td>
+                                <td>{{item.product.name}}</td>
+                                <td>{{item.product.date}}</td>
+                                <td>{{item.product.price|number}} đ</td>
+                                <td>{{item.product.amount}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>
+                                    <div class="nav nav__tabs" role="tablist">
+                                        <span class="nav__item">
+                                            <a ng-click="detail(item.product.id)" class="nav-link" href="#wait_detail" role="tab" data-toggle="tab">Chi tiết</a>
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="wait_detail">
+                        <div class="row">
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card bg-gradient-danger card-img-holder text-white">
+                                    <div class="card-body">
+                                        <img src="/assets/images/dashboard/circle.svg"
+                                             class="card-img-absolute" alt="circle-image"/>
+                                        <h4 class="font-weight-normal mb-3" >
+                                            Số lượng kho <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                                        </h4>
+                                        <h2 class="mb-5" style="text-align: center; font-size: 50px;"><span style="border-bottom: 1px solid">{{detailsStatisticalProduct.product.amount}}</span></h2>
+                                        <h4 style="margin-top: 38px;"><a style="color: black;" href="/admin/product/edit/{{detailsStatisticalProduct.product.id}}"> Chỉ sửa sản phẩm <i class="mdi mdi-border-color"></i></a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card bg-gradient-info card-img-holder text-white">
+                                    <div class="card-body">
+                                        <img src="/assets/images/dashboard/circle.svg"
+                                             class="card-img-absolute" alt="circle-image"/>
+                                        <h4 class="font-weight-normal mb-3">
+                                           Số lượng đã bán<i
+                                                class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                        </h4>
+                                        <h2 class="mb-5" style="text-align: center; font-size: 50px;"><span style="border-bottom: 1px solid">{{detailsStatisticalProduct.quantity}}</span></h2>
+                                        <h4 class="mb-5" style="margin-top: 38px">Có {{detailsStatisticalProduct.users.length}} người mua hàng</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stretch-card grid-margin">
+                                <div class="card bg-gradient-success card-img-holder text-white">
+                                    <div class="card-body">
+                                        <img src="/assets/images/dashboard/circle.svg"
+                                             class="card-img-absolute" alt="circle-image"/>
+                                        <h4 class="font-weight-normal mb-3">
+                                            Đánh giá <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                                        </h4>
+                                        <h2 class="mb-5" ng-if="detailsStatisticalProduct.star == 0">Chưa có đánh giá</span></h2>
+                                        <h2 class="mb-5" ng-if="detailsStatisticalProduct.star != 0"><span style="border-bottom: 1px solid">{{detailsStatisticalProduct.star|number:1}}</span> <span style="font-size: 23px;">trên 5 </span></h2>
+                                        <span>Có {{detailsStatisticalProduct.evaluate}} lược đánh giá</span>
+                                            <div class="rating-container rating-md rating-animate">
+                                                <div class="rating-starss">
+                                                    <span class="empty-stars">
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                    </span>
+                                                     <span id="filled-stars" class="filled-stars">
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"><i class='fa fa-star fa-fw'></i></span>
+                                                        <span class="stars"> <i class='fa fa-star fa-fw'></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        <h4 style="margin-top: 10px"><a href="/product/sanpham/{{detailsStatisticalProduct.product.id}}" style="color: #000000">Xem tất cả đánh giá >> </a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="    border-top: 5px solid red;padding-top: 15px;">
+                            <div class="col-lg-6">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-right: 24px;">
+                                    <ol class="carousel-indicators">
+                                        <li style="background: black; opacity: 0.5;" data-target="#carouselExampleIndicators" ng-repeat="img in detailsStatisticalProduct.product.imgs" data-slide-to="{{$index}}" class="{{::($index === 0 ? 'active' : '')}}"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item {{::($index === 0 ? 'active' : '')}}" ng-repeat="img in detailsStatisticalProduct.product.imgs">
+                                            <img class="d-block w-100" src="/file/AnhWebBanHang/{{img.image}}" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="opacity: 1!important;">
+                                        <i class="fa fa-2x fa-angle-left text-dark" style="background: #cacaca;padding: 12px 4px; border-radius: 13px;"></i>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="opacity: 1!important;">
+                                        <i class="fa fa-2x fa-angle-right text-dark" style="background: #cacaca;padding: 12px 4px; border-radius: 13px;"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 grid-margin">
+                                <div style="font-size: 40px;font-weight: 700">{{detailsStatisticalProduct.product.name}}</div>
+                                <div class="gia">
+                                    <div class="gia-cu-gia ng-binding">
+                                        {{detailsStatisticalProduct.product.price|number}}
+                                    </div>
+                                    <div class="gia-moi-gia ng-binding">
+                                        {{detailsStatisticalProduct.product.price*(1-detailsStatisticalProduct.product.sale)|number}} <span style="font-size: 29px;margin-left: -11px;">đ</span>
+                                    </div>
+                                    <div class="giam ng-binding">
+                                        {{detailsStatisticalProduct.product.sale*100|number}} % GIẢM
+                                    </div>
+                                </div>
+                                <div style="margin-top: 20px;">
+
+                                    <div style="height: 330px;overflow: auto;overflow-x: hidden;width: 107.8%;">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 10%">#</th>
+                                                <th style="width: 20%">IMG</th>
+                                                <th style="width: 25%">Full name</th>
+                                                <th style="width: 25%">Birthday</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="item in detailsStatisticalProduct.users">
+                                                <td style="width: 10%">{{$index+1}}</td>
+                                                <td style="width: 20%">
+                                                    <img style="object-fit: cover;width: 36px;height: 36px;border-radius: 100%;"src="/file/user/{{::(item.img === null ? 'avatar-3814049_960_720.png' : item.img)}}"  alt="image" />
+                                                </td>
+                                                <td style="width: 25%"><span>{{item.cutomer.name}}</span></td>
+                                                <td style="width: 25%">{{item.cutomer.birthday| date:'dd-MM-yyyy'}}</td>
+                                                <td>
+                                                    <span ng-if="item.status==true">
+                                                        <div class="form-check form-check-success">
+                                                            <label class="form-check-label"> <input
+                                                                    type="radio" class="form-check-input" id="ExampleRadio2"
+                                                                    checked=""> <i class="input-helper"></i></label>
+                                                        </div>
+                                                    </span>
+                                                    <span ng-if="item.status==false">
+                                                    <div class="form-check form-check-danger">
+                                                        <label class="form-check-label"> <input
+                                                                type="radio" class="form-check-input" id="ExampleRadio4"
+                                                                checked=""> <i class="input-helper"></i></label>
+                                                    </div>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

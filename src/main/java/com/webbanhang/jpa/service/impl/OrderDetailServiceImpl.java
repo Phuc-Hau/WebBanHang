@@ -70,6 +70,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
+    public List<OrderDetail> orderDetailPay(int idProduct) {
+        return OrderDetailDao.orderDetailPay(idProduct);
+    }
+
+    @Override
     public int amountPay(int idProduct) {
         return OrderDetailDao.amountPay(idProduct);
     }
