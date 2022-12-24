@@ -42,7 +42,7 @@
                                 <tr ng-repeat="item in items | filter:{role:'ROLE_GUEST'}" >
                                         <td>{{$index+1}}</td>
                                         <td class="py-1">
-                                            <img style="object-fit: cover;"src="/file/user/{{item.img}}" alt="image" /></td>
+                                            <img style="object-fit: cover;"src="/file/user/{{::(item.img === null ? 'avatar-3814049_960_720.png' : item.img)}}" alt="image" /></td>
                                         <td>{{item.username}}</td>
                                         <td>{{item.cutomer.name}}</td>
                                         <td>{{item.cutomer.birthday| date:'dd-MM-yyyy'}}</td>
@@ -91,7 +91,7 @@
                                 <tr ng-repeat="item in items | filter:{role:'ROLE_ADMIN'}" >
                                     <td>{{$index+1}}</td>
                                     <td class="py-1">
-                                        <img style="object-fit: cover;"src="/file/user/{{item.img}}" alt="image" /></td>
+                                        <img style="object-fit: cover;"src="/file/user/{{::(item.img === null ? 'avatar-3814049_960_720.png' : item.img)}}"  alt="image" /></td>
                                     <td>{{item.username}}</td>
                                     <td>{{item.cutomer.name}}</td>
                                     <td>{{item.cutomer.birthday| date:'dd-MM-yyyy'}}</td>

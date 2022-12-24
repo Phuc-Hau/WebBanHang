@@ -118,7 +118,7 @@ app.controller('orderstatus', function($scope,$http) {
             }else{
                 showErrorToast(resp.data.message);
             }
-
+            $scope.evalute ={};
 
         }).catch(error => {
             console.log("fail", error)

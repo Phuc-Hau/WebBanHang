@@ -61,12 +61,18 @@
 <div th:replace="partials/header.html"></div>
 <div id="toast"></div>
 
-<div style="display: flex; margin-top: 8.4375rem;" >
+<div style="display: flex; margin-top: 6.4375rem;" >
     <!-- Sidebar-->
     <div class="border-end " style="width: 208px !important;margin-left: 75px;margin-top: 35px;" id="sidebar-wrapper">
       <div class="av">
         <div class="shop-avatar">
-          <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+          <th:block th:if="${session.users.img} != null">
+              <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+          </th:block>
+          <th:block th:unless ="${session.users.img} != null">
+            <img src="/file/user/avatar-3814049_960_720.png" alt="">
+          </th:block>
+
         </div>
         <div>
           <div class="tt">[[${session.users.username}]]</div>
@@ -103,7 +109,7 @@
                       </div>
                       <div class="avatar-preview" style="right: 180px; top: 50px;">
                         <img width="200px" height="200px" id="imageResult"
-                             src="/file/user/{{::(item.img === null ? 'pic-1.png' : item.img)}}">
+                             src="/file/user/{{::(item.img === null ? 'avatar-3814049_960_720.png' : item.img)}}">
                         <label style="margin-top: 25px; margin-left: 26px;" for="upload">Upload
                           ảnh đại diện</label>
                       </div>

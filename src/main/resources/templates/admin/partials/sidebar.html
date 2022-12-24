@@ -5,7 +5,12 @@
     <li class="nav-item nav-profile">
       <a href="#" class="nav-link">
         <div class="nav-profile-image">
-          <img th:src="@{|/file/user/${session.users.img}|}" style="object-fit: cover;" alt="profile">
+          <th:block th:if="${session.users.img} != null">
+            <img th:src="@{|/file/user/${session.users.img}|}" style="object-fit: cover;" alt="profile">
+          </th:block>
+          <th:block th:unless ="${session.users.img} != null">
+            <img src="/file/user/avatar-3814049_960_720.png" style="object-fit: cover;" alt="profile">
+          </th:block>
           <span class="login-status online"></span>
           <!--change to offline or busy as needed-->
         </div>
@@ -53,8 +58,8 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/charts/chartjs.html">
-        <span class="menu-title">Charts</span>
+      <a class="nav-link" href="/admin/statisticalproduct">
+        <span class="menu-title">Thống kê sản phẩm</span>
         <i class="mdi mdi-chart-bar menu-icon"></i>
       </a>
     </li>

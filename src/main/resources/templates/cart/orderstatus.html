@@ -43,7 +43,12 @@
     <div class="border-end bg-white" id="sidebar-wrapper">
       <div class="av">
         <div class="shop-avatar">
-          <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+          <th:block th:if="${session.users.img} != null">
+            <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+          </th:block>
+          <th:block th:unless ="${session.users.img} != null">
+            <img src="/file/user/avatar-3814049_960_720.png" alt="">
+          </th:block>
         </div>
         <div>
           <div class="tt">[[${session.users.username}]]</div>
