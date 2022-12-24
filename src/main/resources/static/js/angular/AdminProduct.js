@@ -10,7 +10,6 @@ app.controller('ctradminproduct', function($scope,$http) {
     $scope.items =[];
     $scope.prop="-date";
 
-
     function list () {
         $scope.url="/admin/api/productlist";
         $http.get($scope.url).then(resp => {
@@ -113,7 +112,7 @@ app.controller('ctradminproduct', function($scope,$http) {
             $scope.item.date=(new Date()).toLocaleDateString('en-GB');
             $scope.item.status = true;
         }
-
+        forms = new FormData();
 
     }
     $scope.update = function (product) {
@@ -141,23 +140,27 @@ app.controller('ctradminproduct', function($scope,$http) {
     }
 
     $scope.new = function (product){
-
-        $scope.utlnew ='/admin/api/product/new';
-        product.date = new Date();
-        console.log("p",product);
-        $http.post($scope.utlnew,product).then(resp => {
-            if(resp.data.status){
-                showSuccessToast(resp.data.message);
-                uploadfile(resp.data.id);
-            }else{
-                showErrorToast(resp.data.message);
-            }
-            console.log("Success", resp)
-        }).catch(error => {
-            console.log("fail", error)
-            showErrorToast("Lỗi Hệ thống");
-        });
-
+        console.log("r",forms)
+        if(forms.get('files0') == null && forms.get('files1') == null &&  forms.get('files2') == null
+            &&  forms.get('files3') == null &&  forms.get('files4') == null &&  forms.get('files5') == null){
+            showErrorToast("Chưa chọn ảnh");
+        }else {
+            $scope.utlnew ='/admin/api/product/new';
+            product.date = new Date();
+            console.log("p",product);
+            $http.post($scope.utlnew,product).then(resp => {
+                if(resp.data.status){
+                    showSuccessToast(resp.data.message);
+                    uploadfile(resp.data.id);
+                }else{
+                    showErrorToast(resp.data.message);
+                }
+                console.log("Success", resp)
+            }).catch(error => {
+                console.log("fail", error)
+                showErrorToast("Lỗi Hệ thống");
+            });
+        }
     }
 
     function uploadfile(id) {
