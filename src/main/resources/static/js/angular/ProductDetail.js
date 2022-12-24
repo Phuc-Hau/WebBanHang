@@ -12,10 +12,18 @@ app.controller('ctrlproductdetail', function($scope,$http) {
         $http.get($scope.url).then(resp => {
             $scope.items = resp.data;
             document.querySelector("title").innerText=$scope.items.name;
+
+            $http.get(`/api/product/amountpay/`+id).then(resp => {
+                $scope.items.amoutpay = resp.data;
+                console.log("amout", resp)
+            }).catch(error => {
+                console.log("fail", error)
+            })
+
             if(resp.data == ""){
                 window.location ='/product/index';
             }
-            console.log("s", resp)
+            console.log("sp", resp)
             groupproduct($scope.items.groupProduct.id);
         }).catch(error => {
             console.log("fail", error)

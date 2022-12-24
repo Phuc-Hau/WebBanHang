@@ -20,5 +20,6 @@ public interface OrderDetailService {
     boolean existsById(Integer id);
 
     List<Object> QuantityProduct(int idCutomer);
+    int amountPay(int idProduct);
 
 }

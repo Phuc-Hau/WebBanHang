@@ -40,15 +40,30 @@ public class HomeAdminApi {
 
         // Money Monthly Chart Year
         int months[] = new int[12];
+        int monthslastyear[] = new int [12];
+        int months2yearsago[] = new int [12];
+
         List<MoneyMonth> moneyMonth = new ArrayList<>();
+        List<MoneyMonth> moneyMonthlastyear = new ArrayList<>();
+        List<MoneyMonth> moneyMonth2yearsago = new ArrayList<>();
         try {
             moneyMonth = orderService.moneyMonthYear(year);
+            moneyMonthlastyear = orderService.moneyMonthYear(year-1);
+            moneyMonth2yearsago = orderService.moneyMonthYear(year-2);
         }catch (Exception e){
 
         }
 
         for (int i = 0; i < moneyMonth.size(); i++) {
             months[moneyMonth.get(i).getMonth()-1] = (int) moneyMonth.get(i).getMoney();
+        }
+
+        for (int i = 0; i < moneyMonthlastyear.size(); i++) {
+            monthslastyear[moneyMonthlastyear.get(i).getMonth()-1] = (int) moneyMonthlastyear.get(i).getMoney();
+        }
+
+        for (int i = 0; i < moneyMonth2yearsago.size(); i++) {
+            months2yearsago[moneyMonth2yearsago.get(i).getMonth()-1] = (int) moneyMonth2yearsago.get(i).getMoney();
         }
 
         // Amount Orders Month Monthly Chart Year
@@ -77,6 +92,8 @@ public class HomeAdminApi {
 
         CharIn charin =new CharIn();
         charin.setCharMonth(months);
+        charin.setCharMonthmonthslastyear(monthslastyear);
+        charin.setCharMonthmonths2yearsago(months2yearsago);
         charin.setCountMonth(countMonths);
         charin.setCharYear(moneyYear);
         charin.setOrderStatus(orderStatus);
