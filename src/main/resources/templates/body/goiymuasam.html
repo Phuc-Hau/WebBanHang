@@ -20,7 +20,7 @@
 
 						<div class="xuhuong">
 							<div style="    display: grid;">
-								<span style="color: red;">[[${#numbers.formatInteger((item.price * (1- item.sale)),0)}]]
+								<span style="color: red;">{{ [[${(item.price * (1- item.sale))}]] | number:0 }}đ
 									<span style="font-size: 16px;">đ</span>
 									<a style="margin-left: 10px" href="" th:attr="ng-click=@{|cart.add(${item.id})|}">
 										<span class="badge tnu" >+</span>
@@ -29,7 +29,7 @@
 										</svg>
 									</a>
 								</span>
-								<span style="text-align: right; font-size: 11px;">đã bán 1k2</span>
+<!--								<span style="text-align: right; font-size: 11px;">đã bán 1k2</span>-->
 							</div>
 
 						</div>
