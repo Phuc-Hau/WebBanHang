@@ -35,7 +35,7 @@ public class SignUpApi {
     @PostMapping("/signup/resetcode")
     public void resetcode() throws MessagingException {
         capchas = convenientUtils.ranDomCapCha();
-        mail.sendPassword(tymUser.getEmail(), capchas);
+        mail.sendSignUp(tymUser.getEmail(), capchas);
     }
 
     @PostMapping("/signup/new")
