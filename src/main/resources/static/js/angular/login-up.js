@@ -25,7 +25,7 @@ app.controller('signup', function($scope,$http) {
             showErrorToast("Nhập đầy đủ thông tin");
         }else if(user.fullname.length<3 ){
             showErrorToast("Nhập đầy đủ thông tin");
-        }else if(user.email.length<3  ){
+        }else if(user.email.length < 3  ){
             showErrorToast("Vui lòng nhập đúng email");
         }else if(user.password.length <= 8 ){
             showErrorToast("Mật khẩu từ 8 ký tự");
