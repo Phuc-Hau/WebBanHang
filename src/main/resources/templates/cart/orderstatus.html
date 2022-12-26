@@ -390,7 +390,6 @@
               <article class="card">
                 <div class="card-body row">
                   <div class="col"> <strong>Ngày đặt đơn:</strong> <br>{{orderstatus[0].order.date| date:'dd-MM-yyyy'}} </div>
-                  <div class="col"> <strong>Giao bởi:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
                   <div class="col"> <strong>Trạng thái:</strong> <br> {{status[orderstatus[0].order.status].status}}</div>
                   <div class="col"> <strong>Thành tiền:</strong> <br> {{orderstatus[0].order.totalmoney+orderstatus[0].order.deliveryCharges | number:0}} </div>
                 </div>

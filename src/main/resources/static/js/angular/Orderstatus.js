@@ -50,6 +50,8 @@ app.controller('orderstatus', function($scope,$http) {
         console.log("fail", error)
     })
 
+
+    //list chi tiet don hang
     $scope.orderid = function (id){
         $http.post($scope.urlgroup+id).then(resp => {
             $scope.orderstatus = resp.data;
