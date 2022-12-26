@@ -36,7 +36,7 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
             if(users.isStatus()){
                 return User.withUsername(users.getUsername())
                         .password(pe.encode(users.getPassword()))
-                        .authorities(users.getRole()).disabled(users.isStatus())
+                        .authorities(users.getRole())
                         .build();
             }else{
                 return User.withUsername(users.getUsername()).build();
