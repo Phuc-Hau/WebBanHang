@@ -42,7 +42,9 @@ public class ChangInformationApi {
         Users u = usersService.findById(users.getId());
         String img = u.getImg();
         try {
-
+            if(users.getImg().equals("")){
+                users.setImg(null);
+            }
             usersService.update(users);
             try{
                 if(!users.getImg().equals(img)){
