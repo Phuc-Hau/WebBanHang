@@ -38,6 +38,7 @@ app.controller('orderstatus', function($scope,$http) {
         console.log("fail", error)
     })
 
+
     $scope.urlOrderdetail = "/accounts/api/listordersDetail";
     $http.post($scope.urlOrderdetail).then(resp => {
         $scope.orderdetail = resp.data;
@@ -64,6 +65,7 @@ app.controller('orderstatus', function($scope,$http) {
             }
 
 
+            // set trang thai thanh mau cam trong chi tiet
             var u= $scope.orderstatus[0].order.status;
             var track= document.getElementById('track');
 
@@ -94,6 +96,7 @@ app.controller('orderstatus', function($scope,$http) {
         document.getElementById('myModal1').style.display='none';
     }
 
+    // mo modal 2 an modal 1
     $scope.add = function (){
         document.getElementById('myModal1').style.display='block';
         setTimeout(function () {
@@ -104,6 +107,7 @@ app.controller('orderstatus', function($scope,$http) {
 
     $scope.evalute = {};
 
+    // danh gia
     $scope.submit = function (productitem){
 
         $scope.evalute.product_id = productitem.product.id;
@@ -154,6 +158,7 @@ app.controller('orderstatus', function($scope,$http) {
             'product' : item,
             'quantity':1
         }]
+        // trang thai sp
         if(item.status == 1) {
             $http.post(`/accounts/cart/newpay`, $scope.cardpay).then(resp => {
                 setTimeout(function () {
