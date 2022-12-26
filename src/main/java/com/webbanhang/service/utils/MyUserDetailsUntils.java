@@ -31,7 +31,6 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
 
         try {
             Users users = usersService.findByUsername(username);
-
             BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
             if(users.isStatus()){
                 return User.withUsername(users.getUsername())

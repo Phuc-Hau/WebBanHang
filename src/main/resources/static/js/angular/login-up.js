@@ -1,8 +1,4 @@
 var jsAtt = document.getElementById("login").value;
-if(jsAtt){
-    showErrorToast("Sai password hoặc username");
-}
-
 
 const formlogin = document.getElementById("formlogin");
 const formcode = document.getElementById("formcode");
@@ -11,6 +7,27 @@ const formcode = document.getElementById("formcode");
 var app = angular.module("app", []);
 
 app.controller('signup', function($scope,$http) {
+
+    $http.get(`/account/api/login/name`).then(resp => {
+        if(resp.data.status == 1){
+            showErrorToast(resp.data.message);
+        }else if(resp.data.status == 2){
+            if(jsAtt){
+                showErrorToast("Sai password hoặc username");
+            }
+        }
+    }).catch(error => {
+        console.log("fail", error)
+    })
+
+    $scope.login = function (username){
+        $http.post(`/account/api/login/`+username).then(resp => {
+
+        }).catch(error => {
+            console.log("fail", error)
+        })
+    }
+
 
     $scope.item;
     $scope.user ={
