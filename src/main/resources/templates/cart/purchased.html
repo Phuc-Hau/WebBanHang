@@ -42,14 +42,19 @@
 <body style="overflow-x: hidden;" ng-app="app" ng-controller="crlPurchased">
 <div th:replace="partials/header.html"></div>
 <div id="toast"></div>
-<div class="container d-flex justify-content-center" style="margin-top: 9.4375rem;">
+<div class="container d-flex justify-content-center" style="margin-top: 8.4375rem;">
 
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="av">
                 <div class="shop-avatar">
-                    <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+                    <th:block th:if="${session.users.img} != null">
+                        <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+                    </th:block>
+                    <th:block th:unless ="${session.users.img} != null">
+                        <img src="/file/user/avatar-3814049_960_720.png" alt="">
+                    </th:block>
                 </div>
                 <div>
                     <div class="tt">[[${session.users.username}]]</div>

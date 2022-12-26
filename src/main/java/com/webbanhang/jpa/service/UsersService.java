@@ -22,5 +22,7 @@ public interface UsersService {
     boolean existsById(Integer id);
     String imgIdCutomer(int idCutomer);
 
+    List<Users> listIdcutomer(List<Integer> idcutomer);
+
 
 }

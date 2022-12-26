@@ -2,16 +2,21 @@ var url = 'http://localhost:8080/admin/api/char' ;
 
 var a = [];
 
+let d = new Date();
+let year = d.getFullYear();
+
+
 fetch(url).then(function (response) {
   return response.json();
 }).then(function (response) {
   console.log("f",response)
   var month = response.charMonth;
   var countmonth = response.countMonth;
-  var year = response.charYear;
+  var charYear = response.charYear;
   var orderStatus = response.orderStatus;
-
-
+  var monthslastyear = response.charMonthmonthslastyear;
+  var months2yearsago = response.charMonthmonths2yearsago;
+// 206
 $(function () {
   'use strict';
   var data = {
@@ -94,7 +99,7 @@ $(function () {
   
   var doughnutPieData = {
     datasets: [{
-      data: year,
+      data: charYear,
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.5)',
@@ -113,9 +118,9 @@ $(function () {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      '2022',
-      '2021',
-      '2020',
+      year,
+      year-1,
+      year-2,
     ]
   };
 
@@ -204,10 +209,10 @@ $(function () {
   };
 
   var multiLineData = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"],
     datasets: [{
-      label: 'Dataset 1',
-      data: [12, 19, 3, 5, 2, 3],
+      label: year-2,
+      data: months2yearsago,
       borderColor: [
         '#587ce4'
       ],
@@ -215,8 +220,8 @@ $(function () {
       fill: false
     },
       {
-        label: 'Dataset 2',
-        data: [5, 23, 7, 12, 42, 23],
+        label: year-1,
+        data: monthslastyear,
         borderColor: [
           '#ede190'
         ],
@@ -224,8 +229,8 @@ $(function () {
         fill: false
       },
       {
-        label: 'Dataset 3',
-        data: [15, 10, 21, 32, 12, 33],
+        label: year,
+        data:  month,
         borderColor: [
           '#f44252'
         ],
@@ -347,26 +352,26 @@ $(function () {
   }
 
   var multiAreaData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"],
     datasets: [{
-      label: 'Facebook',
-      data: [8, 11, 13, 15, 12, 13, 16, 15, 13, 19, 11, 14],
+      label: '2020',
+      data: months2yearsago,
       borderColor: ['rgba(255, 99, 132, 0.5)'],
       backgroundColor: ['rgba(255, 99, 132, 0.5)'],
       borderWidth: 1,
       fill: true
     },
     {
-      label: 'Twitter',
-      data: [7, 17, 12, 16, 14, 18, 16, 12, 15, 11, 13, 9],
+      label: '2021',
+      data: monthslastyear,
       borderColor: ['rgba(54, 162, 235, 0.5)'],
       backgroundColor: ['rgba(54, 162, 235, 0.5)'],
       borderWidth: 1,
       fill: true
     },
     {
-      label: 'Linkedin',
-      data: [6, 14, 16, 20, 12, 18, 15, 12, 17, 19, 15, 11],
+      label: '2022',
+      data:  month,
       borderColor: ['rgba(255, 206, 86, 0.5)'],
       backgroundColor: ['rgba(255, 206, 86, 0.5)'],
       borderWidth: 1,

@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.webbanhang.jpa.model.Users;
 
+import java.util.List;
+
 public interface UserDao extends JpaRepository<Users, Integer>{
 
 	@Query("SELECT o FROM Users o WHERE o.email = ?1 ")
@@ -24,5 +26,7 @@ public interface UserDao extends JpaRepository<Users, Integer>{
 
     @Query("SELECT o.img FROM Users o WHERE o.cutomer.id = ?1 ")
     String imgIdCutomer(int idCutomer);
-	
+
+    @Query("SELECT o FROM Users o where o.cutomer.id in ?1")
+    List<Users> listIdcutomer(List<Integer> idCutomer);
 }

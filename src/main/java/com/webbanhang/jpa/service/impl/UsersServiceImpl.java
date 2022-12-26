@@ -68,4 +68,9 @@ public class UsersServiceImpl implements UsersService {
     public String imgIdCutomer(int idCutomer){
         return UsersDao.imgIdCutomer(idCutomer);
     }
+
+    @Override
+    public List<Users> listIdcutomer(List<Integer> idcutomer) {
+        return UsersDao.listIdcutomer(idcutomer);
+    }
 }

@@ -30,6 +30,11 @@ public class AdminProduct {
 		return "admin/AdminProductList";
 	}
 
+	@RequestMapping("/statisticalproduct")
+	public String adminProductList() {
+		return "admin/AdminStatisticalProduct";
+	}
+
 	@RequestMapping("/product/edit/{id}")
 	public String adminEditProduct() {
 		return "admin/AdminProductEdit";

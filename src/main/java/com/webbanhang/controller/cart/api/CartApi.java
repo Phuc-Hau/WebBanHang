@@ -88,6 +88,7 @@ public class CartApi {
 		order.setDistrict((String) jsonbody.get("district"));
 		order.setProcvince((String) jsonbody.get("procvince"));
 		order.setReceiver((String) jsonbody.get("receiver"));
+		order.setWard((String) jsonbody.get("ward"));
 		order.setTel((String) jsonbody.get("tel"));
 
 		order.setCutomer(cutomerService.findById(idCutomer));
@@ -104,6 +105,9 @@ public class CartApi {
 			order.setTotalmoney(totalmoney);
 
 			orderDetailService.listCreate(orderDetail);
+
+			productService.UpdateAmoutPay(orderDetail);
+
 			orderDetailTym = null;
 			obj.put("status",true);
 			obj.put("message", "Đặt hàng hành công!");

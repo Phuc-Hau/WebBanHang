@@ -41,10 +41,10 @@
 <body  ng-app="app" ng-controller="ctrlproductdetail" style="overflow-x: hidden; background-color: #f2edf3;">
 <div th:replace ="partials/header.html"></div>
 <div id="toast"></div>
-<div style="background-color: #f2edf3;margin-top: 9.4375rem;">
+<div style="background-color: #f2edf3;margin-top: 8.4375rem;">
     <div class="detail">
         <div class="gr">
-            <div class="hinh" style="    width: 50%;">
+            <div class="hinh" style="width: 50%;">
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-right: 24px;">
                     <ol class="carousel-indicators">
@@ -97,10 +97,9 @@
                                     </div>
                                 </div>
 
-
                             </div>
                             <div style="font-size: 20px; color: #767676;">| <span class="tdctsp">{{evalutes.evalute.length}}</span> đánh giá |</div>
-                            <div style="font-size: 20px; color: #767676;"> <span class="tdctsp"> 500</span> Đã bán </div>
+                            <div style="font-size: 20px; color: #767676;"> <span class="tdctsp"> {{items.amoutpay}} </span> Đã bán </div>
                         </div>
 
                     </div>
@@ -239,7 +238,7 @@
 
             <div class="bl-content" ng-repeat="item in evalutes.evalute  | filter:{footQuality:loaisao} | limitTo : 5">
                 <div class="chat-bl">
-                    <div class="hinh"><img width="50px" height="50px" src="/file/user/{{evalutes.avatar[$index]}}" alt=""></div>
+                    <div class="hinh"><img width="50px" height="50px" src="/file/user/{{::(evalutes.avatar[$index] === null ? 'avatar-3814049_960_720.png' : evalutes.avatar[$index])}}" alt=""></div>
                     <div class="ten-nbl">{{item.cutomer.name}}</div>
                     <div class="time"  >{{item.date| date:'dd-MM-yyyy'}}</div>
                 </div>

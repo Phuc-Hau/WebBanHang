@@ -13,8 +13,13 @@
       <li class="nav-item nav-profile dropdown">
         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="nav-profile-img">
+            <th:block th:if="${session.users.img} != null">
+              <img th:src="@{|/file/user/${session.users.img}|}" style="object-fit: cover;" alt="image">
+            </th:block>
+            <th:block th:unless ="${session.users.img} != null">
+              <img src="/file/user/avatar-3814049_960_720.png" style="object-fit: cover;" alt="image">
+            </th:block>
 
-            <img th:src="@{|/file/user/${session.users.img}|}" style="object-fit: cover;" alt="image">
             <span class="availability-status online"></span>
           </div>
           <div class="nav-profile-text">

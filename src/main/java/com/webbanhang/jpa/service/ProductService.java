@@ -1,5 +1,6 @@
 package com.webbanhang.jpa.service;
 
+import com.webbanhang.jpa.model.OrderDetail;
 import com.webbanhang.jpa.model.Product;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public interface ProductService {
     boolean existsById(Integer id);
 
     List<Product> getProductGroup(int idGroupProduct);
+
+    void UpdateAmoutPay(List<OrderDetail> orderDetails);
 
     List<Product> fashSale();
 

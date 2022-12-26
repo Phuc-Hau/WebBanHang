@@ -36,14 +36,19 @@
 <!-- header -->
 <div th:replace="partials/header.html"></div>
 <div id="toast"></div>
-<div class="container d-flex justify-content-center" style="margin-top: 9.4375rem;">
+<div class="container d-flex justify-content-center" style="margin-top: 8.4375rem;">
 
   <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
     <div class="border-end bg-white" id="sidebar-wrapper">
       <div class="av">
         <div class="shop-avatar">
-          <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+          <th:block th:if="${session.users.img} != null">
+            <img th:src="@{|/file/user/${session.users.img}|}" alt="">
+          </th:block>
+          <th:block th:unless ="${session.users.img} != null">
+            <img src="/file/user/avatar-3814049_960_720.png" alt="">
+          </th:block>
         </div>
         <div>
           <div class="tt">[[${session.users.username}]]</div>
@@ -111,13 +116,13 @@
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
                 </ul>
-                <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+                <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity | number:0}}</span>
 
               </div>
               <div class="price0">
                 <div class="price " >
                   <div class="price1 ">Tổng số tiền :</div>
-                  <div class="price2">{{item.totalmoney+ item.deliveryCharges}}</div>
+                  <div class="price2">{{item.totalmoney+ item.deliveryCharges | number:0}}</div>
                 </div>
               </div>
               <div class="payment">
@@ -165,13 +170,13 @@
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity | number:0}}</span>
 
             </div>
             <div class="price0">
               <div class="price " >
                 <div class="price1 ">Tổng số tiền :</div>
-                <div class="price2">{{item.totalmoney+ item.deliveryCharges}}</div>
+                <div class="price2">{{item.totalmoney+ item.deliveryCharges | number:0}}</div>
               </div>
             </div>
             <div class="payment">
@@ -206,13 +211,13 @@
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity | number:0}}</span>
 
             </div>
             <div class="price0">
               <div class="price " >
                 <div class="price1 ">Tổng số tiền :</div>
-                <div class="price2">{{item.totalmoney+ item.deliveryCharges}}</div>
+                <div class="price2">{{item.totalmoney+ item.deliveryCharges | number:0}}</div>
               </div>
             </div>
             <div class="payment">
@@ -246,13 +251,13 @@
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity | number:0}}</span>
 
             </div>
             <div class="price0">
               <div class="price " >
                 <div class="price1 ">Tổng số tiền :</div>
-                <div class="price2">{{item.totalmoney+ item.deliveryCharges}}</div>
+                <div class="price2">{{item.totalmoney+ item.deliveryCharges | number:0}}</div>
               </div>
             </div>
             <div class="payment">
@@ -282,13 +287,13 @@
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity | number:0}}</span>
 
             </div>
             <div class="price0">
               <div class="price " >
                 <div class="price1 ">Tổng số tiền :</div>
-                <div class="price2">{{item.totalmoney+ item.deliveryCharges}}</div>
+                <div class="price2">{{item.totalmoney+ item.deliveryCharges | number:0}}</div>
               </div>
             </div>
             <div class="payment">
@@ -326,13 +331,13 @@
                 <li>Loại: {{orderdetail[getIdOr(item.id)].product.groupProduct.name}}</li>
                 <li>Số lượng: {{orderdetail[getIdOr(item.id)].quantity}}</li>
               </ul>
-              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity}}</span>
+              <span class="ghw9hb" style="margin-top: 40px ; margin-left: 50%">Số tiền: {{orderdetail[getIdOr(item.id)].product.price*orderdetail[getIdOr(item.id)].quantity | number:0}}</span>
 
             </div>
             <div class="price0">
               <div class="price " >
                 <div class="price1 ">Tổng số tiền :</div>
-                <div class="price2">{{item.totalmoney + item.deliveryCharges}}</div>
+                <div class="price2">{{item.totalmoney + item.deliveryCharges | number:0}}</div>
               </div>
             </div>
             <div class="payment">
@@ -387,7 +392,7 @@
                   <div class="col"> <strong>Ngày đặt đơn:</strong> <br>{{orderstatus[0].order.date| date:'dd-MM-yyyy'}} </div>
                   <div class="col"> <strong>Giao bởi:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
                   <div class="col"> <strong>Trạng thái:</strong> <br> {{status[orderstatus[0].order.status].status}}</div>
-                  <div class="col"> <strong>Thành tiền:</strong> <br> {{orderstatus[0].order.totalmoney+orderstatus[0].order.deliveryCharges}} </div>
+                  <div class="col"> <strong>Thành tiền:</strong> <br> {{orderstatus[0].order.totalmoney+orderstatus[0].order.deliveryCharges | number:0}} </div>
                 </div>
                 <hr>
                 <div class="card-body row">

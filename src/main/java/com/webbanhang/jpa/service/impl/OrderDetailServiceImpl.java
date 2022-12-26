@@ -63,4 +63,19 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public List<Object> QuantityProduct(int idCutomer) {
         return OrderDetailDao.QuantityProduct(idCutomer);
     }
+
+    @Override
+    public List<OrderDetail> orderDetailPay() {
+        return OrderDetailDao.orderDetailPay();
+    }
+
+    @Override
+    public List<OrderDetail> orderDetailPay(int idProduct) {
+        return OrderDetailDao.orderDetailPay(idProduct);
+    }
+
+    @Override
+    public int amountPay(int idProduct) {
+        return OrderDetailDao.amountPay(idProduct);
+    }
 }
