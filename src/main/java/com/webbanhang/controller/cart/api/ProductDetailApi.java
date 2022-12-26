@@ -36,7 +36,13 @@ public class ProductDetailApi {
 
     @GetMapping("/product/amountpay/{id}")
     public int getAmountPay (@PathVariable("id") int id){
-        return orderDetailService.amountPay(id);
+        int amountpay =0;
+        try {
+            amountpay = orderDetailService.amountPay(id);
+        } catch (Exception e){
+            amountpay =0;
+        }
+        return amountpay;
     }
 
 }

@@ -7,6 +7,7 @@ app.controller('ctrlproductdetail', function($scope,$http) {
 
     $scope.items =[];
 
+
     function list () {
         $scope.url="/api/product/"+id;
         $http.get($scope.url).then(resp => {
@@ -79,22 +80,25 @@ app.controller('ctrlproductdetail', function($scope,$http) {
      }
 
     $scope.newCar = function (item){
-        $scope.cardpay = [{
-            'product' : item,
-            'quantity':document.getElementById("quantity").value
-        }]
-        $http.post(`/accounts/cart/newpay`,$scope.cardpay).then(resp => {
-            if(resp.data.indexOf('<!DOCTYPE html>')==0){
-                showErrorToast("Chưa đăng nhập")
-                setTimeout ( function () {
-                    window.location='/account/signin';
-                }, 500);
-            }else{
-                window.location='/accounts/xacnhandonhang';
-            }
-        }).catch(error => {
-            console.log("fail", error)
-        });
+         if(item.amount>0) {
+
+             $scope.cardpay = [{
+                 'product': item,
+                 'quantity': document.getElementById("quantity").value
+             }]
+             $http.post(`/accounts/cart/newpay`, $scope.cardpay).then(resp => {
+                 if (resp.data.indexOf('<!DOCTYPE html>') == 0) {
+                     showErrorToast("Chưa đăng nhập")
+                     setTimeout(function () {
+                         window.location = '/account/signin';
+                     }, 500);
+                 } else {
+                     window.location = '/accounts/xacnhandonhang';
+                 }
+             }).catch(error => {
+                 console.log("fail", error)
+             });
+         }else showErrorToast("Đã hết sản phẩm")
     }
 
 
@@ -138,9 +142,11 @@ app.controller('ctrlproductdetail', function($scope,$http) {
                 if(x==1){
                     items.qty =1;
                 }
-                this.items.push(items);
-                this.saveToLocal();
-                showSuccessToast("Thêm sản phẩm: "+items.name+" Thành công");
+                if(items.amount>0) {
+                    this.items.push(items);
+                    this.saveToLocal();
+                    showSuccessToast("Thêm sản phẩm: " + items.name + " Thành công");
+                }else showErrorToast("Đã hết sản phẩm!")
             }
             loatAmout();
         },

@@ -16,11 +16,12 @@ app.controller('ctr-shopping', function($scope,$http) {
                 loatAmout();
             }else{
                 $http.get(`/api/product/${id}`).then(resp => {
-                    resp.data.qty = 1;
-                    this.items.push(resp.data);
-                    this.saveToLocal();
-                    loatAmout();
-                    showSuccessToast("Thêm sản phẩm: "+resp.data.name+" Thành công")
+                        resp.data.qty = 1;
+                        this.items.push(resp.data);
+                        this.saveToLocal();
+                        loatAmout();
+                        showSuccessToast("Thêm sản phẩm: "+resp.data.name+" Thành công")
+
                 }).catch(error => {
                     showErrorToast("Thêm sản phẩm Thất bại")
                 })
