@@ -1,6 +1,5 @@
 package com.webbanhang.service.utils;
 
-import com.webbanhang.jpa.dao.UserDao;
 import com.webbanhang.jpa.model.Cutomer;
 import com.webbanhang.jpa.model.Users;
 import com.webbanhang.jpa.service.CutomerService;
@@ -26,16 +25,23 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
     @Autowired
     CutomerService cutomerServices;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        
         try {
             Users users = usersService.findByUsername(username);
 
             BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
-            return User.withUsername(users.getUsername())
-                    .password(pe.encode(users.getPassword()))
-                    .authorities(users.getRole())
-                    .build();
+            if(users.isStatus()){
+                return User.withUsername(users.getUsername())
+                        .password(pe.encode(users.getPassword()))
+                        .authorities(users.getRole()).disabled(users.isStatus())
+                        .build();
+            }else{
+                return User.withUsername(users.getUsername()).build();
+            }
+
         }catch (Exception e){
             throw new UsernameNotFoundException(username);
         }
