@@ -23,7 +23,7 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 @Service
 public class MailerUtils implements MailerService {
-
+ 
 	@Autowired
 	JavaMailSender sender;
 
