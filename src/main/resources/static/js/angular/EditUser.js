@@ -7,6 +7,11 @@ app.controller('ctrluser', function($scope,$http) {
         $scope.url="/accounts/api/changinformation"
         $http.get($scope.url).then(resp => {
             $scope.item = resp.data;
+            if($scope.item.img != null){
+                document.getElementById("imageResult").src='/file/user/'+$scope.item.img;
+            }else{
+                document.getElementById("imageResult").src='/file/user/avatar-3814049_960_720.png';
+            }
             procvince($scope.item.cutomer.procvince, $scope.item.cutomer.district);
             $scope.GHN($scope.item.cutomer.procvince, $scope.item.cutomer.district,$scope.item.cutomer.ward);
             console.log("user", resp)
@@ -23,7 +28,7 @@ app.controller('ctrluser', function($scope,$http) {
     }
 
     $scope.reset = function (){
-        $scope.image='';
+        $scope.image=undefined;
         user();
     }
 
