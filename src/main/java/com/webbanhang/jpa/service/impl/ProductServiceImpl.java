@@ -62,17 +62,31 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void UpdateAmoutPay(List<OrderDetail> orderDetails) {
-        List<Product> productList = new ArrayList<>();
-        for (int i = 0; i < orderDetails.size(); i++) {
-            Product p = orderDetails.get(i).getProduct();
-            p.setAmount(orderDetails.get(i).getProduct().getAmount()-orderDetails.get(i).getQuantity());
-            productList.add(p);
+    public void UpdateAmoutPay(List<OrderDetail> orderDetails,int x) {
+        if(x==0){
+            List<Product> productList = new ArrayList<>();
+            for (int i = 0; i < orderDetails.size(); i++) {
+                Product p = orderDetails.get(i).getProduct();
+                p.setAmount(orderDetails.get(i).getProduct().getAmount()-orderDetails.get(i).getQuantity());
+                productList.add(p);
+            }
+            try {
+                ProductDao.saveAll(productList);
+            }catch (Exception e){}
+        }else if(x==1){
+            List<Product> productList = new ArrayList<>();
+            for (int i = 0; i < orderDetails.size(); i++) {
+                Product p = orderDetails.get(i).getProduct();
+                p.setAmount(orderDetails.get(i).getProduct().getAmount()+orderDetails.get(i).getQuantity());
+                productList.add(p);
+            }
+            try {
+                ProductDao.saveAll(productList);
+            }catch (Exception e){}
         }
-        try {
-            ProductDao.saveAll(productList);
-        }catch (Exception e){}
     }
+
+
 
     @Override
     public List<Product> fashSale() {
