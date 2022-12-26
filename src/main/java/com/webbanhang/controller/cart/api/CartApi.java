@@ -106,7 +106,7 @@ public class CartApi {
 
 			orderDetailService.listCreate(orderDetail);
 
-			productService.UpdateAmoutPay(orderDetail);
+			productService.UpdateAmoutPay(orderDetail,0);
 
 			orderDetailTym = null;
 			obj.put("status",true);

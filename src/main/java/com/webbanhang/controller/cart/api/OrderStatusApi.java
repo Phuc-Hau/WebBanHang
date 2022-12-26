@@ -2,10 +2,7 @@ package com.webbanhang.controller.cart.api;
 
 
 import com.webbanhang.jpa.model.*;
-import com.webbanhang.jpa.service.OrderDetailService;
-import com.webbanhang.jpa.service.OrderService;
-import com.webbanhang.jpa.service.OrderStatusService;
-import com.webbanhang.jpa.service.UsersService;
+import com.webbanhang.jpa.service.*;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +26,9 @@ public class OrderStatusApi {
 
     @Autowired
     UsersService userService;
+
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/listorderstatus")
     public List<Order> cart(HttpServletRequest request) {
@@ -77,6 +77,9 @@ public class OrderStatusApi {
         order.setStatus(5);
         try {
             orderService.update(order);
+
+            productService.UpdateAmoutPay(order.getOrderDetails(),1);
+
             obj.put("status",true);
             obj.put("message", "Hủy thành công!");
         }catch (Exception e){

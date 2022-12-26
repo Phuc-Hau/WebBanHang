@@ -21,7 +21,7 @@ public interface ProductService {
 
     List<Product> getProductGroup(int idGroupProduct);
 
-    void UpdateAmoutPay(List<OrderDetail> orderDetails);
+    void UpdateAmoutPay(List<OrderDetail> orderDetails , int x);
 
     List<Product> fashSale();
 
