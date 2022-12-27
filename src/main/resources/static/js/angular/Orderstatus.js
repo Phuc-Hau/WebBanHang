@@ -3,9 +3,9 @@ var app = angular.module("app", []);
 app.controller('orderstatus', function($scope,$http) {
 
     //list
-    $scope.urllist="/accounts/api/listorderstatus";
+
     //liststatus
-    $scope.urlgroup="/accounts/api/listordersDetailStatus/";
+
     $scope.orderlist =[];
     $scope.orderstatus =[];
     $scope.orderdetail =[];
@@ -16,6 +16,7 @@ app.controller('orderstatus', function($scope,$http) {
 
 
     $scope.list = function (){
+        $scope.urllist="/accounts/api/listorderstatus";
         $http.get($scope.urllist).then(resp => {
             $scope.orderlist = resp.data;
             $scope.choxacnhan = $scope.orderlist.filter(s=> s.status ===1 ).length;
@@ -30,6 +31,7 @@ app.controller('orderstatus', function($scope,$http) {
     }
     $scope.list();
 
+    //load tat ca cac trang thai
     $scope.urlStatus="/accounts/api/OrderStatus";
     $http.get($scope.urlStatus).then(resp => {
         $scope.status = resp.data;
@@ -38,7 +40,7 @@ app.controller('orderstatus', function($scope,$http) {
         console.log("fail", error)
     })
 
-
+    //load tat ca chi tiet hoa don cua user
     $scope.urlOrderdetail = "/accounts/api/listordersDetail";
     $http.post($scope.urlOrderdetail).then(resp => {
         $scope.orderdetail = resp.data;
@@ -52,6 +54,7 @@ app.controller('orderstatus', function($scope,$http) {
 
 
     //list chi tiet don hang
+    $scope.urlgroup="/accounts/api/listordersDetailStatus/";
     $scope.orderid = function (id){
         $http.post($scope.urlgroup+id).then(resp => {
             $scope.orderstatus = resp.data;
@@ -65,7 +68,6 @@ app.controller('orderstatus', function($scope,$http) {
                 }
                 return sum;
             }
-
 
             // set trang thai thanh mau cam trong chi tiet
             var u= $scope.orderstatus[0].order.status;
@@ -90,6 +92,7 @@ app.controller('orderstatus', function($scope,$http) {
         })
 
     }
+    //tam an modal 1
     $scope.productitem;
     $scope.productbyid = function (id){
         $scope.productitem = $scope.orderdetail.filter(e => e.product.id == id)[0];
@@ -154,7 +157,7 @@ app.controller('orderstatus', function($scope,$http) {
 
     }
 
-
+    //dat lai
     $scope.newCar = function (item){
         $scope.cardpay = [{
             'product' : item,

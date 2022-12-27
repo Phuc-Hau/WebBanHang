@@ -64,7 +64,7 @@ public class OrderStatusApi {
     }
 
 
-
+    //load tat ca cac trang thai
     @GetMapping("OrderStatus")
     public List<OrderStatus> status(){
         return orderStatusService.findAll();
