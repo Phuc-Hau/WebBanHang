@@ -23,7 +23,7 @@
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="username" placeholder="Username" required />
+              <input type="text" name="username" ng-model="username" placeholder="Username" required />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
@@ -33,7 +33,7 @@
               <div><input type="checkbox" checked="checked" name="remember-me" />Remember Me</div>
               <a style="text-decoration: none;color: #0346fa;margin-left: 50px;" href="/account/forgetpass">Quên mật khẩu?</a>
             </div>
-            <input type="submit" value="Login" class="btn solid" />
+            <input type="submit" ng-click="login(username)" value="Login" class="btn solid" />
 
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">

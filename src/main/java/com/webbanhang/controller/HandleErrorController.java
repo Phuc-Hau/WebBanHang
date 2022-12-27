@@ -24,8 +24,4 @@ public class HandleErrorController implements ErrorController {
         return "error";
     }
 
-//    @Override
-//    public String getErrorPath() {
-//        return "/error";
-//    }
 }

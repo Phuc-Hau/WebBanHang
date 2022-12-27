@@ -35,7 +35,7 @@ public class SignUpApi {
     @PostMapping("/signup/resetcode")
     public void resetcode() throws MessagingException {
         capchas = convenientUtils.ranDomCapCha();
-        mail.sendPassword(tymUser.getEmail(), capchas);
+        mail.sendSignUp(tymUser.getEmail(), capchas);
     }
 
     @PostMapping("/signup/new")
@@ -94,4 +94,33 @@ public class SignUpApi {
         }
         return obj;
     }
+
+    String username="";
+    int status =0;
+
+    @PostMapping("/login/{user}")
+    public void login(@PathVariable("user") String user) {
+        try {
+            if(usersService.findByUsername(user).isStatus()==false){
+                username ="Tài khoản này đã bị khóa";
+                status = 1;
+            }else{
+                status =2;
+            }
+        }catch (Exception e){
+            status =2;
+        }
+
+    }
+
+    @GetMapping("/login/name")
+    public JSONObject loginname() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status",status);
+        jsonObject.put("message",username);
+        username = "";
+        status = 0;
+        return jsonObject;
+    }
+
 }

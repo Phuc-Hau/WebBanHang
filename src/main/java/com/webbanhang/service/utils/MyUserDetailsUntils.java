@@ -28,15 +28,14 @@ public class MyUserDetailsUntils implements UserDetailsService, MyUserDetailsSer
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        
+
         try {
             Users users = usersService.findByUsername(username);
-
             BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
             if(users.isStatus()){
                 return User.withUsername(users.getUsername())
                         .password(pe.encode(users.getPassword()))
-                        .authorities(users.getRole()).disabled(users.isStatus())
+                        .authorities(users.getRole())
                         .build();
             }else{
                 return User.withUsername(users.getUsername()).build();

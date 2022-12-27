@@ -108,8 +108,7 @@
                         <input id="upload" name="imgs files" type="file" accept=".png, .jpg, .jpeg" onchange="readURL(this); angular.element(this).scope().uploadfile(this.files);"  />
                       </div>
                       <div class="avatar-preview" style="right: 180px; top: 50px;">
-                        <img width="200px" height="200px" id="imageResult"
-                             src="/file/user/{{::(item.img === null ? 'avatar-3814049_960_720.png' : item.img)}}">
+                        <img width="200px" height="200px" id="imageResult" src="">
                         <label style="margin-top: 25px; margin-left: 26px;" for="upload">Upload
                           ảnh đại diện</label>
                       </div>
